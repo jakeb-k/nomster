@@ -1,0 +1,137 @@
+<ion-header [translucent]="true">
+    <div class="header">
+      <h1>
+        Nomster
+      </h1>
+      <img src="/assets/nomsterLogo.png" />
+    </div>
+</ion-header>
+<ion-content [fullscreen]="true"> 
+
+
+  <div id="container">
+  <p *ngIf="message !== ''">
+    {{message}}
+  </p>
+    <div class="recipeBox" *ngIf="setLoaded; else preLoad">
+      <div class="titles">
+        <div class="rTitle">
+          <h3 >{{sortedRecipes[index].title}}</h3>
+        </div>
+        <div class="cals">
+          <p>{{sortedRecipes[index].cals}}<i>kcals</i></p>
+        </div>
+      </div>
+      <a ></a>
+      <img class="rImg" [src]="sortedRecipes[index].image" (click)="nav(sortedRecipes[index].id)"/>
+      <div class="cpf">
+        <div class="rInfo">
+          <div class="nutrient">{{sortedRecipes[index].carbs}} g </div>
+          <span>Carbs</span>
+        </div>
+        <div class="rInfo">
+          <div class="nutrient">{{sortedRecipes[index].fat}} g </div>
+          <span>Fat</span>
+        </div>
+        <div class="rInfo">
+          <div class="nutrient">{{sortedRecipes[index].protein}} g </div>
+          <span>Protein</span>
+        </div>
+      </div>
+      <div class="rBot">
+        <div class="dietBox">
+        <h6 class="rDiet" *ngFor="let d of sortedRecipes[index].diet"><em>{{d}}</em></h6>
+        </div>
+        <ion-button fill="clear" id="open-modal">NUTRIENTS</ion-button>
+      </div>
+      <div id="navBox">
+        <button class="navBtn" (click)="slideNav(-1)"><</button>
+        <p *ngIf="setLoaded">{{index+1}}/{{sortedRecipes.length}}</p>
+        <button class="navBtn" (click)="slideNav(1)">></button>
+      </div>
+      <ion-button style="margin-left:auto;"fill="clear" (click)="reset()">RESET</ion-button>
+    </div>
+    <!--FILTER FORM -->
+    <ng-template #preLoad>
+    <div id="filterForm">
+      <div class="filterOps">
+        <h3>Apply Filters</h3>
+        <ion-button fill="clear" (click)="reset()">BACK</ion-button>
+      </div>
+      <ion-card>
+        <ion-card-content>
+          <ion-item>
+            <ion-input [(ngModel)]="filterOps.query" label="What are we cooking? *" labelPlacement="stacked" placeholder="I want..." data-default-element="filterOps.query"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input [(ngModel)]="filterOps.ingredients" label="Ingredients" labelPlacement="stacked"  placeholder="chicken,brioche bun,chill flakes, etc."></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-select [(ngModel)]="filterOps.cuisine" aria-label="Cuisines" placeholder="Select Cuisine">
+              <ion-select-option *ngFor="let c of cuisines" [value]="c">{{c}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-select [(ngModel)]="filterOps.diet" aria-label="Diets" placeholder="Select Diets" multiple="true">
+              <ion-select-option *ngFor="let d of diets" [value]="d">{{d}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-select [(ngModel)]="filterOps.type" aria-label="Meal Type" placeholder="Select Meal Type">
+              <ion-select-option *ngFor="let t of mealType" [value]="t">{{t}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-select [(ngModel)]="filterOps.intolerances" aria-label="Intolerances"
+              placeholder="Select Allergies / Intolerances" multiple="true">
+              <ion-select-option *ngFor="let t of intolerances" [value]="t">{{t}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-input [(ngModel)]="filterOps.maxCarbs" label="Max Carbs" labelPlacement="stacked" placeholder="Enter fat limit"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input [(ngModel)]="filterOps.maxFat" label="Max Fat" labelPlacement="stacked"
+              placeholder="Enter fat limit"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input [(ngModel)]="filterOps.maxCals" label="Max Cals" labelPlacement="stacked"
+              placeholder="Enter calorie limit"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input [(ngModel)]="filterOps.minProtein" label="Min Protein" labelPlacement="stacked"
+              placeholder="Enter minimum protein"></ion-input>
+          </ion-item>
+         
+        </ion-card-content>
+      </ion-card>
+      <button class="navBtn" (click)="sendFilterData()">APPLY</button>
+    </div>
+    </ng-template>
+     
+  </div>
+
+<ion-modal trigger="open-modal" (willDismiss)="($event)">
+  <ng-template>
+    <ion-content class="ion-padding">
+      <ion-button class="backBtn" (click)="cancel()" fill="clear">
+        < BACK</ion-button>
+          <div class="nutrition-label">
+            <div class="nHeader">
+              <div class="footnote">* Percent Daily Values are based on a 2,000 calorie diet.</div>
+              <div class="title">Nutrition Facts</div>
+              <div class="sub-title">Serving Size:{{servingSize[index].amount}}{{servingSize[index].unit}}</div>
+            </div>
+            <table>
+              <tr *ngFor="let e of rawNutrients[index]">
+                <td><strong>{{e.name}}</strong> {{e.amount}}{{e.unit}}</td>
+                <td></td>
+                <td class="right-align">{{e.percentOfDailyNeeds}}%</td>
+              </tr>
+            </table>
+          </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+</ion-content>

@@ -1,0 +1,40 @@
+
+<ion-header [translucent]="true">
+  <div class="header">
+    <h1>
+      Nomster
+    </h1>
+    <img src="/assets/nomsterLogo.png" />
+  </div>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="filterOps">
+    <h3>{{title}}</h3>
+    <ion-button fill="clear" (click)="navHome()">HOME</ion-button>
+  </div>
+ <div id="container">
+    <div id="topCont">
+      <img [src]="image" />
+      <p [innerHTML]="summary"></p>
+    </div>
+    <div id="ingCont">
+      <div class="ingBox">
+        <h3>Ingredients</h3>
+        <tr *ngFor="let item of ingredients; let i = index">
+          <ng-container *ngIf="i % 2 === 0; else oddRow">
+            <td>{{ item.original }}</td>
+            <td *ngIf="i + 1 < ingredients.length">{{ ingredients[i + 1].original }}</td>
+          </ng-container>
+          <ng-template #oddRow>
+          </ng-template>
+        </tr>
+      </div>
+    </div>
+    <h3>Instructions</h3>
+    <div class="instruc" [innerHTML]="instructions">
+
+    </div>
+    
+ </div>
+</ion-content>

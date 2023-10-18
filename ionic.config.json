@@ -1,0 +1,7 @@
+{
+  "name": "nomster",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

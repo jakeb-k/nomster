@@ -1,0 +1,114 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import '@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+/*
+
+
+
+
+
+ FILTER FORM
+
+
+
+
+ */
+@import url('https://fonts.cdnfonts.com/css/space-grotesk');
+@import url('https://fonts.cdnfonts.com/css/margarine');
+@import url('https://fonts.cdnfonts.com/css/better-ground-line');
+$p : 'Space Grotesk',
+sans-serif;
+$p2 : 'Better Ground Line',
+sans-serif;
+
+ion-header {
+    background: radial-gradient(100% 100% at 100% 0%, #ffdc30 0%, #FF6700 100%);
+    padding: 10px;
+    margin: 0;
+}
+
+h3 {
+    font-family: $p;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    font-family: $p2;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+
+}
+
+.header img {
+    width: 100px;
+    height: 100px;
+}
+
+.header h1 {
+    font-size: 48px;
+}
+
+#filterForm {
+    margin: 0;
+    padding: 0;
+}
+
+.filterOps {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.navBtn {
+    width: 90%;
+    margin: auto 5%;
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    will-change: box-shadow, transform;
+    background: radial-gradient(100% 100% at 100% 0%, #ffdc30 0%, #FF6700 100%);
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
+    padding: 0 32px;
+    border-radius: 6px;
+    color: #fff;
+    height: 48px;
+    font-size: 18px;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+
+    &:hover {
+        box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #ffa915;
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        box-shadow: inset 0px 3px 7px #ffa915;
+        transform: translateY(2px);
+    }
+}
