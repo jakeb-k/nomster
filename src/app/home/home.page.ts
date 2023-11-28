@@ -10,7 +10,7 @@ import { IonModal, ModalController } from '@ionic/angular';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-})
+}) 
 export class HomePage implements OnInit{
   @ViewChild(IonModal) modal!: IonModal;
   
