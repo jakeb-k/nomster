@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <div class="header">
+    <h1>
+      Nomster
+    </h1>
+    <img src="/assets/nomsterLogo.png" />
+  </div>
+</ion-header>
+<ion-content>
+  <h1>Add User</h1>
+  <ion-item>
+    <ion-input placeholder="Enter text..." [(ngModel)]="newUserName"></ion-input>
+    <ion-button (click)="createUser()" color="primary">Button</ion-button>
+  </ion-item>
+  <ion-item *ngFor="let user of users()">
+    <ion-checkbox aria-label="label" slot="start" [(ngModel)]="user.active" (ionChange)="updateUser(user)"></ion-checkbox>
+    <ion-label>{{ user.name }}</ion-label>
+    <ion-button slot="end" (click)="deleteUser(user)" fill="clear" color="danger">
+      <ion-icon name="trash" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-content>

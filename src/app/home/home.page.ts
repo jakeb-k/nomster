@@ -93,6 +93,9 @@ export class HomePage implements OnInit{
       }
     );
   }
+  login(){
+    this.router.navigateByUrl('/login'); 
+  }
   nav(id:Number){
    
     this.router.navigateByUrl('/recipe/'+id, {replaceUrl:true}); 
