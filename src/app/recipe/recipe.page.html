@@ -26,7 +26,7 @@
         <h3>Ingredients</h3>
         <tr *ngFor="let item of ingredients; let i = index">
           <ng-container *ngIf="i % 2 === 0; else oddRow">
-            <td>{{ item.original }}</td>
+            <td>{{ item.original }} <ion-icon name="add-circle-outline" (click)="addToGroceries(item)"></ion-icon></td>
             <td *ngIf="i + 1 < ingredients.length">{{ ingredients[i + 1].original }}</td>
           </ng-container>
           <ng-template #oddRow>

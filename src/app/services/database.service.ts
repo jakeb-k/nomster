@@ -131,9 +131,25 @@ export class DatabaseService {
       const result = await this.db.query(query);
       return result;
     } catch (error: any) {
-      
+      // Handle UNIQUE constraint violation
+      if (error.message.includes('UNIQUE constraint failed')) {
+        // Perform a DELETE operation for the conflicting id
+        const deleteQuery = `DELETE FROM groceries WHERE id = ${id}`;
+        try {
+          const deleteResult = await this.db.query(deleteQuery);
+          // Optional: Reload or update your data after the deletion
+          this.loadGrocery(); // Adjust this according to your application flow
+          return deleteResult;
+        } catch (deleteError) {
+          console.error('Error deleting conflicting entry:', deleteError);
+          throw deleteError; // Handle the deletion error according to your requirements
+        }
+      } else {
+        // Handle other types of errors
+        console.error('Error adding favourite:', error);
         throw error; // Handle the error according to your requirements
       }
+    }
     }
   
 

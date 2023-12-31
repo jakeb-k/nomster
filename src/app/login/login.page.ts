@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatabaseService } from '../services/database.service';
 import { User } from '../interfaces/user';
 import { Router } from '@angular/router';
+import { IonModal, ModalController } from '@ionic/angular';
+import { Grocery } from '../interfaces/grocery';
 
 @Component({
   selector: 'app-login',
@@ -9,13 +11,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  users:any; 
+  @ViewChild(IonModal) modal!: IonModal;
 
+  users:any; 
+  groceries:any; 
   newUserName = ''; 
-  constructor(private database: DatabaseService, private router: Router) { }
+  constructor(private database: DatabaseService, private router: Router, private modalController: ModalController) { }
 
   ngOnInit() {
-    //this.users = this.database.getUsers(); 
+    this.database.loadGrocery(); 
+    this.groceries = this.database.getGrocery(); 
   }
 
   async createUser() {
@@ -33,5 +38,11 @@ export class LoginPage implements OnInit {
   fav(){
     this.router.navigateByUrl('/favs'); 
   }
-
+  cancel() {
+    this.modalController.dismiss(null, 'cancel');
+  }
+  
+  async deleteFav(grocery: Grocery) {
+    this.database.deleteFavById(grocery.id.toString()); 
+  }
 }
