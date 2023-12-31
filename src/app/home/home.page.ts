@@ -34,6 +34,7 @@ export class HomePage implements OnInit{
   servingSize:any[]=[]; 
   isQuery: Boolean = true;
   
+  showSuccessMessage = Boolean(); 
 
   filterOps: Filter = {
     query:"",
@@ -214,14 +215,28 @@ export class HomePage implements OnInit{
     this.setLoaded = !this.setLoaded;
   }
 
-  newFav(fav: Meal) {
+  async newFav(fav: Meal) {
     fav = this.sortedRecipes[this.index]; 
     let newFav:Favourite = {
       id: fav.id,
       name: fav.title,
       pictureLink: fav.image
     }
-    this.database.addFavourite(newFav)
+    try {
+      const isSuccess = await this.database.addFavourite(newFav);
+      if (isSuccess) {
+        this.showSuccessMessage = true; // Display success message
+        setTimeout(() => {
+          this.showSuccessMessage = false; // Hide success message after a delay
+        }, 3000); // Adjust the delay (in milliseconds) as needed
+      } else {
+        // Handle cases where addFavourite returns false
+        // Optional: Display an error message or perform other actions
+      }
+    } catch (error) {
+      console.error('Error adding favourite:', error);
+      // Handle error scenarios here
+    }
 
    
   }
