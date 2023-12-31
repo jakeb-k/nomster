@@ -19,25 +19,26 @@
  <div id="container">
     <div id="topCont">
       <img [src]="image" />
-      <p [innerHTML]="summary"></p>
     </div>
     <div id="ingCont">
       <div class="ingBox">
         <h3>Ingredients</h3>
         <tr *ngFor="let item of ingredients; let i = index">
           <ng-container *ngIf="i % 2 === 0; else oddRow">
-            <td>{{ item.original }} <ion-icon name="add-circle-outline" (click)="addToGroceries(item)" [style.top.%]="103.5 + (6.95 * i)"></ion-icon></td>
-            <td *ngIf="i + 1 < ingredients.length">{{ ingredients[i + 1].original }} <ion-icon name="add-circle-outline" (click)="addToGroceries(item)" style="left:87.5%;" [style.top.%]="103.5 + (6.95 * i)"></ion-icon></td>
+            <td>{{ item.original }} <ion-icon name="add-circle-outline" (click)="addToGroceries(item)" [style.top.%]="70.5 + (6.95 * i)"></ion-icon></td>
+            <td *ngIf="i + 1 < ingredients.length">{{ ingredients[i + 1].original }} <ion-icon name="add-circle-outline" (click)="addToGroceries(item)" style="left:87.5%;" [style.top.%]="70.5 + (6.95 * i)"></ion-icon></td>
           </ng-container>
           <ng-template #oddRow>
           </ng-template>
         </tr>
       </div>
     </div>
+   
     <h3>Instructions</h3>
     <div class="instruc" [innerHTML]="instructions">
 
     </div>
+    <p [innerHTML]="summary"></p>
     
  </div>
 </ion-content>
