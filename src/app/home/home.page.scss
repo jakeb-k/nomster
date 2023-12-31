@@ -332,3 +332,9 @@ RECIPE CARD STYLING
    background: black;
    align-self: center;
  }
+ .successMsg {
+  font-family: 'Margarine', sans-serif;
+  display:flex;
+  flex-direction:row; 
+  align-items: center;
+ }
