@@ -99,7 +99,6 @@ export class HomePage implements OnInit{
     this.router.navigateByUrl('/login'); 
   }
   nav(id:Number){
-   
     this.router.navigateByUrl('/recipe/'+id, {replaceUrl:true}); 
   }
   recipeSorter(){
@@ -223,7 +222,7 @@ export class HomePage implements OnInit{
       pictureLink: fav.image
     }
     this.database.addFavourite(newFav)
-    
-    console.log(fav); 
+
+   
   }
 }

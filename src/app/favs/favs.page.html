@@ -13,10 +13,9 @@
   <h1>Your Favourites</h1>
 
   <ion-item *ngFor="let fav of favs()">
-    <a [href]="fav.id">
-      <img [src]="fav.pictureLink" /> 
+    
+      <img [src]="fav.pictureLink" (click)="nav(fav.id)" /> 
       <p>{{fav.name}}</p>
-    </a>
     <ion-button fill="clear" (click)="deleteFav(fav)">DELETE</ion-button>
   </ion-item>
 </ion-content>
