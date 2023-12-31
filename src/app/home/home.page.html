@@ -1,10 +1,12 @@
-<ion-header [translucent]="true">
+<ion-header>
     <div class="header">
-      <h1>
-        Nomster
-      </h1>
-      <img src="/assets/nomsterLogo.png" />
-      <button fill="clear" slot="end" (click)="login()">Login</button>
+      <div style="display:flex; flex-direction: row;">
+        <h1>
+          Nomster
+        </h1>
+        <img src="/assets/nomsterLogo.png" />
+      </div>
+      <ion-icon name="person" (click)="login()"></ion-icon>
     </div>
 </ion-header>
 <ion-content [fullscreen]="true"> 
@@ -50,8 +52,13 @@
         <p *ngIf="setLoaded">{{index+1}}/{{sortedRecipes.length}}</p>
         <button class="navBtn" (click)="slideNav(1)">></button>
       </div>
-      <ion-button style="margin-left:auto;"fill="clear" (click)="reset()">RESET</ion-button>
+      <div class="saveResetCont"> 
+        <ion-button fill="clear" (click)="reset()">RESET</ion-button>
+        <ion-button fill="clear" (click)="newFav(sortedRecipes[index])">SAVE</ion-button>
+      </div>
     </div>
+
+
     <!--FILTER FORM -->
     <ng-template #preLoad>
     <div id="filterForm">

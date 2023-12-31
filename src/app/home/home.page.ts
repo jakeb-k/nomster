@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {GetRecipeService} from '../services/get-recipe.service';
+import { DatabaseService } from '../services/database.service';
 import { Router } from '@angular/router';
 import { Meal } from '../interfaces/meal';
 import { Filter } from '../interfaces/filter';
+import { Favourite } from '../interfaces/favourite';
 
 import { IonModal, ModalController } from '@ionic/angular';
 
@@ -61,7 +63,7 @@ export class HomePage implements OnInit{
   'breakfast','soup','beverage','sauce','marinade','fingerfood','snack','drink'];
 
 
-  constructor(private getter: GetRecipeService, private router:Router, private modalController: ModalController) {}
+  constructor(private getter: GetRecipeService, private router:Router, private modalController: ModalController, private database: DatabaseService) {}
   ngOnInit(){
     let temp = sessionStorage.getItem('recipes');
     let temp2 = sessionStorage.getItem('nutrients');
@@ -211,5 +213,17 @@ export class HomePage implements OnInit{
   }
   reset(){
     this.setLoaded = !this.setLoaded;
+  }
+
+  newFav(fav: Meal) {
+    fav = this.sortedRecipes[this.index]; 
+    let newFav:Favourite = {
+      id: fav.id,
+      name: fav.title,
+      pictureLink: fav.image
+    }
+    this.database.addFavourite(newFav)
+    
+    console.log(fav); 
   }
 }

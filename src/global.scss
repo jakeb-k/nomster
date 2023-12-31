@@ -57,6 +57,7 @@ h3 {
 .header {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     font-family: $p2;
     font-weight: bold;
     margin: 0;
@@ -72,7 +73,10 @@ h3 {
 .header h1 {
     font-size: 48px;
 }
-
+ion-icon {
+    font-size:xx-large;
+    padding:30px 10px; 
+}
 #filterForm {
     margin: 0;
     padding: 0;

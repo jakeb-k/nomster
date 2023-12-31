@@ -88,27 +88,7 @@ SEARCH BAR STYLING
    }
  }
 
- ion-header {
-   background: radial-gradient(100% 100% at 100% 0%, #ffdc30 0%, #FF6700 100%);
-   padding: 10px;
- }
-
- .header {
-   display: flex;
-   flex-direction: row;
-   font-family: $p2;
-   font-weight: bold;
-
- }
-
- .header img {
-   width: 100px;
-   height: 100px;
- }
-
- .header h1 {
-   font-size: 48px;
- }
+ 
 
  .eating {
    padding: 10px;
@@ -289,7 +269,12 @@ RECIPE CARD STYLING
    z-index: 2;
    height: auto;
  }
-
+ .saveResetCont{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+ }
+// NUTRITION MODAL STYLING
  .nutModal {
    text-align: center;
    border-radius: 10px;

@@ -1,0 +1,22 @@
+<ion-header>
+  <div class="header">
+    <div style="display:flex; flex-direction: row;">
+      <h1>
+        Nomster
+      </h1>
+      <img src="/assets/nomsterLogo.png" />
+    </div>
+    <ion-icon name="person"></ion-icon>
+  </div>
+</ion-header>
+<ion-content>
+  <h1>Your Favourites</h1>
+
+  <ion-item *ngFor="let fav of favs()">
+    <a [href]="fav.id">
+      <img [src]="fav.pictureLink" /> 
+      <p>{{fav.name}}</p>
+    </a>
+    <ion-button fill="clear" (click)="deleteFav(fav)">DELETE</ion-button>
+  </ion-item>
+</ion-content>
