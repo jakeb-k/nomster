@@ -1,6 +1,7 @@
 import { Injectable, WritableSignal, signal } from '@angular/core';
 import { User } from '../interfaces/user';
 import { Favourite } from '../interfaces/favourite';
+import { Grocery } from '../interfaces/grocery';
 import { CapacitorSQLite, SQLiteConnection, SQLiteDBConnection } from '@capacitor-community/sqlite';
 
 const DB_FAVS = 'favsdb'; 
@@ -17,6 +18,8 @@ export class DatabaseService {
 
   private users: WritableSignal<User[]> = signal(<User[]>([])); 
   private favs: WritableSignal<Favourite[]> = signal(<Favourite[]>([]));
+  private groceries: WritableSignal<Grocery[]> = signal(<Grocery[]>([]));
+
   constructor() { }
 
   //create connection to sqlite database
@@ -33,17 +36,29 @@ export class DatabaseService {
 
     await this.db.open(); 
 
-    const schema = `CREATE TABLE IF NOT EXISTS favourites ( 
+    const schemaFavs = `CREATE TABLE IF NOT EXISTS favourites ( 
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
       pictureLink TEXT NOT NULL
       );`
-      
-      await this.db.execute(schema);
-      
-      this.loadFavs(); 
 
-      return true; 
+    const schemaGroceries = `
+      CREATE TABLE IF NOT EXISTS groceries (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        isBought INTEGER DEFAULT 0
+      );
+    `
+
+    await this.db.execute(schemaFavs);
+
+    await this.db.execute(schemaGroceries);
+
+      
+    this.loadFavs(); 
+    this.loadGrocery(); 
+
+    return true; 
    
 
 
@@ -94,13 +109,56 @@ export class DatabaseService {
   getFavs() {
     return this.favs; 
   }
-  //delete users
+  //delete favs
   async deleteFavById(id: string) {
     const query = `DELETE FROM favourites WHERE id=${id}`;
 
     const result = await this.db.query(query); 
 
     this.loadFavs(); 
+
+    return result; 
+  }
+
+
+  // SHOPPING LIST CRUD
+
+  async addGrocery(grocery: Grocery) {
+    const { id, name, isBought } = grocery;
+    const query = `INSERT INTO groceries (id, name, isBought) VALUES (${id}, '${name}', '${isBought}')`;
+  
+    try {
+      const result = await this.db.query(query);
+      return result;
+    } catch (error: any) {
+      
+        throw error; // Handle the error according to your requirements
+      }
+    }
+  
+
+  //LOAD FAVS FROM DB
+  async loadGrocery(){
+    try {
+      const groceries = await this.db.query('SELECT * FROM groceries;');
+
+      this.groceries.set(groceries.values || []); 
+    } catch(error) {
+      console.error('Error occured during retrieval'); 
+    }
+   
+  }
+  //RETURN FAVS OBJECT
+  getGrocery() {
+    return this.groceries; 
+  }
+  //delete favs
+  async deleteGroceryById(id: string) {
+    const query = `DELETE FROM groceries WHERE id=${id}`;
+
+    const result = await this.db.query(query); 
+
+    this.loadGrocery(); 
 
     return result; 
   }
