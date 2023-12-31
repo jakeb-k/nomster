@@ -43,6 +43,6 @@ export class LoginPage implements OnInit {
   }
   
   async deleteGrocery(grocery: Grocery) {
-    this.database.deleteFavById(grocery.id.toString()); 
+    this.database.deleteGroceryById(grocery.id.toString()); 
   }
 }

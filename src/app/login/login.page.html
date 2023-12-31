@@ -21,10 +21,11 @@
     <ion-content class="ion-padding">
       <ion-button class="backBtn" (click)="cancel()" fill="clear">
         < BACK</ion-button>
+        <h1> Shopping List</h1>
          <div class="groList">
           <div class="groItem" *ngFor="let g of groceries()">
             <p>{{g.name}}</p>
-            <ion-button (click)="deleteGrocery(g)"><ion-icon name="close-circle-outline"></ion-icon></ion-button>
+            <ion-button (click)="deleteGrocery(g)" fill="clear"><ion-icon name="close-circle-outline"></ion-icon></ion-button>
           </div>
          </div>
           

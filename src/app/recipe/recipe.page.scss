@@ -17,6 +17,9 @@ td {
     height:60px; 
     font-family:$p3;
     padding:10px 25px; 
+    display:flex;
+    flex-direction: row;
+    text-align:center; 
 }
 td ion-icon {
     position:absolute; 
@@ -30,4 +33,11 @@ td ion-icon {
 }
 h3 {
     font-family:$p; 
+}
+p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width:100%;
+    min-height:30px; 
 }
