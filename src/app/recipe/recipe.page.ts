@@ -89,7 +89,7 @@ export class RecipePage implements OnInit {
         // Optional: Display an error message or perform other actions
       }
     } catch (error) {
-      console.error('Error adding groceryourite:', error);
+      console.error('Error adding grocery:', error);
       // Handle error scenarios here
     }
 

@@ -13,9 +13,16 @@ img {
     border-radius:15px; 
 }
 td {
-    width:50%; 
-    padding:15px 5px; 
+    width:40%; 
+    height:60px; 
     font-family:$p3;
+    padding:10px 25px; 
+}
+td ion-icon {
+    position:absolute; 
+    left: 40%;
+    top: 103.5%; /* Adjust if you want to vertically align the icon */
+   
 }
 #container {
     margin:auto;

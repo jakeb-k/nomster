@@ -42,7 +42,7 @@ export class LoginPage implements OnInit {
     this.modalController.dismiss(null, 'cancel');
   }
   
-  async deleteFav(grocery: Grocery) {
+  async deleteGrocery(grocery: Grocery) {
     this.database.deleteFavById(grocery.id.toString()); 
   }
 }

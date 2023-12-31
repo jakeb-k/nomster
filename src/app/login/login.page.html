@@ -24,6 +24,7 @@
          <div class="groList">
           <div class="groItem" *ngFor="let g of groceries()">
             <p>{{g.name}}</p>
+            <ion-button (click)="deleteGrocery(g)"><ion-icon name="close-circle-outline"></ion-icon></ion-button>
           </div>
          </div>
           
