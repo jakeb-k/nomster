@@ -38,6 +38,9 @@ export class LoginPage implements OnInit {
   fav(){
     this.router.navigateByUrl('/favs'); 
   }
+  home(){
+    this.router.navigateByUrl('/'); 
+  }
   cancel() {
     this.modalController.dismiss(null, 'cancel');
   }
