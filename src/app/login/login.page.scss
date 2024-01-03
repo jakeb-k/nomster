@@ -2,5 +2,14 @@
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-    text-align: center;
+    
+}
+.profileOptions {
+    display:flex; 
+    flex-direction:column; 
+}
+.profileOptions ion-button {
+    width:fit-content; 
+ 
+  text-align: left;
 }

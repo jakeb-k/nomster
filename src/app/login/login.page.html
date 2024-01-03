@@ -10,10 +10,11 @@
   </div>
 </ion-header>
 <ion-content>
-  
-<h1 (click)="fav()">Favourites</h1>
-<h1 id="open-modal">Grocery List</h1>
-
+<div class="profileOptions">
+  <ion-button fill="clear" (click)="fav()">Favourites</ion-button>
+  <ion-button fill="clear"  id="open-modal">Grocery List</ion-button>
+  <ion-button fill="clear">Update Profile</ion-button>
+</div>
 
   
 <ion-modal trigger="open-modal" (willDismiss)="($event)">
