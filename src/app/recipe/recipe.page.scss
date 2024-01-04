@@ -13,19 +13,8 @@ img {
     border-radius:15px; 
 }
 td {
-    width:40%; 
-    height:60px; 
-    font-family:$p3;
-    padding:10px 25px; 
-    display:flex;
-    flex-direction: row;
-    text-align:center; 
-}
-td ion-icon {
-    position:absolute; 
-    left: 40%;
-    top: 103.5%; /* Adjust if you want to vertically align the icon */
-   
+    width: calc(50% - 4.5%); /* Set the width to 50% minus the margin gap */
+    font-family:$p3; 
 }
 #container {
     margin:auto;
@@ -40,4 +29,7 @@ p {
     text-overflow: ellipsis;
     max-width:100%;
     min-height:30px; 
+}
+.recipeGrocery {
+    margin-bottom:-30px; 
 }

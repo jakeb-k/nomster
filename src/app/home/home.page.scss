@@ -1,340 +1,233 @@
- @import url('https://fonts.cdnfonts.com/css/space-grotesk');
- @import url('https://fonts.cdnfonts.com/css/margarine');
- @import url('https://fonts.cdnfonts.com/css/better-ground-line');
- $p : 'Space Grotesk',
- sans-serif;
- $p2 : 'Better Ground Line',
- sans-serif;
+@import url('https://fonts.cdnfonts.com/css/space-grotesk');
+@import url('https://fonts.cdnfonts.com/css/margarine');
+@import url('https://fonts.cdnfonts.com/css/better-ground-line');
+$p: 'Space Grotesk', sans-serif;
+$p2: 'Better Ground Line', sans-serif;
 
- .preLoad {
-   text-align: center;
-   box-shadow: 0 0 5px black;
-   font-family: $p;
-   border-radius: 10px;
-   padding: 5px;
-   margin: 10px 10px;
- }
+ion-content {
+  --background: rgb(248, 248, 248);
+}
 
- ion-content {
-   --background: rgb(248, 248, 248);
- }
-
- /*
-
-
-
-SEARCH BAR STYLING
-
-
-
-*/
- .stBox {
-   display: flex;
-   flex-direction: row;
-   justify-content: flex-start;
-   padding: 0 20px;
-   margin-bottom: -30px;
- }
-
- .stBox ion-toggle {
-   align-self: center;
-   position: absolute;
-   transition: 0.3s ease;
- }
-
- .stBox h3 {
-   margin-left: 30px;
- }
-
- .searchInfo {
-   display: flex;
-   flex-direction: row;
-   justify-content: space-around;
- }
-
- .searchInfo h3 {
-   width: 100%;
- }
-
- #searchBar {
-   display: flex;
-   flex-direction: row;
-   width: 90%;
-   margin: 0 auto;
- }
-
- .sInput {
-   width: 70%;
-   border-top-right-radius: 15px;
-   border-bottom-right-radius: 15px;
- }
-
- .sInput input,
- .sBtn button {
-   width: 100%;
-   padding: 5px;
-   height: 100%;
-   font-size: 22px;
- }
-
- .sBtn {
-   width: 30%;
-   border-top-left-radius: 15px;
-   border-bottom-left-radius: 15px;
-   transition: .7s ease-in-out;
-
-   &:hover {
-     background: radial-gradient(100% 100% at 0% 100%, #ffdc30 0%, #FF6700 100%);
-   }
- }
-
- 
-
- .eating {
-   padding: 10px;
- }
-
- /*
-
-
-
-RECIPE CARD STYLING 
-
-
-*/
- .titles {
-   display: flex;
-   flex-direction: row;
-   justify-content: space-between;
- }
-
- .titles div {
-   display: flex;
-   flex-direction: row;
- }
-
- .titles h3 {
-   font-weight: bold;
-   font-family: 'Space Grotesk', sans-serif;
-   margin: 0;
-
- }
-
- .rTitle {
-   width: 70%;
- }
-
- .cals {
-   width: 30%;
- }
-
- #container {
-   display: flex;
-   flex-direction: column;
- }
-
- .cals p {
-   font-size: 28px;
-   font-weight: bold;
-   z-index: 2;
-   color: #FF6700;
-   font-family: $p2;
-   margin: 0px;
- }
-
- .cals i {
-   font-size: 18px;
-   color: black;
-   font-family: $p;
- }
-
- .recipeBox {
-   display: flex;
-   flex-direction: column;
-   width: 97.5%;
-   margin: 5px auto 5px;
-   padding: 2.5%;
- }
-
- .rImg {
-   margin-top: 10px;
-   display: inline-block;
-   align-self: center;
-   background: gray;
-   border-radius: 15px;
-   box-shadow: 0 0 10px black;
-   transition: 200ms ease-in-out;
-   cursor: pointer;
-
-   &:hover {
-     box-shadow: 0 0 10px #FF6700;
-     scale: 1.05;
-   }
- }
-
- .rInfo span {
-   font-family: 'Margarine', sans-serif;
- }
-
- .cpf {
-   display: flex;
-   flex-direction: row;
-   justify-content: space-around;
-   margin-top: -25px;
-   pointer-events: none;
-   z-index: 2;
- }
-
-
- .nutrient {
-
-   display: inline;
-   border-radius: 100%;
-   width: 75px;
-   height: 75px;
-   padding: 30% 0 0% 0;
-   font-size: 18px;
-   font-weight: bold;
-   text-align: center;
-   background: radial-gradient(100% 100% at 100% 0%, #ffdc30 0%, #FF6700 100%);
- }
-
- .rInfo {
-   text-align: center;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
- }
-
- .rBot {
-   display: flex;
-   flex-direction: row;
-   justify-content: space-around;
- }
-
- .rBot h6 {
-   font-family: 'Margarine', sans-serif;
- }
-
- #navBox {
-   display: flex;
-   flex-direction: row;
-   justify-content: space-evenly;
- }
-
- #navBox p {
-   font-family: $p;
- }
-
- .navBtn {
-   display: inline-block;
-   outline: 0;
-   border: 0;
-   cursor: pointer;
-   will-change: box-shadow, transform;
-   background: radial-gradient(100% 100% at 100% 0%, #ffdc30 0%, #FF6700 100%);
-   box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
-   padding: 0 32px;
-   border-radius: 6px;
-   color: #fff;
-   height: 48px;
-   font-size: 18px;
-   text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
-   transition: box-shadow 0.15s ease, transform 0.15s ease;
-
-   &:hover {
-     box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #ffa915;
-     transform: translateY(-2px);
-   }
-
-   &:active {
-     box-shadow: inset 0px 3px 7px #ffa915;
-     transform: translateY(2px);
-   }
- }
-
- .dietBox {
-   overflow: hidden;
-   cursor: pointer;
-   display: flex;
-   flex-direction: column;
-   height: 50px;
- }
-
- .dietBox:hover {
-   background: white;
-   display: inline;
-   overflow: visible;
-   box-shadow: 0 0 5px darkgray;
-   z-index: 2;
-   height: auto;
- }
- .saveResetCont{
-  display:flex;
-  flex-direction:row;
+/* RECIPE CARD STYLING */
+.titles {
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
- }
-// NUTRITION MODAL STYLING
- .nutModal {
-   text-align: center;
-   border-radius: 10px;
-   box-shadow: 10px 10px 10px black;
-   padding: 10px;
-   font-size: 18px;
- }
+}
 
- .nutrition-label {
-   font-family: Arial, sans-serif;
-   border: 2px solid #000;
-   max-width: 300px;
-   margin: 0 auto;
-   padding: 10px;
- }
+.titles div {
+  display: flex;
+  flex-direction: row;
+}
 
- .nHeader {
-   text-align: center;
-   font-weight: bold;
- }
+.titles h3 {
+  font-weight: bold;
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 0;
+}
 
- .title {
-   font-size: 20px;
- }
+.rTitle {
+  width: 70%;
+}
 
- .sub-title {
-   font-size: 16px;
- }
+.cals {
+  width: 30%;
+}
 
- table {
-   width: 100%;
- }
+#container {
+  display: flex;
+  flex-direction: column;
+}
 
- th,
- td {
-   padding: 5px;
-   text-align: left;
- }
+.cals p {
+  font-size: 28px;
+  font-weight: bold;
+  z-index: 2;
+  color: #FF6700;
+  font-family: $p2;
+  margin: 0px;
+}
 
- .right-align {
-   text-align: right;
- }
+.cals i {
+  font-size: 18px;
+  color: black;
+  font-family: $p;
+}
 
- .footnote {
-   font-size: 10px;
- }
+.recipeBox {
+  display: flex;
+  flex-direction: column;
+  width: 97.5%;
+  margin: 5px auto 5px;
+  padding: 2.5%;
+}
 
- tr {
-   border-bottom: 1px solid darkgray;
- }
+.rImg {
+  margin-top: 10px;
+  display: inline-block;
+  align-self: center;
+  background: gray;
+  border-radius: 15px;
+  box-shadow: 0 0 10px black;
+  transition: 200ms ease-in-out;
+  cursor: pointer;
 
- .bLine {
-   height: 5px;
-   width: 180%;
-   background: black;
-   align-self: center;
- }
- .successMsg {
+  &:hover {
+    box-shadow: 0 0 10px #FF6700;
+    scale: 1.05;
+  }
+}
+
+.rInfo span {
+  font-family: 'Margarine', sans-serif;
+}
+
+.cpf {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: -25px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.nutrient {
+  display: inline;
+  border-radius: 100%;
+  width: 75px;
+  height: 75px;
+  padding: 30% 0 0% 0;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  background: radial-gradient(100% 100% at 100% 0%, #ffdc30 0%, #FF6700 100%);
+}
+
+.rInfo {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rBot {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.rBot h6 {
+  font-family: 'Margarine', sans-serif;
+}
+
+#navBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#navBox p {
+  font-family: $p;
+}
+
+.dietBox {
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+}
+
+.dietBox:hover {
+  background: white;
+  display: inline;
+  overflow: visible;
+  box-shadow: 0 0 5px darkgray;
+  z-index: 2;
+  height: auto;
+}
+
+.saveResetCont {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.notification-container {
   font-family: 'Margarine', sans-serif;
   display:flex;
   flex-direction:row; 
   align-items: center;
- }
+  height:50px; 
+  position: fixed; /* Fixed position */
+  bottom: 20px; /* Start off screen */
+  left: 0;
+  right: 0;
+  background-color: #dff0d8; /* Success message color, adjust as needed */
+  color: #3c763d; /* Text color for success message */
+  text-align: center;
+  transition: bottom 0.5s ease-in-out; /* Smooth transition for sliding effect */
+  z-index:3; 
+}
+
+
+
+
+// NUTRITION MODAL STYLING
+.nutModal {
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px black;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.nutrition-label {
+  font-family: Arial, sans-serif;
+  border: 2px solid #000;
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.nHeader {
+  text-align: center;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.sub-title {
+  font-size: 16px;
+}
+
+table {
+  width: 100%;
+}
+
+th,
+td {
+  padding: 5px;
+  text-align: left;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.footnote {
+  font-size: 10px;
+}
+
+tr {
+  border-bottom: 1px solid darkgray;
+}
+
+.bLine {
+  height: 5px;
+  width: 180%;
+  background: black;
+  align-self: center;
+}

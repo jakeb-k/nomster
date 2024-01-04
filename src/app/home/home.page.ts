@@ -34,7 +34,7 @@ export class HomePage implements OnInit{
   servingSize:any[]=[]; 
   isQuery: Boolean = true;
   
-  showSuccessMessage = Boolean(); 
+  showSuccessMessage:Boolean = false; 
 
   filterOps: Filter = {
     query:"",
@@ -198,7 +198,6 @@ export class HomePage implements OnInit{
         );
   }
 
-
   cancel() {
     this.modalController.dismiss(null, 'cancel');
   }
@@ -225,10 +224,11 @@ export class HomePage implements OnInit{
     try {
       const isSuccess = await this.database.addFavourite(newFav);
       if (isSuccess) {
-        this.showSuccessMessage = true; // Display success message
+        this.showSuccessMessage = true; 
+        // Display success message
         setTimeout(() => {
           this.showSuccessMessage = false; // Hide success message after a delay
-        }, 3000); // Adjust the delay (in milliseconds) as needed
+        }, 2000); // Adjust the delay (in milliseconds) as needed
       } else {
         // Handle cases where addFavourite returns false
         // Optional: Display an error message or perform other actions

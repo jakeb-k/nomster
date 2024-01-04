@@ -52,7 +52,15 @@
         <p *ngIf="setLoaded">{{index+1}}/{{sortedRecipes.length}}</p>
         <button class="navBtn" (click)="slideNav(1)">></button>
       </div>
-      <p *ngIf="showSuccessMessage" class="successMsg"><ion-icon name="checkmark-circle" color="success"></ion-icon> Recipe Successfully Saved!</p>
+      
+      <div class="notification-container" *ngIf="showSuccessMessage">
+        <ion-icon name="checkmark-circle" color="success"></ion-icon>
+
+        <p class="successMsg">
+            Recipe Successfully Saved!
+        </p>
+    </div>
+    
       <div class="saveResetCont"> 
         <ion-button fill="clear" (click)="reset()">RESET</ion-button>
         <ion-button fill="clear" (click)="newFav(sortedRecipes[index])">SAVE</ion-button>
