@@ -116,3 +116,10 @@ ion-icon {
         transform: translateY(2px);
     }
 }
+.groItem,
+.profileTitle {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}

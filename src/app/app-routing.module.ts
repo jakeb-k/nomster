@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'favs',
     loadChildren: () => import('./favs/favs.module').then( m => m.FavsPageModule)
   },
+  {
+    path: 'profile-input',
+    loadChildren: () => import('./profile-input/profile-input.module').then( m => m.ProfileInputPageModule)
+  },
 
 ];
 

@@ -38,6 +38,9 @@ export class LoginPage implements OnInit {
   fav(){
     this.router.navigateByUrl('/favs'); 
   }
+  inputNav(){
+    this.router.navigateByUrl('/profile-input'); 
+  }
   home(){
     this.router.navigateByUrl('/'); 
   }
