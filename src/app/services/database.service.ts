@@ -2,6 +2,7 @@ import { Injectable, WritableSignal, signal } from '@angular/core';
 import { User } from '../interfaces/user';
 import { Favourite } from '../interfaces/favourite';
 import { Grocery } from '../interfaces/grocery';
+import { Goals } from '../interfaces/goals';
 import { CapacitorSQLite, SQLiteConnection, SQLiteDBConnection } from '@capacitor-community/sqlite';
 
 const DB_FAVS = 'favsdb'; 
@@ -17,8 +18,13 @@ export class DatabaseService {
   private db!: SQLiteDBConnection;
 
   private users: WritableSignal<User[]> = signal(<User[]>([])); 
+
   private favs: WritableSignal<Favourite[]> = signal(<Favourite[]>([]));
+
   private groceries: WritableSignal<Grocery[]> = signal(<Grocery[]>([]));
+
+  public goals: WritableSignal<Goals[]> = signal(<Goals[]>([]));
+
 
   constructor() { }
 
@@ -49,19 +55,37 @@ export class DatabaseService {
         isBought INTEGER DEFAULT 0
       );
     `
+    const schemaGoals = `
+      CREATE TABLE IF NOT EXISTS goals (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        weight INTEGER DEFAULT 0,
+        carbs INTEGER DEFAULT 0,
+        protein INTEGER DEFAULT 0,
+        fat INTEGER DEFAULT 0,
+        cals INTEGER DEFAULT 0
+
+      );
+    `
 
     await this.db.execute(schemaFavs);
 
     await this.db.execute(schemaGroceries);
 
-      
-    this.loadFavs(); 
-    this.loadGrocery(); 
+    await this.db.execute(schemaGoals);  
 
-    return true; 
+    this.loadFavs(); 
+
+    this.loadGrocery(); 
+    
+    this.loadGoals(); 
+    
    
 
+    return true; 
 
+  }
+  getDatabase(){
+    return this.db; 
   }
 
   //CRUD FAVS
@@ -93,6 +117,7 @@ export class DatabaseService {
       }
     }
   }
+
 
   //LOAD FAVS FROM DB
   async loadFavs(){
@@ -232,5 +257,20 @@ export class DatabaseService {
     return result; 
   }
 
+
+    //LOAD GOALS FROM DB
+    async loadGoals(){
+      try {
+        const goals = await this.db.query('SELECT * FROM goals;');
+  
+        this.goals.set(goals.values || []); 
+      } catch(error) {
+        console.error('Error occured during goals retrieval'); 
+      }
+     
+    }
+    getGoals(){
+      return this.goals; 
+    }
 
 }
