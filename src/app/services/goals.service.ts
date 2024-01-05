@@ -2,6 +2,7 @@ import { Injectable, WritableSignal, signal } from '@angular/core';
 import { Goals } from '../interfaces/goals';
 import { CapacitorSQLite, SQLiteConnection, SQLiteDBConnection } from '@capacitor-community/sqlite';
 import { DatabaseService } from './database.service';
+import { Goal } from '../interfaces/goal';
 
 
 @Injectable({
@@ -31,8 +32,21 @@ export class GoalsService {
       getGoals(){
         return this.goals; 
       }
-      async updateGoals(goal: Number, goalType:String){
-        
+     // Function to add a new goal
+    async addGoal(goal: Goal): Promise<any> {
+      
+      // Using parameterized query for safe SQL execution
+      const query = `INSERT INTO Goals (type, goalAmount) VALUES (?, ?)`;
+      const params = [goal.type, goal.goalAmount];
+
+      try {
+          const result = await this.db.query(query, params);
+          this.loadGoals(); // Function to refresh or reload the goals data
+          return result;
+      } catch (error: any) {
+          console.error('Error adding goal:', error);
+          throw error; // Proper error handling
       }
+    }
 
 }

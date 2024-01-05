@@ -17,7 +17,7 @@
 <div class="profileOptions">
   <ion-button fill="clear" (click)="fav()">Favourites</ion-button>
   <ion-button fill="clear"  id="open-modal">Grocery List</ion-button>
-  <ion-button fill="clear" (click)="inputNav()">My Info</ion-button>
+  <ion-button fill="clear" (click)="inputNav()">My Goals</ion-button>
 </div>
 
   
@@ -25,7 +25,7 @@
   <ng-template>
     <ion-content class="ion-padding">
       <ion-button class="backBtn" (click)="cancel()" fill="clear">
-        < BACK</ion-button>
+         BACK</ion-button>
         <h1> Shopping List</h1>
          <div class="groList">
           <div class="groItem" *ngFor="let g of groceries()">

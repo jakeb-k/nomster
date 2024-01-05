@@ -58,11 +58,8 @@ export class DatabaseService {
     const schemaGoals = `
       CREATE TABLE IF NOT EXISTS goals (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        startPoint INTEGER DEFAULT 0,
-        endPoint INTEGER DEFAULT 0,
-        timeToComplete INTEGER DEFAULT 0,
-        type TEXT NOT NULL CHECK(type IN ('daily', 'long-term'))
+        goalAmount INTEGER NOT NULL,
+        type TEXT NOT NULL
 
       );
     `
@@ -76,10 +73,8 @@ export class DatabaseService {
     this.loadFavs(); 
 
     this.loadGrocery(); 
-    
-    this.loadGoals(); 
-    
-   
+
+    this.loadGoals();
 
     return true; 
 
@@ -207,7 +202,7 @@ export class DatabaseService {
 
 
 
-//CRUD USERS
+//CRUD USERS (EXAMPLE)
   //read users
   getUsers(){
     return this.users;

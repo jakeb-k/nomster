@@ -8,32 +8,45 @@
     </div>
     <ion-icon name="person"></ion-icon>
   </div>
-</ion-header>
+</ion-header> 
 <ion-content>
 
 <div class="profileTitle ion-padding">
-  <h3>Update Macro Profile</h3>
+  <h3>My Goals</h3>
   <ion-button (click)="back()" fill="clear">Back</ion-button>
 </div>
-<ion-button class="addGoalButton ion-padding">
+<ion-button id="goal-modal"  fill="clear">
   Add New Goal!
 </ion-button>
-<!-- <div class="goalsContainer ion-padding">
-  <div class="goal">
-    <h3>Weight Goals: {{goals.weight ?? 0}}</h3>
-  </div>
-  <div class="goal">
-    <h3>Carb Goals: {{goals.cals ?? 0}}</h3>
-  </div>
-  <div class="goal">
-    <h3>Protein Goals: {{goals.protein ?? 0}}</h3>
-  </div>
-  <div class="goal">
-    <h3>Fat Goals: {{goals.fat ?? 0}}</h3>
-  </div>
-  <div class="goal">
-    <h3>Carb Goals: {{goals.carbs ?? 0}}</h3>
-  </div>
-</div> -->
+
+<ion-modal trigger="goal-modal">
+  <ng-template>
+    <ion-content class="ion-padding"> 
+      <ion-button class="backBtn" (click)="cancel()" fill="clear">
+        BACK
+      </ion-button>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Create a New Goal!</ion-card-title>
+          <ion-card-subtitle>Select the goal type and then enter the desired goal amount.</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <ion-item>
+            <ion-select [(ngModel)]="newGoal.type" aria-label="Goal Types" placeholder="Select Goal Type">
+              <ion-select-option *ngFor="let t of types" [value]="t">{{t}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        
+          <ion-item>
+            <ion-input type="number" [(ngModel)]="newGoal.goalAmount" label="Goal Amount" labelPlacement="stacked"  placeholder="Enter your desired goal amount"></ion-input>
+          </ion-item>
+          
+        </ion-card-content>
+      </ion-card>
+      <button class="navBtn" (click)="initGoal()">ADD GOAL</button>
+    </ion-content>
+  </ng-template>
+</ion-modal>
 
 </ion-content>
