@@ -131,7 +131,7 @@ ion-icon {
     align-items: center;
     height:50px; 
     position: fixed; /* Fixed position */
-    bottom: 20px; /* Start off screen */
+    bottom:0; 
     left: 0;
     right: 0;
     background-color: #dff0d8; /* Success message color, adjust as needed */

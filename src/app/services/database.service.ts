@@ -188,7 +188,9 @@ export class DatabaseService {
   getGrocery() {
     return this.groceries; 
   }
-  //delete favs
+
+
+  //delete grocery
   async deleteGroceryById(id: string) {
     const query = `DELETE FROM groceries WHERE id=${id}`;
 

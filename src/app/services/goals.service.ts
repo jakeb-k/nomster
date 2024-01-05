@@ -1,5 +1,5 @@
 import { Injectable, WritableSignal, signal } from '@angular/core';
-import { Goals } from '../interfaces/goals';
+
 import { CapacitorSQLite, SQLiteConnection, SQLiteDBConnection } from '@capacitor-community/sqlite';
 import { DatabaseService } from './database.service';
 import { Goal } from '../interfaces/goal';
@@ -10,7 +10,7 @@ import { Goal } from '../interfaces/goal';
 })
 export class GoalsService {
 
-  private goals: WritableSignal<Goals[]> = signal(<Goals[]>([]));
+  private goals: WritableSignal<Goal[]> = signal(<Goal[]>([]));
 
   constructor(private databaseService: DatabaseService) { }
 
@@ -47,6 +47,16 @@ export class GoalsService {
           console.error('Error adding goal:', error);
           throw error; // Proper error handling
       }
+    }
+
+    async deleteGoalById(id: string) {
+      const query = `DELETE FROM goals WHERE id=${id}`;
+  
+      const result = await this.db.query(query); 
+  
+      this.loadGoals(); 
+  
+      return result; 
     }
 
 }

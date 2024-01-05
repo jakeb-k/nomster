@@ -24,8 +24,8 @@ export class ProfileInputPage implements OnInit {
   constructor(private router: Router, private goalsService: GoalsService, private modalController: ModalController) { } 
 
   ngOnInit() {
-    // this.goalsService.loadGoals(); 
-    // this.goals = this.goalsService.getGoals(); 
+    this.goalsService.loadGoals(); 
+    this.goals = this.goalsService.getGoals(); 
   }
 
   back(){
@@ -36,19 +36,23 @@ export class ProfileInputPage implements OnInit {
   }
 
   async initGoal(){
-    // try {
-    //   const isSuccess = await this.goalsService.addGoal(this.newGoal);
-    //   if (isSuccess) {
-    //     this.showSuccessMessage = true; // Display success message
-    //     this.goals = this.goalsService.getGoals();  
-    //     setTimeout(() => {
-    //       this.showSuccessMessage = false; // Hide success message after a delay
-    //     }, 3000); // Adjust the delay (in milliseconds) as needed
-    //   }
-    // } catch (error) {
-    //   console.error('Error adding grocery:', error);
-    //   // Handle error scenarios here
-    // }
-    
+    try {
+      const isSuccess = await this.goalsService.addGoal(this.newGoal);
+      if (isSuccess) {
+        this.showSuccessMessage = true; // Display success message
+        this.goals = this.goalsService.getGoals();  
+        setTimeout(() => {
+          this.showSuccessMessage = false; // Hide success message after a delay
+        }, 3000); // Adjust the delay (in milliseconds) as needed
+      }
+    } catch (error) {
+      console.error('Error adding grocery:', error);
+      // Handle error scenarios here
+    }
+    this.cancel(); 
+  }
+
+  async deleteGoal(goal: Goal) {
+    this.goalsService.deleteGoalById(goal.id!.toString())
   }
 }
