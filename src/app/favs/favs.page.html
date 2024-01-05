@@ -14,7 +14,7 @@
     <h3>Your Favourites</h3>
     <ion-button (click)="back()" fill="clear">Back</ion-button>
   </div>
-
+  
   <ion-item *ngFor="let fav of favs()">
       <img [src]="fav.pictureLink" (click)="nav(fav.id)" /> 
       <p>{{fav.name}}</p>

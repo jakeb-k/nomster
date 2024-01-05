@@ -8,3 +8,29 @@
  
   text-align: left;
 }
+
+ion-button:hover {
+  color:#ffa118;
+  transform: scale(1.05);
+  transition: 0.3s ease-in-out;
+}
+.goalItem {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.goalContent {
+  display: flex;
+  width:70%; 
+  margin-right:auto; 
+  h4 {
+      margin-right:10px; 
+  }
+}
+.goalActions {
+  display:flex;
+  * {
+      padding:0;
+      margin:0; 
+  }
+}
