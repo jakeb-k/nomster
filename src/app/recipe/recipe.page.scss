@@ -23,13 +23,16 @@ td {
 h3 {
     font-family:$p; 
 }
-p {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width:100%;
-    min-height:30px; 
-}
+
 .recipeGrocery {
     margin-bottom:-30px; 
 }
+ion-button {
+    padding:0;
+    margin:0; 
+}
+ion-button:hover {
+    color:#ffa118;
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+  }

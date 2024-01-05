@@ -11,7 +11,15 @@
   </div>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
+
+  <div class="notification-container" *ngIf="showSuccessMessage">
+    <ion-icon name="checkmark-circle" color="success"></ion-icon>
+    <p class="successMsg">
+        Grocery Successfully Saved!
+    </p>
+  </div>
+
   <div class="filterOps">
     <h3>{{title}}</h3>
     <ion-button fill="clear" (click)="navHome()">HOME</ion-button>
@@ -27,11 +35,11 @@
           <ng-container *ngIf="i % 2 === 0; else oddRow">
             <td>
               <div class="recipeGrocery"> {{ item.original }} </div>
-              <div class="recipeGrocery"> <ion-icon name="add-circle-outline" (click)="addToGroceries(item)" ></ion-icon> </div>
+              <div class="recipeGrocery"> <ion-button fill="clear" (click)="addToGroceries(item)"><ion-icon name="add-circle-outline" ></ion-icon></ion-button></div>
             </td>
             <td *ngIf="i + 1 < ingredients.length">
               <div class="recipeGrocery"> {{ ingredients[i + 1].original }} </div>
-              <div class="recipeGrocery"> <ion-icon name="add-circle-outline" (click)="addToGroceries(item)" ></ion-icon> </div>
+              <div class="recipeGrocery"><ion-button fill="clear" (click)="addToGroceries(item)"><ion-icon name="add-circle-outline" ></ion-icon></ion-button></div>
             </td>
           </ng-container>
           <ng-template #oddRow>
@@ -41,10 +49,10 @@
     </div>
    
     <h3>Instructions</h3>
-    <div class="instruc" [innerHTML]="instructions">
-
-    </div>
+    <div class="instruc" [innerHTML]="instructions"></div>
     <p class="sumPara" [innerHTML]="summary"></p>
-    
- </div>
+
+  </div>
+
+
 </ion-content>
