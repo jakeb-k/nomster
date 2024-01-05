@@ -2,7 +2,7 @@ import { Injectable, WritableSignal, signal } from '@angular/core';
 import { User } from '../interfaces/user';
 import { Favourite } from '../interfaces/favourite';
 import { Grocery } from '../interfaces/grocery';
-import { Goals } from '../interfaces/goals';
+import { Goal } from '../interfaces/goal';
 import { CapacitorSQLite, SQLiteConnection, SQLiteDBConnection } from '@capacitor-community/sqlite';
 
 const DB_FAVS = 'favsdb'; 
@@ -23,7 +23,7 @@ export class DatabaseService {
 
   private groceries: WritableSignal<Grocery[]> = signal(<Grocery[]>([]));
 
-  public goals: WritableSignal<Goals[]> = signal(<Goals[]>([]));
+  public goals: WritableSignal<Goal[]> = signal(<Goal[]>([]));
 
 
   constructor() { }
@@ -58,11 +58,11 @@ export class DatabaseService {
     const schemaGoals = `
       CREATE TABLE IF NOT EXISTS goals (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        weight INTEGER DEFAULT 0,
-        carbs INTEGER DEFAULT 0,
-        protein INTEGER DEFAULT 0,
-        fat INTEGER DEFAULT 0,
-        cals INTEGER DEFAULT 0
+        name TEXT NOT NULL,
+        startPoint INTEGER DEFAULT 0,
+        endPoint INTEGER DEFAULT 0,
+        timeToComplete INTEGER DEFAULT 0,
+        type TEXT NOT NULL CHECK(type IN ('daily', 'long-term'))
 
       );
     `
