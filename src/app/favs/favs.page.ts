@@ -24,5 +24,8 @@ export class FavsPage implements OnInit {
   nav(id:Number){
     this.router.navigateByUrl('/recipe/'+id, {replaceUrl:true}); 
   }
+  back(){
+    this.router.navigateByUrl('/login'); 
+  }
 
 }

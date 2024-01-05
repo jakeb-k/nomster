@@ -19,12 +19,17 @@
     Add New Goal!
   </ion-button>
   <ion-item class="goalItem" *ngFor="let g of goals()">
-    <div> 
-      <h3>{{g.type}}: </h3>
-      <h2><b>   {{g.goalAmount}} gs</b></h2>
+    <div class="goalContent"> 
+      <h5>{{g.type}}:</h5>
+      <h5><b>{{g.goalAmount}}
+        <span>{{ g.type === 'Calorie Limit' ? 'kcals' : 'gs' }}</span>
+        </b>
+      </h5>
     </div> 
-    <div>
-      <ion-button (click)="deleteGoal(g)" fill="clear"><ion-icon name="close-circle-outline"></ion-icon></ion-button>
+    <div class="goalActions">
+      <ion-button  fill="clear" slot="end">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
     </div>
   </ion-item>
 
