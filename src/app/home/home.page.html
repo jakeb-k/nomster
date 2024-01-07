@@ -134,15 +134,15 @@
         < BACK</ion-button>
           <div class="nutrition-label">
             <div class="nHeader">
-              <div class="footnote">* Percent Daily Values are based on a 2,000 calorie diet.</div>
+              <div class="footnote">* Percent Daily Values are based on a {{(calorieIntake === 0) ? 2500 : calorieIntake}} calorie diet.</div>
               <div class="title">Nutrition Facts</div>
-              <div class="sub-title">Serving Size:{{servingSize[index].amount}}{{servingSize[index].unit}}</div>
+              <div class="sub-title">Serving Size:{{servingSize[index].amount}} {{servingSize[index].unit}}</div>
             </div>
             <table>
               <tr *ngFor="let e of rawNutrients[index]">
                 <td><strong>{{e.name}}</strong> {{e.amount}}{{e.unit}}</td>
                 <td></td>
-                <td class="right-align">{{e.percentOfDailyNeeds}}%</td>
+                <td class="right-align">{{(e.percentOfDailyNeeds / calorieRatio) | number:'1.2-2'}}%</td>
               </tr>
             </table>
           </div>

@@ -16,6 +16,8 @@ export class LoginPage implements OnInit {
   groceries:any; 
   newUserName = ''; 
   
+
+  // NEED TO MAKE THIS UPDATE IF NEW CALORIE INTAKE OR IF DELETE AND NEW ONE IS MADE
   calorieIntake = sessionStorage.getItem('calorieIntake'); 
 
   constructor(private database: DatabaseService, private router: Router) { }

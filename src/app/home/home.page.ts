@@ -36,6 +36,10 @@ export class HomePage implements OnInit{
 
   showSuccessMessage:Boolean = false; 
 
+  calorieIntake = Number(sessionStorage.getItem('calorieIntake')) 
+
+  calorieRatio = this.calorieIntake / 2000;
+
   filterOps: Filter = {
     query:"",
     ingredients:"",
