@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, WritableSignal } from '@angular/core';
 import { DatabaseService } from '../services/database.service';
 import { Grocery } from '../interfaces/grocery';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class GroceryPage implements OnInit {
 
-  groceries:any; 
+  groceries!: WritableSignal<Grocery[]>; 
 
   showSuccessMessage: Boolean = false 
 
@@ -31,18 +31,19 @@ export class GroceryPage implements OnInit {
     this.groceries = this.database.getGrocery(); 
   }
   async deleteGrocery(grocery: Grocery) {
-    await this.database.deleteGroceryById(grocery.id!.toString()); 
+    await this.database.deleteGroceryByName(grocery.name.toString(), grocery.id.toString()); 
     this.groceries = this.database.getGrocery(); 
-
   }
   
   async addToGroceries() {
     
-    this.newGrocery.id = this.groceries ? this.groceries.length : 0; 
+    this.newGrocery.id = this.randomIdGenerator(10000,99999)
     try {
       const isSuccess = await this.database.addGrocery(this.newGrocery);
       if (isSuccess) {
         this.showSuccessMessage = true; // Display success message
+        this.database.loadGrocery(); 
+        this.groceries = this.database.getGrocery(); 
         setTimeout(() => {
           this.showSuccessMessage = false; // Hide success message after a delay
         }, 1500); // Adjust the delay (in milliseconds) as needed
@@ -55,7 +56,9 @@ export class GroceryPage implements OnInit {
       // Handle error scenarios here
     }
   }
-
+  randomIdGenerator(min:number,max:number) : Number {
+      return Math.random() * (max - min) + min;
+  }
   nav(path:string){
     this.router.navigateByUrl('/'+path); 
   }

@@ -50,9 +50,10 @@ export class DatabaseService {
 
     const schemaGroceries = `
       CREATE TABLE IF NOT EXISTS groceries (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        id INTEGER,
         name TEXT NOT NULL,
-        isBought INTEGER DEFAULT 0
+        isBought INTEGER DEFAULT 0,
+        PRIMARY KEY (id, name)
       );
     `
     const schemaGoals = `
@@ -191,10 +192,10 @@ export class DatabaseService {
 
 
   //delete grocery
-  async deleteGroceryById(id: string) {
-    const query = `DELETE FROM groceries WHERE id=${id}`;
-
-    const result = await this.db.query(query); 
+  async deleteGroceryByName(name: string, id:string) {
+    const query = `DELETE FROM groceries WHERE name=? AND id=?`;
+    const params = [name, id] 
+    const result = await this.db.query(query, params); 
 
     this.loadGrocery(); 
 

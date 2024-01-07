@@ -29,7 +29,4 @@ export class LoginPage implements OnInit {
     this.router.navigateByUrl('/'); 
   }
 
-  async deleteGrocery(grocery: Grocery) {
-    this.database.deleteGroceryById(grocery.id.toString()); 
-  }
 }
