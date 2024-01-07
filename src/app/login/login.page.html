@@ -15,35 +15,8 @@
   <ion-button (click)="home()" fill="clear">Home</ion-button>
 </div>
 <div class="profileOptions">
-  <ion-button fill="clear" (click)="fav()">Favourites</ion-button>
-  <ion-button fill="clear"  id="open-modal">Grocery List</ion-button>
-  <ion-button fill="clear" (click)="inputNav()">My Goals</ion-button>
+  <ion-button fill="clear" (click)="nav('favs')">Favourites</ion-button>
+  <ion-button fill="clear"  (click)="nav('grocery')">Grocery List</ion-button>
+  <ion-button fill="clear" (click)="nav('profile-input')">My Goals</ion-button>
 </div>
-
-  
-<ion-modal trigger="open-modal" (willDismiss)="($event)">
-  <ng-template>
-    <ion-content class="ion-padding">
-      <ion-button class="backBtn" (click)="cancel()" fill="clear">
-         BACK</ion-button>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Shopping List</ion-card-title>
-            <ion-card-subtitle>Select the goal type and then enter the desired goal amount.</ion-card-subtitle>
-          </ion-card-header>
-
-          <ion-card-content>
-            <ion-item class="goalItem" *ngFor="let g of groceries()">
-              <div class="goalContent"> 
-                <p>{{g.name}}</p>
-              </div>
-              <div class="goalActions">
-                <ion-button (click)="deleteGrocery(g)" fill="clear"><ion-icon name="close-circle-outline"></ion-icon></ion-button>
-              </div>
-            </ion-item>
-          </ion-card-content>
-        </ion-card>           
-    </ion-content>
-  </ng-template>
-</ion-modal>
 </ion-content>

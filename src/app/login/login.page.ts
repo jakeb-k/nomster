@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatabaseService } from '../services/database.service';
-import { User } from '../interfaces/user';
 import { Router } from '@angular/router';
 import { IonModal, ModalController } from '@ionic/angular';
 import { Grocery } from '../interfaces/grocery';
@@ -16,38 +15,20 @@ export class LoginPage implements OnInit {
   users:any; 
   groceries:any; 
   newUserName = ''; 
-  constructor(private database: DatabaseService, private router: Router, private modalController: ModalController) { }
+  constructor(private database: DatabaseService, private router: Router) { }
 
   ngOnInit() {
     this.database.loadGrocery(); 
     this.groceries = this.database.getGrocery(); 
   }
 
-  async createUser() {
-    await this.database.addUser(this.newUserName); 
-    this.newUserName = '';  
-  }
-  async updateUser(user: User) {
-    const active = user.active ? 1 : 0; 
-    this.database.updateUserById(user.id.toString(), active); 
-    
-  }
-  async deleteUser(user: User) {
-    this.database.deleteUserById(user.id.toString()); 
-  }
-  fav(){
-    this.router.navigateByUrl('/favs'); 
-  }
-  inputNav(){
-    this.router.navigateByUrl('/profile-input'); 
+  nav(path:string){
+    this.router.navigateByUrl('/'+path); 
   }
   home(){
     this.router.navigateByUrl('/'); 
   }
-  cancel() {
-    this.modalController.dismiss(null, 'cancel');
-  }
-  
+
   async deleteGrocery(grocery: Grocery) {
     this.database.deleteGroceryById(grocery.id.toString()); 
   }
