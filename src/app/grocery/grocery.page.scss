@@ -18,3 +18,9 @@
         margin:0; 
     }
   }
+
+  ion-button:hover {
+    color:#ffa118;
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+  }

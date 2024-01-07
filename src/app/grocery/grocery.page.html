@@ -16,10 +16,10 @@
     <ion-button (click)="nav('login')" fill="clear">Back</ion-button>
   </div>
   <ion-item>
-    <ion-input labelPlacement="floating" label="Add Grocery">
+    <ion-input placeholder="Add Grocery" [(ngModel)]="newGrocery.name">
 
-      <ion-button fill="clear" slot="end" aria-label="Show/hide">
-        <ion-icon slot="icon-only" name="add-circle-outline" aria-hidden="true"></ion-icon>
+      <ion-button fill="clear" slot="end" (click)="addToGroceries()">
+        <ion-icon name="add-circle-outline"></ion-icon>
       </ion-button>
       
     </ion-input>
@@ -35,5 +35,13 @@
               </div>
             </ion-item>
           </ion-card-content>
-        </ion-card>           
+        </ion-card> 
+
+        <div class="notification-container" *ngIf="showSuccessMessage">
+          <ion-icon name="checkmark-circle" color="success"></ion-icon>
+          <p class="successMsg">
+              Goal Successfully Saved!
+          </p>
+        </div>       
+
     </ion-content>
