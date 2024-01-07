@@ -15,6 +15,15 @@
     <h3>Shopping List</h3>
     <ion-button (click)="nav('login')" fill="clear">Back</ion-button>
   </div>
+  <ion-item>
+    <ion-input labelPlacement="floating" label="Add Grocery">
+
+      <ion-button fill="clear" slot="end" aria-label="Show/hide">
+        <ion-icon slot="icon-only" name="add-circle-outline" aria-hidden="true"></ion-icon>
+      </ion-button>
+      
+    </ion-input>
+  </ion-item>
         <ion-card>
           <ion-card-content>
             <ion-item class="goalItem" *ngFor="let g of groceries()">

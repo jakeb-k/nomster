@@ -13,6 +13,8 @@ export class GroceryPage implements OnInit {
 
   groceries:any; 
 
+  showSuccessMessage: Boolean = false 
+
   constructor(private database: DatabaseService, private router:Router) { }
 
   ngOnInit() {
@@ -28,7 +30,33 @@ export class GroceryPage implements OnInit {
     this.groceries = this.database.getGrocery(); 
 
   }
+  
+  async addToGroceries(grocery: any) {
+    
+   
+    let newGrocery:Grocery = {
+      id: grocery.id,
+      name: grocery.original,
+      isBought:0
+    }
+    try {
+      const isSuccess = await this.database.addGrocery(newGrocery);
+      if (isSuccess) {
+        this.showSuccessMessage = true; // Display success message
+        setTimeout(() => {
+          this.showSuccessMessage = false; // Hide success message after a delay
+        }, 3000); // Adjust the delay (in milliseconds) as needed
+      } else {
+        // Handle cases where addgroceryourite returns false
+        // Optional: Display an error message or perform other actions
+      }
+    } catch (error) {
+      console.error('Error adding grocery:', error);
+      // Handle error scenarios here
+    }
 
+   
+  }
   nav(path:string){
     this.router.navigateByUrl('/'+path); 
   }
