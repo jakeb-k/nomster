@@ -26,6 +26,10 @@ const routes: Routes = [
     path: 'profile-input',
     loadChildren: () => import('./profile-input/profile-input.module').then( m => m.ProfileInputPageModule)
   },
+  {
+    path: 'grocery',
+    loadChildren: () => import('./grocery/grocery.module').then( m => m.GroceryPageModule)
+  },
 
 ];
 

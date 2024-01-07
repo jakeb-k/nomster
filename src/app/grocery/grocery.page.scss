@@ -1,0 +1,20 @@
+.goalItem {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .goalContent {
+    display: flex;
+    width:70%; 
+    margin-right:auto; 
+    h4 {
+        margin-right:10px; 
+    }
+  }
+  .goalActions {
+    display:flex;
+    * {
+        padding:0;
+        margin:0; 
+    }
+  }
