@@ -15,6 +15,9 @@ export class LoginPage implements OnInit {
   users:any; 
   groceries:any; 
   newUserName = ''; 
+  
+  calorieIntake = sessionStorage.getItem('calorieIntake'); 
+
   constructor(private database: DatabaseService, private router: Router) { }
 
   ngOnInit() {

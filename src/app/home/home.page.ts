@@ -33,7 +33,7 @@ export class HomePage implements OnInit{
   filter:any; 
   servingSize:any[]=[]; 
   isQuery: Boolean = true;
-  
+
   showSuccessMessage:Boolean = false; 
 
   filterOps: Filter = {

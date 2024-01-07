@@ -13,7 +13,7 @@ import { IonModal, ModalController } from '@ionic/angular';
 export class ProfileInputPage implements OnInit {
   goals:any;  
 
-  types = ['Carbs Limit', 'Calorie Limit', 'Fat Limit', 'Protein Intake']
+  types = ['Carbs Limit', 'Calorie Intake', 'Fat Limit', 'Protein Intake']
 
   newGoal:Goal = {
     goalAmount: 0,

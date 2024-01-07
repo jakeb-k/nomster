@@ -12,6 +12,7 @@ export class GoalsService {
 
   private goals: WritableSignal<Goal[]> = signal(<Goal[]>([]));
 
+  private calorieIntake: WritableSignal<Goal[]> = signal(<Goal[]>([]));
   constructor(private databaseService: DatabaseService) { }
 
   private get db(): SQLiteDBConnection {
@@ -57,6 +58,18 @@ export class GoalsService {
       this.loadGoals(); 
   
       return result; 
+    }
+
+    async loadCalorieIntake(){
+      try {
+        const calorieIntake = await this.db.query("SELECT * FROM goals WHERE type = 'Calorie Intake';");
+        this.calorieIntake.set(calorieIntake.values || []); 
+      } catch(error) {
+        console.error('Error occured during goals retrieval'); 
+      }
+    }
+    getCalorieIntake(){
+      return this.calorieIntake; 
     }
 
 }
