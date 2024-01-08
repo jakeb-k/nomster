@@ -12,7 +12,7 @@ ion-content {
 .titles {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .titles div {
@@ -27,11 +27,11 @@ ion-content {
 }
 
 .rTitle {
-  width: 70%;
+  width: 62.5%;
 }
 
 .cals {
-  width: 30%;
+  width:32.5%;
 }
 
 #container {
@@ -43,8 +43,8 @@ ion-content {
   font-size: 28px;
   font-weight: bold;
   z-index: 2;
-  color: #FF6700;
-  font-family: $p2;
+  color: black;
+  font-family: $p;
   margin: 0px;
 }
 
@@ -79,7 +79,9 @@ ion-content {
 }
 
 .rInfo span {
-  font-family: 'Margarine', sans-serif;
+  font-family: $p;
+  font-weight:bold; 
+  font-size:large; 
 }
 
 .cpf {
@@ -117,7 +119,7 @@ ion-content {
 }
 
 .rBot h6 {
-  font-family: 'Margarine', sans-serif;
+  font-family: $p;
 }
 
 #navBox {
@@ -133,16 +135,17 @@ ion-content {
 .dietBox {
   overflow: hidden;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
   height: 50px;
+  padding:0 5px; 
 }
 
 .dietBox:hover {
+  padding:5px;
+  border-radius:5px;
   background: white;
   display: inline;
   overflow: visible;
-  box-shadow: 0 0 5px darkgray;
+  box-shadow: 0 0 5px #FF6700;
   z-index: 2;
   height: auto;
 }
@@ -152,7 +155,14 @@ ion-content {
   flex-direction: row;
   justify-content: space-between;
 }
+.maybeArrow {
+  position:absolute; 
+  margin-top: 17.5px; 
+  margin-left:-17.5px; 
+  color:#FF6700; 
+  font-weight:900;
 
+}
 
 
 

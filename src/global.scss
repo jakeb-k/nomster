@@ -75,7 +75,7 @@ h3 {
 }
 ion-icon {
     font-size:xx-large;
-    padding:30px 10px; 
+    color:black; 
 }
 #filterForm {
     margin: 0;
@@ -88,7 +88,7 @@ ion-icon {
     justify-content: space-around;
 }
 
-.navBtn {
+.navBtn, .navBtn2 {
     width: 90%;
     margin: auto 5%;
     display: inline-block;
@@ -115,6 +115,13 @@ ion-icon {
         box-shadow: inset 0px 3px 7px #ffa915;
         transform: translateY(2px);
     }
+}
+.navBtn2 {
+    width:50px; 
+    height:50px; 
+    padding:0; 
+
+
 }
 .groItem,
 .profileTitle {
