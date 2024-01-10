@@ -30,8 +30,6 @@ export class LoginPage implements OnInit {
   nav(path:string){
     this.router.navigateByUrl('/'+path); 
   }
-  home(){
-    this.router.navigateByUrl('/'); 
-  }
+
 
 }

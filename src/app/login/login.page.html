@@ -6,18 +6,31 @@
       </h1>
       <img src="/assets/nomsterLogo.png" />
     </div>
-    <ion-icon name="person"></ion-icon>
+    <button class="navBtn2"><ion-icon name="home-outline"></ion-icon></button>
   </div>
 </ion-header>
 <ion-content>
-<div class="profileTitle ion-padding">
-  <h3>User's Profile</h3>
-  <ion-button (click)="home()" fill="clear">Home</ion-button>
-</div>
+  <div class="profilePic ion-padding">
+    <ion-icon name="person-circle-outline"></ion-icon>
+    <h3>Welcome Jakey!</h3>
+  </div>
+  
 <div class="profileOptions">
-  <ion-button fill="clear" (click)="nav('favs')">Favourites</ion-button>
-  <ion-button fill="clear"  (click)="nav('grocery')">Grocery List</ion-button>
-  <ion-button fill="clear" (click)="nav('profile-input')">My Goals</ion-button>
-  <ion-item>{{calorieIntake}}</ion-item>
+  <div class="profileOptionsCont">
+    <ion-icon name="search-circle-outline"></ion-icon>
+    <ion-button (click)="nav('home')" fill="clear">Search Recipes</ion-button>
+  </div>
+  <div class="profileOptionsCont">
+    <ion-icon name="heart-circle-outline"></ion-icon>
+    <ion-button fill="clear" (click)="nav('favs')">Favourites</ion-button>
+  </div>
+  <div class="profileOptionsCont">
+    <ion-icon name="cart"></ion-icon>
+    <ion-button fill="clear"  (click)="nav('grocery')">Grocery List</ion-button>
+  </div>
+  <div class="profileOptionsCont">
+    <ion-icon name="ribbon-outline"></ion-icon>
+    <ion-button fill="clear" (click)="nav('profile-input')">My Goals</ion-button>
+  </div>
 </div>
 </ion-content>

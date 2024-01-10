@@ -2,13 +2,19 @@
 .profileOptions {
     display:flex; 
     flex-direction:column; 
-}
-.profileOptions ion-button {
-    width:fit-content; 
- 
-  text-align: left;
+    margin-left:7.5%; 
 }
 
+.profileOptionsCont {
+  display:flex;
+  flex-direction: row;
+  align-items:center;
+  width:55%; 
+  ion-icon {
+    align-self:center; 
+    font-size:32px !important; 
+  }
+}
 ion-button:hover {
   color:#ffa118;
   transform: scale(1.05);
@@ -32,5 +38,14 @@ ion-button:hover {
   * {
       padding:0;
       margin:0; 
+  }
+}
+.profilePic {
+  align-self:center;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  ion-icon {
+    font-size:128px; 
   }
 }
