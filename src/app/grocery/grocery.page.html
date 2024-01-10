@@ -6,14 +6,13 @@
       </h1>
       <img src="/assets/nomsterLogo.png" />
     </div>
-    <ion-icon name="person"></ion-icon>
+    <button class="navBtn2" (click)="nav('login')"><ion-icon name="home-outline"></ion-icon></button>
   </div>
 </ion-header>
 
 <ion-content class="ion-padding">
   <div class="profileTitle ion-padding"> 
-    <h3>Shopping List</h3>
-    <ion-button (click)="nav('login')" fill="clear">Back</ion-button>
+    <h3>Grocery List</h3>
   </div>
   <ion-item>
     <ion-input placeholder="Add Grocery" [(ngModel)]="newGrocery.name">

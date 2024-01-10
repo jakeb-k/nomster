@@ -6,14 +6,12 @@
       </h1>
       <img src="/assets/nomsterLogo.png" />
     </div>
-    <ion-icon name="person"></ion-icon>
+    <button class="navBtn2" (click)="back()"><ion-icon name="home-outline"></ion-icon></button>
   </div>
-</ion-header> 
-<ion-content>
-
+</ion-header>
+<ion-content> 
   <div class="profileTitle ion-padding">
     <h3>My Goals</h3>
-    <ion-button (click)="back()" fill="clear">Back</ion-button>
   </div>
   <ion-button id="goal-modal"  fill="clear">
     Add New Goal!

@@ -21,11 +21,11 @@ export class FavsPage implements OnInit {
   async deleteFav(fav: Favourite) {
     this.database.deleteFavById(fav.id.toString()); 
   }
-  nav(id:Number){
+  recipeNav(id:Number){
     this.router.navigateByUrl('/recipe/'+id, {replaceUrl:true}); 
   }
-  back(){
-    this.router.navigateByUrl('/login'); 
+  nav(path:String) {
+    this.router.navigateByUrl('/'+path); 
   }
 
 }

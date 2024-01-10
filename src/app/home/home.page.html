@@ -1,13 +1,13 @@
 <ion-header>
-    <div class="header">
-      <div style="display:flex; flex-direction: row;">
-        <h1>
-          Nomster
-        </h1>
-        <img src="/assets/nomsterLogo.png" />
-      </div>
-      <button class="navBtn2"> <ion-icon name="person" (click)="login()"></ion-icon></button>
+  <div class="header">
+    <div style="display:flex; flex-direction: row;">
+      <h1>
+        Nomster
+      </h1>
+      <img src="/assets/nomsterLogo.png" />
     </div>
+    <button class="navBtn2" (click)="login()"><ion-icon name="home-outline"></ion-icon></button>
+  </div>
 </ion-header>
 <ion-content [fullscreen]="true"> 
 
@@ -75,10 +75,8 @@
     <!--FILTER FORM -->
     <ng-template #preLoad>
     <div id="filterForm">
-      <div class="filterOps">
-        <h3>Apply Filters</h3>
-        <ion-button fill="clear" (click)="reset()">BACK</ion-button>
-      </div>
+    <h3 style="padding-left:20px;">Apply Filters</h3>
+      
       <ion-card>
         <ion-card-content>
           <ion-item>
