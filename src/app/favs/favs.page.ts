@@ -11,7 +11,11 @@ import { Router } from '@angular/router';
 export class FavsPage implements OnInit {
 
   favs: any;
-
+  test: Favourite = {
+    id: 34,
+    name: 'TEST RECIPE',
+    pictureLink: "/assets/nomsterLogo.png"
+  }
   constructor(private database: DatabaseService, private router: Router) { }
 
   ngOnInit() {
