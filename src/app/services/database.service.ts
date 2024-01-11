@@ -45,7 +45,11 @@ export class DatabaseService {
     const schemaFavs = `CREATE TABLE IF NOT EXISTS favourites ( 
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
-      pictureLink TEXT NOT NULL
+      pictureLink TEXT NOT NULL,
+      carbs TEXT NOT NULL,
+      cals TEXT NOT NULL,
+      fats TEXT NOT NULL,
+      protein TEXT NOT NULL
       );`
 
     const schemaGroceries = `
@@ -86,8 +90,8 @@ export class DatabaseService {
 
   //CRUD FAVS
   async addFavourite(favourite: Favourite) {
-    const { id, name, pictureLink } = favourite;
-    const query = `INSERT INTO favourites (id, name, pictureLink) VALUES (${id}, '${name}', '${pictureLink}')`;
+    const { id, name, pictureLink, cals, carbs, protein, fats } = favourite;
+    const query = `INSERT INTO favourites (id, name, pictureLink, carbs, cals, fats, protein) VALUES (${id}, '${name}', '${pictureLink}', '${cals}', '${carbs}', '${protein}', '${fats}')`;
   
     try {
       const result = await this.db.query(query);

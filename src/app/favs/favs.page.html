@@ -26,38 +26,38 @@
       </li>
     </ul>
   </div> -->
-  <div class="favItem ion-padding">
+  <div class="favItem ion-padding" *ngFor="let fav of favs()">
     <div class="favImg">
-      <img src="/assets/test.png"/> 
+      <img [src]="fav.pictureLink" (click)="nav(fav.id)"/> 
     </div>
 
     <div class="favInfo">
 
-      <p>Winner Winner Chicken Dinner</p>
+      <p>{{fav.name}}</p>
 
       <div class="macroCont">
         <div class="macro">
-          <p>120.91</p>
           <ion-icon name="flash-outline" style="color:#7DF9FF"></ion-icon>
+          <p>{{fav.cals}}</p>
         </div>
 
         <div class="macro">
-          <p>10.1</p>
           <div class="wheat"></div>
+          <p>{{fav.carbs}}</p>
         </div>
 
         <div class="macro">
-          <p>2.35</p>
           <div class="oil"></div>
+          <p>{{fav.fats}}</p>
         </div>
         <div class="macro">
-          <p>45.11</p>
           <div class="meat"></div>
+          <p>{{fav.protein}}</p>
         </div>
       </div>
 
       <div class="favOptions">
-        <ion-button fill="clear"><ion-icon name="trash-outline"></ion-icon></ion-button>
+        <ion-button fill="clear" (click)="deleteFav(fav)"><ion-icon name="trash-outline" ></ion-icon></ion-button>
         <ion-button fill="clear"> <ion-icon name="pie-chart-outline"></ion-icon></ion-button>
       </div>
     </div>

@@ -11,16 +11,17 @@ import { Router } from '@angular/router';
 export class FavsPage implements OnInit {
 
   favs: any;
-  // test: Favourite = {
-  //   id: 34,
-  //   name: 'TEST RECIPE',
-  //   pictureLink: "/assets/nomsterLogo.png"
-  // }
+
   constructor(private database: DatabaseService, private router: Router) { }
 
   ngOnInit() {
-    this.database.loadFavs(); 
-    this.favs = this.database.getFavs(); 
+    try {
+      this.database.loadFavs(); 
+      this.favs = this.database.getFavs(); 
+    } catch (err) {
+      console.log(err)
+    }
+
   }
   async deleteFav(fav: Favourite) {
     this.database.deleteFavById(fav.id.toString()); 

@@ -219,7 +219,6 @@ export class HomePage implements OnInit{
   }
 
   async newFav(fav: Meal) {
-    console.log(fav)
     fav = this.sortedRecipes[this.index]; 
     let newFav:Favourite = {
       id: fav.id,
