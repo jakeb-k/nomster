@@ -15,20 +15,12 @@
   <div class="profileTitle ion-padding"> 
     <h3>Your Favourites</h3>
   </div>
-  <!-- <div class="favorites-container">
-    <ul class="favorites-list">
-      <li class="favorite-item">
-        <img src="/assets/test.png" alt="Recipe Image" class="recipe-image">
-        <div class="recipe-details">
-          <h2 class="recipe-title">Recipe Name</h2>
-          <button class="delete-button">🗑</button>
-        </div>
-      </li>
-    </ul>
-  </div> -->
+
+
+
   <div class="favItem ion-padding" *ngFor="let fav of favs()">
     <div class="favImg">
-      <img [src]="fav.pictureLink" (click)="nav(fav.id)"/> 
+      <img [src]="fav.pictureLink" (click)="recipeNav(fav.id)"/> 
     </div>
 
     <div class="favInfo">
@@ -37,22 +29,22 @@
 
       <div class="macroCont">
         <div class="macro">
-          <ion-icon name="flash-outline" style="color:#7DF9FF"></ion-icon>
-          <p>{{fav.cals}}</p>
+          <div class="flash"></div>
+          <p>{{fav.cals ?? "10.32"}}</p>
         </div>
 
         <div class="macro">
           <div class="wheat"></div>
-          <p>{{fav.carbs}}</p>
+          <p>{{fav.carbs ?? "123.45"}}</p>
         </div>
 
         <div class="macro">
           <div class="oil"></div>
-          <p>{{fav.fats}}</p>
+          <p>{{fav.fats ?? "12.34"}}</p>
         </div>
         <div class="macro">
           <div class="meat"></div>
-          <p>{{fav.protein}}</p>
+          <p>{{fav.protein ?? "12.34"}}</p>
         </div>
       </div>
 
@@ -60,12 +52,48 @@
         <ion-button fill="clear" (click)="deleteFav(fav)"><ion-icon name="trash-outline" ></ion-icon></ion-button>
         <ion-button fill="clear"> <ion-icon name="pie-chart-outline"></ion-icon></ion-button>
       </div>
+
     </div>
 
   </div>
-  <!-- <ion-item *ngFor="let fav of favs()">
-      <img [src]="fav.pictureLink" (click)="recipeNav(fav.id)" /> 
-      <p>{{fav.name}}</p>
-    <ion-button fill="clear" (click)="deleteFav(fav)">DELETE</ion-button>
-  </ion-item> -->
+
+  <!-- TESTING ITEM
+    <div class="favItem ion-padding" >
+    <div class="favImg">
+      <img src="/assets/test.png"/> 
+    </div>
+
+    <div class="favInfo">
+
+      <p>Winner Winner Chicken Dinner</p>
+
+      <div class="macroCont">
+        <div class="macro">
+          <div class="flash"></div>
+          <p>10.32</p>
+        </div>
+
+        <div class="macro">
+          <div class="wheat"></div>
+          <p>123.45</p>
+        </div>
+
+        <div class="macro">
+          <div class="oil"></div>
+          <p>12.34</p>
+        </div>
+        <div class="macro">
+          <div class="meat"></div>
+          <p>12.34</p>
+        </div>
+      </div>
+
+      <div class="favOptions">
+        <ion-button fill="clear" ><ion-icon name="trash-outline" ></ion-icon></ion-button>
+        <ion-button fill="clear"> <ion-icon name="pie-chart-outline"></ion-icon></ion-button>
+      </div>
+      
+    </div>
+
+  </div> -->
 </ion-content>

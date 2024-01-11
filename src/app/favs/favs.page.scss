@@ -1,53 +1,3 @@
-// .favorites-container {
-//     max-width: 600px;
-//     margin: 0 auto;
-//     padding: 20px;
-//     background: #fff;
-//     border-radius: 8px;
-//     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-//   }
-  
-//   .favorites-list {
-//     list-style: none;
-//     padding: 0;
-//   }
-  
-//   .favorite-item {
-//     display: flex;
-//     align-items: center;
-//     margin-bottom: 20px;
-//   }
-  
-//   .recipe-image {
-//     width: 100px; /* Set a fixed size or use responsive units like % */
-//     height: 100px;
-//     border-radius: 8px;
-//     object-fit: cover;
-//     margin-right: 20px;
-//   }
-  
-//   .recipe-details {
-//     flex-grow: 1;
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-//   }
-  
-//   .recipe-title {
-//     margin: 0;
-//   }
-  
-//   .delete-button {
-//     background: none;
-//     border: none;
-//     cursor: pointer;
-//     font-size: 24px;
-//   }
-  
-//   h1 {
-//     color: #333;
-//     text-align: center;
-//   }
 .favImg img{
     border-radius:15px; 
 }
@@ -68,7 +18,7 @@
     flex-direction:column; 
     align-items: center;
 }
-.wheat, .oil, .meat, ion-icon {
+.wheat, .oil, .meat,.flash{
     width:24px; 
     height:24px; 
    
@@ -77,6 +27,12 @@
     background-color: #F5DEB3; /* The color you want */
     -webkit-mask-image: url('/assets/wheat.png');
     mask-image: url('/assets/wheat.png');
+    mask-size: cover;
+}
+.flash {
+    background-color: #13d8e2; /* The color you want */
+    -webkit-mask-image: url('/assets/flash.png');
+    mask-image: url('/assets/flash.png');
     mask-size: cover;
 }
 .oil {
@@ -91,13 +47,14 @@
     mask-image: url('/assets/meat.png');
     mask-size: cover;
 }
-ion-icon {
-    width:24px; 
-    height:24px; 
-}
+
 .favItem {
     display:flex;
     flex-direction:row;
+    border-bottom: 1px solid #FF6700;
+    border-top: 1px solid #FF6700;
+    border-radius:10px; 
+    margin-bottom:15px; 
     .favImg, .favInfo {
         width:47.5%;
         height:auto; 
