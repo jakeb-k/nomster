@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {GetRecipeService} from '../services/get-recipe.service';
 import { DatabaseService } from '../services/database.service';
+import { GetRecipeDetailsService } from '../services/get-recipe-details.service';
 import { Router } from '@angular/router';
 import { Meal } from '../interfaces/meal';
 import { Filter } from '../interfaces/filter';
 import { Favourite } from '../interfaces/favourite';
+import { Nutrients } from '../interfaces/nutrientTable';
 
 import { IonModal, ModalController } from '@ionic/angular';
 
@@ -33,6 +35,38 @@ export class HomePage implements OnInit{
   filter:any; 
   servingSize:any[]=[]; 
   isQuery: Boolean = true;
+  newNutrients: Nutrients = {
+    calories: 0,
+    fat: 0,
+    saturatedFat: 0,
+    carbohydrates: 0,
+    netCarbohydrates: 0,
+    sugar: 0,
+    cholesterol: 0,
+    sodium: 0,
+    protein: 0,
+    vitaminC: 0,
+    vitaminB3: 0,
+    vitaminB6: 0,
+    selenium: 0,
+    vitaminB2: 0,
+    phosphorus: 0,
+    manganese: 0,
+    potassium: 0,
+    vitaminB1: 0,
+    folate: 0,
+    iron: 0,
+    vitaminB5: 0,
+    zinc: 0,
+    magnesium: 0,
+    vitaminB12: 0,
+    copper: 0,
+    vitaminA: 0,
+    calcium: 0,
+    fiber: 0,
+    vitaminE: 0,
+    vitaminK: 0
+  }; 
 
   showSuccessMessage:Boolean = false; 
 
@@ -68,7 +102,7 @@ export class HomePage implements OnInit{
   'breakfast','soup','beverage','sauce','marinade','fingerfood','snack','drink'];
 
 
-  constructor(private getter: GetRecipeService, private router:Router, private modalController: ModalController, private database: DatabaseService) {}
+  constructor(private recipeGetter: GetRecipeService, private router:Router, private modalController: ModalController, private database: DatabaseService, private recipeDetailGetter: GetRecipeDetailsService) {}
   ngOnInit(){
     let temp = sessionStorage.getItem('recipes');
     let temp2 = sessionStorage.getItem('nutrients');
@@ -86,7 +120,7 @@ export class HomePage implements OnInit{
     this.sortedRecipes = []; 
     this.rawNutrients = [];
     this.servingSize = [];     
-    this.getter.getRecipe(this.query).subscribe(
+    this.recipeGetter.getRecipe(this.query).subscribe(
       async (response) => {
         if (!response.error) {
          this.recipes = response.results; 
@@ -150,6 +184,18 @@ export class HomePage implements OnInit{
     
   } 
 
+  getNutrition(id: number) {
+    this.recipeDetailGetter.getRecipeNutritionDetails(id).subscribe({
+      next: (newNutrients) => {
+        console.log(newNutrients); 
+      },
+      error: (error) => {
+        console.error('Error fetching nutrition details:', error);
+        // Handle error scenarios here
+      }
+    });
+  }
+
   slideNav(step:number){
     if(this.setLoaded){
       if(step >= 0 || step <= this.sortedRecipes.length -1) {
@@ -181,7 +227,7 @@ export class HomePage implements OnInit{
   }
   sendFilterData() {
     console.log(this.filterOps)
-        this.getter.applyFilter(this.filterOps).subscribe(
+        this.recipeGetter.applyFilter(this.filterOps).subscribe(
           async (response) => {
             if (!response.error) {
             this.recipes = []; 

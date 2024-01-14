@@ -1,5 +1,5 @@
 export interface Meal {
-    id:Number,
+    id:number,
     title: String,
     cals: String, 
     carbs:String,

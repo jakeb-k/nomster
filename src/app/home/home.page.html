@@ -24,7 +24,7 @@
             <em>{{d}}</em>
           </h6>
         </div>
-        <ion-button fill="clear" id="open-modal">NUTRIENTS</ion-button>
+        <ion-button (click)="getNutrition(sortedRecipes[index].id)">NUTRIENTS</ion-button>
       </div>
       <div id="navBox">
         <button class="navBtn" (click)="slideNav(-1)"><</button>

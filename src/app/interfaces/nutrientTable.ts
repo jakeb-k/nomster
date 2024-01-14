@@ -22,7 +22,7 @@ export interface Nutrients {
     vitaminB5: number;
     zinc: number;
     magnesium: number;
-    vitaminB12: number; // Assuming 'Vitamin' refers to Vitamin D
+    vitaminB12: number; 
     copper: number;
     vitaminA: number;
     calcium: number;
