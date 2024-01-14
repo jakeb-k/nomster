@@ -11,7 +11,6 @@
 
   <div class="filterOps">
     <h3>{{title}}</h3>
-    <ion-button fill="clear" (click)="navHome()">HOME</ion-button>
   </div>
  <div id="container">
     <div id="topCont">
@@ -28,7 +27,7 @@
             </td>
             <td *ngIf="i + 1 < ingredients.length">
               <div class="recipeGrocery"> {{ ingredients[i + 1].original }} </div>
-              <div class="recipeGrocery"><ion-button fill="clear" (click)="addToGroceries(item)"><ion-icon name="add-circle-outline" ></ion-icon></ion-button></div>
+              <div class="recipeGrocery"><ion-button fill="clear" (click)="addToGroceries(ingredients[i + 1])"><ion-icon name="add-circle-outline" ></ion-icon></ion-button></div>
             </td>
           </ng-container>
           <ng-template #oddRow>

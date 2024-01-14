@@ -83,7 +83,7 @@ export class RecipePage implements OnInit {
         this.showSuccessMessage = true; // Display success message
         setTimeout(() => {
           this.showSuccessMessage = false; // Hide success message after a delay
-        }, 3000); // Adjust the delay (in milliseconds) as needed
+        }, 1000); // Adjust the delay (in milliseconds) as needed
       } else {
         // Handle cases where addgroceryourite returns false
         // Optional: Display an error message or perform other actions
