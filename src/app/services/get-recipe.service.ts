@@ -51,7 +51,7 @@ export class GetRecipeService {
       url = url.concat(this.maxCarbs)
     }
     if(filter.maxFat != ""){
-      this.maxCals = "&maxProtein="+Number(filter.maxFat); 
+      this.maxFat = "&maxFat="+Number(filter.maxFat); 
       url = url.concat(this.maxFat)
     }
     if(filter.minProtein != ""){
