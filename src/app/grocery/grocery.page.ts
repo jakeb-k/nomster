@@ -34,7 +34,9 @@ export class GroceryPage implements OnInit {
     await this.database.deleteGroceryByName(grocery.name.toString(), grocery.id.toString()); 
     this.groceries = this.database.getGrocery(); 
   }
-  
+  test() {
+    console.log('penis') 
+  }
   async addToGroceries() {
     
     this.newGrocery.id = this.randomIdGenerator(10000,99999)

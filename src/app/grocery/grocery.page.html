@@ -4,15 +4,15 @@
   <div class="profileTitle ion-padding"> 
     <h3>Grocery List</h3>
   </div>
-  <ion-item>
-    <ion-input placeholder="Add Grocery" [(ngModel)]="newGrocery.name">
-
-      <ion-button fill="clear" slot="end" (click)="addToGroceries()">
-        <ion-icon name="add-circle-outline"></ion-icon>
-      </ion-button>
-      
+  <div class="addGroceryCont">
+    <ion-input placeholder="Add Grocery" [(ngModel)]="newGrocery.name" fill="solid">      
+     
     </ion-input>
-  </ion-item>
+    <ion-button fill="clear"(click)="addToGroceries()">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-button>
+  </div>
+
         <ion-card>
           <ion-card-content>
             <ion-item class="goalItem" *ngFor="let g of groceries()">
