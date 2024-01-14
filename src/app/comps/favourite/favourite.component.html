@@ -1,3 +1,38 @@
-<p>
-  favourite works!
-</p>
+<div class="row"> 
+  <div class="favImg">
+    <img [src]="fav.pictureLink" (click)="recipeNav(fav.id)"/> 
+  </div>
+
+  <div class="favInfo">
+
+    <p>{{fav.name}}</p>
+
+    <div class="macroCont">
+      <div class="macro">
+        <div class="flash"></div>
+        <p>{{fav.cals}}</p>
+      </div>
+
+      <div class="macro">
+        <div class="wheat"></div>
+        <p>{{fav.carbs}}</p>
+      </div>
+
+      <div class="macro">
+        <div class="oil"></div>
+        <p>{{fav.fats}}</p>
+      </div>
+      <div class="macro">
+        <div class="meat"></div>
+        <p>{{fav.protein}}</p>
+      </div>
+    </div>
+
+    <div class="favOptions">
+      <ion-button fill="clear" (click)="deleteFav(fav)"><ion-icon name="trash-outline" ></ion-icon></ion-button>
+      <ion-button fill="clear"> <ion-icon name="pie-chart-outline"></ion-icon></ion-button>
+    </div>
+
+  </div>
+
+</div>

@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { FavsPageRoutingModule } from './favs-routing.module';
 
 import { FavsPage } from './favs.page';
-
+import { FavouriteComponent } from '../comps/favourite/favourite.component';
 import { SharedModule } from '../modules/shared/shared.module';
 
 
@@ -19,6 +19,6 @@ import { SharedModule } from '../modules/shared/shared.module';
     FavsPageRoutingModule,
     SharedModule
   ],
-  declarations: [FavsPage],
+  declarations: [FavsPage, FavouriteComponent],
 })
 export class FavsPageModule {}

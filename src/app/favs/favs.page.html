@@ -7,7 +7,10 @@
 
 
   <div class="favItem ion-padding" *ngFor="let fav of favs()">
-    <div class="favImg">
+    <favourite [fav]="fav">
+      
+    </favourite>
+    <!-- <div class="favImg">
       <img [src]="fav.pictureLink" (click)="recipeNav(fav.id)"/> 
     </div>
 
@@ -41,7 +44,7 @@
         <ion-button fill="clear"> <ion-icon name="pie-chart-outline"></ion-icon></ion-button>
       </div>
 
-    </div>
+    </div> -->
 
   </div>
 

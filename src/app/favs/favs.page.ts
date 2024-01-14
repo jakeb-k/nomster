@@ -29,8 +29,5 @@ export class FavsPage implements OnInit {
   recipeNav(id:Number){
     this.router.navigateByUrl('/recipe/'+id, {replaceUrl:true}); 
   }
-  nav(path:String) {
-    this.router.navigateByUrl('/'+path); 
-  }
 
 }

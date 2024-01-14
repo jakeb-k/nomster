@@ -1,0 +1,67 @@
+.favImg img{
+    border-radius:15px; 
+}
+.favInfo * {
+    padding:2.5px;
+    margin:1px; 
+    text-align: center;
+}
+.macroCont {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-evenly;
+    font-size:12px; 
+    margin-bottom:0; 
+}
+.macro {
+    display:flex;
+    flex-direction:column; 
+    align-items: center;
+}
+.wheat, .oil, .meat,.flash{
+    width:24px; 
+    height:24px; 
+   
+}
+.wheat {
+    background-color: #F5DEB3; /* The color you want */
+    -webkit-mask-image: url('/assets/wheat.png');
+    mask-image: url('/assets/wheat.png');
+    mask-size: cover;
+}
+.flash {
+    background-color: #13d8e2; /* The color you want */
+    -webkit-mask-image: url('/assets/flash.png');
+    mask-image: url('/assets/flash.png');
+    mask-size: cover;
+}
+.oil {
+    background-color: #ebb403; /* The color you want */
+    -webkit-mask-image: url('/assets/oil.png');
+    mask-image: url('/assets/oil.png');
+    mask-size: cover;
+}
+.meat {
+    background-color: #cb6862; /* The color you want */
+    -webkit-mask-image: url('/assets/meat.png');
+    mask-image: url('/assets/meat.png');
+    mask-size: cover;
+}
+.favImg, .favInfo {
+    width:47.5%;
+    height:auto;        
+    margin:5px; 
+}
+.row {
+    display:flex; 
+    flex-direction:row; 
+}
+
+.favOptions {
+    display:flex;
+    flex-direction:row; 
+    justify-content: space-between;
+    ion-icon {
+        color:#ebb403; 
+    }
+}
