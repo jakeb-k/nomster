@@ -1,18 +1,7 @@
-<ion-header>
-  <div class="header">
-    <div style="display:flex; flex-direction: row;">
-      <h1>
-        Nomster
-      </h1>
-      <img src="/assets/nomsterLogo.png" />
-    </div>
-    <button class="navBtn2" (click)="login()"><ion-icon name="home-outline"></ion-icon></button>
-  </div>
-</ion-header>
+<app-header></app-header>
+
 <ion-content [fullscreen]="true"> 
-
-
-  <div id="container">
+<div id="container">
   <p *ngIf="message !== ''">
     {{message}}
   </p>

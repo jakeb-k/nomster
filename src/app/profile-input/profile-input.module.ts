@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
+import { SharedModule } from '../modules/shared/shared.module';
+
 import { ProfileInputPageRoutingModule } from './profile-input-routing.module';
 
 import { ProfileInputPage } from './profile-input.page';
@@ -13,7 +15,8 @@ import { ProfileInputPage } from './profile-input.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ProfileInputPageRoutingModule
+    ProfileInputPageRoutingModule,
+    SharedModule
   ],
   declarations: [ProfileInputPage]
 })

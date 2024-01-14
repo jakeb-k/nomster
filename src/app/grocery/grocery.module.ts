@@ -8,12 +8,15 @@ import { GroceryPageRoutingModule } from './grocery-routing.module';
 
 import { GroceryPage } from './grocery.page';
 
+import { SharedModule } from '../modules/shared/shared.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    GroceryPageRoutingModule
+    GroceryPageRoutingModule,
+    SharedModule
   ],
   declarations: [GroceryPage]
 })
