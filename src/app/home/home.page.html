@@ -5,33 +5,18 @@
   <p *ngIf="message !== ''">
     {{message}}
   </p>
+  
     <div class="recipeBox" *ngIf="setLoaded; else preLoad">
-
-      <div class="titles">
-        <div class="rTitle">
-          <h3 >{{sortedRecipes[index].title}}</h3>
-        </div>
-        <div class="cals">
-          <p>{{sortedRecipes[index].cals}}<i>kcals</i></p>
-        </div>
-      </div>
-      
-      <a ></a>
-      <img class="rImg" [src]="sortedRecipes[index].image" (click)="nav(sortedRecipes[index].id)"/>
-      <div class="cpf">
-        <div class="rInfo">
-          <div class="nutrient">{{sortedRecipes[index].carbs}} g </div>
-          <span>Carbs</span>
-        </div>
-        <div class="rInfo">
-          <div class="nutrient">{{sortedRecipes[index].fat}} g </div>
-          <span>Fat</span>
-        </div>
-        <div class="rInfo">
-          <div class="nutrient">{{sortedRecipes[index].protein}} g </div>
-          <span>Protein</span>
-        </div>
-      </div>
+      <!--RECIPE RESULTS COMP-->
+      <meal-result  [title]="sortedRecipes[index].title"
+                    [cals]="sortedRecipes[index].cals"
+                    [image]="sortedRecipes[index].image"
+                    [id]="sortedRecipes[index].id"
+                    [carbs]="sortedRecipes[index].carbs"
+                    [fat]="sortedRecipes[index].fat"
+                    [protein]="sortedRecipes[index].protein">
+      </meal-result>
+    
       <div class="rBot">
         <div class="dietBox">
           <span class="maybeArrow" *ngIf="sortedRecipes[index].diet.length > 1"> V </span>

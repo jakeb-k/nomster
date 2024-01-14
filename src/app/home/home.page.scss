@@ -8,108 +8,16 @@ ion-content {
   --background: rgb(248, 248, 248);
 }
 
-/* RECIPE CARD STYLING */
-.titles {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.titles div {
-  display: flex;
-  flex-direction: row;
-}
-
-.titles h3 {
-  font-weight: bold;
-  font-family: 'Space Grotesk', sans-serif;
-  margin: 0;
-}
-
-.rTitle {
-  width: 62.5%;
-}
-
-.cals {
-  width:32.5%;
-}
-
 #container {
   display: flex;
   flex-direction: column;
 }
-
-.cals p {
-  font-size: 28px;
-  font-weight: bold;
-  z-index: 2;
-  color: black;
-  font-family: $p;
-  margin: 0px;
-}
-
-.cals i {
-  font-size: 18px;
-  color: black;
-  font-family: $p;
-}
-
 .recipeBox {
   display: flex;
   flex-direction: column;
   width: 97.5%;
   margin: 5px auto 5px;
   padding: 2.5%;
-}
-
-.rImg {
-  margin-top: 10px;
-  display: inline-block;
-  align-self: center;
-  background: gray;
-  border-radius: 15px;
-  box-shadow: 0 0 10px black;
-  transition: 200ms ease-in-out;
-  cursor: pointer;
-
-  &:hover {
-    box-shadow: 0 0 10px #FF6700;
-    scale: 1.05;
-  }
-}
-
-.rInfo span {
-  font-family: $p;
-  font-weight:bold; 
-  font-size:large; 
-}
-
-.cpf {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-top: -25px;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.nutrient {
-  display: inline;
-  border-radius: 100%;
-  width: 75px;
-  height: 75px;
-  padding: 30% 0 0% 0;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  background: radial-gradient(100% 100% at 100% 0%, #ffdc30 0%, #FF6700 100%);
-}
-
-.rInfo {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .rBot {
