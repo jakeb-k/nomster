@@ -6,9 +6,9 @@ import { Router } from '@angular/router';
 import { Meal } from '../interfaces/meal';
 import { Filter } from '../interfaces/filter';
 import { Favourite } from '../interfaces/favourite';
-import { Nutrients } from '../interfaces/nutrientTable';
 
 import { IonModal, ModalController } from '@ionic/angular';
+import { Nutrient } from '../interfaces/nutrient';
 
 @Component({
   selector: 'app-home',
@@ -35,38 +35,8 @@ export class HomePage implements OnInit{
   filter:any; 
   servingSize:any[]=[]; 
   isQuery: Boolean = true;
-  newNutrients: Nutrients = {
-    calories: 0,
-    fat: 0,
-    saturatedFat: 0,
-    carbohydrates: 0,
-    netCarbohydrates: 0,
-    sugar: 0,
-    cholesterol: 0,
-    sodium: 0,
-    protein: 0,
-    vitaminC: 0,
-    vitaminB3: 0,
-    vitaminB6: 0,
-    selenium: 0,
-    vitaminB2: 0,
-    phosphorus: 0,
-    manganese: 0,
-    potassium: 0,
-    vitaminB1: 0,
-    folate: 0,
-    iron: 0,
-    vitaminB5: 0,
-    zinc: 0,
-    magnesium: 0,
-    vitaminB12: 0,
-    copper: 0,
-    vitaminA: 0,
-    calcium: 0,
-    fiber: 0,
-    vitaminE: 0,
-    vitaminK: 0
-  }; 
+
+  nutrientsArr: Nutrient[] = []; 
 
   showSuccessMessage:Boolean = false; 
 
@@ -185,9 +155,18 @@ export class HomePage implements OnInit{
   } 
 
   getNutrition(id: number) {
+    this.nutrientsArr = []; 
     this.recipeDetailGetter.getRecipeNutritionDetails(id).subscribe({
       next: (newNutrients) => {
-        console.log(newNutrients); 
+        newNutrients.nutrients.forEach((e: { name: any; amount: any; unit: any; percentOfDailyNeeds: any; }) => {
+          let n: Nutrient = {
+            name: e.name,
+            amount: e.amount,
+            unit: e.unit,
+            percentOfDailyNeeds: e.percentOfDailyNeeds
+          }
+          this.nutrientsArr.push(n)
+        });
       },
       error: (error) => {
         console.error('Error fetching nutrition details:', error);
@@ -205,26 +184,7 @@ export class HomePage implements OnInit{
       }
     }
   }
-  colorChange(){
-    if(this.query.length >= 2){
-      this.btnColor['background'] = 'radial-gradient(100% 100% at 100% 0%, #ffdc30 0%, #FF6700 100%)'; 
-    } else {
-      this.btnColor['background'] = 'lightgray'; 
-    }
-  }
-  gradientChange(){
-    if(this.query.length >= 2){
-      this.btnColor['background']='radial-gradient(100% 100% at 0% 100%, #ffdc30 0%, #FF6700 100%)'; 
-     }
-  }
 
-  revertColorChange(){
-     if(this.query.length <= 1){
-    this.btnColor['background']='lightgray'; 
-     }else {
-      this.btnColor['background'] = 'radial-gradient(100% 100% at 100% 0%, #ffdc30 0%, #FF6700 100%)'; 
-     }
-  }
   sendFilterData() {
     console.log(this.filterOps)
         this.recipeGetter.applyFilter(this.filterOps).subscribe(
@@ -251,15 +211,7 @@ export class HomePage implements OnInit{
   cancel() {
     this.modalController.dismiss(null, 'cancel');
   }
-  //TOGGLE FUNC
-  changeSearchType() {
-    if(this.isQuery){
-    this.isQuery = false; 
-    } else {
-      this.isQuery = true; 
-    }
-    console.log(this.isQuery); 
-  }
+
   reset(){
     this.setLoaded = !this.setLoaded;
   }

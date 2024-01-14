@@ -24,7 +24,7 @@
             <em>{{d}}</em>
           </h6>
         </div>
-        <ion-button (click)="getNutrition(sortedRecipes[index].id)">NUTRIENTS</ion-button>
+        <ion-button id="open-modal" (click)="getNutrition(sortedRecipes[index].id)" fill="clear">NUTRIENTS</ion-button>
       </div>
       <div id="navBox">
         <button class="navBtn" (click)="slideNav(-1)"><</button>
@@ -108,7 +108,7 @@
   <ng-template>
     <ion-content class="ion-padding">
       <ion-button class="backBtn" (click)="cancel()" fill="clear">
-        < BACK</ion-button>
+        BACK</ion-button>
           <div class="nutrition-label">
             <div class="nHeader">
               <div class="footnote">* Percent Daily Values are based on a {{(calorieIntake === 0) ? 2500 : calorieIntake}} calorie diet.</div>
@@ -116,7 +116,7 @@
               <div class="sub-title">Serving Size:{{servingSize[index].amount}} {{servingSize[index].unit}}</div>
             </div>
             <table>
-              <tr *ngFor="let e of rawNutrients[index]">
+              <tr *ngFor="let e of nutrientsArr">
                 <td><strong>{{e.name}}</strong> {{e.amount}}{{e.unit}}</td>
                 <td></td>
                 <td class="right-align">{{(e.percentOfDailyNeeds / calorieRatio) | number:'1.2-2'}}%</td>
