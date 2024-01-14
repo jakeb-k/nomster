@@ -8,13 +8,17 @@ import { FavsPageRoutingModule } from './favs-routing.module';
 
 import { FavsPage } from './favs.page';
 
+import { SharedModule } from '../modules/shared/shared.module';
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FavsPageRoutingModule
+    FavsPageRoutingModule,
+    SharedModule
   ],
-  declarations: [FavsPage]
+  declarations: [FavsPage],
 })
 export class FavsPageModule {}
