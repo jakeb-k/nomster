@@ -7,15 +7,18 @@
     Add New Goal!
   </ion-button>
   <ion-item class="goalItem" *ngFor="let g of goals()">
-    <div class="goalContent"> 
-      <h5>{{g.type}}:</h5>
-      <h5><b>{{g.goalAmount}}
-        <span>{{ g.type === 'Calorie Limit' ? 'kcals' : 'gs' }}</span>
+   <div class="goalContent"> 
+      <p>{{g.type}} : </p>
+      <p><b>{{g.goalAmount}}
+        <span>{{ g.type === 'Calorie Intake' ? 'kcals' : 'gs' }}</span>
         </b>
-      </h5>
-    </div> 
+      </p>
+    </div>
     <div class="goalActions" >
-      <ion-button  fill="clear" slot="end" (click)="deleteGoal(g)">
+      <ion-button id="update-modal" fill="clear">
+        <ion-icon name="scale-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="deleteGoal(g)" fill="clear">
         <ion-icon name="close-circle-outline"></ion-icon>
       </ion-button>
     </div>
@@ -51,12 +54,35 @@
             <ion-item>
               <ion-input type="number" [(ngModel)]="newGoal.goalAmount" label="Goal Amount" labelPlacement="stacked"  placeholder="Enter your desired goal amount"></ion-input>
             </ion-item>
-            
           </ion-card-content>
         </ion-card>
         <button class="navBtn" (click)="initGoal()">ADD GOAL</button>
       </ion-content>
     </ng-template>
   </ion-modal>
+
+  <!-- <ion-modal trigger="update-modal">
+    <ng-template>
+      <ion-content class="ion-padding"> 
+        <ion-button class="backBtn" (click)="cancel()" fill="clear">
+          BACK
+        </ion-button>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Update Macro Progress</ion-card-title>
+            <ion-card-subtitle>Enter the macro amount to update your progress</ion-card-subtitle>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-item>
+              <ion-input type="number" labelPlacement="stacked"  placeholder="Enter your desired goal amount"></ion-input>
+            </ion-item>
+            
+          </ion-card-content>
+        </ion-card>
+        <button class="navBtn">UPDATE</button>
+      </ion-content>
+    </ng-template>
+  </ion-modal> -->
 
 </ion-content>

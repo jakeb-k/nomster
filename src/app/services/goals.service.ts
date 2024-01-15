@@ -59,7 +59,20 @@ export class GoalsService {
   
       return result; 
     }
-
+    async updateGoal(id: number, amount:number){
+      //query to update goal progress, need id to access and new value
+      const query = 'UPDATE goals SET goalProgress = ? WHERE id = ?';
+      const params = [id, amount]
+      try {
+        const result = await this.db.query(query, params);
+        this.loadGoals()
+        return result
+      } catch(err) {
+        console.error('There was an error updating the goals', err)
+        throw err
+      }
+    }
+    
     async loadCalorieIntake(){
       try {
         const calorieIntake = await this.db.query("SELECT * FROM goals WHERE type = 'Calorie Intake';");
