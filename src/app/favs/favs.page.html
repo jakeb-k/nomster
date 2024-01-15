@@ -10,81 +10,8 @@
     <favourite [fav]="fav">
       
     </favourite>
-    <!-- <div class="favImg">
-      <img [src]="fav.pictureLink" (click)="recipeNav(fav.id)"/> 
-    </div>
-
-    <div class="favInfo">
-
-      <p>{{fav.name}}</p>
-
-      <div class="macroCont">
-        <div class="macro">
-          <div class="flash"></div>
-          <p>{{fav.cals ?? "10.32"}}</p>
-        </div>
-
-        <div class="macro">
-          <div class="wheat"></div>
-          <p>{{fav.carbs ?? "123.45"}}</p>
-        </div>
-
-        <div class="macro">
-          <div class="oil"></div>
-          <p>{{fav.fats ?? "12.34"}}</p>
-        </div>
-        <div class="macro">
-          <div class="meat"></div>
-          <p>{{fav.protein ?? "12.34"}}</p>
-        </div>
-      </div>
-
-      <div class="favOptions">
-        <ion-button fill="clear" (click)="deleteFav(fav)"><ion-icon name="trash-outline" ></ion-icon></ion-button>
-        <ion-button fill="clear"> <ion-icon name="pie-chart-outline"></ion-icon></ion-button>
-      </div>
-
-    </div> -->
-
+    <ion-button id="open-modal" (click)="nutrientNav(fav.id)" fill="clear"> <ion-icon name="pie-chart-outline"></ion-icon></ion-button>
   </div>
 
-  <!-- TESTING ITEM
-    <div class="favItem ion-padding" >
-    <div class="favImg">
-      <img src="/assets/test.png"/> 
-    </div>
 
-    <div class="favInfo">
-
-      <p>Winner Winner Chicken Dinner</p>
-
-      <div class="macroCont">
-        <div class="macro">
-          <div class="flash"></div>
-          <p>10.32</p>
-        </div>
-
-        <div class="macro">
-          <div class="wheat"></div>
-          <p>123.45</p>
-        </div>
-
-        <div class="macro">
-          <div class="oil"></div>
-          <p>12.34</p>
-        </div>
-        <div class="macro">
-          <div class="meat"></div>
-          <p>12.34</p>
-        </div>
-      </div>
-
-      <div class="favOptions">
-        <ion-button fill="clear" ><ion-icon name="trash-outline" ></ion-icon></ion-button>
-        <ion-button fill="clear"> <ion-icon name="pie-chart-outline"></ion-icon></ion-button>
-      </div>
-      
-    </div>
-
-  </div> -->
 </ion-content>

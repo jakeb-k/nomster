@@ -30,7 +30,12 @@ const routes: Routes = [
   {
     path: 'grocery',
     loadChildren: () => import('./grocery/grocery.module').then( m => m.GroceryPageModule)
+  },
+  {
+    path: 'nutrients/:id',
+    loadChildren: () => import('./nutrients/nutrients.module').then( m => m.NutrientsPageModule)
   }
+
 
 ];
 

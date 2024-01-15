@@ -1,0 +1,60 @@
+
+
+// NUTRITION MODAL STYLING
+.nutModal {
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px black;
+    padding: 10px;
+    font-size: 18px;
+  }
+  
+  .nutrition-label {
+    font-family: Arial, sans-serif;
+    border: 2px solid #000;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 10px;
+  }
+  
+  .nHeader {
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .title {
+    font-size: 20px;
+  }
+  
+  .sub-title {
+    font-size: 16px;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  th,
+  td {
+    padding: 5px;
+    text-align: left;
+  }
+  
+  .right-align {
+    text-align: right;
+  }
+  
+  .footnote {
+    font-size: 10px;
+  }
+  
+  tr {
+    border-bottom: 1px solid darkgray;
+  }
+  
+  .bLine {
+    height: 5px;
+    width: 180%;
+    background: black;
+    align-self: center;
+  }

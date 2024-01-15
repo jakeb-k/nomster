@@ -1,5 +1,5 @@
 export interface Favourite {
-    id:Number;
+    id:number;
     name:String;
     pictureLink:String;
     cals: String,
