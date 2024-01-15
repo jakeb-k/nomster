@@ -18,7 +18,7 @@ export class NutrientsPage implements OnInit {
 
   calorieRatio = this.calorieIntake / 2000;
 
-  constructor(private recipeDetailsGetter: GetRecipeDetailsService, private route: ActivatedRoute, private location: Location) { }
+  constructor(private recipeDetailsGetter: GetRecipeDetailsService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.id = Number(this.route.snapshot.paramMap.get('id')!);
@@ -26,7 +26,7 @@ export class NutrientsPage implements OnInit {
     console.log(this.nutrientsArr)
   }
   back(): void {
-    this.location.back(); 
+    this.router.navigateByUrl('/favs', {replaceUrl:true}) 
   }
   getNutrition(id: number) {
     this.nutrientsArr = []; 

@@ -6,6 +6,9 @@
     margin:1px; 
     text-align: center;
 }
+.favInfo p {
+    height:50px; 
+}
 .macroCont {
     display:flex;
     flex-direction:row;
@@ -58,9 +61,12 @@
 }
 
 .favOptions {
+    position:absolute; 
     display:flex;
     flex-direction:row; 
     justify-content: space-between;
+    top:61.5%;
+    left:45%; 
     ion-icon {
         color:#ebb403; 
     }

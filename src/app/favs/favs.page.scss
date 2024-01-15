@@ -1,42 +1,14 @@
-.favImg img{
-    border-radius:15px; 
-}
-.favInfo * {
-    padding:2.5px;
-    margin:1px; 
-    text-align: center;
-}
-.macroCont {
-    display:flex;
-    flex-direction:row;
-    justify-content: space-evenly;
-    font-size:12px; 
-    margin-bottom:0; 
-}
-.macro {
-    display:flex;
-    flex-direction:column; 
-    align-items: center;
-}
-
 .favItem {
+    position:relative; 
     border-bottom: 1px solid #FF6700;
     border-top: 1px solid #FF6700;
     border-radius:10px; 
     margin-bottom:15px; 
-    .favImg, .favInfo {
-        width:47.5%;
-        height:auto; 
-        margin:5px; 
-    }
-
+    max-height:200px; 
 }
-.favOptions {
-    display:flex;
-    flex-direction:row; 
-    justify-content: space-between;
-    ion-icon {
-        color:#ebb403; 
-    }
+.favItem ion-button {
+    position:absolute;
+    top:65%;
+    left:75%; 
 }
 
