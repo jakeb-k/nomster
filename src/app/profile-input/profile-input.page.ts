@@ -19,9 +19,13 @@ export class ProfileInputPage implements OnInit {
   newGoal:Goal = {
     goalAmount: 0,
     type: '',
+    goalProgress: 0
   }
   modalComponent = UpdateGoalModalComponent;
+
   showSuccessMessage = Boolean(); 
+
+  goalUpdateSuccess = Boolean(); 
 
   modalInit = false; 
   constructor(private router: Router, private goalsService: GoalsService, private modalController: ModalController) { } 
@@ -49,14 +53,32 @@ export class ProfileInputPage implements OnInit {
         }, 3000); // Adjust the delay (in milliseconds) as needed
       }
     } catch (error) {
-      console.error('Error adding grocery:', error);
+      console.error('Error adding goal:', error);
       // Handle error scenarios here
     }
+    this.cancel(); 
   }
 
   async deleteGoal(goal: Goal) {
     this.goalsService.deleteGoalById(goal.id!.toString())
   }
+
+  async sendGoalProgress(id:number, goalAmount: number){
+    try {
+      const isSuccess = await this.goalsService.updateGoal(id, goalAmount);
+      if (isSuccess) {
+        this.goalUpdateSuccess = true; // Display success message
+        this.goals = this.goalsService.getGoals();  
+        setTimeout(() => {
+          this.goalUpdateSuccess = false; // Hide success message after a delay
+        }, 1500); // Adjust the delay (in milliseconds) as needed
+      }
+    } catch (error) {
+      console.error('Error updating goal:', error);
+      // Handle error scenarios here
+    }
+  }
+
   async openModal(id: number) {
     const modal = await this.modalController.create({
       component: UpdateGoalModalComponent,
@@ -71,11 +93,13 @@ export class ProfileInputPage implements OnInit {
         this.handleModalData(dataReturned.data);
       }
     });
-    
+
     return await modal.present();
   }
   
   handleModalData(data: any) {
-    console.log(data); 
+    console.log(data[0], data[1]) 
+    this.sendGoalProgress(Number(data[0]),Number(data[1]) )
   }
+
 }

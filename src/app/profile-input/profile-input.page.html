@@ -22,12 +22,21 @@
         <ion-icon name="close-circle-outline"></ion-icon>
       </ion-button>
     </div>
+
+    <div>{{g.goalProgress}}</div>
   </ion-item>
 
   <div class="notification-container" *ngIf="showSuccessMessage">
     <ion-icon name="checkmark-circle" color="success"></ion-icon>
     <p class="successMsg">
         Goal Successfully Saved!
+    </p>
+  </div>
+
+  <div class="notification-container" style="background-color: #e6e3b4;" *ngIf="showSuccessMessage">
+    <ion-icon name="ribbon-outline" color="warning"></ion-icon>
+    <p class="successMsg">
+        Goal Successfully Updated!
     </p>
   </div>
 
@@ -62,9 +71,6 @@
   </ion-modal>
 
   <ion-modal id="my-modal">
-    <ion-button class="backBtn" (click)="cancel()" fill="clear">
-      BACK
-    </ion-button>
   </ion-modal>
 
 </ion-content>

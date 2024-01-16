@@ -37,8 +37,8 @@ export class GoalsService {
     async addGoal(goal: Goal): Promise<any> {
       
       // Using parameterized query for safe SQL execution
-      const query = `INSERT INTO Goals (type, goalAmount) VALUES (?, ?)`;
-      const params = [goal.type, goal.goalAmount];
+      const query = `INSERT INTO Goals (type, goalAmount, goalProgress) VALUES (?, ?, ?)`;
+      const params = [goal.type, goal.goalAmount, 0];
 
       try {
           const result = await this.db.query(query, params);
@@ -62,7 +62,7 @@ export class GoalsService {
     async updateGoal(id: number, amount:number){
       //query to update goal progress, need id to access and new value
       const query = 'UPDATE goals SET goalProgress = ? WHERE id = ?';
-      const params = [id, amount]
+      const params = [amount, id]
       try {
         const result = await this.db.query(query, params);
         this.loadGoals()
