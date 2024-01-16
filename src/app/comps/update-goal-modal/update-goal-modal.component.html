@@ -1,4 +1,5 @@
 <ion-content> 
+<ion-button fill="clear" (click)="cancel()">BACK</ion-button>
 <ion-card>
   <ion-card-header>
     <ion-card-title>Update Macro Progress</ion-card-title>
@@ -8,7 +9,7 @@
   <ion-card-content>
     <p>{{id}}</p>
     <ion-item>
-      <ion-input type="number" labelPlacement="stacked"  placeholder="Enter your desired goal amount"></ion-input>
+      <input [(ngModel)]="macro" type="number" labelPlacement="stacked" placeholder="Enter your desired goal amount" />
     </ion-item>
     
   </ion-card-content>

@@ -52,7 +52,6 @@ export class ProfileInputPage implements OnInit {
       console.error('Error adding grocery:', error);
       // Handle error scenarios here
     }
-    this.cancel(); 
   }
 
   async deleteGoal(goal: Goal) {
@@ -65,12 +64,14 @@ export class ProfileInputPage implements OnInit {
         'id': id
       }
     });
+
     modal.onDidDismiss().then((dataReturned) => {
       if (dataReturned !== null) {
         // Handle the data received from the modal
         this.handleModalData(dataReturned.data);
       }
     });
+    
     return await modal.present();
   }
   

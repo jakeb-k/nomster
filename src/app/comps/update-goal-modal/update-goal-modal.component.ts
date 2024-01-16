@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
-
+import { ModalController } from '@ionic/angular';
 @Component({
   selector: 'app-update-goal-modal',
   templateUrl: './update-goal-modal.component.html',
@@ -7,14 +7,16 @@ import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 })
 export class UpdateGoalModalComponent  implements OnInit {
   @Input() id!: number; 
-  @Output() modalData = new EventEmitter<any>();
 
   macro: number = 0; 
   
-  constructor() { }
+  constructor(private modalController: ModalController) { }
 
   ngOnInit() {}
   sendData() {
-    this.modalData.emit({ id: this.id, data: this.macro });
+    this.modalController.dismiss([this.id, this.macro], 'send');
+  }
+  cancel() {
+    this.modalController.dismiss(null, 'cancel');
   }
 }
