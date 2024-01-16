@@ -15,7 +15,7 @@
       </p>
     </div>
     <div class="goalActions" >
-      <ion-button id="update-modal" fill="clear">
+      <ion-button (click)="openModal(g.id)" fill="clear">
         <ion-icon name="scale-outline"></ion-icon>
       </ion-button>
       <ion-button (click)="deleteGoal(g)" fill="clear">
@@ -61,28 +61,10 @@
     </ng-template>
   </ion-modal>
 
-  <!-- <ion-modal trigger="update-modal">
-    <ng-template>
-      <ion-content class="ion-padding"> 
-        <ion-button class="backBtn" (click)="cancel()" fill="clear">
-          BACK
-        </ion-button>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Update Macro Progress</ion-card-title>
-            <ion-card-subtitle>Enter the macro amount to update your progress</ion-card-subtitle>
-          </ion-card-header>
-        
-          <ion-card-content>
-            <ion-item>
-              <ion-input type="number" labelPlacement="stacked"  placeholder="Enter your desired goal amount"></ion-input>
-            </ion-item>
-            
-          </ion-card-content>
-        </ion-card>
-        <button class="navBtn">UPDATE</button>
-      </ion-content>
-    </ng-template>
-  </ion-modal> -->
+  <ion-modal id="my-modal">
+    <ion-button class="backBtn" (click)="cancel()" fill="clear">
+      BACK
+    </ion-button>
+  </ion-modal>
 
 </ion-content>

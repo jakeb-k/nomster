@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { GoalsService } from '../services/goals.service';
 import { Goal } from '../interfaces/goal';
-import { IonModal, ModalController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { UpdateGoalModalComponent } from '../comps/update-goal-modal/update-goal-modal.component';
 
 
 @Component({
@@ -19,8 +20,10 @@ export class ProfileInputPage implements OnInit {
     goalAmount: 0,
     type: '',
   }
+  modalComponent = UpdateGoalModalComponent;
   showSuccessMessage = Boolean(); 
 
+  modalInit = false; 
   constructor(private router: Router, private goalsService: GoalsService, private modalController: ModalController) { } 
 
   ngOnInit() {
@@ -54,5 +57,24 @@ export class ProfileInputPage implements OnInit {
 
   async deleteGoal(goal: Goal) {
     this.goalsService.deleteGoalById(goal.id!.toString())
+  }
+  async openModal(id: number) {
+    const modal = await this.modalController.create({
+      component: UpdateGoalModalComponent,
+      componentProps: {
+        'id': id
+      }
+    });
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        // Handle the data received from the modal
+        this.handleModalData(dataReturned.data);
+      }
+    });
+    return await modal.present();
+  }
+  
+  handleModalData(data: any) {
+    console.log(data); 
   }
 }

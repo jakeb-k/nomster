@@ -1,0 +1,17 @@
+<ion-content> 
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Update Macro Progress</ion-card-title>
+    <ion-card-subtitle>Enter the macro amount to update your progress</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    <p>{{id}}</p>
+    <ion-item>
+      <ion-input type="number" labelPlacement="stacked"  placeholder="Enter your desired goal amount"></ion-input>
+    </ion-item>
+    
+  </ion-card-content>
+</ion-card>
+<button class="navBtn" (click)="sendData()">UPDATE</button>
+</ion-content>
