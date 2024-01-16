@@ -6,7 +6,7 @@
   <ion-button id="goal-modal"  fill="clear">
     Add New Goal!
   </ion-button>
-  <ion-item class="goalItem" *ngFor="let g of goals()">
+ <ion-item class="goalItem" *ngFor="let g of goals()">
    <div class="goalContent"> 
       <p>{{g.type}} : </p>
       <p><b>{{g.goalAmount}}
@@ -18,13 +18,35 @@
       <ion-button (click)="openModal(g.id)" fill="clear">
         <ion-icon name="scale-outline"></ion-icon>
       </ion-button>
-      <ion-button fill="clear">
+      <ion-button (click)=deleteGoal(g) fill="clear">
         <ion-icon name="close-circle-outline"></ion-icon>
       </ion-button>
     </div>
-
-    <div>{{g.goalProgress}}</div>
+    <div class="barBase">
+      <div class="barProgress" [style.width]="(g.goalProgress / g.goalAmount * 100).toFixed(2) + '%'"></div>
+    </div>
   </ion-item>
+  <!-- <ion-item class="goalItem" >
+    <div class="goalContent"> 
+       <p>Caloric Intake : </p>
+       <p><b>3260
+         <span>kcals</span>
+         </b>
+       </p>
+     </div>
+     <div class="goalActions" >
+       <ion-button (click)="openModal(1)" fill="clear">
+         <ion-icon name="scale-outline"></ion-icon>
+       </ion-button>
+       <ion-button fill="clear">
+         <ion-icon name="close-circle-outline"></ion-icon>
+       </ion-button>
+     </div>
+     
+     <div class="barBase">
+       <div class="barProgress" [style.width]="(5 / 10 * 100).toFixed(2) + '%'"></div>
+     </div>
+   </ion-item> -->
 
   <div class="notification-container" *ngIf="showSuccessMessage">
     <ion-icon name="checkmark-circle" color="success"></ion-icon>

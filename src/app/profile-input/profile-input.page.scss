@@ -1,11 +1,7 @@
 .goalItem {
     display: flex;
     justify-content: space-between;
-    flex-direction:row; 
     flex-wrap: nowrap; 
-    * {
-       flex:1; 
-    }
 }
 
 .goalContent {
@@ -35,4 +31,15 @@ ion-button:hover {
     color:#ffa118;
     transform: scale(1.05);
     transition: 0.3s ease-in-out;
+}
+.barBase {
+    width:100%; 
+    height:5px; 
+    background-color: gray;
+    border-radius:25px; 
+}
+.barProgress {
+    height:5px; 
+    background-color: #47e273;
+    border-radius:25px; 
 }
