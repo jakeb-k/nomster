@@ -62,21 +62,38 @@ diet = String();
  * The API key used for making requests to the Spoonacular API.
  */
 apiKey = environment.apiKey;
-
+  /**
+   * Constructor for the RecipeService class.
+   * @param http - An instance of the HttpClient class used for making HTTP requests.
+   */
   constructor(private http: HttpClient) { }
+  /**
+   * Get a recipe based on the provided query string.
+   * @param query - The query string for recipe search.
+   * @returns An Observable containing recipe data.
+   */
   getRecipe(query:string): Observable<any> {
+    // Remove the previous query from session storage and store the new query
     sessionStorage.removeItem('query'); 
+
     sessionStorage.setItem('query',query); 
 
+    // Construct the API URL for recipe search
     let url = "https://api.spoonacular.com/recipes/complexSearch?query="+query+"&addRecipeNutrition=true&apiKey="+this.apiKey; 
    
     return this.http.get<any>(url)
   }
+  /**
+   * Apply filters to recipe search and get matching recipes.
+   * @param filter - The filter object containing search criteria.
+   * @returns An Observable containing filtered recipe data.
+   */
   applyFilter(filter:Filter): Observable<any> {
     
-
+    // Construct the base API URL for recipe search
     let url = "https://api.spoonacular.com/recipes/complexSearch?addRecipeNutrition=true&apiKey="+this.apiKey; 
    
+    // Apply filters to the URL if provided in the filter object
     if(filter.query != ""){
       this.query = "&query="+filter.query; 
       url = url.concat(this.query)
@@ -117,11 +134,23 @@ apiKey = environment.apiKey;
       this.intolerances = "&intolerances="+filter.intolerances.join(); 
       url = url.concat(this.intolerances); 
     }
+
+    // Remove whitespace from the URL
     url = this.removeWhitespace(url); 
     console.log(url); 
+
+    // Store the filter in session storage
     sessionStorage.setItem('filter', JSON.stringify(filter)); 
+
+    // Make the HTTP request to fetch filtered recipes
     return this.http.get<any>(url)
   }
+
+  /**
+   * Removes whitespace from a given string.
+   * @param text - The input text to remove whitespace from.
+   * @returns The text with whitespace removed.
+   */
   removeWhitespace(text: String) {
     return text.replace(/\s+/g, '');
   }
