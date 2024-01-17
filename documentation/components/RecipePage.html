@@ -1,0 +1,1327 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>nomster documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">nomster documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  RecipePage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/recipe/recipe.page.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-recipe</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./recipe.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./recipe.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#details" >details</a>
+                            </li>
+                            <li>
+                                <a href="#id" >id</a>
+                            </li>
+                            <li>
+                                <a href="#image" >image</a>
+                            </li>
+                            <li>
+                                <a href="#ingredients" >ingredients</a>
+                            </li>
+                            <li>
+                                <a href="#instructions" >instructions</a>
+                            </li>
+                            <li>
+                                <a href="#showSuccessMessage" >showSuccessMessage</a>
+                            </li>
+                            <li>
+                                <a href="#sortedIngredients" >sortedIngredients</a>
+                            </li>
+                            <li>
+                                <a href="#summary" >summary</a>
+                            </li>
+                            <li>
+                                <a href="#title" >title</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#addToGroceries" >addToGroceries</a>
+                            </li>
+                            <li>
+                                <a href="#formatInstructions" >formatInstructions</a>
+                            </li>
+                            <li>
+                                <a href="#getRecipeDetails" >getRecipeDetails</a>
+                            </li>
+                            <li>
+                                <a href="#navHome" >navHome</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#summaryFormatter" >summaryFormatter</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(getter: <a href="../injectables/GetRecipeDetailsService.html" target="_self">GetRecipeDetailsService</a>, route: ActivatedRoute, router: Router, database: <a href="../injectables/DatabaseService.html" target="_self">DatabaseService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/recipe/recipe.page.ts:35</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor for the component.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>getter</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/GetRecipeDetailsService.html" target="_self" >GetRecipeDetailsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Service to get recipe details.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>ActivatedRoute service to access route parameters.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Router service for navigation.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>database</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/DatabaseService.html" target="_self" >DatabaseService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Service to interact with the database.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addToGroceries"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>addToGroceries</b></span>
+                        <a href="#addToGroceries"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addToGroceries(grocery: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="109"
+                                    class="link-to-prism">src/app/recipe/recipe.page.ts:109</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Adds a grocery item to the database and handles the response.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>grocery</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The grocery item to add.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatInstructions"></a>
+                    <span class="name">
+                        <span ><b>formatInstructions</b></span>
+                        <a href="#formatInstructions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatInstructions(text: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="101"
+                                    class="link-to-prism">src/app/recipe/recipe.page.ts:101</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Formats the instructions text by adding breaks before numbers.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>text</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The instructions text to format.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>The formatted instructions.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getRecipeDetails"></a>
+                    <span class="name">
+                        <span ><b>getRecipeDetails</b></span>
+                        <a href="#getRecipeDetails"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getRecipeDetails()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/app/recipe/recipe.page.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Fetches recipe details and assigns them to component properties.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navHome"></a>
+                    <span class="name">
+                        <span ><b>navHome</b></span>
+                        <a href="#navHome"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navHome()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/recipe/recipe.page.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Navigates to the home route.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/app/recipe/recipe.page.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Lifecycle hook that is called after data-bound properties of a directive are initialized.
+Fetches recipe details based on the recipe ID.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="summaryFormatter"></a>
+                    <span class="name">
+                        <span ><b>summaryFormatter</b></span>
+                        <a href="#summaryFormatter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>summaryFormatter(summary: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="89"
+                                    class="link-to-prism">src/app/recipe/recipe.page.ts:89</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Formats the summary by cutting it off after &#39;minutes&#39;.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>summary</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The summary string to format.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>The formatted summary.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="details"></a>
+                    <span class="name">
+                        <span ><b>details</b></span>
+                        <a href="#details"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/recipe/recipe.page.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="id"></a>
+                    <span class="name">
+                        <span ><b>id</b></span>
+                        <a href="#id"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Number()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/recipe/recipe.page.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="image"></a>
+                    <span class="name">
+                        <span ><b>image</b></span>
+                        <a href="#image"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>String(&#x27;&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/recipe/recipe.page.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ingredients"></a>
+                    <span class="name">
+                        <span ><b>ingredients</b></span>
+                        <a href="#ingredients"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/recipe/recipe.page.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="instructions"></a>
+                    <span class="name">
+                        <span ><b>instructions</b></span>
+                        <a href="#instructions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>String(&#x27;&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/recipe/recipe.page.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showSuccessMessage"></a>
+                    <span class="name">
+                        <span ><b>showSuccessMessage</b></span>
+                        <a href="#showSuccessMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Boolean()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/recipe/recipe.page.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sortedIngredients"></a>
+                    <span class="name">
+                        <span ><b>sortedIngredients</b></span>
+                        <a href="#sortedIngredients"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/recipe/recipe.page.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="summary"></a>
+                    <span class="name">
+                        <span ><b>summary</b></span>
+                        <a href="#summary"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>String(&#x27;&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/recipe/recipe.page.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="title"></a>
+                    <span class="name">
+                        <span ><b>title</b></span>
+                        <a href="#title"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>String(&#x27;&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/recipe/recipe.page.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import {GetRecipeDetailsService} from &#x27;../services/get-recipe-details.service&#x27;;
+import { ActivatedRoute, Data } from &#x27;@angular/router&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { DatabaseService } from &#x27;../services/database.service&#x27;;
+import { Grocery } from &#x27;../interfaces/grocery&#x27;;
+
+
+
+@Component({
+  selector: &#x27;app-recipe&#x27;,
+  templateUrl: &#x27;./recipe.page.html&#x27;,
+  styleUrls: [&#x27;./recipe.page.scss&#x27;],
+})
+export class RecipePage implements OnInit {
+// Property to store the ID of the recipe, initialized to a number
+id &#x3D; Number(); 
+
+// Property to hold recipe details; type is any
+details: any;
+
+// String properties to store recipe information
+instructions &#x3D; String(&#x27;&#x27;); 
+summary &#x3D; String(&#x27;&#x27;);
+image &#x3D; String(&#x27;&#x27;);
+title &#x3D; String(&#x27;&#x27;);
+
+// Array to store recipe ingredients
+ingredients: any[] &#x3D; []; 
+
+// Array to store sorted ingredients; currently unused
+sortedIngredients: any[] &#x3D; [];
+
+// Flag to show or hide the success message
+showSuccessMessage &#x3D; Boolean(); 
+
+/**
+ * Constructor for the component.
+ * @param getter - Service to get recipe details.
+ * @param route - ActivatedRoute service to access route parameters.
+ * @param router - Router service for navigation.
+ * @param database - Service to interact with the database.
+ */
+constructor(private getter: GetRecipeDetailsService, private route: ActivatedRoute, private router: Router, private database: DatabaseService) { }
+
+/**
+ * Lifecycle hook that is called after data-bound properties of a directive are initialized.
+ * Fetches recipe details based on the recipe ID.
+ */
+ngOnInit() {
+  this.id &#x3D; Number(this.route.snapshot.paramMap.get(&#x27;id&#x27;)!);
+  this.getRecipeDetails();
+}
+
+/**
+ * Fetches recipe details and assigns them to component properties.
+ */
+getRecipeDetails() {
+  this.getter.getRecipeDetails(this.id).subscribe(
+    async (response) &#x3D;&gt; {
+      if (!response.error) {
+        this.instructions &#x3D; this.formatInstructions(response.instructions);
+        this.summary &#x3D; this.summaryFormatter(response.summary); 
+        this.image &#x3D; response.image; 
+        this.title &#x3D; response.title; 
+        this.ingredients &#x3D; response.extendedIngredients;  
+      } else {
+        console.error(&#x27;Error:&#x27;, response.error); 
+      }
+    },
+    (err) &#x3D;&gt; {
+      console.error(&#x27;Observer got an error:&#x27;, err);
+    }
+  );
+}
+
+/**
+ * Navigates to the home route.
+ */
+navHome() {  
+  this.router.navigateByUrl(&#x27;/&#x27;); 
+}
+
+/**
+ * Formats the summary by cutting it off after &#x27;minutes&#x27;.
+ * @param summary - The summary string to format.
+ * @returns The formatted summary.
+ */
+summaryFormatter(summary: string) {
+  let cutIndex &#x3D; summary.search(&#x27;minutes&#x27;); 
+  let newSummary &#x3D; summary.slice(0, cutIndex + 7);
+  console.log(newSummary.length); 
+  return newSummary; 
+}
+
+/**
+ * Formats the instructions text by adding breaks before numbers.
+ * @param text - The instructions text to format.
+ * @returns The formatted instructions.
+ */
+formatInstructions(text: string) {
+  return text.replace(/(\d+\.) /g, &#x27;&lt;br&gt;&lt;br&gt;$1&#x27;);
+}
+
+/**
+ * Adds a grocery item to the database and handles the response.
+ * @param grocery - The grocery item to add.
+ */
+async addToGroceries(grocery: any) {
+  let newGrocery: Grocery &#x3D; {
+    id: grocery.id,
+    name: grocery.original,
+    isBought: 0
+  };
+  try {
+    const isSuccess &#x3D; await this.database.addGrocery(newGrocery);
+    if (isSuccess) {
+      this.showSuccessMessage &#x3D; true;
+      setTimeout(() &#x3D;&gt; this.showSuccessMessage &#x3D; false, 1000);
+    } else {
+      // Handle cases where addGrocery returns false
+    }
+  } catch (error) {
+    console.error(&#x27;Error adding grocery:&#x27;, error);
+  }
+}
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-header&gt;&lt;/app-header&gt;
+
+&lt;ion-content&gt;
+
+  &lt;div class&#x3D;&quot;notification-container&quot; *ngIf&#x3D;&quot;showSuccessMessage&quot;&gt;
+    &lt;ion-icon name&#x3D;&quot;checkmark-circle&quot; color&#x3D;&quot;success&quot;&gt;&lt;/ion-icon&gt;
+    &lt;p class&#x3D;&quot;successMsg&quot;&gt;
+        Grocery Successfully Saved!
+    &lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;filterOps&quot;&gt;
+    &lt;h3&gt;{{title}}&lt;/h3&gt;
+  &lt;/div&gt;
+ &lt;div id&#x3D;&quot;container&quot;&gt;
+    &lt;div id&#x3D;&quot;topCont&quot;&gt;
+      &lt;img [src]&#x3D;&quot;image&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div id&#x3D;&quot;ingCont&quot;&gt;
+      &lt;div class&#x3D;&quot;ingBox&quot;&gt;
+        &lt;h3&gt;Ingredients&lt;/h3&gt;
+        &lt;tr *ngFor&#x3D;&quot;let item of ingredients; let i &#x3D; index&quot;&gt;
+          &lt;ng-container *ngIf&#x3D;&quot;i % 2 &#x3D;&#x3D;&#x3D; 0; else oddRow&quot;&gt;
+            &lt;td&gt;
+              &lt;div class&#x3D;&quot;recipeGrocery&quot;&gt; {{ item.original }} &lt;/div&gt;
+              &lt;div class&#x3D;&quot;recipeGrocery&quot;&gt; &lt;ion-button fill&#x3D;&quot;clear&quot; (click)&#x3D;&quot;addToGroceries(item)&quot;&gt;&lt;ion-icon name&#x3D;&quot;add-circle-outline&quot; &gt;&lt;/ion-icon&gt;&lt;/ion-button&gt;&lt;/div&gt;
+            &lt;/td&gt;
+            &lt;td *ngIf&#x3D;&quot;i + 1 &lt; ingredients.length&quot;&gt;
+              &lt;div class&#x3D;&quot;recipeGrocery&quot;&gt; {{ ingredients[i + 1].original }} &lt;/div&gt;
+              &lt;div class&#x3D;&quot;recipeGrocery&quot;&gt;&lt;ion-button fill&#x3D;&quot;clear&quot; (click)&#x3D;&quot;addToGroceries(ingredients[i + 1])&quot;&gt;&lt;ion-icon name&#x3D;&quot;add-circle-outline&quot; &gt;&lt;/ion-icon&gt;&lt;/ion-button&gt;&lt;/div&gt;
+            &lt;/td&gt;
+          &lt;/ng-container&gt;
+          &lt;ng-template #oddRow&gt;
+          &lt;/ng-template&gt;
+        &lt;/tr&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+   
+    &lt;h3&gt;Instructions&lt;/h3&gt;
+    &lt;div class&#x3D;&quot;instruc&quot; [innerHTML]&#x3D;&quot;instructions&quot;&gt;&lt;/div&gt;
+    &lt;p class&#x3D;&quot;sumPara&quot; [innerHTML]&#x3D;&quot;summary&quot;&gt;&lt;/p&gt;
+
+  &lt;/div&gt;
+
+
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./recipe.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import url(&#x27;https://fonts.cdnfonts.com/css/space-grotesk&#x27;); 
+@import url(&#x27;https://fonts.cdnfonts.com/css/margarine&#x27;);
+@import url(&#x27;https://fonts.cdnfonts.com/css/better-ground-line&#x27;);
+ 
+ $p : &#x27;Space Grotesk&#x27;, sans-serif; 
+ $p2 : &#x27;Better Ground Line&#x27;, sans-serif;
+ $p3 :&#x27;Margarine&#x27;, sans-serif;  
+
+
+
+img {
+    padding:2.5%;
+    border-radius:15px; 
+}
+td {
+    width: calc(50% - 4.5%); /* Set the width to 50% minus the margin gap */
+    font-family:$p3; 
+}
+#container {
+    margin:auto;
+    padding:10px; 
+}
+h3 {
+    font-family:$p; 
+}
+
+.recipeGrocery {
+    margin-bottom:-30px; 
+}
+ion-icon {
+    color:#FF6700; 
+   }
+ion-button {
+    margin:25px auto;
+    margin-right:auto;  
+}
+ion-button:hover {
+    color:#ffa118;
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+  }</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-header></app-header><ion-content>  <div class="notification-container" *ngIf="showSuccessMessage">    <ion-icon name="checkmark-circle" color="success"></ion-icon>    <p class="successMsg">        Grocery Successfully Saved!    </p>  </div>  <div class="filterOps">    <h3>{{title}}</h3>  </div> <div id="container">    <div id="topCont">      <img [src]="image" />    </div>    <div id="ingCont">      <div class="ingBox">        <h3>Ingredients</h3>        <tr *ngFor="let item of ingredients; let i = index">          <ng-container *ngIf="i % 2 === 0; else oddRow">            <td>              <div class="recipeGrocery"> {{ item.original }} </div>              <div class="recipeGrocery"> <ion-button fill="clear" (click)="addToGroceries(item)"><ion-icon name="add-circle-outline" ></ion-icon></ion-button></div>            </td>            <td *ngIf="i + 1 < ingredients.length">              <div class="recipeGrocery"> {{ ingredients[i + 1].original }} </div>              <div class="recipeGrocery"><ion-button fill="clear" (click)="addToGroceries(ingredients[i + 1])"><ion-icon name="add-circle-outline" ></ion-icon></ion-button></div>            </td>          </ng-container>          <ng-template #oddRow>          </ng-template>        </tr>      </div>    </div>       <h3>Instructions</h3>    <div class="instruc" [innerHTML]="instructions"></div>    <p class="sumPara" [innerHTML]="summary"></p>  </div></ion-content></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'FavouriteComponent', 'selector': 'favourite'},{'name': 'FavsPage', 'selector': 'app-favs'},{'name': 'GroceryPage', 'selector': 'app-grocery'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'LoginPage', 'selector': 'app-login'},{'name': 'MealResultComponent', 'selector': 'meal-result'},{'name': 'NutrientsPage', 'selector': 'app-nutrients'},{'name': 'ProfileInputPage', 'selector': 'app-profile-input'},{'name': 'RecipePage', 'selector': 'app-recipe'},{'name': 'UpdateGoalModalComponent', 'selector': 'app-update-goal-modal'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'RecipePage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'RecipePage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
