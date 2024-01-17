@@ -11,9 +11,9 @@ export class HeaderComponent  implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {}
-
   nav(path:String) {
-    this.router.navigateByUrl('/'+path); 
+    this.router.navigateByUrl('/'+path);  //nav based off a string
+
   }
 
 }

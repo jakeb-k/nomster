@@ -8,18 +8,61 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class GetRecipeService {
-  query=String();
-  ingredients=String(); 
-  maxCals= String(); 
-  maxFat= String(); 
-  maxCarbs= String(); 
-  minProtein= String(); 
-  cuisine = String(); 
-  type = String(); 
-  intolerances = String(); 
-  diet = String(); 
+/**
+ * Represents the Query parameter for recipe searches.
+ */
+query = String();
 
-  apiKey = environment.apiKey; 
+/**
+ * Represents the Ingredients parameter for recipe searches.
+ */
+ingredients = String();
+
+/**
+ * Represents the Maximum Calories parameter for recipe searches.
+ */
+maxCals = String();
+
+/**
+ * Represents the Maximum Fat parameter for recipe searches.
+ */
+maxFat = String();
+
+/**
+ * Represents the Maximum Carbs parameter for recipe searches.
+ */
+maxCarbs = String();
+
+/**
+ * Represents the Minimum Protein parameter for recipe searches.
+ */
+minProtein = String();
+
+/**
+ * Represents the Cuisine parameter for recipe searches.
+ */
+cuisine = String();
+
+/**
+ * Represents the Type parameter for recipe searches.
+ */
+type = String();
+
+/**
+ * Represents the Intolerances parameter for recipe searches.
+ */
+intolerances = String();
+
+/**
+ * Represents the Diet parameter for recipe searches.
+ */
+diet = String();
+
+/**
+ * The API key used for making requests to the Spoonacular API.
+ */
+apiKey = environment.apiKey;
+
   constructor(private http: HttpClient) { }
   getRecipe(query:string): Observable<any> {
     sessionStorage.removeItem('query'); 

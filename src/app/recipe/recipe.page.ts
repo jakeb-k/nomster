@@ -13,88 +13,116 @@ import { Grocery } from '../interfaces/grocery';
   styleUrls: ['./recipe.page.scss'],
 })
 export class RecipePage implements OnInit {
-  id = Number(); 
-  details:any;
-  instructions = String(''); 
-  summary = String('');
-  image = String('');
-  title = String('');
-  ingredients:any[]=[]; 
+// Property to store the ID of the recipe, initialized to a number
+id = Number(); 
 
-  sortedIngredients:any[]=[];
+// Property to hold recipe details; type is any
+details: any;
 
-  showSuccessMessage = Boolean(); 
-  constructor(private getter: GetRecipeDetailsService, private route: ActivatedRoute, private router: Router, private database: DatabaseService) { }
+// String properties to store recipe information
+instructions = String(''); 
+summary = String('');
+image = String('');
+title = String('');
 
-  ngOnInit() {
-    this.id = Number(this.route.snapshot.paramMap.get('id')!);
-    this.getRecipeDetails(); 
-    
+// Array to store recipe ingredients
+ingredients: any[] = []; 
 
-  }
-  getRecipeDetails(){
-    
-    this.getter.getRecipeDetails(this.id).subscribe(
-      async (response) => {
-        if (!response.error) {
-          
-         this.instructions = this.formatInstructions(response.instructions);
-         this.summary = this.summaryFormatter(response.summary); 
-         this.image = response.image; 
-         this.title = response.title; 
-         this.ingredients = response.extendedIngredients;  
-      
-        
-        } else {
-          
-          console.error('Error:', response.error); 
-        }
-      },
-      (err) => {
-        console.error('Observer got an error:', err); // Log the general error
-      }
-    );
-  }
-  navHome(){  
-    this.router.navigateByUrl('/'); 
-  }
-  summaryFormatter(summary:string){
-    let cutIndex = summary.search('minutes'); 
-    let newSummary = summary.slice(0, cutIndex+7);
-    console.log(newSummary.length); 
-    return newSummary; 
-  }
+// Array to store sorted ingredients; currently unused
+sortedIngredients: any[] = [];
 
-  formatInstructions(text:string) {
-  return text.replace(/(\d+\.) /g, '<br><br>$1');
-  }
+// Flag to show or hide the success message
+showSuccessMessage = Boolean(); 
 
-  async addToGroceries(grocery: any) {
-    
-   
-    let newGrocery:Grocery = {
-      id: grocery.id,
-      name: grocery.original,
-      isBought:0
-    }
-    try {
-      const isSuccess = await this.database.addGrocery(newGrocery);
-      if (isSuccess) {
-        this.showSuccessMessage = true; // Display success message
-        setTimeout(() => {
-          this.showSuccessMessage = false; // Hide success message after a delay
-        }, 1000); // Adjust the delay (in milliseconds) as needed
+/**
+ * Constructor for the component.
+ * @param getter - Service to get recipe details.
+ * @param route - ActivatedRoute service to access route parameters.
+ * @param router - Router service for navigation.
+ * @param database - Service to interact with the database.
+ */
+constructor(private getter: GetRecipeDetailsService, private route: ActivatedRoute, private router: Router, private database: DatabaseService) { }
+
+/**
+ * Lifecycle hook that is called after data-bound properties of a directive are initialized.
+ * Fetches recipe details based on the recipe ID.
+ */
+ngOnInit() {
+  this.id = Number(this.route.snapshot.paramMap.get('id')!);
+  this.getRecipeDetails();
+}
+
+/**
+ * Fetches recipe details and assigns them to component properties.
+ */
+getRecipeDetails() {
+  this.getter.getRecipeDetails(this.id).subscribe(
+    async (response) => {
+      if (!response.error) {
+        this.instructions = this.formatInstructions(response.instructions);
+        this.summary = this.summaryFormatter(response.summary); 
+        this.image = response.image; 
+        this.title = response.title; 
+        this.ingredients = response.extendedIngredients;  
       } else {
-        // Handle cases where addgroceryourite returns false
-        // Optional: Display an error message or perform other actions
+        console.error('Error:', response.error); 
       }
-    } catch (error) {
-      console.error('Error adding grocery:', error);
-      // Handle error scenarios here
+    },
+    (err) => {
+      console.error('Observer got an error:', err);
     }
+  );
+}
 
-   
+/**
+ * Navigates to the home route.
+ */
+navHome() {  
+  this.router.navigateByUrl('/'); 
+}
+
+/**
+ * Formats the summary by cutting it off after 'minutes'.
+ * @param summary - The summary string to format.
+ * @returns The formatted summary.
+ */
+summaryFormatter(summary: string) {
+  let cutIndex = summary.search('minutes'); 
+  let newSummary = summary.slice(0, cutIndex + 7);
+  console.log(newSummary.length); 
+  return newSummary; 
+}
+
+/**
+ * Formats the instructions text by adding breaks before numbers.
+ * @param text - The instructions text to format.
+ * @returns The formatted instructions.
+ */
+formatInstructions(text: string) {
+  return text.replace(/(\d+\.) /g, '<br><br>$1');
+}
+
+/**
+ * Adds a grocery item to the database and handles the response.
+ * @param grocery - The grocery item to add.
+ */
+async addToGroceries(grocery: any) {
+  let newGrocery: Grocery = {
+    id: grocery.id,
+    name: grocery.original,
+    isBought: 0
+  };
+  try {
+    const isSuccess = await this.database.addGrocery(newGrocery);
+    if (isSuccess) {
+      this.showSuccessMessage = true;
+      setTimeout(() => this.showSuccessMessage = false, 1000);
+    } else {
+      // Handle cases where addGrocery returns false
+    }
+  } catch (error) {
+    console.error('Error adding grocery:', error);
   }
-
+}
 
 }

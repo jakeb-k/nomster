@@ -1,3 +1,5 @@
+<!-- HTML CODE FOR THE FAVOURITES COMPONENT-->
+
 <div class="row"> 
   <div class="favImg">
     <img [src]="fav.pictureLink" (click)="recipeNav(fav.id)"/> 
@@ -27,7 +29,7 @@
         <p>{{fav.protein}}</p>
       </div>
     </div>
-
+    <!--DOESNT INCLUDE THE NUTRIENT TABLE LINK AS THAT NEEDS TO BE DIFFERENT MODAL-->
     <div class="favOptions">
       <ion-button fill="clear" (click)="deleteFav(fav)"><ion-icon name="trash-outline" ></ion-icon></ion-button>
     </div>
