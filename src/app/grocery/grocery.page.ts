@@ -13,8 +13,8 @@ export class GroceryPage implements OnInit {
   //groceries is writable signal arr of groceries
   //this is a signal between the object here and the db
   groceries!: WritableSignal<Grocery[]>; 
-  //bool that controls the display of success message
 
+  //bool that controls the display of success message
   showSuccessMessage: Boolean = false 
   
   //grocery ng model, links to front end inputs
@@ -23,8 +23,17 @@ export class GroceryPage implements OnInit {
     name: "",
     isBought: 0
   }; 
+
+  /**
+   * Initializes the component with the DatabaseService and Router.
+   * @param database - Service for database operations.
+   * @param router - Router for navigation.
+   */
   constructor(private database: DatabaseService, private router:Router) { }
 
+  /**
+   * Loads grocery data from the database on initialization.
+   */
   ngOnInit() {
     //call the sql query to db
     this.database.loadGrocery(); 
@@ -32,6 +41,10 @@ export class GroceryPage implements OnInit {
     this.groceries = this.database.getGrocery(); 
   }
 
+  /**
+   * Deletes a grocery item from the database.
+   * @param grocery - The grocery item to be deleted.
+   */
   async deleteGrocery(grocery: Grocery) {
     //wait for their to be response on delete grocery function
     //takes name and id as its composite primary key
@@ -39,6 +52,9 @@ export class GroceryPage implements OnInit {
     this.groceries = this.database.getGrocery(); 
   }
 
+  /**
+   * Adds a new grocery item to the database.
+   */
   async addToGroceries() {
     //change this to auto increment
     this.newGrocery.id = this.randomIdGenerator(10000,99999)
@@ -57,9 +73,20 @@ export class GroceryPage implements OnInit {
 
     }
   }
+   /**
+   * Generates a random number between specified minimum and maximum values.
+   * @param min - The minimum value.
+   * @param max - The maximum value.
+   * @returns A random number between min and max.
+   */
   randomIdGenerator(min:number,max:number) : Number {
       return Math.random() * (max - min) + min; //returns a number between the min and max
   }
+
+  /**
+   * Navigates to a specified path.
+   * @param path - The path to navigate to as a string.
+   */
   nav(path:string){
     this.router.navigateByUrl('/'+path); //nav by string
   }

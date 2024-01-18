@@ -8,12 +8,21 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent  implements OnInit {
 
+  /**
+   * Initializes the component with the Router.
+   * @param router - Router for navigation.
+   */
   constructor(private router: Router) { }
 
   ngOnInit() {}
-  nav(path:String) {
-    this.router.navigateByUrl('/'+path);  //nav based off a string
 
+  /**
+   * Navigates to a specified path.
+   * Uses the path parameter to navigate to the corresponding route.
+   * @param path - The path to navigate to as a string.
+   */
+  nav(path:String) {
+    this.router.navigateByUrl('/'+path);  
   }
 
 }

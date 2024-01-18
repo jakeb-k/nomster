@@ -16,50 +16,50 @@ import { Nutrient } from '../interfaces/nutrient';
   styleUrls: ['home.page.scss'],
 }) 
 export class HomePage implements OnInit{
-  @ViewChild(IonModal) modal!: IonModal;
   
+  
+  @ViewChild(IonModal) modal!: IonModal;
 
-  //no results message
+  // Message displayed when no results are found
   message = '';
 
-  //arr of returned JSON objects
+  // Array of unprocessed JSON objects from API response
   recipes:any[]=[]; 
 
-  //arr of sorted JSON objects into meal interface
+  // Array of meals sorted into a usable format
   sortedRecipes:Meal[]=[];
 
-  //sorted nutrients store
+  // Store for nutrient information of meals
   nutrients:any; 
 
-  //query for recipe search
+  // User query for recipe search
   query = String(""); 
 
-  //ingredients to use for recipe search
+  // Ingredients list for recipe search
   ingredients = String(""); 
 
-  //controls which meal is being displayed in front end slideshow
+  // Index for controlling which meal is displayed in the UI slideshow
   index:any = 0; 
 
-  //ensures that meals will only show when this is true
+  // Flag to control display of meals in UI
   setLoaded: Boolean = false; 
 
-  //raw json object arr before sorting 
+  // Array of raw nutrient JSON objects before sorting
   rawNutrients:any[]=[]; 
 
-
-  //holds the meals serving sizes
+  // Array storing meals' serving sizes
   servingSize:any[]=[]; 
- 
-  //this is the current nutrient store, need to update to get rid of others
+
+  // Current nutrient store, to be updated later
   nutrientsArr: Nutrient[] = []; 
 
-  //controls display of success message when meal is saved
+  // Flag for displaying success message when a meal is saved
   showSuccessMessage:Boolean = false; 
 
-  //the number used to base nutrient table %'s off
+  // Base number for nutrient table percentages, derived from user's calorie intake
   calorieIntake = Number(sessionStorage.getItem('calorieIntake')) 
 
-  //nutrient table intially bases off 2000, so get ratio to enable custom caloric intake values
+  // Ratio for adjusting nutrient table based on custom caloric intake values
   calorieRatio = this.calorieIntake / 2000;
 
   //filter interface to be input into API
@@ -76,34 +76,44 @@ export class HomePage implements OnInit{
     type:"",
     intolerances:[], 
   }
-  //string arr of all available cusines to be used in fitler
+  //string arr of all available cusines to be used in filter
   cuisines: String[]= ['African','Asian','American','British','Cajun','Caribbean',
   'Chinese','Eastern European','European','French','German','Greek','Indian','Irish',
   'Italian','Japanese','Jewish','Korean','Latin American','Mediterranean','Mexican',
   'Middle Eastern','Nordic','Southern','Spanish','Thai','Vietnamese']
 
-  //string arr of all available diets to be used in fitler
+  //string arr of all available diets to be used in filter
   diets: String[]= ['Gluten Free', 'Ketogenic','Vegetarian','Lacto-Vegetarian', 
   'Ovo-Vegetarian', 'Vegan', 'Pescetarian', 'Paleo', 'Primal', 'Low FODMAP', 'Whole30'];
 
-  //string arr of all available intolerances to be used in fitler
+  //string arr of all available intolerances to be used in filter
   intolerances: String[]=['Dairy','Egg','Gluten','Grain','Peanut','Seafood','Sesame',
   'Shellfish','Soy','Sulfite','Tree Nut','Wheat'];
 
-  //string arr of all available meal types to be used in fitler
+  //string arr of all available meal types to be used in filter
   mealType: String[]=['main course','side dish','dessert','appetizer','salad','bread',
   'breakfast','soup','beverage','sauce','marinade','fingerfood','snack','drink'];
 
 
+  /**
+   * Initializes the HomePage component with necessary services and controllers.
+   * @param recipeGetter - Service for fetching recipes.
+   * @param router - Router for navigation.
+   * @param modalController - Controller for managing modals.
+   * @param database - Service for database operations.
+   * @param recipeDetailGetter - Service for fetching detailed recipe information.
+   */
   constructor(private recipeGetter: GetRecipeService, private router:Router, private modalController: ModalController, private database: DatabaseService, private recipeDetailGetter: GetRecipeDetailsService) {}
   
+  /**
+   * Temporary storage and retrieval of previous search results to reduce API calls.
+   */
   ngOnInit(){
-    //temp storage of previous search results
+   
     let temp = sessionStorage.getItem('recipes');
     let temp2 = sessionStorage.getItem('nutrients');
     let temp3 = sessionStorage.getItem('servingSize'); 
-    //checks if it exists and then parses into variables for display
-    //enables less api use in one session
+  
     if(temp && temp2){
       this.setLoaded = true; 
       this.sortedRecipes = JSON.parse(temp); 
@@ -111,6 +121,9 @@ export class HomePage implements OnInit{
       this.servingSize = JSON.parse(temp3!); 
     }
   }
+  /**
+   * Fetches recipes based on user query.
+   */
   getRecipe(){
     //pretty sure this deprecated, honestly dont know tho 
     sessionStorage.clear(); //clears current session recipe data for new
@@ -134,10 +147,16 @@ export class HomePage implements OnInit{
       }
     );
   }
-
+  /**
+   * Navigates to detailed recipe view.
+   * @param id - The unique identifier of the recipe.
+   */
   nav(id:Number){
-    this.router.navigateByUrl('/recipe/'+id, {replaceUrl:true}); //nav for more recipe detail
+    this.router.navigateByUrl('/recipe/'+id, {replaceUrl:true});
   }
+  /**
+   * Sorts and processes raw recipe data into a usable format.
+   */
   recipeSorter(){
     this.rawNutrients = []; //removes previous nutrient info
     this.sortedRecipes = []; //removes previous recipe info
@@ -186,7 +205,10 @@ export class HomePage implements OnInit{
     }
     
   } 
-  //updated nutrient fetch, needs full implementation
+  /**
+   * Fetches detailed nutrition information for a specific recipe.
+   * @param id - The unique identifier of the recipe.
+   */
   getNutrition(id: number) {
     this.nutrientsArr = []; //clear previous held nutrients
     this.recipeDetailGetter.getRecipeNutritionDetails(id).subscribe({ //sends API request and subscribes the returned http res
@@ -210,7 +232,10 @@ export class HomePage implements OnInit{
       }
     });
   }
-
+   /**
+   * Navigates through the meal slideshow in the UI.
+   * @param step - The step number to navigate the slideshow.
+   */
   slideNav(step:number){
     //takes either -1 or +1 
     //controls which meal is being showed in the slideshow
@@ -222,7 +247,9 @@ export class HomePage implements OnInit{
       }
     }
   }
-
+  /**
+   * Sends filter data for processing and updates the UI with the response.
+   */
   sendFilterData() {
     //sends filter interface to be integrated into API req
     //and adds the results to variables
@@ -247,15 +274,24 @@ export class HomePage implements OnInit{
           }
         );
   }
+  /**
+   * Handles the cancellation of the modal view.
+   */
   cancel() {
     //removes the modal from screen
     this.modalController.dismiss(null, 'cancel');
   }
+  /**
+   * Toggles between the filter form and meal results display in the UI.
+   */
   reset(){
     //controls if filter form or if meal results are shown
     this.setLoaded = !this.setLoaded; //simple bool flip
   }
-
+  /**
+   * Adds a new favourite meal to the database.
+   * @param fav - The meal to be added as a favourite.
+   */
   async newFav(fav: Meal) {
     //assign current displaying meal as the new fav
     fav = this.sortedRecipes[this.index]; 

@@ -8,20 +8,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./meal-result.component.scss'],
 })
 export class MealResultComponent  implements OnInit {
-  //should probably rework this to take in singular meal object
-  @Input() carbs!: String;
-  @Input() cals!: String;
-  @Input() fat!: String;
-  @Input() protein!: String;
-  @Input() id!: Number;
-  @Input() image!: String;
-  @Input() title!: String;
-
+   // Inputs for various nutritional and recipe details
+   @Input() carbs!: String;
+   @Input() cals!: String;
+   @Input() fat!: String;
+   @Input() protein!: String;
+   @Input() id!: Number;
+   @Input() image!: String;
+   @Input() title!: String;
+ 
+  /**
+  * Initializes the component with the Router.
+  * @param router - Router for navigation.
+  */
   constructor(private router: Router) { }
 
   ngOnInit() {}
+
+  /**
+   * Navigates to the recipe details page based on the recipe ID.
+   * Facilitates specific API requests for detailed recipe information.
+   * @param id - The unique identifier of the recipe.
+   */
   recipeNav(id:Number){
-  //nav based off the recipe ID, allows for specific API req for that recipe
     this.router.navigateByUrl('/recipe/'+id, {replaceUrl:true}); 
   }
 

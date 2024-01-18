@@ -12,14 +12,24 @@ export class UpdateGoalModalComponent  implements OnInit {
 
   macro: number = 0; 
   
+  /**
+   * Initializes the component with ModalController.
+   * @param modalController - Controller for managing modals.
+   */
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {}
-  //modal controller class that closes the modal, but sends the data in model
+  /**
+   * Sends data back from the modal and closes it.
+   * Dismisses the modal with the 'send' role and passes the id and macro data.
+   */
   sendData() {
     this.modalController.dismiss([this.id, this.macro], 'send');
   }
-  //modal controller class that closes the modal, but returns null to ensure no data update
+  /**
+   * Closes the modal without sending data.
+   * Dismisses the modal with the 'cancel' role and ensures no data update.
+   */
   cancel() {
     this.modalController.dismiss(null, 'cancel');
   }

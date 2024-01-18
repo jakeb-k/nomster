@@ -11,19 +11,32 @@ import { DatabaseService } from 'src/app/services/database.service';
   styleUrls: ['./favourite.component.scss'],
 })
 export class FavouriteComponent  implements OnInit {
-  //Takes in fav as input which is already full defined
+   
+  // Input property for a favourite item
+   @Input() fav!: Favourite;
   
-  @Input() fav!: Favourite
-  
+   /**
+    * Initializes the component with DatabaseService and Router.
+    * @param database - Service for database operations.
+    * @param router - Router for navigation.
+    */
   constructor(private database: DatabaseService, private router: Router) { }
 
   ngOnInit() {}
-  async deleteFav(fav: Favourite) {
-    this.database.deleteFavById(fav.id.toString()); //calls the database delete favourite function,
 
+  /**
+   * Deletes a favourite item from the database.
+   * @param fav - The favourite item to be deleted.
+   */
+  async deleteFav(fav: Favourite) {
+    this.database.deleteFavById(fav.id.toString()); 
   }
+
+  /**
+   * Navigates to the recipe details page based on the recipe ID.
+   * @param id - The unique identifier of the recipe.
+   */
   recipeNav(id:Number){
-  //nav based off a number (id), replace the url to re init if already used
     this.router.navigateByUrl('/recipe/'+id, {replaceUrl:true}); 
      
   }
