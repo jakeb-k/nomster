@@ -235,6 +235,8 @@
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Initializes the component with the Router.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -243,6 +245,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -257,6 +260,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Router for navigation.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -296,14 +305,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="14"
-                                    class="link-to-prism">src/app/comps/header/header.component.ts:14</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="24"
+                                    class="link-to-prism">src/app/comps/header/header.component.ts:24</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Navigates to a specified path.
+Uses the path parameter to navigate to the corresponding route.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -314,6 +326,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -328,6 +341,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The path to navigate to as a string.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -363,8 +382,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="13"
-                                    class="link-to-prism">src/app/comps/header/header.component.ts:13</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="17"
+                                    class="link-to-prism">src/app/comps/header/header.component.ts:17</a></div>
                         </td>
                     </tr>
 
@@ -396,12 +415,21 @@ import { Router } from &#x27;@angular/router&#x27;;
 })
 export class HeaderComponent  implements OnInit {
 
+  /**
+   * Initializes the component with the Router.
+   * @param router - Router for navigation.
+   */
   constructor(private router: Router) { }
 
   ngOnInit() {}
-  nav(path:String) {
-    this.router.navigateByUrl(&#x27;/&#x27;+path);  //nav based off a string
 
+  /**
+   * Navigates to a specified path.
+   * Uses the path parameter to navigate to the corresponding route.
+   * @param path - The path to navigate to as a string.
+   */
+  nav(path:String) {
+    this.router.navigateByUrl(&#x27;/&#x27;+path);  
   }
 
 }

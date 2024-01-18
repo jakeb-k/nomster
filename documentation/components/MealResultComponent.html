@@ -267,6 +267,8 @@
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Initializes the component with the Router.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -275,6 +277,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -289,6 +292,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Router for navigation.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -477,8 +486,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="22"
-                                    class="link-to-prism">src/app/comps/meal-result/meal-result.component.ts:22</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="26"
+                                    class="link-to-prism">src/app/comps/meal-result/meal-result.component.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -514,14 +523,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/app/comps/meal-result/meal-result.component.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="33"
+                                    class="link-to-prism">src/app/comps/meal-result/meal-result.component.ts:33</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Navigates to the recipe details page based on the recipe ID.
+Facilitates specific API requests for detailed recipe information.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -532,6 +544,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -546,6 +559,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The unique identifier of the recipe.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -577,20 +596,29 @@ import { Router } from &#x27;@angular/router&#x27;;
   styleUrls: [&#x27;./meal-result.component.scss&#x27;],
 })
 export class MealResultComponent  implements OnInit {
-  //should probably rework this to take in singular meal object
-  @Input() carbs!: String;
-  @Input() cals!: String;
-  @Input() fat!: String;
-  @Input() protein!: String;
-  @Input() id!: Number;
-  @Input() image!: String;
-  @Input() title!: String;
-
+   // Inputs for various nutritional and recipe details
+   @Input() carbs!: String;
+   @Input() cals!: String;
+   @Input() fat!: String;
+   @Input() protein!: String;
+   @Input() id!: Number;
+   @Input() image!: String;
+   @Input() title!: String;
+ 
+  /**
+  * Initializes the component with the Router.
+  * @param router - Router for navigation.
+  */
   constructor(private router: Router) { }
 
   ngOnInit() {}
+
+  /**
+   * Navigates to the recipe details page based on the recipe ID.
+   * Facilitates specific API requests for detailed recipe information.
+   * @param id - The unique identifier of the recipe.
+   */
   recipeNav(id:Number){
-  //nav based off the recipe ID, allows for specific API req for that recipe
     this.router.navigateByUrl(&#x27;/recipe/&#x27;+id, {replaceUrl:true}); 
   }
 

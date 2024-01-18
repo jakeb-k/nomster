@@ -266,6 +266,8 @@
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Initializes the component with ModalController.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -274,6 +276,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -288,6 +291,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Controller for managing modals.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -350,14 +359,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/app/comps/update-goal-modal/update-goal-modal.component.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="33"
+                                    class="link-to-prism">src/app/comps/update-goal-modal/update-goal-modal.component.ts:33</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Closes the modal without sending data.
+Dismisses the modal with the &#39;cancel&#39; role and ensures no data update.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -387,8 +399,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="17"
-                                    class="link-to-prism">src/app/comps/update-goal-modal/update-goal-modal.component.ts:17</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="21"
+                                    class="link-to-prism">src/app/comps/update-goal-modal/update-goal-modal.component.ts:21</a></div>
                         </td>
                     </tr>
 
@@ -424,14 +436,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="19"
-                                    class="link-to-prism">src/app/comps/update-goal-modal/update-goal-modal.component.ts:19</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="26"
+                                    class="link-to-prism">src/app/comps/update-goal-modal/update-goal-modal.component.ts:26</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Sends data back from the modal and closes it.
+Dismisses the modal with the &#39;send&#39; role and passes the id and macro data.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -498,14 +513,24 @@ export class UpdateGoalModalComponent  implements OnInit {
 
   macro: number &#x3D; 0; 
   
+  /**
+   * Initializes the component with ModalController.
+   * @param modalController - Controller for managing modals.
+   */
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {}
-  //modal controller class that closes the modal, but sends the data in model
+  /**
+   * Sends data back from the modal and closes it.
+   * Dismisses the modal with the &#x27;send&#x27; role and passes the id and macro data.
+   */
   sendData() {
     this.modalController.dismiss([this.id, this.macro], &#x27;send&#x27;);
   }
-  //modal controller class that closes the modal, but returns null to ensure no data update
+  /**
+   * Closes the modal without sending data.
+   * Dismisses the modal with the &#x27;cancel&#x27; role and ensures no data update.
+   */
   cancel() {
     this.modalController.dismiss(null, &#x27;cancel&#x27;);
   }

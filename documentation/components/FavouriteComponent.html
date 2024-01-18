@@ -253,6 +253,8 @@
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Initializes the component with DatabaseService and Router.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -261,6 +263,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -275,6 +278,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Service for database operations.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -287,6 +296,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Router for navigation.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -351,14 +366,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="21"
-                                    class="link-to-prism">src/app/comps/favourite/favourite.component.ts:21</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="31"
+                                    class="link-to-prism">src/app/comps/favourite/favourite.component.ts:31</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Deletes a favourite item from the database.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -369,6 +386,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -383,6 +401,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The favourite item to be deleted.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -418,8 +442,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="20"
-                                    class="link-to-prism">src/app/comps/favourite/favourite.component.ts:20</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="25"
+                                    class="link-to-prism">src/app/comps/favourite/favourite.component.ts:25</a></div>
                         </td>
                     </tr>
 
@@ -455,14 +479,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="25"
-                                    class="link-to-prism">src/app/comps/favourite/favourite.component.ts:25</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="39"
+                                    class="link-to-prism">src/app/comps/favourite/favourite.component.ts:39</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Navigates to the recipe details page based on the recipe ID.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -473,6 +499,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -487,6 +514,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The unique identifier of the recipe.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -521,19 +554,32 @@ import { DatabaseService } from &#x27;src/app/services/database.service&#x27;;
   styleUrls: [&#x27;./favourite.component.scss&#x27;],
 })
 export class FavouriteComponent  implements OnInit {
-  //Takes in fav as input which is already full defined
+   
+  // Input property for a favourite item
+   @Input() fav!: Favourite;
   
-  @Input() fav!: Favourite
-  
+   /**
+    * Initializes the component with DatabaseService and Router.
+    * @param database - Service for database operations.
+    * @param router - Router for navigation.
+    */
   constructor(private database: DatabaseService, private router: Router) { }
 
   ngOnInit() {}
-  async deleteFav(fav: Favourite) {
-    this.database.deleteFavById(fav.id.toString()); //calls the database delete favourite function,
 
+  /**
+   * Deletes a favourite item from the database.
+   * @param fav - The favourite item to be deleted.
+   */
+  async deleteFav(fav: Favourite) {
+    this.database.deleteFavById(fav.id.toString()); 
   }
+
+  /**
+   * Navigates to the recipe details page based on the recipe ID.
+   * @param id - The unique identifier of the recipe.
+   */
   recipeNav(id:Number){
-  //nav based off a number (id), replace the url to re init if already used
     this.router.navigateByUrl(&#x27;/recipe/&#x27;+id, {replaceUrl:true}); 
      
   }

@@ -258,6 +258,8 @@
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Initializes the component with DatabaseService and Router.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -266,6 +268,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -280,6 +283,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Service for database operations.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -292,6 +301,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Router for navigation.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -331,14 +346,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="34"
-                                    class="link-to-prism">src/app/favs/favs.page.ts:34</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/app/favs/favs.page.ts:49</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Deletes a favourite item from the database.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -349,6 +366,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -363,6 +381,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The favourite item to be deleted.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -398,14 +422,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/app/favs/favs.page.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="33"
+                                    class="link-to-prism">src/app/favs/favs.page.ts:33</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Loads favourite items from the database on initialization.
+Catches and logs any errors during the loading process.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -435,14 +462,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="43"
-                                    class="link-to-prism">src/app/favs/favs.page.ts:43</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/app/favs/favs.page.ts:65</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Navigates to the nutrient details page for a specific recipe.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -453,6 +482,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -467,6 +497,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The unique identifier of the recipe.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -502,14 +538,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="38"
-                                    class="link-to-prism">src/app/favs/favs.page.ts:38</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="57"
+                                    class="link-to-prism">src/app/favs/favs.page.ts:57</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Navigates to the recipe details page based on the recipe ID.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -520,6 +558,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -534,6 +573,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The unique identifier of the recipe.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -568,7 +613,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <i>Type : </i>        <code><a href="../interfaces/Favourite.html" target="_self" >WritableSignal&lt;Favourite[]&gt;</a></code>
 
                     </td>
                 </tr>
@@ -623,6 +668,7 @@ import { DatabaseService } from &#x27;../services/database.service&#x27;;
 import { Favourite } from &#x27;../interfaces/favourite&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
 import { Nutrient } from &#x27;../interfaces/nutrient&#x27;;
+import { WritableSignal } from &#x27;@angular/core&#x27;;
 
 @Component({
   selector: &#x27;app-favs&#x27;,
@@ -631,15 +677,24 @@ import { Nutrient } from &#x27;../interfaces/nutrient&#x27;;
 })
 export class FavsPage implements OnInit {
   //favs item, which is writable signal array, but may be single object
-  //so its good to keep flexible, cus it may be an error as well
-  favs: any;
+  favs!: WritableSignal&lt;Favourite[]&gt;; ;
 
 
   //interface that stores all the nutrients as array, as nutrients be in different orders
   nutrientsArr: Nutrient[] &#x3D; []; 
 
+  /**
+   * Initializes the component with DatabaseService and Router.
+   * @param database - Service for database operations.
+   * @param router - Router for navigation.
+   */
   constructor(private database: DatabaseService, private router: Router) { }
 
+
+  /**
+   * Loads favourite items from the database on initialization.
+   * Catches and logs any errors during the loading process.
+   */
   ngOnInit() {
     //sends request to database to return the favs as writable signal
     //will return error if there is a problem
@@ -651,18 +706,28 @@ export class FavsPage implements OnInit {
     }
 
   }
+
+  /**
+   * Deletes a favourite item from the database.
+   * @param fav - The favourite item to be deleted.
+   */
   deleteFav(fav: Favourite) {
-    this.database.deleteFavById(fav.id.toString()); //Delete function takes in fav and sends the id to db service
-
+    this.database.deleteFavById(fav.id.toString()); 
   }
+
+  /**
+   * Navigates to the recipe details page based on the recipe ID.
+   * @param id - The unique identifier of the recipe.
+   */
   recipeNav(id:Number){
-    this.router.navigateByUrl(&#x27;/recipe/&#x27;+id, {replaceUrl:true}); //nav based off number
+    this.router.navigateByUrl(&#x27;/recipe/&#x27;+id, {replaceUrl:true}); 
 
   }
-  
+   /**
+   * Navigates to the nutrient details page for a specific recipe.
+   * @param id - The unique identifier of the recipe.
+   */
   nutrientNav(id:number) {
-    //uses the stored recipe id to open related nutrient table
-   //replaceUrl ensure previous data is removed
     this.router.navigateByUrl(&#x27;/nutrients/&#x27;+id, {replaceUrl:true})
   }
 
