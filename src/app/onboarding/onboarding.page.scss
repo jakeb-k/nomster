@@ -1,0 +1,61 @@
+ion-radio-group {
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    div{
+        display:flex;
+        justify-content: space-evenly;
+        align-items: center;
+        align-self: center;
+    }
+    ion-label {
+        margin-bottom:20px; 
+    }
+}
+
+ion-icon {
+    padding:7.5px; 
+    align-self: center;
+        
+    margin:0 15px; 
+    margin-top:10px; 
+}
+@keyframes select {
+    0% {
+        background-color: #FF6700;
+    }
+    50% {
+        background-color: #ff660083;
+    }
+    100% {
+        background-color: none;
+    }
+}
+.selected {
+    animation: select 0.2s ease-in-out;
+    color: #FF6700;
+    border:1.5px solid #FF6700;
+    border-radius:7.5px;  /* Or your desired highlight color */
+    
+}
+
+ion-radio {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+    padding:0; 
+    margin:0;
+}
+div.radio-container {
+    display:flex;
+    flex-direction: column;
+    margin:15px 5%; 
+    justify-content: center;
+    label {
+        text-align: left;
+    }
+   
+
+}
