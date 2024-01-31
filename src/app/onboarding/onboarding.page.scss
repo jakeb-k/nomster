@@ -40,7 +40,9 @@ ion-icon {
     border-radius:7.5px;  /* Or your desired highlight color */
     
 }
-
+.item-has-focus ion-label[label-position="floating"] {
+    color:#FF6700; 
+}
 ion-radio {
     opacity: 0;
     position: absolute;
@@ -56,6 +58,7 @@ div.radio-container {
     label {
         text-align: left;
     }
-   
-
+}
+ion-select {
+    text-wrap:wrap;
 }

@@ -2,31 +2,48 @@
 <ion-content>
   <div class="onboarding-container ion-padding"> 
     <h3>Welcome to Nomster</h3>
-    <p>Enter your nutrition goals!</p>
-  </div>
-  <ion-item>
-    <ion-input label="Enter your height" labelPlacement="stacked"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input label="Enter your current weight" labelPlacement="stacked"></ion-input>
-  </ion-item>
-
+    <ion-item>
+      <ion-input label="Enter your name" labelPlacement="floating"></ion-input>
+    </ion-item>
     <div class="radio-container">
-        <ion-label>Weight Goal (Lose / Maintain / Gain)</ion-label>
-        <ion-radio-group [(ngModel)]="selectedIcon" >
-          <div *ngFor="let icon of icons" (click)="selectIcon(icon.value)">
-            <ion-icon [name]="icon.name" slot="start" [class.selected]="selectedIcon === icon.value"></ion-icon>
+        <ion-radio-group [(ngModel)]="selectedGenderIcon" >
+          <div *ngFor="let icon of gIcons" (click)="selectIcon2(icon.value)">
+            <ion-icon [name]="icon.name" slot="start" [class.selected]="selectedGenderIcon === icon.value"></ion-icon>
             <ion-radio slot="end" [value]="icon.value" hidden></ion-radio>
           </div>
         </ion-radio-group>
     </div>
-  <ion-item>
+    <ion-item>
+      <ion-input type="number" min="0" label="Enter your height" labelPlacement="floating"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" min="0" label="Enter your current weight" labelPlacement="floating"></ion-input>
+    </ion-item>
 
-  </ion-item>
-  <ion-item style="margin-top:-40px;">
-    <ion-label>What is your Birthday?</ion-label>
-    <ion-datetime-button datetime="datetime"></ion-datetime-button>
-  </ion-item>
+      <div class="radio-container">
+          <ion-label>Weight Goal (Lose / Maintain / Gain)</ion-label>
+          <ion-radio-group [(ngModel)]="selectedIcon" >
+            <div *ngFor="let icon of wIcons" (click)="selectIcon(icon.value)">
+              <ion-icon [name]="icon.name" slot="start" [class.selected]="selectedIcon === icon.value"></ion-icon>
+              <ion-radio slot="end" [value]="icon.value" hidden></ion-radio>
+            </div>
+          </ion-radio-group>
+      </div>
+
+      
+    <ion-item>
+
+    </ion-item>
+    <ion-item style="margin-top:-40px;">
+      <ion-label>What is your Birthday?</ion-label>
+      <ion-datetime-button datetime="datetime"></ion-datetime-button>
+    </ion-item>
+    <ion-item>
+      <ion-select placeholder="How often do you / will you exercise?">
+        <ion-select-option *ngFor="let c of activityLevels" [value]="c">{{c.level}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
   
 
   <ion-modal [keepContentsMounted]="true">
