@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { GoalsService } from '../services/goals.service';
 import { User } from '../interfaces/user';
+import { Goal } from '../interfaces/goal';
 import { Router } from '@angular/router';
 
 @Component({
@@ -46,14 +47,18 @@ export class OnboardingPage implements OnInit {
     age: 0,
     activityLevel: 0
   }
-  isNew = true; 
-  constructor(private userService: UserService, private router: Router) { }
+  isNew = Boolean(true); 
+  constructor(private userService: UserService, private router: Router, private goalsService: GoalsService) { }
 
   async ngOnInit() {
-    if(this.userService.getUsers()) {
-      this.isNew = true;
-    } else {
+    await this.userService.loadUsers()
+    let x = this.userService.getUsers(); 
+    console.log(Object.keys(x()));
+    if(Object.keys(x()).length !== 0) {
+      this.isNew = false; 
       this.router.navigateByUrl('/login')
+    } else {
+      this.isNew = true;
     }
   }
 
@@ -70,8 +75,11 @@ export class OnboardingPage implements OnInit {
     this.newUser.direction =  Number(this.selectedIcon) 
 
     
-    
+
+    this.caloricIntakeGoalInit(Number(this.calculateCI(this.newUser).toFixed(0)))
     this.userService.addUser(this.newUser); 
+    this.router.navigateByUrl('/login')
+
   }
 
   /**
@@ -119,4 +127,17 @@ export class OnboardingPage implements OnInit {
     sessionStorage.setItem('caloricIntake', CI); 
   }
 
+  async caloricIntakeGoalInit(CI: number) {
+    let x: Goal = {
+      goalAmount: CI,
+      goalProgress: 0,
+      type: 'Calorie Intake'
+    }
+    try {
+      await this.goalsService.addGoal(x)
+    } 
+    catch(err) {
+      console.error('Error with setting CI', err)
+    }
+  }
 }
