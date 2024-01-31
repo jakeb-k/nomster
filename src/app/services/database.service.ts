@@ -82,6 +82,24 @@ export class DatabaseService {
 
       );
     `
+
+    //sql users schema create query
+    const schemaUsers = `
+      CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        gender INTEGER NOT NULL,
+        height INTEGER NOT NULL,
+        weight INTEGER NOT NULL,
+        direction INTEGER NOT NULL,
+        age INTEGER NOT NULL,
+        activityLevel INTEGER NOT NULL
+
+      );
+    `
+
+
+
     //await func that execute the sql create queries
     await this.db.execute(schemaFavs);
 
@@ -89,11 +107,15 @@ export class DatabaseService {
 
     await this.db.execute(schemaGoals);  
 
+    await this.db.execute(schemaUsers);  
+
     this.loadFavs(); 
 
     this.loadGrocery(); 
 
     this.loadGoals();
+
+    this.loadUsers(); 
 
     return true; 
 

@@ -2,5 +2,10 @@
 export interface User {
     id:number;
     name:string;
-    active:number;
+    gender:number,
+    height:number, 
+    weight:number,
+    direction:number,
+    age:number,
+    activityLevel:number
 }
