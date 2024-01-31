@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'search',
+    redirectTo: 'onboarding',
     pathMatch: 'full'
   },
   {
@@ -34,7 +34,8 @@ const routes: Routes = [
   {
     path: 'nutrients/:id',
     loadChildren: () => import('./nutrients/nutrients.module').then( m => m.NutrientsPageModule)
-  },  {
+  },
+  {
     path: 'onboarding',
     loadChildren: () => import('./onboarding/onboarding.module').then( m => m.OnboardingPageModule)
   }

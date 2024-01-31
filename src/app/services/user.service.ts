@@ -43,7 +43,7 @@ export class UserService {
    /**
    * Loads users from the database and updates the 'users' signal.
    */
-   async adduser(user: User): Promise<any> {  
+   async addUser(user: User): Promise<any> {  
     // Using parameterized query for safe SQL execution
     const query = `INSERT INTO users (name, gender, height, weight, direction, age, activityLevel) 
                                       VALUES (?, ?, ?, ?, ?, ?, ?)`;

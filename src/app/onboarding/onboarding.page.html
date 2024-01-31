@@ -1,10 +1,11 @@
 <app-header></app-header>
-<ion-content>
+<ion-content *ngIf="isNew">
   <div class="onboarding-container ion-padding"> 
     <h3>Welcome to Nomster</h3>
     <ion-item>
-      <ion-input label="Enter your name" labelPlacement="floating"></ion-input>
+      <ion-input [(ngModel)]="newUser.name" label="Enter your name" labelPlacement="floating"></ion-input>
     </ion-item>
+
     <div class="radio-container">
         <ion-radio-group [(ngModel)]="selectedGenderIcon" >
           <div *ngFor="let icon of gIcons" (click)="selectIcon2(icon.value)">
@@ -14,10 +15,10 @@
         </ion-radio-group>
     </div>
     <ion-item>
-      <ion-input type="number" min="0" label="Enter your height" labelPlacement="floating"></ion-input>
+      <ion-input [(ngModel)]="newUser.height" type="number" min="0" label="Enter your height (cm)" labelPlacement="floating"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="number" min="0" label="Enter your current weight" labelPlacement="floating"></ion-input>
+      <ion-input [(ngModel)]="newUser.weight" type="number" min="0" label="Enter your current weight (kg)" labelPlacement="floating"></ion-input>
     </ion-item>
 
       <div class="radio-container">
@@ -38,17 +39,21 @@
       <ion-label>What is your Birthday?</ion-label>
       <ion-datetime-button datetime="datetime"></ion-datetime-button>
     </ion-item>
+
     <ion-item>
-      <ion-select placeholder="How often do you / will you exercise?">
-        <ion-select-option *ngFor="let c of activityLevels" [value]="c">{{c.level}}</ion-select-option>
+      <ion-select [(ngModel)]="newUser.activityLevel" placeholder="How often do you / will you exercise?">
+        <ion-select-option *ngFor="let c of activityLevels" [value]="c.factor">{{c.level}}</ion-select-option>
       </ion-select>
     </ion-item>
+
+    <button class="navBtn" (click)="sendUser()">CREATE</button>
+
   </div>
   
 
   <ion-modal [keepContentsMounted]="true">
     <ng-template>
-      <ion-datetime presentation="date" id="datetime"></ion-datetime>
+      <ion-datetime [(ngModel)]="dateInput" presentation="date" id="datetime"></ion-datetime>
     </ng-template>
   </ion-modal>
 </ion-content>

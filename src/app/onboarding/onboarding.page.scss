@@ -43,6 +43,9 @@ ion-icon {
 .item-has-focus ion-label[label-position="floating"] {
     color:#FF6700; 
 }
+ion-item {
+    margin:15px 0; 
+}
 ion-radio {
     opacity: 0;
     position: absolute;
@@ -61,4 +64,7 @@ div.radio-container {
 }
 ion-select {
     text-wrap:wrap;
+}
+button {
+    margin-top:15px; 
 }

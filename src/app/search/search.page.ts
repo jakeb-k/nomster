@@ -12,8 +12,8 @@ import { Nutrient } from '../interfaces/nutrient';
 
 @Component({
   selector: 'app-home',
-  templateUrl: 'search.page.html',
-  styleUrls: ['search.page.scss'],
+  templateUrl: './search.page.html',
+  styleUrls: ['./search.page.scss'],
 }) 
 export class SearchPage implements OnInit{
   

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { GoalsService } from '../services/goals.service';
+import { User } from '../interfaces/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-onboarding',
@@ -8,6 +12,10 @@ import { Component, OnInit } from '@angular/core';
 export class OnboardingPage implements OnInit {
 
   dateInput!: string; 
+
+
+  selectedIcon: string | null = null;
+  selectedGenderIcon: string | null = null; 
 
   gIcons = [
     { label: 'Man', value: '0', name: 'woman-outline' },
@@ -28,12 +36,25 @@ export class OnboardingPage implements OnInit {
     { level: "Super active: very physical job or 2x daily exercise", factor: 1.9 }
   ]; 
 
-  selectedIcon: string | null = null;
-  selectedGenderIcon: string | null = null; 
+  newUser: User = {
+    name: '',
+    id: 0,
+    gender:0,
+    height: 0,
+    weight: 0,
+    direction: 0,
+    age: 0,
+    activityLevel: 0
+  }
+  isNew = true; 
+  constructor(private userService: UserService, private router: Router) { }
 
-  constructor() { }
-
-  ngOnInit() {
+  async ngOnInit() {
+    if(this.userService.getUsers()) {
+      this.isNew = true;
+    } else {
+      this.router.navigateByUrl('/login')
+    }
   }
 
   selectIcon(value: string) {
@@ -41,6 +62,61 @@ export class OnboardingPage implements OnInit {
   }
   selectIcon2(value: string) {
     this.selectedGenderIcon = value;
+  }
+
+  sendUser() {
+    this.newUser.age =  this.calculateAge(this.dateInput) 
+    this.newUser.gender = Number(this.selectedGenderIcon) 
+    this.newUser.direction =  Number(this.selectedIcon) 
+
+    
+    
+    this.userService.addUser(this.newUser); 
+  }
+
+  /**
+   * Uses Date object to calculate difference between today and inputted date
+   * and return the age of someone born on the inputted date
+   * @param birthDateString - The inputted date
+   * @returns The users age 
+   */
+  calculateAge(birthDateString: string) {
+    const birthDate = new Date(birthDateString);
+    const today = new Date();
+  
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+  
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+  
+    return age;
+  }
+  
+  /**
+   * Takes user input to calculate desired caloric intake
+   * Uses Mifflin-St Jeor Equation to calculate BMR, then multiply by activity rate for TDEE
+   * Than +/- or do nothing based on user choice
+   * @param user - The user info that is used
+   */
+  calculateCI(user: User){
+    let imbalance = 0;
+    if(this.newUser.direction == -1) {
+      imbalance = -750; 
+    } 
+    else if(this.newUser.direction == 1) {
+      imbalance = 350; 
+    }
+    if (user.gender === 0) {
+      return ((10 * user.weight + 6.25 * user.height - 5 * user.age + 5) * user.activityLevel) + imbalance;
+    } else {
+      return ((10 * user.weight + 6.25 * user.height - 5 * user.age - 161) * user.activityLevel)+ imbalance;
+    }
+  }
+  setCaloricIntakeGoal() {
+    let CI = this.calculateCI(this.newUser).toFixed(2)
+    sessionStorage.setItem('caloricIntake', CI); 
   }
 
 }
