@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { HomePage } from './home.page';
+import { SearchPage } from './search.page';
 import { MealResultComponent } from '../comps/meal-result/meal-result.component';
-import { HomePageRoutingModule } from './home-routing.module';
+import { SearchPageRoutingModule } from './search-routing.module';
 
 import { SharedModule } from '../modules/shared/shared.module';
 
@@ -14,9 +14,9 @@ import { SharedModule } from '../modules/shared/shared.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
+    SearchPageRoutingModule,
     SharedModule
   ],
-  declarations: [HomePage, MealResultComponent]
+  declarations: [SearchPage, MealResultComponent]
 })
-export class HomePageModule {}
+export class SearchPageModule {}

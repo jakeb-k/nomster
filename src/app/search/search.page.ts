@@ -12,10 +12,10 @@ import { Nutrient } from '../interfaces/nutrient';
 
 @Component({
   selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  templateUrl: 'search.page.html',
+  styleUrls: ['search.page.scss'],
 }) 
-export class HomePage implements OnInit{
+export class SearchPage implements OnInit{
   
   
   @ViewChild(IonModal) modal!: IonModal;
