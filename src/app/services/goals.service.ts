@@ -111,4 +111,19 @@ export class GoalsService {
     return this.calorieIntake; 
   }
 
+  async loadGoalByType(): Promise<Goal | null> {
+    try {
+      const query = "SELECT * FROM goals WHERE type = ? LIMIT 1;";
+      const result = await this.db.query(query, ['Calorie Intake']);
+  
+      // Assuming 'values' is an array of goals
+      const goal = result.values && result.values.length > 0 ? result.values[0] : null;
+  
+      // Optionally update a signal or return the goal directly
+      return goal;
+    } catch (error) {
+      console.error(`Error occurred during goal retrieval by type`, error);
+      return null;
+    }
+  }
 }

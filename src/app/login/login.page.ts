@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../services/database.service';
 import { Router } from '@angular/router';
+import { GoalsService } from '../services/goals.service';
+import { Goal } from '../interfaces/goal';
 
 @Component({
   selector: 'app-login',
@@ -14,15 +16,23 @@ export class LoginPage implements OnInit {
  // Property to store the new user's name as a string
  newUserName = ''; 
 
- // Retrieves and stores the user's calorie intake from session storage
- calorieIntake = sessionStorage.getItem('calorieIntake'); 
+ 
+  // Retrieves the user's caloric intake from session storage and converts it to a number.
+  calorieIntake: any; 
 
+  // Calculates the ratio of calorie intake to a standard 2000 calorie diet.
+  calorieRatio = Number(); 
+
+  // Holds the writable signal from db
+  currentCI:any; 
+
+  sessionCI = sessionStorage.getItem('calorieIntake'); 
  /**
   * Constructor for the component.
   * @param database - Service for interacting with the database.
   * @param router - Router service for navigation.
   */
- constructor(private database: DatabaseService, private router: Router) { }
+ constructor(private database: DatabaseService, private router: Router, private goalsService: GoalsService) { }
 
  /**
   * Lifecycle hook that is called after data-bound properties of a directive are initialized.
@@ -31,7 +41,22 @@ export class LoginPage implements OnInit {
  ngOnInit() {
    this.database.loadGrocery(); 
    this.groceries = this.database.getGrocery(); 
+
+   this.calorieInit(); 
+
+   console.log(this.sessionCI)
+   
  }
+
+ async calorieInit() {
+  await this.goalsService.loadCalorieIntake(); 
+  const calorieIntakeSignal = this.goalsService.getCalorieIntake();
+  
+  calorieIntakeSignal.set(this.currentCI); 
+  
+  
+}
+
 
  /**
   * Navigates to a specified path.

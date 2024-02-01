@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Nutrient } from '../interfaces/nutrient';
 import { GetRecipeDetailsService } from '../services/get-recipe-details.service';
+import { GoalsService } from '../services/goals.service';
+import { Goal } from '../interfaces/goal';
 
 @Component({
   selector: 'app-nutrients',
@@ -10,6 +12,8 @@ import { GetRecipeDetailsService } from '../services/get-recipe-details.service'
   styleUrls: ['./nutrients.page.scss'],
 })
 export class NutrientsPage implements OnInit {
+
+goal:Goal | null = null; 
 // Unique identifier, typically fetched from route parameters.
 id!: number; 
 
@@ -17,29 +21,46 @@ id!: number;
 nutrientsArr: Nutrient[] = []; 
 
 // Retrieves the user's caloric intake from session storage and converts it to a number.
-calorieIntake = Number(sessionStorage.getItem('calorieIntake')); 
+calorieIntake: any; 
 
 // Calculates the ratio of calorie intake to a standard 2000 calorie diet.
-calorieRatio = this.calorieIntake / 2000;
+calorieRatio = Number(); 
 
+// Holds the writable signal from db
+currentCI:any; 
+
+calorieIntakeSignal:any; 
+
+sessionCI = Number(sessionStorage.getItem('calorieIntake')) 
 /**
  * Constructor for the component.
  * @param recipeDetailsGetter - Service to get recipe details.
  * @param route - ActivatedRoute service to access route parameters.
  * @param router - Router service for navigation.
+ * @param userService - Service to get user details
  */
-constructor(private recipeDetailsGetter: GetRecipeDetailsService, private route: ActivatedRoute, private router: Router) { }
+constructor(private recipeDetailsGetter: GetRecipeDetailsService, private route: ActivatedRoute, private router: Router, private goalsService: GoalsService) { }
 
 /**
  * Lifecycle hook that is called after data-bound properties of a directive are initialized.
  * Retrieves the recipe ID from the route, fetches nutrition details, and logs the nutrients array.
  */
 ngOnInit() {
+  this.loadGoal(); 
   this.id = Number(this.route.snapshot.paramMap.get('id')!);
   this.getNutrition(this.id);
-  console.log(this.nutrientsArr);
+
+  
+  
+
 }
 
+async loadGoal() {
+  this.goal = await this.goalsService.loadGoalByType();
+  if(this.goal) {
+    this.calorieRatio = this.goal!.goalAmount / 2000; 
+  }
+}
 /**
  * Navigates back to the 'favs' route.
  */

@@ -53,12 +53,10 @@ export class OnboardingPage implements OnInit {
   async ngOnInit() {
     await this.userService.loadUsers()
     let x = this.userService.getUsers(); 
-    console.log(Object.keys(x()));
+
     if(Object.keys(x()).length !== 0) {
       this.isNew = false; 
       this.router.navigateByUrl('/login')
-    } else {
-      this.isNew = true;
     }
   }
 
@@ -76,7 +74,8 @@ export class OnboardingPage implements OnInit {
 
     
 
-    this.caloricIntakeGoalInit(Number(this.calculateCI(this.newUser).toFixed(0)))
+    this.caloricIntakeGoalInit(Number(this.calculateCI(this.newUser).toFixed(0)));
+    this.setCaloricIntakeGoal(); 
     this.userService.addUser(this.newUser); 
     this.router.navigateByUrl('/login')
 
@@ -122,6 +121,7 @@ export class OnboardingPage implements OnInit {
       return ((10 * user.weight + 6.25 * user.height - 5 * user.age - 161) * user.activityLevel)+ imbalance;
     }
   }
+
   setCaloricIntakeGoal() {
     let CI = this.calculateCI(this.newUser).toFixed(2)
     sessionStorage.setItem('caloricIntake', CI); 
@@ -140,4 +140,7 @@ export class OnboardingPage implements OnInit {
       console.error('Error with setting CI', err)
     }
   }
+
+
+  
 }

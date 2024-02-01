@@ -60,4 +60,21 @@ export class UserService {
     }
   }
 
+  
+  async loadUser(): Promise<User | null> {
+    try {
+      const query = "SELECT * FROM user LIMIT 1;";
+      const result = await this.db.query(query);
+  
+      // Assuming 'values' is an array of Users
+      const user = result.values && result.values.length > 0 ? result.values[0] : null;
+  
+      // Optionally update a signal or return the User directly
+      return user;
+    } catch (error) {
+      console.error(`Error occurred during User retrieval by type`, error);
+      return null;
+    }
+  }
+
 }
