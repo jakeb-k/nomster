@@ -12,8 +12,11 @@ import { Router } from '@angular/router';
 })
 export class OnboardingPage implements OnInit {
 
+  goals:any; 
+
   dateInput!: string; 
 
+  user:any; 
 
   selectedIcon: string | null = null;
   selectedGenderIcon: string | null = null; 
@@ -47,19 +50,15 @@ export class OnboardingPage implements OnInit {
     age: 0,
     activityLevel: 0
   }
-  isNew = Boolean(true); 
+  isNew = false;  
   constructor(private userService: UserService, private router: Router, private goalsService: GoalsService) { }
 
   async ngOnInit() {
-    await this.userService.loadUsers()
-    let x = this.userService.getUsers(); 
-
-    if(Object.keys(x()).length !== 0) {
-      this.isNew = false; 
-      this.router.navigateByUrl('/login')
-    }
+    await this.loadGoalCheck(); 
   }
-
+  async ionViewWillEnter(){
+    await this.loadGoalCheck(); 
+  }
   selectIcon(value: string) {
     this.selectedIcon = value;
   }
@@ -141,6 +140,29 @@ export class OnboardingPage implements OnInit {
     }
   }
 
+  async loadUserCheck() {
+    this.userService.loadUser();
+    this.user = this.userService.getUsers(); 
+    console.log(this.user)
+    if(this.user!.weight > 0) {
+      this.router.navigateByUrl('/login')
+      console.log('user detected')
+
+    } else {
+      console.log('no user detected')
+    }
+  }
+  async loadGoalCheck() {
+    this.goals = await this.goalsService.loadGoalByType();
+    if(this.goals!.goalAmount > 0) {
+      this.router.navigateByUrl('/login')
+      console.log('user detected')
+
+    } else {
+      console.log('no user detected')
+      this.isNew = true; 
+    }
+  }
 
   
 }

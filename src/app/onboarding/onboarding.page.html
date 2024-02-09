@@ -1,4 +1,3 @@
-<app-header></app-header>
 <ion-content *ngIf="isNew">
   <div class="onboarding-container ion-padding"> 
     <h3>Welcome to Nomster</h3>
@@ -47,6 +46,9 @@
     </ion-item>
 
     <button class="navBtn" (click)="sendUser()">CREATE</button>
+
+    <div>{{user?.height ?? ""}} </div>
+    <div>{{user?.weight ?? ""}} </div>
 
   </div>
   

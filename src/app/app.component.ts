@@ -13,7 +13,7 @@ export class AppComponent {
 
   calorieArr: any = []; 
 
-  constructor(private database: DatabaseService, private goalService: GoalsService) {
+  constructor(private database: DatabaseService) {
     this.initApp()
   }
 
