@@ -108,15 +108,7 @@ export class DatabaseService {
     await this.db.execute(schemaGoals);  
 
     await this.db.execute(schemaUsers);  
-
-    this.loadFavs(); 
-
-    this.loadGrocery(); 
-
-    this.loadGoals();
-
-    this.loadUsers(); 
-
+    
     return true; 
 
   }

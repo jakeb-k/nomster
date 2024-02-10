@@ -2,8 +2,8 @@
 <ion-content>
   <div class="profilePic ion-padding">
     <ion-icon name="person-circle-outline"></ion-icon>
-    <h3>Welcome Jakey!</h3>
-    <p>{{sessionCI ?? "NOT WORKING"}}</p>
+    <h3>Welcome {{user?.name}}</h3>
+    <p>{{(goal?.goalAmount === 0) ? 2500 : goal?.goalAmount}}</p>
   </div>
   
 <div class="profileOptions">

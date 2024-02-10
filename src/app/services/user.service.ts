@@ -61,9 +61,9 @@ export class UserService {
   }
 
   
-  async loadUser(): Promise<User | null> {
+  async loadUserByPromise(): Promise<User | null> {
     const query = "SELECT * FROM users LIMIT 1";
-    console.log("DB instance:", this.db);
+    
 
     try {
       const result = await this.db.query(query);

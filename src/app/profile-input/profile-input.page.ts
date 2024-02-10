@@ -135,7 +135,6 @@ export class ProfileInputPage implements OnInit {
    * @param data - The data returned from the modal.
    */
   handleModalData(data: any) {
-    console.log(data[0], data[1]);
     this.sendGoalProgress(Number(data[0]), Number(data[1]));
   }
 

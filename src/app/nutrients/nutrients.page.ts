@@ -85,7 +85,7 @@ getNutrition(id: number) {
         };
         this.nutrientsArr.push(n);
       });
-      console.log('Successful Fetch');
+      console.log('Successful Nutrition Fetch');
     },
     error: (error) => {
       console.error('Error fetching nutrition details:', error);

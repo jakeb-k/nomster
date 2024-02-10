@@ -137,8 +137,7 @@ apiKey = environment.apiKey;
 
     // Remove whitespace from the URL
     url = this.removeWhitespace(url); 
-    console.log(url); 
-
+    
     // Store the filter in session storage
     sessionStorage.setItem('filter', JSON.stringify(filter)); 
 

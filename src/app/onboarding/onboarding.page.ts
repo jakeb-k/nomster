@@ -50,7 +50,7 @@ export class OnboardingPage implements OnInit {
     age: 0,
     activityLevel: 0
   }
-  isNew = false;  
+  isNew = true;  
   constructor(private userService: UserService, private router: Router, private goalsService: GoalsService) { }
 
   async ngOnInit() {
@@ -140,18 +140,6 @@ export class OnboardingPage implements OnInit {
     }
   }
 
-  async loadUserCheck() {
-    this.userService.loadUser();
-    this.user = this.userService.getUsers(); 
-    console.log(this.user)
-    if(this.user!.weight > 0) {
-      this.router.navigateByUrl('/login')
-      console.log('user detected')
-
-    } else {
-      console.log('no user detected')
-    }
-  }
   async loadGoalCheck() {
     this.goals = await this.goalsService.loadGoalByType();
     if(this.goals!.goalAmount > 0) {

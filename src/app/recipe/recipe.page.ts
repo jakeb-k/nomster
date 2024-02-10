@@ -89,7 +89,7 @@ navHome() {
 summaryFormatter(summary: string) {
   let cutIndex = summary.search('minutes'); 
   let newSummary = summary.slice(0, cutIndex + 7);
-  console.log(newSummary.length); 
+  
   return newSummary; 
 }
 

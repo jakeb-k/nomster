@@ -3,6 +3,7 @@ import { DatabaseService } from '../services/database.service';
 import { Router } from '@angular/router';
 import { GoalsService } from '../services/goals.service';
 import { Goal } from '../interfaces/goal';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -10,13 +11,15 @@ import { Goal } from '../interfaces/goal';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
- // Property to store the grocery list; type is any
- groceries: any; 
+  // Property to store the grocery list; type is any
+  groceries: any; 
 
- // Property to store the new user's name as a string
- newUserName = ''; 
+  // Property to store the new user's name as a string
+  newUserName = ''; 
 
+  goal:any; 
  
+  user:any;
   // Retrieves the user's caloric intake from session storage and converts it to a number.
   calorieIntake: any; 
 
@@ -32,30 +35,18 @@ export class LoginPage implements OnInit {
   * @param database - Service for interacting with the database.
   * @param router - Router service for navigation.
   */
- constructor(private database: DatabaseService, private router: Router, private goalsService: GoalsService) { }
+ constructor(private router: Router, private goalsService: GoalsService, private userService:UserService) { }
 
  /**
   * Lifecycle hook that is called after data-bound properties of a directive are initialized.
   * Loads the grocery list from the database and assigns it to the 'groceries' property.
   */
- ngOnInit() {
-   this.database.loadGrocery(); 
-   this.groceries = this.database.getGrocery(); 
-
-   this.calorieInit(); 
-
-   console.log(this.sessionCI)
-   
+ async ngOnInit() {
+  this.goal = await this.goalsService.loadGoalByType();
+  this.user = await this.userService.loadUserByPromise(); 
+  console.log(this.user?.name ?? "no user found"); 
+  console.log(this.goal?.goalAmount ?? "no goal detected")
  }
-
- async calorieInit() {
-  await this.goalsService.loadCalorieIntake(); 
-  const calorieIntakeSignal = this.goalsService.getCalorieIntake();
-  
-  calorieIntakeSignal.set(this.currentCI); 
-  
-  
-}
 
 
  /**
