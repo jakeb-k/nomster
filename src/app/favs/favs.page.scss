@@ -1,14 +1,18 @@
 .favItem {
     position:relative; 
-    border-bottom: 1px solid #FF6700;
-    border-top: 1px solid #FF6700;
-    border-radius:10px; 
     margin-bottom:15px; 
-    max-height:200px; 
+    background:white; 
+    height:auto; 
+    border-radius:5px; 
+    padding:10px 0; 
 }
 .favItem ion-button {
     position:absolute;
-    top:65%;
+    top:69%;
     left:75%; 
 }
+.f-bg {
+    background:rgb(197, 197, 197) !important;
+    padding:3%; 
 
+}
