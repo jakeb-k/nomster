@@ -110,7 +110,18 @@ export class ProfileInputPage implements OnInit {
       console.error('Error updating goal:', error);
     }
   }
-
+  async resetGoalProgress(id:number) {
+    try {
+      const isSuccess = await this.goalsService.resetGoalProgress(id);
+      if (isSuccess) {
+        this.goalUpdateSuccess = true;
+        this.goals = this.goalsService.getGoals();
+        setTimeout(() => this.goalUpdateSuccess = false, 1500);
+      }
+    } catch (error) {
+      console.error('Error updating goal:', error);
+    }
+  }
   /**
    * Opens a modal for updating goal progress.
    * @param id - The ID of the goal for which the modal is opened.

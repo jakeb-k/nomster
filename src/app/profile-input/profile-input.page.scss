@@ -2,10 +2,14 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap; 
+    border-radius:5px;
+    background:white; 
+    margin:10px 3%;
+    padding:2.5px 0; 
 }
 
 .goalContent {
-    font-size:16px; 
+    font-size:12px; 
     display: flex;
     width:fit-content; 
     margin-right:auto; 
@@ -26,11 +30,16 @@
     }
 
 }
-
-ion-button:hover {
-    color:#ffa118;
-    transform: scale(1.05);
-    transition: 0.3s ease-in-out;
+ion-item {
+    --border-style:none; 
+}
+ion-button{
+    margin-left:3%; 
+    ion-button:hover {
+        color:#ffa118;
+        transform: scale(1.05);
+        transition: 0.3s ease-in-out;
+    }
 }
 .barBase {
     width:100%; 
@@ -42,4 +51,8 @@ ion-button:hover {
     height:5px; 
     background-color: #47e273;
     border-radius:25px; 
+}
+ion-content {
+    --background:rgb(197, 197, 197) !important;
+    padding:3%; 
 }
