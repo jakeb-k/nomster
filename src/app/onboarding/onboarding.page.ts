@@ -48,7 +48,8 @@ export class OnboardingPage implements OnInit {
     weight: 0,
     direction: 0,
     age: 0,
-    activityLevel: 0
+    activityLevel: 0,
+    timeStamp: new Date().getTime()
   }
   isNew = true;  
   constructor(private userService: UserService, private router: Router, private goalsService: GoalsService) { }

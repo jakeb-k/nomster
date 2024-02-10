@@ -7,5 +7,6 @@ export interface User {
     weight:number,
     direction:number,
     age:number,
-    activityLevel:number
+    activityLevel:number,
+    timeStamp:number
 }

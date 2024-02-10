@@ -93,7 +93,8 @@ export class DatabaseService {
         weight INTEGER NOT NULL,
         direction INTEGER NOT NULL,
         age INTEGER NOT NULL,
-        activityLevel INTEGER NOT NULL
+        activityLevel INTEGER NOT NULL,
+        timeStamp INTEGER NOT NULL
 
       );
     `

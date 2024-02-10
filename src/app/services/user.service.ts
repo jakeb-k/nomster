@@ -45,10 +45,10 @@ export class UserService {
    */
    async addUser(user: User): Promise<any> {  
     // Using parameterized query for safe SQL execution
-    const query = `INSERT INTO users (name, gender, height, weight, direction, age, activityLevel) 
-                                      VALUES (?, ?, ?, ?, ?, ?, ?)`;
+    const query = `INSERT INTO users (name, gender, height, weight, direction, age, activityLevel, timeStamp) 
+                                      VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
     const params = [user.name, user.gender, user.height, user.weight,user.direction, 
-      user.age,user.activityLevel,];
+      user.age,user.activityLevel,user.timeStamp];
       
     try {
         const result = await this.db.query(query, params);
