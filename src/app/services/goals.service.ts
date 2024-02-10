@@ -133,4 +133,18 @@ export class GoalsService {
       return null;
     }
   }
+
+  async resetGoalProgress(id: number) {
+    const query = 'UPDATE goals SET goalProgress = 0 WHERE id = ?';
+    const params = [id];
+    try {
+      const result = await this.db.query(query, params);
+      this.loadGoals(); // Assuming this method refreshes your goals list
+      console.log('Goal progress has been reset to 0 for goal with ID:', id);
+      return result;
+    } catch (err) {
+      console.error('There was an error resetting the goal progress', err);
+      throw err;
+    }
+  }
 }
