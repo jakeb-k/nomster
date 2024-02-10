@@ -72,20 +72,27 @@ export class GoalsService {
 
   /**
  * Updates a goal item from the database by goalProgress and ID.
-  * @param goalProgress - The amount of progress made on the goal
+  * @param amount - The amount of progress made on the goal
   * @param id - The ID of the goal item.
   * @returns Promise with the result of the query.
   */
-  async updateGoal(id: number, amount:number){
-    const query = 'UPDATE goals SET goalProgress = ? WHERE id = ?';
-    const params = [amount, id]
+  async updateGoal(id: number, amount: number) {
+    // Update goalProgress by adding amount, but do not exceed the total
+    const query = `
+      UPDATE goals 
+      SET goalProgress = CASE 
+        WHEN goalProgress + ? > goalAmount THEN goalAmount 
+        ELSE goalProgress + ? 
+      END 
+      WHERE id = ?`;
+    const params = [amount, amount, id];
     try {
       const result = await this.db.query(query, params);
-      this.loadGoals()
-      return result
-    } catch(err) {
-      console.error('There was an error updating the goals', err)
-      throw err
+      this.loadGoals(); // Assuming this method refreshes your goals list
+      return result;
+    } catch (err) {
+      console.error('There was an error updating the goals', err);
+      throw err;
     }
   }
   /**

@@ -132,7 +132,7 @@ export class ProfileInputPage implements OnInit {
 
   /**
    * Handles the data returned from the goal update modal.
-   * @param data - The data returned from the modal.
+   * @param data - data[0] is the goal id and data[1] is the new progress
    */
   handleModalData(data: any) {
     this.sendGoalProgress(Number(data[0]), Number(data[1]));
