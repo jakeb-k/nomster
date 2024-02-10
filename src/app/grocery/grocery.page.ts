@@ -61,6 +61,7 @@ export class GroceryPage implements OnInit {
     try {
       const isSuccess = await this.database.addGrocery(this.newGrocery); //send req to db, await the response
       if (isSuccess) {
+        this.newGrocery.name = ""; 
         this.showSuccessMessage = true; // Display success message
         this.database.loadGrocery(); ///queries for all groceries from db
         this.groceries = this.database.getGrocery(); //loads them to object
