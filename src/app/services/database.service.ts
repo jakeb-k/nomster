@@ -130,7 +130,7 @@ export class DatabaseService {
  */
   async addFavourite(favourite: Favourite) {
     const { id, name, pictureLink, cals, carbs, protein, fats } = favourite;
-    const query = `INSERT INTO favourites (id, name, pictureLink, carbs, cals, fats, protein) VALUES (${id}, '${name}', '${pictureLink}', '${cals}', '${carbs}', '${protein}', '${fats}')`;
+    const query = `INSERT INTO favourites (id, name, pictureLink, cals, carbs, protein, fats) VALUES (${id}, '${name}', '${pictureLink}', '${cals}', '${carbs}', '${protein}', '${fats}')`;
   
     try {
       const result = await this.db.query(query);

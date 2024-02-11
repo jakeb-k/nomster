@@ -1,6 +1,6 @@
 <app-header></app-header>
 <ion-content> 
-<div class="f-bg"> 
+
   <div class="favItem ion-padding" *ngFor="let fav of favs()">
     <favourite [fav]="fav">
       
@@ -8,6 +8,6 @@
     <ion-button id="open-modal" (click)="nutrientNav(fav.id)" fill="clear"><ion-icon name="pie-chart-outline"></ion-icon></ion-button>
   </div>
 
-</div>
+
 </ion-content>
 
