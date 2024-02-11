@@ -1,15 +1,14 @@
 <app-header></app-header>
 <ion-content> 
-
-  
   <ion-item class="goalItem" *ngFor="let g of goals()">
-  <div class="goalContent"> 
+    <div class="goalContent"> 
       <p>{{g.type}} : </p>
-      <p><b>{{g.goalAmount}}
-        <span>{{ g.type === 'Calorie Intake' ? 'kcals' : 'gs' }}</span>
+      <p><b>{{g.goalProgress}} / {{g.goalAmount}}<span>
+          {{ g.type === 'Calorie Intake' ? 'kcals' : 'gs' }}</span>
         </b>
       </p>
     </div>
+
     <div class="goalActions" >
       <ion-button (click)="openModal(g.id)" fill="clear">
         <ion-icon name="scale-outline"></ion-icon>
@@ -18,11 +17,16 @@
         <ion-icon name="close-circle-outline"></ion-icon>
       </ion-button>
     </div>
+
     <div class="barBase">
       <div class="barProgress" [style.width]="(g.goalProgress / g.goalAmount * 100).toFixed(2) + '%'"></div>
     </div>
-    <ion-button fill="clear" (click)="resetGoalProgress(g.id)">RESET</ion-button>
+    <div class="reset-tracker">
+      <ion-button fill="clear" (click)="resetGoalProgress(g.id)">RESET</ion-button>
+      <p>{{(g.goalProgress / g.goalAmount * 100).toFixed(0)}} %</p>
+    </div>
   </ion-item>
+  
   <ion-button id="goal-modal">
     Add New Goal!
   </ion-button>
