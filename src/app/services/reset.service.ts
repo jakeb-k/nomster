@@ -13,7 +13,7 @@ export class ResetService {
    
    async timeCheck() {
 
-    this.user = this.userService.loadUserByPromise();
+    this.user = await this.userService.loadUserByPromise();
     this.timeStamp = this.user.timeStamp;
     console.log("timestamp: ", this.timeStamp) 
     const now = new Date().getTime();
@@ -21,9 +21,10 @@ export class ResetService {
     // Check if more than 24 hours have passed
     if (now - this.timeStamp > 60 * 1000) {
       console.log('its been a minute')
+      return true
     } else {
       console.log('it has not been a minute')
+      return false
     }
-
    }
 }

@@ -44,8 +44,6 @@ export class LoginPage implements OnInit {
  async ngOnInit() {
   this.goal = await this.goalsService.loadGoalByType();
   this.user = await this.userService.loadUserByPromise(); 
-  console.log(this.user?.name ?? "no user found"); 
-  console.log(this.goal?.goalAmount ?? "no goal detected")
  }
 
 

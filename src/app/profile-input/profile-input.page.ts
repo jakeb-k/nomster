@@ -4,6 +4,7 @@ import { GoalsService } from '../services/goals.service';
 import { Goal } from '../interfaces/goal';
 import { ModalController } from '@ionic/angular';
 import { UpdateGoalModalComponent } from '../comps/update-goal-modal/update-goal-modal.component';
+import { ResetService } from '../services/reset.service';
 
 
 @Component({
@@ -43,15 +44,16 @@ export class ProfileInputPage implements OnInit {
    * @param goalsService - Service for handling goals.
    * @param modalController - Controller for managing modals.
    */
-  constructor(private router: Router, private goalsService: GoalsService, private modalController: ModalController) { }
+  constructor(private router: Router, private goalsService: GoalsService, private modalController: ModalController, private resetService: ResetService) { }
 
   /**
    * Lifecycle hook that is called after data-bound properties of a directive are initialized.
    * Loads goals from the service and assigns them to the 'goals' property.
    */
-  ngOnInit() {
+  async ngOnInit() {
     this.goalsService.loadGoals();
     this.goals = this.goalsService.getGoals();
+    await this.resetService.timeCheck(); 
   }
 
   /**
