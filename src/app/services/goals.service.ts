@@ -3,6 +3,7 @@ import { Injectable, WritableSignal, signal } from '@angular/core';
 import { SQLiteDBConnection } from '@capacitor-community/sqlite';
 import { DatabaseService } from './database.service';
 import { Goal } from '../interfaces/goal';
+import { Meal } from '../interfaces/meal';
 
 
 @Injectable({
@@ -138,4 +139,17 @@ export class GoalsService {
     }
   }
   
+  async updateGoalsByMeal(meal: Meal) {
+    const query = 'UPDATE goals SET goalProgress = ? WHERE type = ?'; 
+    try {
+      await this.db.query(query, [meal.cals, 'Calorie Intake']);
+      await this.db.query(query, [meal.carbs, 'Carbs Limit']);
+      await this.db.query(query, [meal.protein, 'Protein Intake']);
+      await this.db.query(query, [meal.fat, 'Fat Limit']);
+      return true
+    } catch (error) {
+      console.error('Error adding meal info', error)
+      return false
+    }
+  }
 }

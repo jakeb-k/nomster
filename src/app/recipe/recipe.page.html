@@ -9,6 +9,13 @@
     </p>
   </div>
 
+  <div class="notification-container" *ngIf="showMealMessage">
+    <ion-icon name="checkmark-cross" color="success"></ion-icon>
+    <p class="successMsg">
+        Meal nutrients are tracked!
+    </p>
+  </div>
+
   <div class="filterOps">
     <h3>{{title}}</h3>
     
@@ -18,7 +25,7 @@
     <div id="topCont">
       <img [src]="image" />
     </div>
-    <ion-button fill="clear">
+    <ion-button fill="clear" (click)="updateGoalsByMeal()">
      I Enjoyed This, Log It!
     </ion-button>
     <div id="ingCont">

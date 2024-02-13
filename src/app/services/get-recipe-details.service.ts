@@ -25,7 +25,7 @@ export class GetRecipeDetailsService {
    */
   getRecipeDetails(id:Number): Observable<any> {
     // Construct the API URL for retrieving recipe details
-    let url = "https://api.spoonacular.com/recipes/"+id+"/information?apiKey="+this.apiKey; 
+    let url = "https://api.spoonacular.com/recipes/"+id+"/information?includeNutrition=true&apiKey="+this.apiKey; 
     
     return this.http.get<any>(url)
   }
