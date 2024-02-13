@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
+import { GoalsService } from './goals.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { UserService } from './user.service';
 export class ResetService {
   user:any; 
   timeStamp: any; 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private goalsService: GoalsService) {
 
    }
    
@@ -20,10 +21,9 @@ export class ResetService {
 
     // Check if more than 24 hours have passed
     if (now - this.timeStamp > 60 * 1000) {
-      console.log('its been a minute')
+      await this.goalsService.resetAllGoalProgress(); 
       return true
     } else {
-      console.log('it has not been a minute')
       return false
     }
    }

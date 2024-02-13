@@ -12,7 +12,6 @@ export class GoalsService {
 
   private goals: WritableSignal<Goal[]> = signal(<Goal[]>([]));
 
-  private calorieIntake: WritableSignal<Goal[]> = signal(<Goal[]>([]));
   constructor(private databaseService: DatabaseService) { }
 
   private get db(): SQLiteDBConnection {
@@ -88,34 +87,12 @@ export class GoalsService {
     const params = [amount, amount, id];
     try {
       const result = await this.db.query(query, params);
-      this.loadGoals(); // Assuming this method refreshes your goals list
+      this.loadGoals(); 
       return result;
     } catch (err) {
       console.error('There was an error updating the goals', err);
       throw err;
     }
-  }
-  /**
-   * Loads calorie intake goals from the database and updates the 'calorieIntake' signal.
-   */
-  async loadCalorieIntake(){
-    try {
-      // Query the database to retrieve calorie intake goals
-      const calorieIntake = await this.db.query("SELECT * FROM goals WHERE type = 'Calorie Intake';");
-      
-      // Update the 'calorieIntake' signal with the retrieved data
-      this.calorieIntake.set(calorieIntake.values || []); 
-    } catch(error) {
-      console.error('Error occured during goals retrieval'); 
-    }
-  }
-
-  /**
-   * Retrieves the current calorie intake goals.
-   * @returns The current state of the 'calorieIntake' signal.
-   */
-  getCalorieIntake(){
-    return this.calorieIntake; 
   }
 
   async loadGoalByType(): Promise<Goal | null> {
@@ -139,7 +116,7 @@ export class GoalsService {
     const params = [id];
     try {
       const result = await this.db.query(query, params);
-      this.loadGoals(); // Assuming this method refreshes your goals list
+      this.loadGoals(); 
       console.log('Goal progress has been reset to 0 for goal with ID:', id);
       return result;
     } catch (err) {
@@ -147,4 +124,18 @@ export class GoalsService {
       throw err;
     }
   }
+
+  async resetAllGoalProgress() {
+    const query = 'UPDATE goals SET goalProgress = 0';
+    try {
+      const result = await this.db.query(query);
+      this.loadGoals(); 
+      console.log('Goal progress has been reset to 0 for all goals');
+      return result;
+    } catch (err) {
+      console.error('There was an error resetting the goal progress for all goals', err);
+      throw err;
+    }
+  }
+  
 }
