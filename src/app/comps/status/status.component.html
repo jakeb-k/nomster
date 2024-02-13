@@ -1,3 +1,6 @@
-<p>
-  status works!
-</p>
+<div class="notification-container" [style.color]="styles.color" [style.background]="styles.bg">
+  <ion-icon [name]="styles.icon" [color]="styles.iconColor"></ion-icon>
+  <p class="successMsg">
+      {{props.message}}
+  </p>
+</div>
