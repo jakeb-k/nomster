@@ -140,7 +140,7 @@ export class GoalsService {
   }
   
   async updateGoalsByMeal(meal: Meal) {
-    const query = 'UPDATE goals SET goalProgress = ? WHERE type = ?'; 
+    const query = 'UPDATE goals SET goalProgress = goalProgress + ? WHERE type = ?'; 
     try {
       await this.db.query(query, [meal.cals, 'Calorie Intake']);
       await this.db.query(query, [meal.carbs, 'Carbs Limit']);

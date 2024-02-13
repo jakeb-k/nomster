@@ -36,10 +36,13 @@ export class RecipePage implements OnInit {
   // Flag to show or hide the success message
   showSuccessMessage = Boolean(); 
 
-   // Flag to show or hide the success message
-   showMealMessage = Boolean(); 
+  // Flag to show or hide the success message
+  showMealMessage = Boolean(); 
 
   nutri!: Meal; 
+
+  isLoaded = false; 
+
   /**
    * Constructor for the component.
    * @param getter - Service to get recipe details.
@@ -74,6 +77,7 @@ export class RecipePage implements OnInit {
           this.title = response.title; 
           this.ingredients = response.extendedIngredients;  
           this.nutri = this.nutrientSorter(response.nutrition.nutrients); 
+          this.isLoaded = true; 
         } else {
           console.error('Error:', response.error); 
         }

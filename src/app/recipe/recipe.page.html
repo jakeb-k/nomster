@@ -1,20 +1,12 @@
 <app-header></app-header>
 
-<ion-content>
+<ion-content *ngIf="isLoaded">
 
-  <div class="notification-container" *ngIf="showSuccessMessage">
-    <ion-icon name="checkmark-circle" color="success"></ion-icon>
-    <p class="successMsg">
-        Grocery Successfully Saved!
-    </p>
-  </div>
+  <app-status *ngIf="showSuccessMessage" message="    Grocery was added!" status="true"></app-status>
 
-  <div class="notification-container" *ngIf="showMealMessage">
-    <ion-icon name="checkmark-cross" color="success"></ion-icon>
-    <p class="successMsg">
-        Meal nutrients are tracked!
-    </p>
-  </div>
+
+  <app-status *ngIf="showMealMessage" message="    Meal has been logged!" status="true"></app-status>
+
 
   <div class="filterOps">
     <h3>{{title}}</h3>

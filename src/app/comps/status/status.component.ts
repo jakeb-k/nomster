@@ -6,11 +6,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./status.component.scss'],
 })
 export class StatusComponent  implements OnInit {
-  // Input property for a favourite item
-  @Input() props = {
-    status: Boolean(), 
-    message: "",
-  };
+
+  @Input() status = "";
+
+  @Input() message = ""
+
   styles = {
     icon: "",
     iconColor: "",
@@ -21,10 +21,14 @@ export class StatusComponent  implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.status = JSON.parse(this.status); 
+    console.log(this.status); 
+    this.updateCompByStatus(); 
+  }
 
   updateCompByStatus() {
-    if(this.props.status) {
+    if(this.status) {
       this.styles.icon = "thumbs-up-outline"
       this.styles.iconColor = "success"
       this.styles.color = "#3c763d"

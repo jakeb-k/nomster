@@ -2,10 +2,6 @@
 
 <ion-content [fullscreen]="true"> 
 <div id="container">
-  <p *ngIf="message !== ''">
-    {{message}}
-  </p>
-  
     <div class="recipeBox" *ngIf="setLoaded; else preLoad">
       <!--RECIPE RESULTS COMP-->
       <meal-result  [title]="sortedRecipes[index].title"
@@ -32,13 +28,10 @@
         <button class="navBtn" (click)="slideNav(1)">></button>
       </div>
       
-      <div class="notification-container" *ngIf="showSuccessMessage">
-        <ion-icon name="checkmark-circle" color="success"></ion-icon>
-        <p class="successMsg">
-            Recipe Successfully Saved!
-        </p>
-      </div>
-    
+  
+
+      <app-status *ngIf="showSuccessMessage" message="    Recipe Saved!" status="true"></app-status>
+
       <div class="saveResetCont"> 
         <ion-button fill="clear" (click)="reset()">RESET</ion-button>
         <ion-button fill="clear" (click)="newFav(sortedRecipes[index])">SAVE</ion-button>
@@ -99,6 +92,9 @@
         </ion-card-content>
       </ion-card>
       <button class="navBtn" (click)="sendFilterData()">APPLY</button>
+      <p *ngIf="message !== ''">
+        {{message}}
+      </p>
     </div>
     </ng-template>
      

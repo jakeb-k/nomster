@@ -14,6 +14,6 @@ import { FormsModule } from '@angular/forms';
     IonicModule,
     FormsModule
   ],
-  exports:[HeaderComponent, UpdateGoalModalComponent]
+  exports:[HeaderComponent, UpdateGoalModalComponent, StatusComponent]
 })
 export class SharedModule { }
