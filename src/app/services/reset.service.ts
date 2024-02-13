@@ -16,12 +16,12 @@ export class ResetService {
 
     this.user = await this.userService.loadUserByPromise();
     this.timeStamp = this.user.timeStamp;
-    console.log("timestamp: ", this.timeStamp) 
     const now = new Date().getTime();
 
     // Check if more than 24 hours have passed
-    if (now - this.timeStamp > 60 * 1000) {
+    if (now - this.timeStamp > 24 * 60 * 60 * 1000) {
       await this.goalsService.resetAllGoalProgress(); 
+      await this.userService.updateUserTimestamp(); 
       return true
     } else {
       return false

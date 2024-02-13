@@ -63,8 +63,6 @@ export class UserService {
   
   async loadUserByPromise(): Promise<User | null> {
     const query = "SELECT * FROM users LIMIT 1";
-    
-
     try {
       const result = await this.db.query(query);
   
@@ -76,6 +74,20 @@ export class UserService {
     } catch (error) {
       console.error(`Error occurred during User retrieval:`, error);
       return null;
+    }
+  }
+
+  async updateUserTimestamp() {
+    const query = "UPDATE users SET timestamp = ?" 
+    const param = [new Date().getTime()] 
+    try {
+      const result = await this.db.query(query, param); 
+      console.log('Timestamp has been updated')
+      return result
+
+    } catch (error){
+      console.error('Error occured during timestamp update:', error)
+      throw error
     }
   }
 
