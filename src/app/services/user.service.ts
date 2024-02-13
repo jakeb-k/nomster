@@ -77,12 +77,14 @@ export class UserService {
     }
   }
 
-  async updateUserTimestamp() {
+  async updateUserTimestamp(timeStamp: number) {
+   
+    let newStamp = timeStamp + 86400000; 
     const query = "UPDATE users SET timestamp = ?" 
-    const param = [new Date().getTime()] 
+    const param = [newStamp] 
     try {
       const result = await this.db.query(query, param); 
-      console.log('Timestamp has been updated')
+      console.log('Timestamp has been updated:', timeStamp, newStamp)
       return result
 
     } catch (error){
