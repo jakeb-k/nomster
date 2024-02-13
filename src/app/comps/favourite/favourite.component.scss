@@ -1,6 +1,3 @@
-.favImg {
-    margin:5px 0; 
-}
 .favInfo * {
     padding:2.5px;
     margin:1px; 
@@ -54,12 +51,17 @@
     mask-size: cover;
 }
 .favImg, .favInfo {
-    width:47.5%;
+    width:48%;
     height:auto;        
+}
+.favImg img{
+    margin:3%; 
+    border-radius:2.5px;
 }
 .row {
     display:flex; 
     flex-direction:row; 
+    justify-content: space-evenly;
     background:white; 
 }
 
