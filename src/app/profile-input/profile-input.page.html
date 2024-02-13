@@ -3,7 +3,7 @@
   <ion-item class="goalItem" *ngFor="let g of goals()">
     <div class="goalContent"> 
       <p>{{g.type}} : </p>
-      <p><b>{{g.goalProgress}} / {{g.goalAmount}}<span>
+      <p><b>{{g.goalProgress.toFixed(0)}} / {{g.goalAmount}}<span>
           {{ g.type === 'Calorie Intake' ? 'kcals' : 'gs' }}</span>
         </b>
       </p>

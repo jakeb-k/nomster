@@ -29,7 +29,7 @@ export class StatusComponent  implements OnInit {
 
   updateCompByStatus() {
     if(this.status) {
-      this.styles.icon = "thumbs-up-outline"
+      this.styles.icon = "thumbs-up"
       this.styles.iconColor = "success"
       this.styles.color = "#3c763d"
       this.styles.bg = "#dff0d8"

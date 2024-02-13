@@ -130,7 +130,7 @@ export class RecipePage implements OnInit {
       const isSuccess = await this.database.addGrocery(newGrocery);
       if (isSuccess) {
         this.showSuccessMessage = true;
-        setTimeout(() => this.showSuccessMessage = false, 2000);
+        setTimeout(() => this.showSuccessMessage = false, 3000);
       } else {
         // Handle cases where addGrocery returns false
       }
@@ -165,7 +165,7 @@ export class RecipePage implements OnInit {
       const mealSuccess = await this.goalsService.updateGoalsByMeal(this.nutri); 
       if (mealSuccess) {
         this.showMealMessage = true;
-        setTimeout(() => this.showMealMessage = false, 2000);
+        setTimeout(() => this.showMealMessage = false, 3000);
       } 
     }catch (error) {
       console.error('Error tracking by meal:', error)

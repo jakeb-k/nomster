@@ -1,15 +1,39 @@
+@keyframes slideFromBottom {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+    
+}
+
 .notification-container {
-    font-family: 'Margarine', sans-serif;
+    width:87.5%;
+    height:50px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin:auto; 
+
     display:flex;
     flex-direction:row; 
     align-items: center;
-    height:50px; 
+     
     position: fixed; /* Fixed position */
     bottom:0; 
     left: 0;
     right: 0;
-    text-align: center;
-    transition: bottom 0.5s ease-in-out; /* Smooth transition for sliding effect */
     z-index:3; 
-  }
-  
+
+    animation: slideFromBottom 0.3s ease-in-out;
+}
+
+.notification-info {
+    width:50%;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+    align-items: center;
+    height:min-content;
+    margin:auto;  
+}

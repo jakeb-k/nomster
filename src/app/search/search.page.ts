@@ -312,7 +312,7 @@ export class SearchPage implements OnInit{
         // Display success message
         setTimeout(() => {
           this.showSuccessMessage = false; // Hide success message after a delay
-        }, 2000); // Adjust the delay (in milliseconds) as needed
+        }, 3000); // Adjust the delay (in milliseconds) as needed
       } 
     } catch (error) {
       console.error('Error adding favourite:', error); //log error if error sending data
