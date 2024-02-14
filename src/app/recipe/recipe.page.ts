@@ -52,6 +52,9 @@ export class RecipePage implements OnInit {
   }; 
 
   isLoaded = false; 
+  isExpanded = false; 
+
+  selectedDiv: string = 'first';
 
   /**
    * Constructor for the component.
@@ -71,6 +74,7 @@ export class RecipePage implements OnInit {
   ngOnInit() {
     this.id = Number(this.route.snapshot.paramMap.get('id')!);
     this.getRecipeDetails();
+    this.getUnderlinePosition(); 
   }
 
   /**
@@ -86,7 +90,9 @@ export class RecipePage implements OnInit {
           this.serving = response.servings
           this.source.link = response.sourceUrl 
           this.source.name = response.sourceName
-          this.summary = this.summaryFormatter(response.summary); 
+
+          this.summary = response.summary
+          
           this.image = response.image; 
           this.title = response.title; 
           this.ingredients = response.extendedIngredients;  
@@ -179,4 +185,16 @@ export class RecipePage implements OnInit {
     }
   }
 
+  readMoreToggle(){
+    this.isExpanded = !this.isExpanded
+  }
+  getUnderlinePosition(): string {
+    // Adjust these values based on your titles' actual sizes and spacing
+    const underlineWidthFirst = 100; // Width of the underline for the first title
+    const underlineWidthSecond = 100; // Width of the underline for the second title
+    const positionFirst = 'translateX(0px)';
+    const positionSecond = `translateX(${underlineWidthFirst}%)`; // Adjust translation based on your layout
+
+    return this.selectedDiv === 'first' ? positionFirst : positionSecond;
+  }
 }

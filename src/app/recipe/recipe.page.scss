@@ -15,6 +15,7 @@ img {
     border-radius:15px; 
 }
 td {
+    padding:0 1%; 
     width: calc(50% - 4.5%); /* Set the width to 50% minus the margin gap */
 }
 #container {
@@ -76,3 +77,48 @@ li::before {
     justify-content:space-around;
     align-items: center;
 }
+.text-container {
+    position: relative;
+    max-height: 4.5em; /* Adjust based on your line height to fit exactly two lines */
+    overflow: hidden;
+    transition: max-height 0.5s ease; /* Smooth transition */
+  }
+  
+/* When expanded, set a large max-height; adjust if you have very long text */
+.expanded {
+    max-height: 500px; /* Large enough to accommodate the content */
+}
+
+.fade-out {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 1.2em; /* Adjust based on line height */
+    background: linear-gradient(to bottom, transparent, white); /* Adjust the end color to match your background */
+}
+.title-container {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+    text-align: center;
+}
+.title-container h3 {
+cursor: pointer;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.selected {
+    color: #FF6700; /* Highlight the selected title */
+}
+.underline {
+    position: relative;
+    bottom: 0;
+    height: 2px;
+    width: 50%; /* Initial width, will be set dynamically */
+    background-color: #FF6700; /* Match the highlight color */
+    transition: transform 0.3s ease; /* Smooth sliding transition */
+    margin-bottom:5%;  
+
+  }

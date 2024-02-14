@@ -34,37 +34,48 @@
      I Enjoyed This, Log It!
     </ion-button>
 
-    <div id="ingCont">
-      <div class="ingBox">
-        <h3>Ingredients</h3>
-        <tr *ngFor="let item of ingredients; let i = index">
-          <ng-container *ngIf="i % 2 === 0; else oddRow">
-            <td>
-              <div class="recipeGrocery"> {{ item.original }} </div>
-              <div class="recipeGrocery"> <ion-button fill="clear" (click)="addToGroceries(item)"><ion-icon name="add-circle-outline" ></ion-icon></ion-button></div>
-            </td>
-            <td *ngIf="i + 1 < ingredients.length">
-              <div class="recipeGrocery"> {{ ingredients[i + 1].original }} </div>
-              <div class="recipeGrocery"><ion-button fill="clear" (click)="addToGroceries(ingredients[i + 1])"><ion-icon name="add-circle-outline" ></ion-icon></ion-button></div>
-            </td>
-          </ng-container>
-          <ng-template #oddRow>
-          </ng-template>
-        </tr>
+    <div class="text-container" [ngClass]="{'expanded': isExpanded}">
+      <p [innerHTML]="summary"></p>
+      <div class="fade-out" *ngIf="!isExpanded"></div>
+    </div>
+    <ion-button fill="clear" (click)="readMoreToggle()">{{ isExpanded ? 'Read Less' : 'Read More' }}</ion-button>
+
+
+    <div class="title-container">
+      <h3 (click)="selectedDiv = 'first'" [class.selected]="selectedDiv === 'first'">Ingredients</h3>
+      <h3 (click)="selectedDiv = 'second'" [class.selected]="selectedDiv === 'second'">Method</h3>
+    </div>
+    <div class="underline" [style.transform]="getUnderlinePosition()"></div>
+
+    
+    <div *ngIf="selectedDiv === 'first'">
+      <div id="ingCont">
+        <div class="ingBox">
+          <tr *ngFor="let item of ingredients; let i = index">
+            <ng-container *ngIf="i % 2 === 0; else oddRow">
+              <td>
+                <div class="recipeGrocery"> {{ item.original }} </div>
+                <div class="recipeGrocery"> <ion-button fill="clear" (click)="addToGroceries(item)"><ion-icon name="add-circle-outline" ></ion-icon></ion-button></div>
+              </td>
+              <td *ngIf="i + 1 < ingredients.length">
+                <div class="recipeGrocery"> {{ ingredients[i + 1].original }} </div>
+                <div class="recipeGrocery"><ion-button fill="clear" (click)="addToGroceries(ingredients[i + 1])"><ion-icon name="add-circle-outline" ></ion-icon></ion-button></div>
+              </td>
+            </ng-container>
+            <ng-template #oddRow>
+            </ng-template>
+          </tr>
+        </div>
       </div>
     </div>
-   
-    <h3>Instructions</h3>
     
-    <div class="instructions">
-      <ol >
-        <li *ngFor="let ins of instrucs">{{ins.step}}</li>
-      </ol>
+    <div *ngIf="selectedDiv === 'second'">
+      <div class="instructions">
+        <ol>
+          <li *ngFor="let ins of instrucs">{{ins.step}}</li>
+        </ol>
+      </div>  
     </div>
-    <!--MAKE DROP DOWN-->
-    <p class="sumPara" [innerHTML]="summary"></p>
 
   </div>
-
-
 </ion-content>
