@@ -41,6 +41,8 @@ export class RecipePage implements OnInit {
 
   nutri!: Meal; 
 
+  instrucs:any; 
+
   isLoaded = false; 
 
   /**
@@ -76,6 +78,7 @@ export class RecipePage implements OnInit {
           this.image = response.image; 
           this.title = response.title; 
           this.ingredients = response.extendedIngredients;  
+          this.instrucs = response.analyzedInstructions[0].steps;
           this.nutri = this.nutrientSorter(response.nutrition.nutrients); 
           this.isLoaded = true; 
         } else {
