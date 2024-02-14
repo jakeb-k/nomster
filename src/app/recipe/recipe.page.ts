@@ -43,6 +43,14 @@ export class RecipePage implements OnInit {
 
   instrucs:any; 
 
+  timeToCook:any; 
+  serving:any; 
+  likes:any;
+  source = {
+    name:"",
+    link:""
+  }; 
+
   isLoaded = false; 
 
   /**
@@ -73,7 +81,11 @@ export class RecipePage implements OnInit {
       async (response) => {
         if (!response.error) {
           console.log(response);
-          this.instructions = this.formatInstructions(response.instructions);
+          this.likes = response.aggregrateLikes
+          this.timeToCook = response.readyInMinutes
+          this.serving = response.servings
+          this.source.link = response.sourceUrl 
+          this.source.name = response.sourceName
           this.summary = this.summaryFormatter(response.summary); 
           this.image = response.image; 
           this.title = response.title; 
@@ -110,14 +122,6 @@ export class RecipePage implements OnInit {
     return newSummary; 
   }
 
-  /**
-   * Formats the instructions text by adding breaks before numbers.
-   * @param text - The instructions text to format.
-   * @returns The formatted instructions.
-   */
-  formatInstructions(text: string) {
-    return text.replace(/(\d+\.) /g, '<br><br>$1');
-  }
 
   /**
    * Adds a grocery item to the database and handles the response.

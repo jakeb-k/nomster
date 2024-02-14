@@ -14,7 +14,6 @@ img {
 }
 td {
     width: calc(50% - 4.5%); /* Set the width to 50% minus the margin gap */
-    font-family:$p3; 
 }
 #container {
     margin:auto;
@@ -29,7 +28,7 @@ h3 {
 }
 ion-icon {
     color:#FF6700; 
-   }
+}
 .ingBox ion-button {
     margin:25px auto;
     margin-right:auto;  
@@ -38,4 +37,22 @@ ion-button:hover {
     color:#ffa118;
     transform: scale(1.05);
     transition: 0.3s ease-in-out;
+}
+.instructions li{
+    margin:10px 0; 
+    font-size:14px; 
+}
+ol {
+    counter-reset: step-counter; /* Initialize the counter */
+    list-style-type: none; /* Remove default numbering */
+    padding-left: 0; /* Adjust padding if needed */
+  }
+  
+  li {
+    counter-increment: step-counter; /* Increment the counter for each list item */
+  }
+  
+  li::before {
+    content: "Step " counter(step-counter) ". "; /* Customize the label */
+    font-weight: bold; /* Optional: make the label bold */
   }
