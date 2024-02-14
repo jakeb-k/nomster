@@ -81,7 +81,7 @@ export class RecipePage implements OnInit {
       async (response) => {
         if (!response.error) {
           console.log(response);
-          this.likes = response.aggregrateLikes
+          this.likes = response.aggregateLikes
           this.timeToCook = response.readyInMinutes
           this.serving = response.servings
           this.source.link = response.sourceUrl 

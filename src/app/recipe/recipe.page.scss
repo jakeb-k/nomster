@@ -6,7 +6,9 @@
  $p2 : 'Better Ground Line', sans-serif;
  $p3 :'Margarine', sans-serif;  
 
-
+.filterOps h3 {
+    text-align:center; 
+}
 
 img {
     padding:2.5%;
@@ -46,13 +48,31 @@ ol {
     counter-reset: step-counter; /* Initialize the counter */
     list-style-type: none; /* Remove default numbering */
     padding-left: 0; /* Adjust padding if needed */
-  }
-  
-  li {
+}
+
+li {
     counter-increment: step-counter; /* Increment the counter for each list item */
-  }
-  
-  li::before {
+}
+
+li::before {
     content: "Step " counter(step-counter) ". "; /* Customize the label */
     font-weight: bold; /* Optional: make the label bold */
-  }
+}
+.gen-info {
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    margin:0px 3%; 
+    font-size:18px; 
+    ion-icon {
+        width:22px;
+        height:22px; 
+    }
+}
+.gen-info-sec {
+    width:100%; 
+    display:flex;
+    justify-content:space-around;
+    align-items: center;
+}
