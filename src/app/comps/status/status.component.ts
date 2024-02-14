@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-status',
@@ -10,7 +11,7 @@ export class StatusComponent  implements OnInit {
   @Input() status = "";
 
   @Input() message = ""
-
+  
   styles = {
     icon: "",
     iconColor: "",
@@ -19,8 +20,8 @@ export class StatusComponent  implements OnInit {
   }
   
 
-  constructor() { }
-
+  constructor(private router: Router) { }
+  
   ngOnInit() {
     this.status = JSON.parse(this.status); 
     console.log(this.status); 

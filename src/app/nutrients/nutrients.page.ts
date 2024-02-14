@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Nutrient } from '../interfaces/nutrient';
 import { GetRecipeDetailsService } from '../services/get-recipe-details.service';
 import { GoalsService } from '../services/goals.service';
@@ -17,6 +16,7 @@ goal:Goal | null = null;
 // Unique identifier, typically fetched from route parameters.
 id!: number; 
 
+loc: string | null = ""; 
 // Array to store nutrient details, initially empty.
 nutrientsArr: Nutrient[] = []; 
 
@@ -39,7 +39,8 @@ sessionCI = Number(sessionStorage.getItem('calorieIntake'))
  * @param router - Router service for navigation.
  * @param userService - Service to get user details
  */
-constructor(private recipeDetailsGetter: GetRecipeDetailsService, private route: ActivatedRoute, private router: Router, private goalsService: GoalsService) { }
+constructor(private recipeDetailsGetter: GetRecipeDetailsService, private route: ActivatedRoute, 
+  private router: Router, private goalsService: GoalsService) { }
 
 /**
  * Lifecycle hook that is called after data-bound properties of a directive are initialized.
@@ -48,6 +49,7 @@ constructor(private recipeDetailsGetter: GetRecipeDetailsService, private route:
 ngOnInit() {
   this.loadGoal(); 
   this.id = Number(this.route.snapshot.paramMap.get('id')!);
+  this.loc = this.route.snapshot.paramMap.get('loc');
   this.getNutrition(this.id);
 
   
@@ -65,7 +67,7 @@ async loadGoal() {
  * Navigates back to the 'favs' route.
  */
 back(): void {
-  this.router.navigateByUrl('/favs', {replaceUrl: true}); 
+  this.router.navigateByUrl('/' + this.loc); 
 }
 
 /**

@@ -32,7 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('./grocery/grocery.module').then( m => m.GroceryPageModule)
   },
   {
-    path: 'nutrients/:id',
+    path: 'nutrients/:id/:loc',
     loadChildren: () => import('./nutrients/nutrients.module').then( m => m.NutrientsPageModule)
   },
   {

@@ -105,6 +105,7 @@ export class SearchPage implements OnInit{
    */
   constructor(private recipeGetter: GetRecipeService, private router:Router, private modalController: ModalController, private database: DatabaseService, private recipeDetailGetter: GetRecipeDetailsService) {}
   
+
   /**
    * Temporary storage and retrieval of previous search results to reduce API calls.
    */
@@ -121,6 +122,8 @@ export class SearchPage implements OnInit{
       this.servingSize = JSON.parse(temp3!); 
     }
   }
+
+
   /**
    * Fetches recipes based on user query.
    */
@@ -147,6 +150,8 @@ export class SearchPage implements OnInit{
       }
     );
   }
+
+
   /**
    * Navigates to detailed recipe view.
    * @param id - The unique identifier of the recipe.
@@ -154,6 +159,8 @@ export class SearchPage implements OnInit{
   nav(id:Number){
     this.router.navigateByUrl('/recipe/'+id, {replaceUrl:true});
   }
+
+
   /**
    * Sorts and processes raw recipe data into a usable format.
    */
@@ -205,6 +212,8 @@ export class SearchPage implements OnInit{
     }
     
   } 
+
+
   /**
    * Fetches detailed nutrition information for a specific recipe.
    * @param id - The unique identifier of the recipe.
@@ -232,6 +241,8 @@ export class SearchPage implements OnInit{
       }
     });
   }
+
+
    /**
    * Navigates through the meal slideshow in the UI.
    * @param step - The step number to navigate the slideshow.
@@ -247,6 +258,8 @@ export class SearchPage implements OnInit{
       }
     }
   }
+
+
   /**
    * Sends filter data for processing and updates the UI with the response.
    */
@@ -274,6 +287,8 @@ export class SearchPage implements OnInit{
           }
         );
   }
+
+
   /**
    * Handles the cancellation of the modal view.
    */
@@ -281,6 +296,8 @@ export class SearchPage implements OnInit{
     //removes the modal from screen
     this.modalController.dismiss(null, 'cancel');
   }
+
+
   /**
    * Toggles between the filter form and meal results display in the UI.
    */
@@ -288,6 +305,8 @@ export class SearchPage implements OnInit{
     //controls if filter form or if meal results are shown
     this.setLoaded = !this.setLoaded; //simple bool flip
   }
+
+
   /**
    * Adds a new favourite meal to the database.
    * @param fav - The meal to be added as a favourite.
@@ -318,7 +337,10 @@ export class SearchPage implements OnInit{
       console.error('Error adding favourite:', error); //log error if error sending data
    
     }
+  }
 
-   
+  //take recipe id and nav to nutrient page
+  nutrientNav(id:number) {
+    this.router.navigateByUrl('/nutrients/'+id+'/search')
   }
 }
