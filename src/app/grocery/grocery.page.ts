@@ -48,7 +48,7 @@ export class GroceryPage implements OnInit {
   async deleteGrocery(grocery: Grocery) {
     //wait for their to be response on delete grocery function
     //takes name and id as its composite primary key
-    await this.database.deleteGroceryByName(grocery.name.toString(), grocery.id.toString()); 
+    await this.database.deleteGrocery(grocery.id.toString()); 
     this.groceries = this.database.getGrocery(); 
   }
 
@@ -80,7 +80,7 @@ export class GroceryPage implements OnInit {
    * @param max - The maximum value.
    * @returns A random number between min and max.
    */
-  randomIdGenerator(min:number,max:number) : Number {
+  randomIdGenerator(min:number,max:number) : number {
       return Math.random() * (max - min) + min; //returns a number between the min and max
   }
 

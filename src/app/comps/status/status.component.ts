@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
   selector: 'app-status',
@@ -12,22 +13,38 @@ export class StatusComponent  implements OnInit {
 
   @Input() message = ""
   
+  @Input()item:any; 
+  
   styles = {
     icon: "",
     iconColor: "",
     color: "",
     bg: "",
   }
-  
+  gType = false; 
 
-  constructor(private router: Router) { }
+  constructor(private database: DatabaseService) { }
   
   ngOnInit() {
     this.status = JSON.parse(this.status); 
-    console.log(this.status); 
+    this.gType = this.message == "Grocery was added!";
     this.updateCompByStatus(); 
   }
-
+  async undoAddGrocery() {
+    if (this.item) {
+      try {
+        const isSuccess = await this.database.deleteGrocery(String(this.item.id));
+        if (isSuccess) {
+          console.log('grocery was unadded')
+          this.item = null; // Reset the reference
+        } else {
+          console.log('grocery was not unadded')
+        }
+      } catch (error) {
+        console.error('Error undoing add grocery:', error);
+      }
+    }
+  }
   updateCompByStatus() {
     if(this.status) {
       this.styles.icon = "thumbs-up"
@@ -40,6 +57,6 @@ export class StatusComponent  implements OnInit {
       this.styles.color = "#763b3b"
       this.styles.bg = "#f0d7d7"
     }
-    
   }
+
 }

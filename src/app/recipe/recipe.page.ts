@@ -60,6 +60,8 @@ export class RecipePage implements OnInit {
 
   loc:any; 
 
+  lastAddedGrocery!: Grocery | null;
+
   /**
    * Constructor for the component.
    * @param getter - Service to get recipe details.
@@ -147,6 +149,7 @@ export class RecipePage implements OnInit {
     try {
       const isSuccess = await this.database.addGrocery(newGrocery);
       if (isSuccess) {
+        this.lastAddedGrocery = newGrocery 
         this.showSuccessMessage = true;
         setTimeout(() => this.showSuccessMessage = false, 1500);
       } else {
