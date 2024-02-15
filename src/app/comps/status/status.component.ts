@@ -23,7 +23,7 @@ export class StatusComponent  implements OnInit {
   }
   gType = false; 
 
-  constructor(private database: DatabaseService) { }
+  constructor(private database: DatabaseService, private router: Router) { }
   
   ngOnInit() {
     this.status = JSON.parse(this.status); 
@@ -45,6 +45,9 @@ export class StatusComponent  implements OnInit {
         console.error('Error undoing add grocery:', error);
       }
     }
+  }
+  navGoals() {
+    this.router.navigateByUrl('/profile-input'); 
   }
   updateCompByStatus() {
     if(this.status) {
