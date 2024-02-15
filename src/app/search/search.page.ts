@@ -157,7 +157,7 @@ export class SearchPage implements OnInit{
    * @param id - The unique identifier of the recipe.
    */
   nav(id:Number){
-    this.router.navigateByUrl('/recipe/'+id, {replaceUrl:true});
+    this.router.navigateByUrl('/recipe/'+id);
   }
 
 

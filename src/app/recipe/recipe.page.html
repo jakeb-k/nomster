@@ -53,9 +53,7 @@
     <div *ngIf="selectedDiv === 'first'">
       <div id="ingCont" >
         <div class="ingBox">
-          <tr *ngFor="let item of ingredients; let i = index" (click)="selectInstruction(i)"
-          [class.highlighted]="i === selectedInstruction"
-          [class.faded]="shouldBeFaded(i)">
+          <tr *ngFor="let item of ingredients; let i = index">
             <ng-container *ngIf="i % 2 === 0; else oddRow">
               <td>
                 <div class="recipeGrocery"> {{ item.original }} </div>
@@ -77,8 +75,13 @@
       <div class="instructions">
         <ol>
           <li *ngFor="let ins of instrucs; let i = index" (click)="selectInstruction(i)"
-          [class.highlighted]="i === selectedInstruction"
-          [class.faded]="i < selectedInstruction">{{ins.step}}</li>
+              [class.highlighted]="i === selectedInstruction"
+              [class.faded]="i < selectedInstruction">
+            <div class="instruc-sec">
+              <p>{{ins.step}}</p>
+              <ion-icon [name]="getIconName(i)"></ion-icon>
+            </div>
+          </li>
         </ol>
       </div>  
     </div>

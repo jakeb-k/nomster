@@ -205,5 +205,12 @@ export class RecipePage implements OnInit {
   shouldBeFaded(index: number): boolean {
     return index < this.selectedInstruction;
   }
+  getIconName(index: number): string {
+    if (index < this.selectedInstruction) {
+      return 'checkmark-circle'; // Example: icon name when instruction is completed or passed
+    } else {
+      return 'ellipse-outline'; // Example: icon name for current or future instructions
+    }
+  }
   
 }
