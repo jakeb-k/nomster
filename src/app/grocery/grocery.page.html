@@ -23,11 +23,6 @@
           </ion-card-content>
         </ion-card> 
 
-        <div class="notification-container" *ngIf="showSuccessMessage">
-          <ion-icon name="checkmark-circle" color="success"></ion-icon>
-          <p class="successMsg">
-              Grocery Successfully Saved!
-          </p>
-        </div>       
+        <app-status *ngIf="showSuccessMessage" message="Grocery was added!" status="true"></app-status>
 
     </ion-content>

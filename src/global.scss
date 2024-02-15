@@ -123,20 +123,4 @@ ion-icon {
     
 }
 
-.notification-container {
-    font-family: 'Margarine', sans-serif;
-    display:flex;
-    flex-direction:row; 
-    align-items: center;
-    height:50px; 
-    position: fixed; /* Fixed position */
-    bottom:0; 
-    left: 0;
-    right: 0;
-    background-color: #dff0d8; /* Success message color, adjust as needed */
-    color: #3c763d; /* Text color for success message */
-    text-align: center;
-    transition: bottom 0.5s ease-in-out; /* Smooth transition for sliding effect */
-    z-index:3; 
-  }
   

@@ -31,7 +31,7 @@ export class MealResultComponent  implements OnInit {
    * @param id - The unique identifier of the recipe.
    */
   recipeNav(id:Number){
-    this.router.navigateByUrl('/recipe/'+id, {replaceUrl:true}); 
+    this.router.navigateByUrl('/recipe/'+id+'/search', {replaceUrl:true}); 
   }
 
 }

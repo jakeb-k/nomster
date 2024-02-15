@@ -58,6 +58,8 @@ export class RecipePage implements OnInit {
 
   selectedInstruction: number = 0;
 
+  loc:any; 
+
   /**
    * Constructor for the component.
    * @param getter - Service to get recipe details.
@@ -75,6 +77,7 @@ export class RecipePage implements OnInit {
    */
   ngOnInit() {
     this.id = Number(this.route.snapshot.paramMap.get('id')!);
+    this.loc = this.route.snapshot.paramMap.get('loc');
     this.getRecipeDetails();
     this.getUnderlinePosition(); 
   }
@@ -115,7 +118,7 @@ export class RecipePage implements OnInit {
    * Navigates to the home route.
    */
   navHome() {  
-    this.router.navigateByUrl('/'); 
+    this.router.navigateByUrl('/'+this.loc); 
   }
 
   /**

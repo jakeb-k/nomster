@@ -55,8 +55,7 @@ export class FavsPage implements OnInit {
    * @param id - The unique identifier of the recipe.
    */
   recipeNav(id:Number){
-    this.router.navigateByUrl('/recipe/'+id, {replaceUrl:true}); 
-
+    this.router.navigateByUrl('/recipe/'+id+'/favs', {replaceUrl:true}); 
   }
    /**
    * Navigates to the nutrient details page for a specific recipe.
@@ -64,6 +63,9 @@ export class FavsPage implements OnInit {
    */
   nutrientNav(id:number) {
     this.router.navigateByUrl('/nutrients/'+id+'/favs', {replaceUrl:true})
+  }
+  navHome() {
+    this.router.navigateByUrl('/login'); 
   }
 
   

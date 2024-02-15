@@ -1,6 +1,6 @@
 <app-header></app-header>
-<ion-content> 
-
+<ion-content class="ion-padding"> 
+  <ion-button (click)="navHome()">BACK</ion-button>
   <div class="favItem ion-padding" *ngFor="let fav of favs()">
     <favourite [fav]="fav">
       
