@@ -56,6 +56,8 @@ export class RecipePage implements OnInit {
 
   selectedDiv: string = 'first';
 
+  selectedInstruction: number = 0;
+
   /**
    * Constructor for the component.
    * @param getter - Service to get recipe details.
@@ -143,7 +145,7 @@ export class RecipePage implements OnInit {
       const isSuccess = await this.database.addGrocery(newGrocery);
       if (isSuccess) {
         this.showSuccessMessage = true;
-        setTimeout(() => this.showSuccessMessage = false, 3000);
+        setTimeout(() => this.showSuccessMessage = false, 1500);
       } else {
         // Handle cases where addGrocery returns false
       }
@@ -178,7 +180,7 @@ export class RecipePage implements OnInit {
       const mealSuccess = await this.goalsService.updateGoalsByMeal(this.nutri); 
       if (mealSuccess) {
         this.showMealMessage = true;
-        setTimeout(() => this.showMealMessage = false, 3000);
+        setTimeout(() => this.showMealMessage = false, 1500);
       } 
     }catch (error) {
       console.error('Error tracking by meal:', error)
@@ -197,4 +199,11 @@ export class RecipePage implements OnInit {
 
     return this.selectedDiv === 'first' ? positionFirst : positionSecond;
   }
+  selectInstruction(index: number): void {
+    this.selectedInstruction = index;
+  }
+  shouldBeFaded(index: number): boolean {
+    return index < this.selectedInstruction;
+  }
+  
 }

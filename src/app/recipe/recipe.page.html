@@ -25,11 +25,13 @@
       </div>
     </div>
   </div>
-  
+  <!--ADD ALLERGENS, FINISH HIGHLIGHT STUFF
+  ALSO DO THE BACK BUTTON STUFF (DOESNT KNOW IF COMING FROM FAVS OR HOME)-->
  <div id="container">
     <div id="topCont">
       <img [src]="image" />
     </div>
+    
     <ion-button fill="clear" (click)="updateGoalsByMeal()">
      I Enjoyed This, Log It!
     </ion-button>
@@ -49,9 +51,11 @@
 
     
     <div *ngIf="selectedDiv === 'first'">
-      <div id="ingCont">
+      <div id="ingCont" >
         <div class="ingBox">
-          <tr *ngFor="let item of ingredients; let i = index">
+          <tr *ngFor="let item of ingredients; let i = index" (click)="selectInstruction(i)"
+          [class.highlighted]="i === selectedInstruction"
+          [class.faded]="shouldBeFaded(i)">
             <ng-container *ngIf="i % 2 === 0; else oddRow">
               <td>
                 <div class="recipeGrocery"> {{ item.original }} </div>
@@ -72,7 +76,9 @@
     <div *ngIf="selectedDiv === 'second'">
       <div class="instructions">
         <ol>
-          <li *ngFor="let ins of instrucs">{{ins.step}}</li>
+          <li *ngFor="let ins of instrucs; let i = index" (click)="selectInstruction(i)"
+          [class.highlighted]="i === selectedInstruction"
+          [class.faded]="i < selectedInstruction">{{ins.step}}</li>
         </ol>
       </div>  
     </div>

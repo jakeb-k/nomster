@@ -121,4 +121,13 @@ cursor: pointer;
     transition: transform 0.3s ease; /* Smooth sliding transition */
     margin-bottom:5%;  
 
-  }
+}
+
+.highlighted {
+    background-color: yellow; /* Highlight style */
+    color: black; /* Text color for highlighted item */
+}
+  
+.faded {
+    opacity: 0.5; /* Fade style for non-selected instructions */
+}
