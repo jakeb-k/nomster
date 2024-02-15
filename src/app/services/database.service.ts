@@ -257,9 +257,9 @@ export class DatabaseService {
    * @param id - The ID of the grocery item.
    * @returns Promise with the result of the query.
    */
-  async deleteGrocery(id:string) {
-    const query = `DELETE FROM groceries WHERE id=?`;
-    const params = [id] 
+  async deleteGrocery(name:string) {
+    const query = `DELETE FROM groceries WHERE name=?`;
+    const params = [name] 
     const result = await this.db.query(query, params); 
 
     this.loadGrocery(); 

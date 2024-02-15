@@ -48,7 +48,7 @@ export class GroceryPage implements OnInit {
   async deleteGrocery(grocery: Grocery) {
     //wait for their to be response on delete grocery function
     //takes name and id as its composite primary key
-    await this.database.deleteGrocery(grocery.id.toString()); 
+    await this.database.deleteGrocery(grocery.name.toString()); 
     this.groceries = this.database.getGrocery(); 
   }
 

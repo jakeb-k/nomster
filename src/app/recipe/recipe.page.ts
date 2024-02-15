@@ -151,7 +151,9 @@ export class RecipePage implements OnInit {
       if (isSuccess) {
         this.lastAddedGrocery = newGrocery 
         this.showSuccessMessage = true;
-        setTimeout(() => this.showSuccessMessage = false, 1500);
+        setTimeout(() => {
+          this.showSuccessMessage = false;
+        }, 2000);
       } else {
         // Handle cases where addGrocery returns false
       }

@@ -13,7 +13,7 @@ export class StatusComponent  implements OnInit {
 
   @Input() message = ""
   
-  @Input()item:any; 
+  @Input() item:any; 
   
   styles = {
     icon: "",
@@ -32,8 +32,9 @@ export class StatusComponent  implements OnInit {
   }
   async undoAddGrocery() {
     if (this.item) {
+      console.log(this.item.name ?? "not getting item")
       try {
-        const isSuccess = await this.database.deleteGrocery(String(this.item.id));
+        const isSuccess = await this.database.deleteGrocery(String(this.item.name));
         if (isSuccess) {
           console.log('grocery was unadded')
           this.item = null; // Reset the reference
