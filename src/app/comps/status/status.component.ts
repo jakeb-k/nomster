@@ -32,7 +32,6 @@ export class StatusComponent  implements OnInit {
   }
   async undoAddGrocery() {
     if (this.item) {
-      console.log(this.item.name ?? "not getting item")
       try {
         const isSuccess = await this.database.deleteGrocery(String(this.item.name));
         if (isSuccess) {
