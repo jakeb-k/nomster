@@ -1,6 +1,6 @@
 <app-header></app-header>
 <ion-content> 
-  <ion-item class="goalItem" *ngFor="let g of goals()">
+  <ion-item class="goalItem" *ngFor="let g of goals(); let i = index">
     <div class="goalContent"> 
       <p>{{g.type}} : </p>
       <p><b>{{g.goalProgress.toFixed(0)}} / {{g.goalAmount}}<span>
@@ -22,13 +22,7 @@
     </div>
     <div class="streak-cont">
       <div class="streak-tracker">
-        <div class="streak"></div>
-        <div class="streak"></div>
-        <div class="streak"></div>
-        <div class="streak"></div>
-        <div class="streak"></div>
-        <div class="streak"></div>
-        <div class="streak"></div>
+        <div *ngFor="let active of getStreakArray(g.streak); let i = index" class="streak" [ngStyle]="{'background-color': active ? '#FF6400' : 'lightgray'}"></div>
       </div>
       <p>{{g.streak ?? 0}}</p>
       <img src="/assets/flame.png" /> 

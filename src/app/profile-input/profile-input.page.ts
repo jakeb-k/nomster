@@ -142,13 +142,16 @@ export class ProfileInputPage implements OnInit {
 
     return await modal.present();
   }
-
   /**
    * Handles the data returned from the goal update modal.
    * @param data - data[0] is the goal id and data[1] is the new progress
    */
   handleModalData(data: any) {
     this.sendGoalProgress(Number(data[0]), Number(data[1]));
+  }
+
+  getStreakArray(streak: number) {
+    return new Array(7).fill(0).map((x, i) => i < streak);
   }
 
 }
