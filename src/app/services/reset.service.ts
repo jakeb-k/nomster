@@ -20,6 +20,7 @@ export class ResetService {
 
     // Check if more than 24 hours have passed
     if (now - this.timeStamp > 24 * 60 * 60 * 1000) {
+      await this.goalsService.updateGoalStreak(); 
       await this.goalsService.resetAllGoalProgress(); 
       await this.userService.updateUserTimestamp(this.timeStamp); 
       return true

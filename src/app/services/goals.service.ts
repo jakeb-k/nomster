@@ -171,4 +171,15 @@ export class GoalsService {
       return false
     }
   }
+
+  async updateGoalStreak(){
+    const query = 'UPDATE goals SET streak = CASE WHEN goalProgress >= goalAmount THEN streak + 1 ELSE streak END'
+    try {
+      await this.db.query(query)
+      return true
+    } catch(error) {
+      console.error('Error updating streak: ', error)
+      return false
+    }
+  }
 }
