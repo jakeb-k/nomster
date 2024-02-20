@@ -78,8 +78,8 @@ export class DatabaseService {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         goalAmount INTEGER NOT NULL,
         goalProgress INTEGER DEFAULT 0,
-        type TEXT NOT NULL
-
+        type TEXT NOT NULL,
+        streak INTEGER DEFAULT 0
       );
     `
 
