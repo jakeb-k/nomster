@@ -44,8 +44,8 @@ export class GoalsService {
    */
   async addGoal(goal: Goal): Promise<any> {  
     // Using parameterized query for safe SQL execution
-    const query = `INSERT INTO Goals (type, goalAmount, goalProgress) VALUES (?, ?, ?)`;
-    const params = [goal.type, goal.goalAmount, 0];
+    const query = `INSERT INTO Goals (type, goalAmount, goalProgress, streak) VALUES (?, ?, ?, ?)`;
+    const params = [goal.type, goal.goalAmount, 0, 0];
     try {
         const result = await this.db.query(query, params);
         this.loadGoals(); // Function to refresh or reload the goals data
@@ -154,15 +154,14 @@ export class GoalsService {
   }
 
   async createInitialGoals() {
-    const query = 'INSERT INTO goals (type, goalAmount, goalProgress, streak) VALUES (?, ?, ?, 0)'; 
+    const query = 'INSERT INTO goals (type, goalAmount, goalProgress, streak) VALUES (?, ?, ?, ?)'; 
     try {
-      await this.db.query(query, ['Calorie Intake',0,0,4]);
-      await this.db.query(query, ['Carbs Limit',0,0,0]);
+      await this.db.query(query, ['Carbs Limit',0,0,4]);
       await this.db.query(query, ['Protein Intake',0,0,0]);
       await this.db.query(query, ['Fat Limit',0,0,0]);
       return true
     } catch (error) {
-      console.error('Error adding meal info', error)
+      console.error('Error adding inital goal info', error)
       return false
     }
   }

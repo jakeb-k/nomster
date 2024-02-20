@@ -75,7 +75,7 @@ export class OnboardingPage implements OnInit {
     
 
     this.caloricIntakeGoalInit(Number(this.calculateCI(this.newUser).toFixed(0)));
-    this.setCaloricIntakeGoal(); 
+
     this.userService.addUser(this.newUser); 
     this.router.navigateByUrl('/login')
 
@@ -135,9 +135,10 @@ export class OnboardingPage implements OnInit {
     }
     try {
       await this.goalsService.addGoal(x)
+      await this.goalsService.createInitialGoals()
     } 
     catch(err) {
-      console.error('Error with setting CI', err)
+      console.error('Error with setting goals', err)
     }
   }
 
