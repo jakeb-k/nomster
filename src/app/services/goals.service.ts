@@ -152,4 +152,18 @@ export class GoalsService {
       return false
     }
   }
+
+  async createInitialGoals() {
+    const query = 'INSERT INTO goals (type, goalAmount, goalProgress, streak) VALUES (?, ?, ?, 0)'; 
+    try {
+      await this.db.query(query, ['Calorie Intake',0,0,4]);
+      await this.db.query(query, ['Carbs Limit',0,0,0]);
+      await this.db.query(query, ['Protein Intake',0,0,0]);
+      await this.db.query(query, ['Fat Limit',0,0,0]);
+      return true
+    } catch (error) {
+      console.error('Error adding meal info', error)
+      return false
+    }
+  }
 }
