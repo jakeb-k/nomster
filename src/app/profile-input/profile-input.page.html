@@ -10,22 +10,53 @@
     </div>
 
     <div class="goalActions" >
-      <ion-button (click)="openModal(g.id)" fill="clear">
-        <ion-icon name="scale-outline"></ion-icon>
-      </ion-button>
-      <ion-button (click)=deleteGoal(g) fill="clear">
-        <ion-icon name="close-circle-outline"></ion-icon>
-      </ion-button>
+      <p>{{(g.goalProgress / g.goalAmount * 100).toFixed(0)}} %</p>
     </div>
 
     <div class="barBase">
       <div class="barProgress" [style.width]="(g.goalProgress / g.goalAmount * 100).toFixed(2) + '%'"></div>
     </div>
     <div class="reset-tracker">
-      <ion-button fill="clear" (click)="resetGoalProgress(g.id)">RESET</ion-button>
-      <p>{{(g.goalProgress / g.goalAmount * 100).toFixed(0)}} %</p>
+      <ion-button fill="clear" (click)="resetGoalProgress(g.id)">EDIT</ion-button>
+      <ion-button (click)="openModal(g.id)" fill="clear">UPDATE</ion-button>
+    </div>
+    <div class="streak-cont">
+      <div class="streak-tracker">
+        <div class="streak"></div>
+        <div class="streak"></div>
+        <div class="streak"></div>
+        <div class="streak"></div>
+        <div class="streak"></div>
+        <div class="streak"></div>
+        <div class="streak"></div>
+      </div>
+      <p>7</p>
+      <img src="/assets/flame.png" /> 
     </div>
   </ion-item>
+
+  <!-- <ion-item class="goalItem">
+    <div class="goalContent"> 
+      <p>Calorie Intake : </p>
+      <p><b> 30 / 150<span>
+         kcals</span>
+        </b>
+      </p>
+    </div>
+
+    <div class="goalActions" >
+      <p>20%</p>
+    </div>
+
+    <div class="barBase">
+      <div class="barProgress" [style.width]="( 20/ 100 * 100).toFixed(2) + '%'"></div>
+    </div>
+    <div class="reset-tracker">
+      <ion-button fill="clear">EDIT</ion-button>
+      <ion-button fill="clear">UPDATE</ion-button>
+    </div>
+    
+  </ion-item> -->
   
   <ion-button id="goal-modal">
     Add New Goal!
