@@ -122,10 +122,6 @@ export class OnboardingPage implements OnInit {
     }
   }
 
-  setCaloricIntakeGoal() {
-    let CI = this.calculateCI(this.newUser).toFixed(2)
-    sessionStorage.setItem('caloricIntake', CI); 
-  }
 
   async caloricIntakeGoalInit(CI: number) {
     let x: Goal = {
@@ -135,7 +131,7 @@ export class OnboardingPage implements OnInit {
     }
     try {
       await this.goalsService.addGoal(x)
-      await this.goalsService.createInitialGoals()
+      await this.goalsService.createInitialGoals(CI)
     } 
     catch(err) {
       console.error('Error with setting goals', err)

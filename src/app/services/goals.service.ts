@@ -153,12 +153,18 @@ export class GoalsService {
     }
   }
 
-  async createInitialGoals() {
+  async createInitialGoals(ci: number){
     const query = 'INSERT INTO goals (type, goalAmount, goalProgress, streak) VALUES (?, ?, ?, ?)'; 
+    //need to calc goal amounts
+    let carbsAmt = (0.55 * ci)/4;
+    let fatsAmt = (0.275 * ci)/9;
+    let proteinAmt = (0.225 * ci)/4;
+    console.log(carbsAmt, fatsAmt,  proteinAmt + "calc was done")
+    
     try {
-      await this.db.query(query, ['Carbs Limit',0,0,4]);
-      await this.db.query(query, ['Protein Intake',0,0,0]);
-      await this.db.query(query, ['Fat Limit',0,0,0]);
+      await this.db.query(query, ['Carbs Limit',carbsAmt.toFixed(0),0,4]);
+      await this.db.query(query, ['Protein Intake',fatsAmt.toFixed(0), 0,0]);
+      await this.db.query(query, ['Fat Limit',proteinAmt.toFixed(0),0,0]);
       return true
     } catch (error) {
       console.error('Error adding inital goal info', error)
