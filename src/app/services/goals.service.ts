@@ -173,9 +173,10 @@ export class GoalsService {
   }
 
   async updateGoalStreak(){
-    const query = 'UPDATE goals SET streak = CASE WHEN goalProgress >= goalAmount THEN streak + 1 ELSE streak END'
+    const query = "UPDATE goals SET streak = CASE WHEN type IN ('Calorie Intake', 'Protein Intake') AND goalProgress >= goalAmount THEN streak + 1 WHEN type IN ('Fat Limit', 'Carbs Limit') AND goalProgress < goalAmount THEN streak + 1 ELSE streak = 0 END"
     try {
       await this.db.query(query)
+      console.log('query was sent')
       return true
     } catch(error) {
       console.error('Error updating streak: ', error)

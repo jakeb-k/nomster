@@ -12,20 +12,22 @@ export class ResetService {
 
    }
    
-   async timeCheck() {
-
+  async timeCheck() {
     this.user = await this.userService.loadUserByPromise();
     this.timeStamp = this.user.timeStamp;
     const now = new Date().getTime();
-
+    
     // Check if more than 24 hours have passed
     if (now - this.timeStamp > 24 * 60 * 60 * 1000) {
-      await this.goalsService.updateGoalStreak(); 
-      await this.goalsService.resetAllGoalProgress(); 
-      await this.userService.updateUserTimestamp(this.timeStamp); 
-      return true
-    } else {
-      return false
+      try {
+        await this.goalsService.updateGoalStreak(); 
+        await this.goalsService.resetAllGoalProgress(); 
+        await this.userService.updateUserTimestamp(this.timeStamp); 
+        
+      }
+     catch (error) {
+      console.error('error doing reset: '+ error)
+      }
     }
-   }
+  }
 }

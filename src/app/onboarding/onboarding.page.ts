@@ -142,10 +142,7 @@ export class OnboardingPage implements OnInit {
     this.goals = await this.goalsService.loadGoalByType();
     if(this.goals!.goalAmount > 0) {
       this.router.navigateByUrl('/login')
-      console.log('user detected')
-
     } else {
-      console.log('no user detected')
       this.isNew = true; 
     }
   }
