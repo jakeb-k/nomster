@@ -28,8 +28,8 @@
       <img src="/assets/flame.png" /> 
     </div>
   </ion-item>
-
-  <!-- <ion-item class="goalItem">
+<!-- 
+  <ion-item class="goalItem">
     <div class="goalContent"> 
       <p>Calorie Intake : </p>
       <p><b> 30 / 150<span>
@@ -47,19 +47,19 @@
     </div>
     <div class="reset-tracker">
       <ion-button fill="clear">EDIT</ion-button>
-      <ion-button fill="clear">UPDATE</ion-button>
+      <ion-button fill="clear"  (click)="openModal(1)">UPDATE</ion-button>
     </div>
     
-  </ion-item> -->
+  </ion-item>
   
   <ion-button id="goal-modal">
     Add New Goal!
-  </ion-button>
+  </ion-button> -->
 
   <ion-modal trigger="goal-modal">
     <ng-template>
-      <ion-content class="ion-padding"> 
-        <ion-button class="backBtn" (click)="cancel()" fill="clear">
+      <div class="modal-cont ion-padding"> 
+        <ion-button class="backBtn" (click)="cancel()">
           BACK
         </ion-button>
         <ion-card>
@@ -81,7 +81,7 @@
           </ion-card-content>
         </ion-card>
         <button class="navBtn" (click)="initGoal()">ADD GOAL</button>
-      </ion-content>
+      </div>
     </ng-template>
   </ion-modal>
 

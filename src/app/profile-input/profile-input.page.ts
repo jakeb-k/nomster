@@ -131,7 +131,8 @@ export class ProfileInputPage implements OnInit {
   async openModal(id: number) {
     const modal = await this.modalController.create({
       component: UpdateGoalModalComponent,
-      componentProps: { 'id': id }
+      componentProps: { 'id': id },
+      cssClass: 'modal-transparent' 
     });
 
     modal.onDidDismiss().then((dataReturned) => {
