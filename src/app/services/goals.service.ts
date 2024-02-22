@@ -183,4 +183,15 @@ export class GoalsService {
       return false
     }
   }
+
+  async deleteGoals(){
+    const query = 'DELETE FROM goals'
+    try {
+      await this.db.query(query)
+      return true;
+    } catch(error) {
+      console.error('there was an error deleting goals: ', error)
+      return false; 
+    }
+  }
 }

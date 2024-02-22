@@ -52,13 +52,22 @@ export class OnboardingPage implements OnInit {
     timeStamp: new Date().getTime()
   }
   isNew = true;  
+  previous = false; 
   constructor(private userService: UserService, private router: Router, private goalsService: GoalsService) { }
 
   async ngOnInit() {
     await this.loadGoalCheck(); 
+    if(sessionStorage.getItem('previous')) {
+      this.previous = true; 
+    }
+    console.log('test',this.previous) 
   }
   async ionViewWillEnter(){
     await this.loadGoalCheck(); 
+    if(sessionStorage.getItem('previous')) {
+      this.previous = true; 
+    }
+    console.log('test',this.previous) 
   }
   selectIcon(value: string) {
     this.selectedIcon = value;
@@ -72,10 +81,7 @@ export class OnboardingPage implements OnInit {
     this.newUser.gender = Number(this.selectedGenderIcon) 
     this.newUser.direction =  Number(this.selectedIcon) 
 
-    
-
     this.caloricIntakeGoalInit(Number(this.calculateCI(this.newUser).toFixed(0)));
-
     this.userService.addUser(this.newUser); 
     this.router.navigateByUrl('/login')
 
@@ -130,6 +136,7 @@ export class OnboardingPage implements OnInit {
       type: 'Calorie Intake'
     }
     try {
+      await this.goalsService.deleteGoals(); 
       await this.goalsService.addGoal(x)
       await this.goalsService.createInitialGoals(CI)
     } 
@@ -140,7 +147,7 @@ export class OnboardingPage implements OnInit {
 
   async loadGoalCheck() {
     this.goals = await this.goalsService.loadGoalByType();
-    if(this.goals!.goalAmount > 0) {
+    if(!this.previous) {
       this.router.navigateByUrl('/login')
     } else {
       this.isNew = true; 
