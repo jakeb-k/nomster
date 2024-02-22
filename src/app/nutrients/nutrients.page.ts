@@ -4,6 +4,7 @@ import { Nutrient } from '../interfaces/nutrient';
 import { GetRecipeDetailsService } from '../services/get-recipe-details.service';
 import { GoalsService } from '../services/goals.service';
 import { Goal } from '../interfaces/goal';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-nutrients',
@@ -40,7 +41,7 @@ export class NutrientsPage implements OnInit {
    * @param userService - Service to get user details
    */
   constructor(private recipeDetailsGetter: GetRecipeDetailsService, private route: ActivatedRoute, 
-    private router: Router, private goalsService: GoalsService) { }
+    private router: Router, private goalsService: GoalsService, private location: Location) { }
 
   /**
    * Lifecycle hook that is called after data-bound properties of a directive are initialized.
@@ -63,11 +64,7 @@ export class NutrientsPage implements OnInit {
    * Navigates back to the 'favs' route.
    */
   back(): void {
-    if(this.loc == "recipe"){
-      this.router.navigateByUrl('/'+this.loc+'/'+this.id+'/search'); 
-    } else {
-      this.router.navigateByUrl('/'+this.loc); 
-    } 
+   this.location.back(); 
   }
 
   /**

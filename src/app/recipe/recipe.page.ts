@@ -222,6 +222,6 @@ export class RecipePage implements OnInit {
   }
     //take recipe id and nav to nutrient page
   nutrientNav(id:number) {
-    this.router.navigateByUrl('/nutrients/'+id+'/recipe')
+    this.router.navigateByUrl('/nutrients/'+id+'/'+this.loc)
   }
 }
