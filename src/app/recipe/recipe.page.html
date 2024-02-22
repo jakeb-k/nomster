@@ -1,5 +1,7 @@
 <app-header></app-header>
-
+<div *ngIf="!isLoaded">
+  <app-loader></app-loader>
+</div>
 <ion-content *ngIf="isLoaded">
 
   <app-status *ngIf="showSuccessMessage" message="Grocery was added!" status="true" [item]="lastAddedGrocery"></app-status>

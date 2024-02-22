@@ -1,14 +1,18 @@
 .loader {
     border: 4px solid rgba(0, 0, 0, 0.1); /* Light grey border */
-    border-top: 4px solid #3498db; /* Blue border */
+    border-top: 4px solid #FF6400; /* Blue border */
     border-radius: 50%; /* Circular shape */
-    width: 40px; /* Diameter of the circle */
-    height: 40px; /* Diameter of the circle */
-    animation: spin 2s linear infinite; /* Animation */
+    width: 60px; /* Diameter of the circle */
+    height: 60px; /* Diameter of the circle */
+    animation: spin 1.5s ease-out infinite; /* Animation */
+    
+    position:absolute;
+    top:45%;
+    left:45%; 
   }
   
   @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% { transform: rotate(10deg); }
+    
+    100% { transform: rotate(370deg); }
   }
-  
