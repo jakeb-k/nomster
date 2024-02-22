@@ -130,7 +130,11 @@ cursor: pointer;
 .highlighted {
     background-color: rgba(226, 226, 226, 0.83); /* Highlight style */
     color: #FF6700; /* Text color for highlighted item */
-    border-radius:15px; 
+    border-radius:15px;
+    
+}
+li.highlighted{
+    font-size: 20px !important; 
 }
   
 .faded {
