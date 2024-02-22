@@ -60,14 +60,12 @@ export class OnboardingPage implements OnInit {
     if(sessionStorage.getItem('previous')) {
       this.previous = true; 
     }
-    console.log('test',this.previous) 
   }
   async ionViewWillEnter(){
     await this.loadGoalCheck(); 
     if(sessionStorage.getItem('previous')) {
       this.previous = true; 
     }
-    console.log('test',this.previous) 
   }
   selectIcon(value: string) {
     this.selectedIcon = value;

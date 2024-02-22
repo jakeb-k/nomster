@@ -6,6 +6,7 @@ import { DatabaseService } from '../services/database.service';
 import { Grocery } from '../interfaces/grocery';
 import { GoalsService } from '../services/goals.service';
 import { Meal } from '../interfaces/meal';
+import { Favourite } from '../interfaces/favourite';
 
 
 
@@ -38,6 +39,9 @@ export class RecipePage implements OnInit {
 
   // Flag to show or hide the success message
   showMealMessage = Boolean(); 
+
+  // Flag to show or hide the success message
+  showFavMessage = Boolean(); 
 
   nutri!: Meal; 
 
@@ -223,5 +227,37 @@ export class RecipePage implements OnInit {
     //take recipe id and nav to nutrient page
   nutrientNav(id:number) {
     this.router.navigateByUrl('/nutrients/'+id+'/'+this.loc)
+  }
+
+  /**
+   * Adds a new favourite meal to the database.
+   * @param fav - The meal to be added as a favourite.
+   */
+  async newFav() {
+    //assign current displaying meal as the new fav
+    
+    let newFav:Favourite = {
+      id: this.id,
+      name: this.title,
+      pictureLink: this.image,
+      cals: this.nutri.cals,
+      carbs: this.nutri.carbs,
+      fats: this.nutri.fat,
+      protein: this.nutri.protein
+    }
+    
+    try {
+      const isSuccess = await this.database.addFavourite(newFav);//send data to db and wait for the res
+      if (isSuccess) {
+        this.showFavMessage = true; //if successful data send
+        // Display success message
+        setTimeout(() => {
+          this.showFavMessage = false; // Hide success message after a delay
+        }, 3000); // Adjust the delay (in milliseconds) as needed
+      } 
+    } catch (error) {
+      console.error('Error adding favourite:', error); //log error if error sending data
+   
+    }
   }
 }

@@ -9,6 +9,7 @@
 
   <app-status *ngIf="showMealMessage" message="Meal has been logged!" status="true"></app-status>
 
+  <app-status *ngIf="showFavMessage" message="New favourite added!" status="true"></app-status>
 
   <div class="filterOps">
     <div class="recipe-btns">
@@ -36,18 +37,19 @@
     <div id="topCont">
       <img [src]="image" />
     </div>
+   
+      <ion-button slot="start" fill="clear" (click)="updateGoalsByMeal()">
+        I Enjoyed This, Log It!
+       </ion-button>
     
-    <ion-button fill="clear" (click)="updateGoalsByMeal()">
-     I Enjoyed This, Log It!
-    </ion-button>
-
     <div class="text-container" [ngClass]="{'expanded': isExpanded}">
       <p [innerHTML]="summary"></p>
       <div class="fade-out" *ngIf="!isExpanded"></div>
     </div>
-    <ion-button fill="clear" (click)="readMoreToggle()">{{ isExpanded ? 'Read Less' : 'Read More' }}</ion-button>
-
-
+    <div class="recipe-btns"> 
+      <ion-button fill="clear" (click)="readMoreToggle()">{{ isExpanded ? 'Read Less' : 'Read More' }}</ion-button>
+      <ion-button fill="clear" (click)="newFav()">Save Recipe</ion-button>
+    </div>
     <div class="title-container">
       <h3 (click)="selectedDiv = 'first'" [class.selected]="selectedDiv === 'first'">Ingredients</h3>
       <h3 (click)="selectedDiv = 'second'" [class.selected]="selectedDiv === 'second'">Method</h3>
