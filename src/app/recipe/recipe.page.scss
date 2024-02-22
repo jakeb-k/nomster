@@ -149,3 +149,9 @@ cursor: pointer;
         height:24px;
     }
 }
+.recipe-btns {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items:center; 
+}

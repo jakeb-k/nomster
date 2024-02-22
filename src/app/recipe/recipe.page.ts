@@ -91,7 +91,7 @@ export class RecipePage implements OnInit {
     this.getter.getRecipeDetails(this.id).subscribe(
       async (response) => {
         if (!response.error) {
-          console.log(response);
+
           this.likes = response.aggregateLikes
           this.timeToCook = response.readyInMinutes
           this.serving = response.servings
@@ -220,5 +220,8 @@ export class RecipePage implements OnInit {
       return 'ellipse-outline'; // Example: icon name for current or future instructions
     }
   }
-  
+    //take recipe id and nav to nutrient page
+  nutrientNav(id:number) {
+    this.router.navigateByUrl('/nutrients/'+id+'/recipe')
+  }
 }

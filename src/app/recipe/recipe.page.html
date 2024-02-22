@@ -11,7 +11,10 @@
 
 
   <div class="filterOps">
-    <ion-button fill="clear" (click)="navHome()">BACK</ion-button>
+    <div class="recipe-btns">
+      <ion-button fill="clear" (click)="navHome()">BACK</ion-button>
+      <ion-button fill="clear" (click)="nutrientNav(id)">NUTRIENTS</ion-button>
+    </div>
     <h3>{{title}}</h3>
     <div class="gen-info">
       <div class="gen-info-sec">
