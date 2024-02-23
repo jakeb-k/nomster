@@ -44,6 +44,7 @@ export class LoginPage implements OnInit {
  async ngOnInit() {
   this.goal = await this.goalsService.loadGoalByType();
   this.user = await this.userService.loadUserByPromise(); 
+  sessionStorage.setItem('previous', 'true'); 
   
  }
 
@@ -54,7 +55,6 @@ export class LoginPage implements OnInit {
   */
  nav(path: string) {
    this.router.navigateByUrl('/' + path); 
-   sessionStorage.setItem('previous', 'true'); 
  }
 
 }

@@ -51,21 +51,21 @@ export class OnboardingPage implements OnInit {
     activityLevel: 0,
     timeStamp: new Date().getTime()
   }
-  isNew = true;  
+  isNew = false;  
   previous = false; 
   constructor(private userService: UserService, private router: Router, private goalsService: GoalsService) { }
 
   async ngOnInit() {
-    await this.loadGoalCheck(); 
     if(sessionStorage.getItem('previous')) {
       this.previous = true; 
     }
+    await this.loadGoalCheck(); 
   }
   async ionViewWillEnter(){
-    await this.loadGoalCheck(); 
     if(sessionStorage.getItem('previous')) {
       this.previous = true; 
     }
+    await this.loadGoalCheck(); 
   }
   selectIcon(value: string) {
     this.selectedIcon = value;
@@ -145,12 +145,15 @@ export class OnboardingPage implements OnInit {
 
   async loadGoalCheck() {
     this.goals = await this.goalsService.loadGoalByType();
-    if(this.previous) {
-      this.router.navigateByUrl('/login')
-    } else {
+    if(this.goals!.goalAmount > 0) {
+      if(!this.previous) {
+        this.router.navigateByUrl('/login')
+      } else {
+        this.isNew = true
+      }
+    }
+    else {
       this.isNew = true; 
     }
   }
-
-  
 }
