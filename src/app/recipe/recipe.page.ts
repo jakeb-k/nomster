@@ -110,6 +110,7 @@ export class RecipePage implements OnInit {
           this.instrucs = response.analyzedInstructions[0].steps;
           this.nutri = this.nutrientSorter(response.nutrition.nutrients); 
           this.isLoaded = true; 
+          console.log(response)
         } else {
           console.error('Error:', response.error); 
         }
@@ -147,8 +148,9 @@ export class RecipePage implements OnInit {
   async addToGroceries(grocery: any) {
     let newGrocery: Grocery = {
       id: grocery.id,
-      name: grocery.original,
-      isBought: 0
+      name: grocery.originalName,
+      isBought: 0,
+      aisle: grocery.aisle
     };
     try {
       const isSuccess = await this.database.addGrocery(newGrocery);
@@ -166,7 +168,6 @@ export class RecipePage implements OnInit {
     }
   }
   nutrientSorter(nutrients:any) {
-    console.log(nutrients)
     let prot:any; 
     if(String(nutrients[8].name == "Alcohol" ) && String(nutrients[9].name) == "Protein"){
       prot = nutrients[9].amount; //check if Alcohol is present, as it means protein is at different index

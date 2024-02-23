@@ -8,4 +8,6 @@ export interface Grocery {
 
     // Flag indicating if the grocery item is bought (1) or not bought (0), represented as a number
     isBought: number;
+
+    aisle:string; 
 }

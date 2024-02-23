@@ -68,6 +68,7 @@ export class DatabaseService {
         id INTEGER,
         name TEXT NOT NULL,
         isBought INTEGER DEFAULT 0,
+        aisle TEXT NOT NULL,
         PRIMARY KEY (id, name)
       );
     `
@@ -200,8 +201,8 @@ export class DatabaseService {
    * @returns Promise with the result of the query.
    */
   async addGrocery(grocery: Grocery) {
-    const { id, name, isBought } = grocery;
-    const query = `INSERT INTO groceries (id, name, isBought) VALUES (${id}, '${name}', '${isBought}')`;
+    const { id, name, isBought, aisle } = grocery;
+    const query = `INSERT INTO groceries (id, name, isBought, aisle) VALUES (${id}, '${name}', '${isBought}', '${aisle}')`;
   
     try {
         const result = await this.db.query(query);

@@ -21,7 +21,8 @@ export class GroceryPage implements OnInit {
   newGrocery : Grocery = {
     id: 0,
     name: "",
-    isBought: 0
+    isBought: 0,
+    aisle: ""
   }; 
 
   /**
