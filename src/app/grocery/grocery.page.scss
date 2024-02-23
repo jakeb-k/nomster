@@ -1,6 +1,9 @@
 .goalItem {
     display: flex;
     justify-content: space-evenly;
+    flex-direction:column; 
+    width:100% !important;
+    border-bottom:1px solid lightgray;  
   }
   
 .goalContent {
@@ -22,7 +25,7 @@
   display:flex;
   flex-direction:row; 
   width:90%;
-  margin:0 auto; 
+  margin:0 auto 10px; 
   align-items: center;
 }
 ion-button,ion-icon {
@@ -39,4 +42,23 @@ ion-icon {
 }
 ion-content {
   --background:rgb(197, 197, 197) !important;
+}
+.aisle-header {
+  width:100%;
+  padding:10px 5px; 
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+  text-align:center; 
+  background:#FF6400;
+  font-weight:bold; 
+  display:block; 
+}
+.grocery-item {
+  display:flex;
+  flex-direction:row;
+  justify-content: space-around;
+  align-items: center;
+  width:100%; 
+  padding:5px 10px; 
+  background:white; 
 }

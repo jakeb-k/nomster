@@ -12,7 +12,9 @@ import { Router } from '@angular/router';
 export class GroceryPage implements OnInit {
   //groceries is writable signal arr of groceries
   //this is a signal between the object here and the db
-  groceries!: WritableSignal<Grocery[]>; 
+  groceriesArr!: WritableSignal<Grocery[]>; 
+
+  groceries: Grocery[] = []; 
 
   //bool that controls the display of success message
   showSuccessMessage: Boolean = false 
@@ -35,11 +37,13 @@ export class GroceryPage implements OnInit {
   /**
    * Loads grocery data from the database on initialization.
    */
-  ngOnInit() {
+  async ngOnInit() {
     //call the sql query to db
-    this.database.loadGrocery(); 
+    await this.database.loadGrocery(); 
     //load the results and assign to variable
-    this.groceries = this.database.getGrocery();     
+    this.groceriesArr = this.database.getGrocery();     
+    this.groceries = this.groceriesArr(); 
+    
   }
 
   /**
@@ -50,7 +54,8 @@ export class GroceryPage implements OnInit {
     //wait for their to be response on delete grocery function
     //takes name and id as its composite primary key
     await this.database.deleteGrocery(grocery.name.toString()); 
-    this.groceries = this.database.getGrocery(); 
+    this.groceriesArr =  this.database.getGrocery(); 
+    this.groceries =  this.groceriesArr()
   }
 
   /**
@@ -65,7 +70,8 @@ export class GroceryPage implements OnInit {
         this.newGrocery.name = ""; 
         this.showSuccessMessage = true; // Display success message
         this.database.loadGrocery(); ///queries for all groceries from db
-        this.groceries = this.database.getGrocery(); //loads them to object
+        this.groceriesArr = this.database.getGrocery(); //loads them to object
+        this.groceries = this.groceriesArr()
         setTimeout(() => {
           this.showSuccessMessage = false; // Hide success message after a delay
         }, 1500); // Adjust the delay (in milliseconds) as needed
