@@ -145,7 +145,7 @@ export class OnboardingPage implements OnInit {
 
   async loadGoalCheck() {
     this.goals = await this.goalsService.loadGoalByType();
-    if(!this.previous) {
+    if(this.previous) {
       this.router.navigateByUrl('/login')
     } else {
       this.isNew = true; 

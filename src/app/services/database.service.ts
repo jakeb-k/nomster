@@ -235,7 +235,7 @@ export class DatabaseService {
    */
   async loadGrocery(){
     try {
-      const groceries = await this.db.query('SELECT * FROM groceries;');
+      const groceries = await this.db.query('SELECT * FROM groceries ORDER BY aisle;');
 
       this.groceries.set(groceries.values || []); 
     } catch(error) {

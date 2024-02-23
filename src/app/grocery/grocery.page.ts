@@ -39,7 +39,7 @@ export class GroceryPage implements OnInit {
     //call the sql query to db
     this.database.loadGrocery(); 
     //load the results and assign to variable
-    this.groceries = this.database.getGrocery(); 
+    this.groceries = this.database.getGrocery();     
   }
 
   /**
