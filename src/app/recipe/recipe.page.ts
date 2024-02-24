@@ -109,7 +109,7 @@ export class RecipePage implements OnInit {
           this.image = response.image; 
           this.title = response.title; 
           this.ingredients = response.extendedIngredients;  
-          this.instrucs = response.analyzedInstructions[0].steps;
+          this.instrucs = await response.analyzedInstructions[0].steps;
           this.nutri = this.nutrientSorter(response.nutrition.nutrients); 
           this.isLoaded = true; 
           console.log(response)

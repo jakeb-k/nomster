@@ -2,9 +2,12 @@
 
 <ion-content>
   <div class="grocery-actions">
-    <ion-button fill="clear" (click)="addToGroceries()">ADD</ion-button>
+    <h3>Grocery List</h3>
     <ion-button fill="clear" (click)="deleteAllGroceries()">RESET</ion-button>
   </div>
+  <!-- <div class="aisle-header">
+    <p>Produce</p>
+  </div> -->
   <div class="goalItem" *ngFor="let g of groceries; let i = index">
     <div *ngIf="i === 0 || groceries[i].aisle !== groceries[i - 1].aisle" class="aisle-header">
       {{ g.aisle }}
@@ -17,5 +20,9 @@
         <ion-button fill="clear" (click)="deleteGrocery(g)"><ion-icon name="close-circle-outline"></ion-icon></ion-button>
       </div>
     </div>
+  </div>
+  <div style="margin-top:80px"></div>
+  <div class="add-btn">
+    <button class="navBtn" (click)="addToGroceries()">ADD NEW</button>
   </div>
 </ion-content>
