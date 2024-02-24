@@ -183,7 +183,7 @@ export class GoalsService {
       return false
     }
   }
-
+  //resets the goals table
   async deleteGoals(){
     const query = 'DELETE FROM goals'
     try {

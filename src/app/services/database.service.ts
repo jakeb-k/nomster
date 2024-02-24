@@ -268,6 +268,17 @@ export class DatabaseService {
     return result; 
   }
 
+  async deleteAllGroceries() {
+    const query = 'DELETE FROM groceries'
+    try {
+      await this.db.query(query)
+      return true
+    } catch(error) {
+      console.error('there was an error deleting groceries: ', error)
+      return false
+    }
+  }
+
   async addAllToGroceries(groceries: any[]) {
     const uniqueStatements = new Map();
 

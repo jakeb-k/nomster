@@ -1,4 +1,4 @@
-import { Component, OnInit, WritableSignal } from '@angular/core';
+import { Component, OnInit, WritableSignal, ChangeDetectorRef } from '@angular/core';
 import { DatabaseService } from '../services/database.service';
 import { Grocery } from '../interfaces/grocery';
 import { Router } from '@angular/router';
@@ -32,7 +32,7 @@ export class GroceryPage implements OnInit {
    * @param database - Service for database operations.
    * @param router - Router for navigation.
    */
-  constructor(private database: DatabaseService, private router:Router) { }
+  constructor(private database: DatabaseService, private router:Router, private cdr: ChangeDetectorRef) { }
 
   /**
    * Loads grocery data from the database on initialization.
@@ -54,8 +54,10 @@ export class GroceryPage implements OnInit {
     //wait for their to be response on delete grocery function
     //takes name and id as its composite primary key
     await this.database.deleteGrocery(grocery.name.toString()); 
-    this.groceriesArr =  this.database.getGrocery(); 
+    await this.database.loadGrocery() 
+    this.groceriesArr = this.database.getGrocery(); 
     this.groceries =  this.groceriesArr()
+    this.cdr.detectChanges();
   }
 
   /**
@@ -72,6 +74,7 @@ export class GroceryPage implements OnInit {
         this.database.loadGrocery(); ///queries for all groceries from db
         this.groceriesArr = this.database.getGrocery(); //loads them to object
         this.groceries = this.groceriesArr()
+        this.cdr.detectChanges();
         setTimeout(() => {
           this.showSuccessMessage = false; // Hide success message after a delay
         }, 1500); // Adjust the delay (in milliseconds) as needed
@@ -79,6 +82,17 @@ export class GroceryPage implements OnInit {
     } catch (error) {
       console.error('Error adding grocery:', error); // log err if err
 
+    }
+  }
+  async deleteAllGroceries() {
+    try {
+      await this.database.deleteAllGroceries(); 
+      await this.database.loadGrocery() 
+      this.groceriesArr = this.database.getGrocery(); 
+      this.groceries =  this.groceriesArr()
+      this.cdr.detectChanges();
+    } catch (error) {
+      console.error('error deleting groceries page: ', error)
     }
   }
    /**
