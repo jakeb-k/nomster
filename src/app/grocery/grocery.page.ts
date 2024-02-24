@@ -27,6 +27,11 @@ export class GroceryPage implements OnInit {
     isBought: 0,
     aisle: ""
   }; 
+   aisles: String[] = ["Health Foods","Spices and Seasonings","Pasta and Rice","Bakery/Bread",
+    "Refrigerated","Canned and Jarred","Frozen","Nut butters, Jams, and Honey","Oil, Vinegar, Salad Dressing",
+    "Condiments","Savory Snacks","Milk, Eggs, Other Dairy","Ethnic Foods","Tea and Coffee","Meat",
+    "Gourmet","Sweet Snacks","Gluten Free","Alcoholic Beverages","Cereal","Nuts","Beverages",
+    "Produce","Seafood","Cheese","Dried Fruits"]
 
   /**
    * Initializes the component with the DatabaseService and Router.
@@ -66,25 +71,28 @@ export class GroceryPage implements OnInit {
    * Adds a new grocery item to the database.
    */
   async addToGroceries() {
-    //change this to auto increment
+   
     this.newGrocery.id = this.randomIdGenerator(10000,99999)
     try {
       const isSuccess = await this.database.addGrocery(this.newGrocery); //send req to db, await the response
+      await this.database.loadGrocery(); ///queries for all groceries from db
+      this.groceriesArr = this.database.getGrocery(); //loads them to object
+      this.groceries = this.groceriesArr()
+      this.cdr.detectChanges();
       if (isSuccess) {
         this.newGrocery.name = ""; 
         this.showSuccessMessage = true; // Display success message
-        this.database.loadGrocery(); ///queries for all groceries from db
-        this.groceriesArr = this.database.getGrocery(); //loads them to object
-        this.groceries = this.groceriesArr()
-        this.cdr.detectChanges();
         setTimeout(() => {
           this.showSuccessMessage = false; // Hide success message after a delay
         }, 1500); // Adjust the delay (in milliseconds) as needed
       }
+      
     } catch (error) {
       console.error('Error adding grocery:', error); // log err if err
-
     }
+    this.cdr.detectChanges();
+    this.cancel(); 
+    
   }
   async deleteAllGroceries() {
     try {
@@ -96,6 +104,9 @@ export class GroceryPage implements OnInit {
     } catch (error) {
       console.error('error deleting groceries page: ', error)
     }
+  }
+  load() {
+    this.cdr.detectChanges();
   }
    /**
    * Generates a random number between specified minimum and maximum values.
@@ -121,6 +132,7 @@ export class GroceryPage implements OnInit {
     cancel() {
       //removes the modal from screen
       this.modalController.dismiss(null, 'cancel');
+      this.cdr.detectChanges();
     }
   
 

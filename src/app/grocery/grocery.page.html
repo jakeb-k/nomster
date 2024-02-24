@@ -40,17 +40,17 @@
         
           <ion-card-content>
             <ion-item>
-              <ion-select>
-                <ion-select-option *ngFor="let g of groceries" [value]="g">{{g}}</ion-select-option>
+              <ion-select [(ngModel)]="newGrocery.aisle" placeholder="Select aisle">
+                <ion-select-option  *ngFor="let g of aisles" [value]="g">{{g}}</ion-select-option>
               </ion-select>
             </ion-item>
           
             <ion-item>
-              <ion-input type="number" label="Grocery Name" labelPlacement="stacked"  placeholder="Enter your grocery"></ion-input>
+              <ion-input [(ngModel)]="newGrocery.name" label="Grocery Name" labelPlacement="stacked"  placeholder="Enter your grocery"></ion-input>
             </ion-item>
           </ion-card-content>
         </ion-card>
-        <button class="navBtn">ADD ITEM</button>
+        <button class="navBtn" (click)="addToGroceries()">ADD ITEM</button>
       </div>
     </ng-template>
   </ion-modal>
