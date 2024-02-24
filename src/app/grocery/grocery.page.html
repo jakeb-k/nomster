@@ -28,12 +28,30 @@
 
   <ion-modal trigger="open-modal" (willDismiss)="($event)">
     <ng-template>
-      <ion-content class="ion-padding">
-        <ion-button class="backBtn" (click)="cancel()" fill="clear">
-          BACK</ion-button>
-
-        <p> Yozza </p>
-      </ion-content>
+      <div class="modal-cont ion-padding"> 
+        <ion-button class="backBtn" (click)="cancel()">
+          BACK
+        </ion-button>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Add to the list!</ion-card-title>
+            <ion-card-subtitle>Select the grocery type and then your item.</ion-card-subtitle>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-item>
+              <ion-select>
+                <ion-select-option *ngFor="let g of groceries" [value]="g">{{g}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          
+            <ion-item>
+              <ion-input type="number" label="Grocery Name" labelPlacement="stacked"  placeholder="Enter your grocery"></ion-input>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+        <button class="navBtn">ADD ITEM</button>
+      </div>
     </ng-template>
   </ion-modal>
 

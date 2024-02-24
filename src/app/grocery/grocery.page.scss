@@ -78,3 +78,6 @@ ion-content {
   left: 0;
   right: 0;
 }
+ion-modal {
+  --background: rgba(197, 197, 197, 0.3); /* Makes the modal content itself semi-transparent */
+}
