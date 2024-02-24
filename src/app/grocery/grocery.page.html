@@ -9,21 +9,17 @@
       <ion-icon name="add-circle-outline"></ion-icon>
     </ion-button>
   </div>
-
-
-            <div class="goalItem" *ngFor="let g of groceries; let i = index">
-              <div *ngIf="i === 0 || groceries[i].aisle !== groceries[i - 1].aisle" class="aisle-header">
-                {{ g.aisle }}
-              </div>
-              <div class="grocery-item">
-                <div class="goalContent"> 
-                  <p>{{g.name}}</p>
-                </div>
-                <div class="goalActions">
-                  <ion-button fill="clear" (click)="deleteGrocery(g)"><ion-icon name="close-circle-outline"></ion-icon></ion-button>
-                </div>
-              </div>
-            </div>
-
-
-    </ion-content>
+  <div class="goalItem" *ngFor="let g of groceries; let i = index">
+    <div *ngIf="i === 0 || groceries[i].aisle !== groceries[i - 1].aisle" class="aisle-header">
+      {{ g.aisle }}
+    </div>
+    <div class="grocery-item">
+      <div class="goalContent"> 
+        <p>{{g.name}}</p>
+      </div>
+      <div class="goalActions">
+        <ion-button fill="clear" (click)="deleteGrocery(g)"><ion-icon name="close-circle-outline"></ion-icon></ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -268,6 +268,42 @@ export class DatabaseService {
     return result; 
   }
 
+  async addAllToGroceries(groceries: any[]) {
+    const uniqueStatements = new Map();
+
+    groceries.forEach((grocery: any) => {
+      // Prepare DELETE statement for each id
+      uniqueStatements.set(grocery.id, {
+        statement: 'DELETE FROM groceries WHERE id = ?',
+        values: [grocery.id],
+      });
+
+      // Prepare INSERT statement for each id, this will overwrite any existing INSERT for the same id
+      uniqueStatements.set(grocery.id + "_insert", {
+        statement: 'INSERT INTO groceries (id, name, isBought, aisle) VALUES (?, ?, ?, ?)',
+        values: [grocery.id, grocery.nameClean, 0, grocery.aisle],
+      });
+    });
+
+    // Convert the Map values to an array
+    const statements = Array.from(uniqueStatements.values());
+    
+    try {
+      // Execute all insertions in a single transaction
+      const result = await this.db.executeSet(statements);
+      if (result.changes && result.changes.changes && result.changes.changes > 0) {
+        return true
+      } else {
+        return false
+      }
+    } catch (error) {
+      console.error('Error adding groceries batch:', error);
+      return false
+    }
+  }
+
+
+
   /**
    * Loads goals from the database and updates the 'goals' signal.
    */

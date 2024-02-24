@@ -11,6 +11,9 @@
 
   <app-status *ngIf="showFavMessage" message="New favourite added!" status="true"></app-status>
 
+  <app-status *ngIf="showAllMsg" message="Added all groceries!" status="true"></app-status>
+
+
   <div class="filterOps">
     <div class="recipe-btns">
       <ion-button fill="clear" (click)="navHome()">BACK</ion-button>
@@ -76,6 +79,7 @@
           </tr>
         </div>
       </div>
+      <ion-button fill="clear" (click)="addAllToGroceries()">ADD ALL</ion-button>
     </div>
     
     <div *ngIf="selectedDiv === 'second'">

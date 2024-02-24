@@ -43,6 +43,8 @@ export class RecipePage implements OnInit {
   // Flag to show or hide the success message
   showFavMessage = Boolean(); 
 
+  showAllMsg = Boolean(); 
+
   nutri!: Meal; 
 
   instrucs:any; 
@@ -148,7 +150,7 @@ export class RecipePage implements OnInit {
   async addToGroceries(grocery: any) {
     let newGrocery: Grocery = {
       id: grocery.id,
-      name: grocery.originalName,
+      name: grocery.nameClean,
       isBought: 0,
       aisle: grocery.aisle
     };
@@ -167,6 +169,24 @@ export class RecipePage implements OnInit {
       console.error('Error adding grocery:', error);
     }
   }
+
+  async addAllToGroceries() {
+    
+    try {
+      const isSuccess = await this.database.addAllToGroceries(this.ingredients);
+      if (isSuccess) {
+          
+          this.showAllMsg = true;
+          setTimeout(() => {
+            this.showAllMsg = false;
+          }, 2000);
+        }
+      }
+    catch (error) {
+    console.error('error adding all ingredients: ', error)
+    }
+  }
+
   nutrientSorter(nutrients:any) {
     let prot:any; 
     if(String(nutrients[8].name == "Alcohol" ) && String(nutrients[9].name) == "Protein"){
@@ -188,6 +208,7 @@ export class RecipePage implements OnInit {
     }
     return entry; 
   }
+
   async updateGoalsByMeal() {
     try {
       const mealSuccess = await this.goalsService.updateGoalsByMeal(this.nutri); 
@@ -258,7 +279,6 @@ export class RecipePage implements OnInit {
       } 
     } catch (error) {
       console.error('Error adding favourite:', error); //log error if error sending data
-   
     }
   }
 }
