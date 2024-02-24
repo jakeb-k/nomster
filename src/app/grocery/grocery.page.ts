@@ -2,6 +2,7 @@ import { Component, OnInit, WritableSignal, ChangeDetectorRef } from '@angular/c
 import { DatabaseService } from '../services/database.service';
 import { Grocery } from '../interfaces/grocery';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 
 
 @Component({
@@ -32,7 +33,8 @@ export class GroceryPage implements OnInit {
    * @param database - Service for database operations.
    * @param router - Router for navigation.
    */
-  constructor(private database: DatabaseService, private router:Router, private cdr: ChangeDetectorRef) { }
+  constructor(private database: DatabaseService, private router:Router, 
+    private cdr: ChangeDetectorRef, private modalController: ModalController) { }
 
   /**
    * Loads grocery data from the database on initialization.
@@ -112,5 +114,14 @@ export class GroceryPage implements OnInit {
   nav(path:string){
     this.router.navigateByUrl('/'+path); //nav by string
   }
+
+    /**
+   * Handles the cancellation of the modal view.
+   */
+    cancel() {
+      //removes the modal from screen
+      this.modalController.dismiss(null, 'cancel');
+    }
+  
 
 }

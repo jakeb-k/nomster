@@ -288,16 +288,6 @@ export class SearchPage implements OnInit{
         );
   }
 
-
-  /**
-   * Handles the cancellation of the modal view.
-   */
-  cancel() {
-    //removes the modal from screen
-    this.modalController.dismiss(null, 'cancel');
-  }
-
-
   /**
    * Toggles between the filter form and meal results display in the UI.
    */

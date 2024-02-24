@@ -23,6 +23,18 @@
   </div>
   <div style="margin-top:80px"></div>
   <div class="add-btn">
-    <button class="navBtn" (click)="addToGroceries()">ADD NEW</button>
+    <button id="open-modal" class="navBtn">ADD NEW</button>
   </div>
+
+  <ion-modal trigger="open-modal" (willDismiss)="($event)">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <ion-button class="backBtn" (click)="cancel()" fill="clear">
+          BACK</ion-button>
+
+        <p> Yozza </p>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
 </ion-content>
