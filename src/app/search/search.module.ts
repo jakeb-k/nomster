@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { SearchPage } from './search.page';
-import { MealResultComponent } from '../comps/meal-result/meal-result.component';
 import { SearchPageRoutingModule } from './search-routing.module';
 
 import { SharedModule } from '../modules/shared/shared.module';
@@ -17,6 +16,6 @@ import { SharedModule } from '../modules/shared/shared.module';
     SearchPageRoutingModule,
     SharedModule
   ],
-  declarations: [SearchPage, MealResultComponent]
+  declarations: [SearchPage]
 })
 export class SearchPageModule {}

@@ -7,6 +7,8 @@ import { Grocery } from '../interfaces/grocery';
 import { GoalsService } from '../services/goals.service';
 import { Meal } from '../interfaces/meal';
 import { Favourite } from '../interfaces/favourite';
+import { ModalController } from '@ionic/angular';
+
 
 
 
@@ -77,7 +79,7 @@ export class RecipePage implements OnInit {
    * @param goalsService - Service to interact with goals table in the database
    */
   constructor(private getter: GetRecipeDetailsService, private route: ActivatedRoute, private router: Router, 
-    private database: DatabaseService, private goalsService: GoalsService) { }
+    private database: DatabaseService, private goalsService: GoalsService, private modalController:ModalController) { }
 
   /**
    * Lifecycle hook that is called after data-bound properties of a directive are initialized.
@@ -210,6 +212,7 @@ export class RecipePage implements OnInit {
   }
 
   async updateGoalsByMeal() {
+    this.cancel()
     try {
       const mealSuccess = await this.goalsService.updateGoalsByMeal(this.nutri); 
       if (mealSuccess) {
@@ -280,5 +283,11 @@ export class RecipePage implements OnInit {
     } catch (error) {
       console.error('Error adding favourite:', error); //log error if error sending data
     }
+  }
+  /**
+   * Dismisses the currently active modal.
+   */
+  cancel() {
+    this.modalController.dismiss(null, 'cancel');
   }
 }

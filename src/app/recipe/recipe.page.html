@@ -6,7 +6,6 @@
 
   <app-status *ngIf="showSuccessMessage" message="Grocery was added!" status="true" [item]="lastAddedGrocery"></app-status>
 
-
   <app-status *ngIf="showMealMessage" message="Meal has been logged!" status="true"></app-status>
 
   <app-status *ngIf="showFavMessage" message="New favourite added!" status="true"></app-status>
@@ -41,7 +40,7 @@
       <img [src]="image" />
     </div>
    
-      <ion-button slot="start" fill="clear" (click)="updateGoalsByMeal()">
+      <ion-button id="meal-modal" slot="start" fill="clear">
         I Enjoyed This, Log It!
        </ion-button>
     
@@ -51,7 +50,7 @@
     </div>
     <div class="recipe-btns"> 
       <ion-button fill="clear" (click)="readMoreToggle()">{{ isExpanded ? 'Read Less' : 'Read More' }}</ion-button>
-      <ion-button fill="clear" (click)="newFav()">Save Recipe</ion-button>
+      <ion-button fill="clear" *ngIf="loc !== 'favs'" (click)="newFav()">Save Recipe</ion-button>
     </div>
     <div class="title-container">
       <h3 (click)="selectedDiv = 'first'" [class.selected]="selectedDiv === 'first'">Ingredients</h3>
@@ -96,6 +95,33 @@
         </ol>
       </div>  
     </div>
-
   </div>
+
+  <ion-modal trigger="meal-modal">
+    <ng-template>
+      <div class="modal-cont ion-padding"> 
+        <ion-button class="backBtn" (click)="cancel()">
+          BACK
+        </ion-button>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>You are logging...</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <meal-result  [title]="title"
+                    [cals]="nutri.cals"
+                    [image]="image"
+                    [id]="id"
+                    [carbs]="nutri.carbs"
+                    [fat]="nutri.fat"
+                    [protein]="nutri.protein">
+            </meal-result>
+
+          </ion-card-content>
+        </ion-card>
+        <button class="navBtn" (click)="updateGoalsByMeal()">LOG MEAL!</button>
+      </div>
+    </ng-template>
+  </ion-modal>
 </ion-content>

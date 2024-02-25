@@ -159,3 +159,6 @@ li.highlighted{
     justify-content: space-between;
     align-items:center; 
 }
+ion-modal {
+    --background: rgba(197, 197, 197, 0.3); /* Makes the modal content itself semi-transparent */
+}
