@@ -147,6 +147,7 @@ export class OnboardingPage implements OnInit {
     this.goals = await this.goalsService.loadGoalByType();
     if(this.goals!.goalAmount > 0) {
       if(!this.previous) {
+        sessionStorage.setItem('previous', 'true'); 
         this.router.navigateByUrl('/login')
       } else {
         this.isNew = true
@@ -155,5 +156,9 @@ export class OnboardingPage implements OnInit {
     else {
       this.isNew = true; 
     }
+  }
+  navHome(){
+    this.router.navigateByUrl('/login', {replaceUrl:true})
+    sessionStorage.setItem('previous', 'true'); 
   }
 }

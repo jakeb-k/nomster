@@ -73,3 +73,9 @@ h3 {
     color:#FF6700;
     font-family:'Space Grotesk', sans-serif;  
 }
+.onboard-title {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center;
+}

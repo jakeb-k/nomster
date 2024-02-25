@@ -5,9 +5,7 @@
     <h3>Grocery List</h3>
     <ion-button fill="clear" (click)="deleteAllGroceries()">RESET</ion-button>
   </div>
-  <!-- <div class="aisle-header">
-    <p>Produce</p>
-  </div> -->
+
   <div class="goalItem" *ngFor="let g of groceries; let i = index">
     <div *ngIf="i === 0 || groceries[i].aisle !== groceries[i - 1].aisle" class="aisle-header">
       {{ g.aisle }}
