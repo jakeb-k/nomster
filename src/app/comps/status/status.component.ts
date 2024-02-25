@@ -22,6 +22,7 @@ export class StatusComponent  implements OnInit {
     bg: "",
   }
   gType = false; 
+  noView = true; 
 
   constructor(private database: DatabaseService, private router: Router) { }
   
@@ -33,20 +34,22 @@ export class StatusComponent  implements OnInit {
   async undoAddGrocery() {
     if (this.item) {
       try {
-        const isSuccess = await this.database.deleteGrocery(String(this.item.name));
-        if (isSuccess) {
-          console.log('grocery was unadded')
-          this.item = null; // Reset the reference
-        } else {
-          console.log('grocery was not unadded')
-        }
+        await this.database.deleteGrocery(String(this.item.name));
       } catch (error) {
         console.error('Error undoing add grocery:', error);
       }
     }
   }
   navGoals() {
-    this.router.navigateByUrl('/profile-input'); 
+    if(this.message == "New favourite added!"){
+      this.router.navigateByUrl('/favs'); 
+    } 
+    else if(this.message == "Added all groceries!") {
+      this.router.navigateByUrl('/grocery'); 
+    } 
+    else {
+      this.router.navigateByUrl('/profile-input'); 
+    }
   }
   updateCompByStatus() {
     if(this.status) {
@@ -55,6 +58,7 @@ export class StatusComponent  implements OnInit {
       this.styles.color = "#3c763d"
       this.styles.bg = "#dff0d8"
     } else {
+      this.noView = false; 
       this.styles.icon = "thumbs-down-outline"
       this.styles.iconColor = "danger"
       this.styles.color = "#763b3b"

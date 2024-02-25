@@ -44,6 +44,9 @@ export class SearchPage implements OnInit{
   // Flag to control display of meals in UI
   setLoaded: Boolean = false; 
 
+  // Flag to display fail message
+  noResults: Boolean = false; 
+
   // Array of raw nutrient JSON objects before sorting
   rawNutrients:any[]=[]; 
 
@@ -167,6 +170,8 @@ export class SearchPage implements OnInit{
   recipeSorter(){
     this.rawNutrients = []; //removes previous nutrient info
     this.sortedRecipes = []; //removes previous recipe info
+
+
     this.recipes.forEach(e => { //inits loop through the returned results from
       let prot = 0; //need protein temp cus it isnt at the same index each time
       this.nutrients = e.nutrition.nutrients;   //separates nutrients from recipe info from big JSON object 
@@ -195,6 +200,8 @@ export class SearchPage implements OnInit{
       let a =  e.nutrition.nutrients;
       this.rawNutrients.push(a); 
     });
+
+    
     if(this.sortedRecipes[0]){ //checks that there is actually something in arr before setting the vars
       this.setLoaded = true; //enables meal UI display
       let x = JSON.stringify(this.sortedRecipes); //stringify to be used in session storage
@@ -204,11 +211,13 @@ export class SearchPage implements OnInit{
       sessionStorage.setItem('recipes',x); 
       sessionStorage.setItem('servingSize',z); 
       
-    } else {
+    } 
+    else {
       sessionStorage.removeItem('recipes'); //clears as it is [[]] instead of just []
 
       //message when filter is to strong
-      this.message = "Sorry, we couldn't find any recipes matching that criteria. Remove / Alter the current filter to get more results"; 
+      this.noResults = true; 
+      setTimeout(() => this.noResults = false, 1500);
     }
     
   } 
@@ -274,9 +283,11 @@ export class SearchPage implements OnInit{
             this.recipes = response.results; //assign to unsorted recipe holder for sorting
               
             this.recipeSorter(); //the sorter function
-            } else if(this.recipes = []){ //if its empty
+            } 
+            else if(this.recipes = []){ //if its empty
               //display the too strict filter message
-              this.message = "Sorry, we couldn't find any recipes matching that criteria. Remove / Alter the current filter to get more results"
+              this.noResults = true; 
+              setTimeout(() => this.noResults = false, 1500);
             }
             else { //if error during assignment
               console.error('Error:', response.error); //log the error

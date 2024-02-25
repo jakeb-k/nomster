@@ -5,7 +5,7 @@
         {{message}}
     </p>
   </div>
-  <ion-button *ngIf="gType" fill="clear" (click)="undoAddGrocery()">UNDO</ion-button>
-  <ion-button *ngIf="!gType" fill="clear" (click)="navGoals()">VIEW</ion-button>
+  <ion-button *ngIf="gType && noView" fill="clear" (click)="undoAddGrocery()">UNDO</ion-button>
+  <ion-button *ngIf="!gType && noView" fill="clear" (click)="navGoals()">VIEW</ion-button>
 
 </div>

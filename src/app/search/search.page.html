@@ -41,6 +41,11 @@
 
     <!--FILTER FORM -->
     <ng-template #preLoad>
+      <app-status *ngIf="noResults" status="false" message="No Matching Results">
+        {{message}}
+      </app-status>
+
+      
     <div id="filterForm">
     <h3 style="padding-left:20px;">Apply Filters</h3>
       
@@ -92,9 +97,7 @@
         </ion-card-content>
       </ion-card>
       <button class="navBtn" (click)="sendFilterData()">APPLY</button>
-      <p *ngIf="message !== ''">
-        {{message}}
-      </p>
+      
     </div>
     </ng-template>
      
