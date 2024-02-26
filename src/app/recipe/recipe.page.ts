@@ -189,6 +189,49 @@ export class RecipePage implements OnInit {
     }
   }
 
+  aisleSorter(){
+    const aisleCategoryMap: { [key: string]: string } = {
+      "Health Foods": "Healthy & Specialty Foods",
+      "Spices and Seasonings": "Pantry Essentials",
+      "Pasta and Rice": "Pantry Essentials",
+      "Bakery/Bread": "Bakery & Sweet Snacks",
+      "Refrigerated": "Frozen & Refrigerated",
+      "Canned and Jarred": "Pantry Essentials",
+      "Frozen": "Frozen & Refrigerated",
+      "Nut butters, Jams, and Honey": "Pantry Essentials",
+      "Oil, Vinegar, Salad Dressing": "Pantry Essentials",
+      "Condiments": "Pantry Essentials",
+      "Savory Snacks": "Snacks",
+      "Milk, Eggs, Other Dairy": "Dairy & Eggs",
+      "Ethnic Foods": "Healthy & Specialty Foods",
+      "Tea and Coffee": "Beverages",
+      "Meat": "Meat & Seafood",
+      "Gourmet": "Bakery & Sweet Snacks",
+      "Sweet Snacks": "Bakery & Sweet Snacks",
+      "Gluten Free": "Healthy & Specialty Foods",
+      "Alcoholic Beverages": "Beverages",
+      "Cereal": "Pantry Essentials",
+      "Nuts": "Snacks",
+      "Beverages": "Beverages",
+      "Produce": "Produce",
+      "Seafood": "Meat & Seafood",
+      "Cheese": "Dairy & Eggs",
+      "Dried Fruits": "Healthy & Specialty Foods"
+    };
+
+    const streamlinedItems = this.ingredients.map(item => {
+      // Replace the aisle with the streamlined category, defaulting to the original aisle if not found
+      const newAisle = aisleCategoryMap[item.aisle] || item.aisle;
+      return {
+        ...item,
+        aisle: newAisle, // This now contains the streamlined category
+      };
+    });
+    
+    console.log(streamlinedItems);
+
+  }
+
   nutrientSorter(nutrients:any) {
     let prot:any; 
     if(String(nutrients[8].name == "Alcohol" ) && String(nutrients[9].name) == "Protein"){

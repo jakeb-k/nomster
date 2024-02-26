@@ -126,14 +126,13 @@ export class GroceryPage implements OnInit {
     this.router.navigateByUrl('/'+path); //nav by string
   }
 
-    /**
-   * Handles the cancellation of the modal view.
-   */
-    cancel() {
-      //removes the modal from screen
-      this.modalController.dismiss(null, 'cancel');
-      this.cdr.detectChanges();
-    }
+  /**
+  * Handles the cancellation of the modal view.
+  */
+  cancel() {
+    //removes the modal from screen
+    this.modalController.dismiss(null, 'cancel');
+    this.cdr.detectChanges();
+  }
   
-
 }
