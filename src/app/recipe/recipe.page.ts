@@ -173,7 +173,7 @@ export class RecipePage implements OnInit {
   }
 
   async addAllToGroceries() {
-    
+    this.ingredients = this.aisleSorter() 
     try {
       const isSuccess = await this.database.addAllToGroceries(this.ingredients);
       if (isSuccess) {
@@ -228,7 +228,7 @@ export class RecipePage implements OnInit {
       };
     });
     
-    console.log(streamlinedItems);
+   return streamlinedItems
 
   }
 

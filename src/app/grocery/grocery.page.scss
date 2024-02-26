@@ -43,13 +43,15 @@ ion-content {
 }
 .aisle-header {
   width:100%;
-  text-align:center; 
-  background:#ffdc30;
+  text-align:left; 
+  border-bottom:1px solid #ff6400;
+  border-top:1px solid #ff6400;
+  margin-top:20px; 
   display:block; 
-  height:30px; 
-  padding:0 !important; 
+  height:40px; 
+  padding:0 3%; 
   
-  font-size:20px; 
+  font-size:22px; 
   font-family:$p; 
   
 }
@@ -58,13 +60,13 @@ ion-content {
   flex-direction:row;
   justify-content: space-around;
   align-items: center;
-  width:90%; 
-  margin:10px auto; 
+  width:95%; 
+  margin:5px auto; 
   
   background:white; 
   box-shadow:0 0 2.5px rgb(113, 113, 113); 
-  border-radius:15px; 
-  font-size:16px; 
+  border-radius:5px; 
+  font-size:18px; 
 }
 .grocery-actions {
   display:flex;
