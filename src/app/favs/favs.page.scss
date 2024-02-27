@@ -1,3 +1,14 @@
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(80%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .favItem {
     position:relative; 
     background:white; 
@@ -5,6 +16,12 @@
     border-radius:5px; 
     padding:10px 0; 
     margin: 10px 3%; 
+
+    animation-name: fadeInUp;
+    animation-duration: 0.7s;
+    /* Animation delay gets set inline based on the item's index */
+    animation-fill-mode: both;
+    box-shadow:0 0 2.5px lightslategray; 
 }
 .favItem ion-button {
     position:absolute;
@@ -15,6 +32,5 @@ ion-button {
     margin:1% 3%; 
 }
 ion-content {
-    --background:rgb(197, 197, 197) !important;
     padding:3%; 
 }
