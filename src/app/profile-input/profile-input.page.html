@@ -1,5 +1,6 @@
 <app-header></app-header>
 <ion-content> 
+  <ion-button fill="clear" (click)="back()">BACK</ion-button>
   <ion-item class="goalItem" *ngFor="let g of goals(); let i = index" [style.animation-delay]="i * 200 + 'ms'">
     <div class="goalContent"> 
       <p>{{g.type}} : </p>
@@ -51,10 +52,10 @@
     </div>
     
   </ion-item> -->
-  
-  <ion-button id="goal-modal">
-    Add New Goal!
-  </ion-button>
+  <div style="margin-top:80px"></div>
+  <div class="add-btn">
+    <button id="goal-modal" class="navBtn">ADD NEW</button>
+  </div>
 
   <ion-modal trigger="goal-modal">
     <ng-template>
@@ -70,13 +71,12 @@
         
           <ion-card-content>
             <ion-item>
-              <ion-select [(ngModel)]="newGoal.type" aria-label="Goal Types" placeholder="Select Goal Type">
-                <ion-select-option *ngFor="let t of types" [value]="t">{{t}}</ion-select-option>
-              </ion-select>
+              <ion-input [(ngModel)]="newGoal.type" aria-label="Goal Types" placeholder="Enter goal name...">
+              </ion-input>
             </ion-item>
           
             <ion-item>
-              <ion-input type="number" [(ngModel)]="newGoal.goalAmount" label="Goal Amount" labelPlacement="stacked"  placeholder="Enter your desired goal amount"></ion-input>
+              <ion-input type="number" [(ngModel)]="newGoal.goalAmount" label="Goal Amount" labelPlacement="stacked"  placeholder="Enter your daily goal amount"></ion-input>
             </ion-item>
           </ion-card-content>
         </ion-card>

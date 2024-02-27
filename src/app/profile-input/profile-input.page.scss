@@ -22,6 +22,7 @@
     animation-duration: 0.7s;
     /* Animation delay gets set inline based on the item's index */
     animation-fill-mode: both;
+    box-shadow: 0 0 2.5px lightslategray; 
 }
 
 .goalContent {
@@ -76,7 +77,6 @@ ion-button:hover {
     border-radius:25px; 
 }
 ion-content {
-    --background:rgb(197, 197, 197) !important;
     padding:3%; 
 }
 .reset-tracker {
@@ -115,3 +115,9 @@ img {
 ion-modal {
     --background: rgba(197, 197, 197, 0.3); /* Makes the modal content itself semi-transparent */
 }
+.add-btn {
+    position: fixed; /* Fixed position */
+    bottom:20px; 
+    left: 0;
+    right: 0;
+  }
