@@ -1,8 +1,10 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { trigger, transition, style, query, stagger, animate } from '@angular/animations';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+
 import { GoalsService } from '../services/goals.service';
 import { Goal } from '../interfaces/goal';
-import { ModalController } from '@ionic/angular';
 import { UpdateGoalModalComponent } from '../comps/update-goal-modal/update-goal-modal.component';
 import { ResetService } from '../services/reset.service';
 
@@ -11,6 +13,18 @@ import { ResetService } from '../services/reset.service';
   selector: 'app-profile-input',
   templateUrl: './profile-input.page.html',
   styleUrls: ['./profile-input.page.scss'],
+  // animations: [
+  //   trigger('listAnimation', [
+  //     transition('* => *', [ // This will apply to each change in the item list
+  //       query('.goalItem:enter', [
+  //         style({ opacity: 0, transform: 'translateY(-100px)' }), // Initial state
+  //         stagger(100, [ // 100ms delay between each item's animation
+  //           animate('0.5s', style({ opacity: 1, transform: 'none' })) // Final state
+  //         ])
+  //       ], { optional: true })
+  //     ])
+  //   ])
+  // ]
 })
 export class ProfileInputPage implements OnInit {
   // Property to store goals; type is any

@@ -1,6 +1,6 @@
 <app-header></app-header>
 <ion-content> 
-  <ion-item class="goalItem" *ngFor="let g of goals(); let i = index">
+  <ion-item class="goalItem" *ngFor="let g of goals(); let i = index" [style.animation-delay]="i * 100 + 'ms'">
     <div class="goalContent"> 
       <p>{{g.type}} : </p>
       <p><b>{{g.goalProgress.toFixed(0)}} / {{g.goalAmount}}<span>

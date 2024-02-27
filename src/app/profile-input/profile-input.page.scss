@@ -1,3 +1,14 @@
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .goalItem {
     display: flex;
     justify-content: space-between;
@@ -6,6 +17,11 @@
     background:white; 
     margin:10px 3%;
     padding:2.5px 0; 
+
+    animation-name: fadeInUp;
+    animation-duration: 0.5s;
+    /* Animation delay gets set inline based on the item's index */
+    animation-fill-mode: both;
 }
 
 .goalContent {
