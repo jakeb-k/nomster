@@ -30,42 +30,53 @@ ion-button,ion-icon {
   padding:0;
   margin:0; 
 }
-ion-button:hover {
-  color:#ffa118;
-  transform: scale(1.05);
-  transition: 0.3s ease-in-out;
-  }
-ion-icon {
- color:#FF6700; 
-}
+
 ion-content {
   --padding:0 3%;
 }
 .aisle-header {
   width:100%;
-  text-align:left; 
+  
   border-bottom:1px solid #ff6400;
   border-top:1px solid #ff6400;
   margin-top:20px; 
-  display:block; 
-  height:40px; 
+  display:block;  
   padding:0 3%; 
   
   font-size:22px; 
   font-family:$p; 
+
+  transition: background-color 0.3s ease;
   
+}
+.aisle-header.expanded {
+  background-color: #ff6400; /* Change as per your preference */
+}
+.grocery-cont {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  max-height: 0; /* Start collapsed */
+}
+
+.grocery-cont.expanded {
+  max-height: 500px; /* Adjust based on your content's maximum height */
+}
+.aisle-content {
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+  align-items:center;
 }
 .grocery-item {
   display:flex;
   flex-direction:row;
   justify-content: space-around;
   align-items: center;
-  width:95%; 
+  width:100%; 
   margin:5px auto; 
   
   background:white; 
-  box-shadow:0 0 2.5px rgb(113, 113, 113); 
-  border-radius:5px; 
+  border-bottom:1px solid rgb(188, 188, 188); 
   font-size:18px; 
 }
 .grocery-actions {

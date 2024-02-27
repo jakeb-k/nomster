@@ -27,12 +27,10 @@ export class GroceryPage implements OnInit {
     isBought: 0,
     aisle: ""
   }; 
-   aisles: String[] = ["Health Foods","Spices and Seasonings","Pasta and Rice","Bakery/Bread",
-    "Refrigerated","Canned and Jarred","Frozen","Nut butters, Jams, and Honey","Oil, Vinegar, Salad Dressing",
-    "Condiments","Savory Snacks","Milk, Eggs, Other Dairy","Ethnic Foods","Tea and Coffee","Meat",
-    "Gourmet","Sweet Snacks","Gluten Free","Alcoholic Beverages","Cereal","Nuts","Beverages",
-    "Produce","Seafood","Cheese","Dried Fruits"]
+   aisles: String[] = ["Healthy & Specialty Foods", "Pantry Essentials", "Bakery & Sweet Snacks",
+  "Frozen & Refrigerated", "Snacks", "Dairy and Eggs", "Beverages", "Meat & Seafood", "Produce"]
 
+  expandedAisles: { [key: string]: boolean } = {};
   /**
    * Initializes the component with the DatabaseService and Router.
    * @param database - Service for database operations.
@@ -58,12 +56,14 @@ export class GroceryPage implements OnInit {
    * @param grocery - The grocery item to be deleted.
    */
   async deleteGrocery(grocery: Grocery) {
-    //wait for their to be response on delete grocery function
-    //takes name and id as its composite primary key
-    await this.database.deleteGrocery(grocery.name.toString()); 
-    await this.database.loadGrocery() 
-    this.groceriesArr = this.database.getGrocery(); 
-    this.groceries =  this.groceriesArr()
+    try {
+      await this.database.deleteGrocery(grocery.name.toString()); 
+      await this.database.loadGrocery() 
+      this.groceriesArr = this.database.getGrocery(); 
+      this.groceries =  this.groceriesArr()
+    } catch(error) {
+      console.error('Error deleting grocery: ', error)
+    }
     this.cdr.detectChanges();
   }
 
@@ -133,6 +133,14 @@ export class GroceryPage implements OnInit {
     //removes the modal from screen
     this.modalController.dismiss(null, 'cancel');
     this.cdr.detectChanges();
+  }
+
+  /**
+   * Controls expanding of aisles
+   * @param aisle - The aisle to be un/expanded
+   */
+  toggleAisle(aisle: string) {
+    this.expandedAisles[aisle] = !this.expandedAisles[aisle];
   }
   
 }

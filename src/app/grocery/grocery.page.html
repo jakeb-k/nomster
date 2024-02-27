@@ -2,20 +2,29 @@
 
 <ion-content>
   <div class="grocery-actions">
-    <h3>Grocery List</h3>
+     <ion-button fill="clear" (click)="nav('login')">BACK</ion-button>
     <ion-button fill="clear" (click)="deleteAllGroceries()">RESET</ion-button>
   </div>
 
   <div class="goalItem" *ngFor="let g of groceries; let i = index">
-    <div *ngIf="i === 0 || groceries[i].aisle !== groceries[i - 1].aisle" class="aisle-header">
-      {{ g.aisle }}
-    </div>
-    <div class="grocery-item">
-      <div class="goalContent"> 
-        <p>{{g.name}}</p>
+    <div *ngIf="i === 0 || groceries[i].aisle !== groceries[i - 1].aisle" class="aisle-header" [class.expanded]="expandedAisles[g.aisle]">
+      <div class="aisle-content">
+        <p>{{ g.aisle }}</p>
+        <ion-button fill="clear" (click)="toggleAisle(g.aisle)">
+          <ion-icon [name]="expandedAisles[g.aisle] ? 'chevron-up-outline' : 'chevron-down-outline'"
+                    [ngStyle]="{'color': expandedAisles[g.aisle] ? 'white' : '#ff6400'}"></ion-icon>
+        </ion-button>
       </div>
-      <div class="goalActions">
-        <ion-button fill="clear" (click)="deleteGrocery(g)"><ion-icon name="close-circle-outline"></ion-icon></ion-button>
+    </div>
+
+    <div [class.expanded]="expandedAisles[g.aisle]"  class="grocery-cont">
+      <div class="grocery-item">
+        <div class="goalContent"> 
+          <p>{{g.name}}</p>
+        </div>
+        <div class="goalActions">
+          <ion-button fill="clear" (click)="deleteGrocery(g)"><ion-icon name="close-circle-outline"></ion-icon></ion-button>
+        </div>
       </div>
     </div>
   </div>
