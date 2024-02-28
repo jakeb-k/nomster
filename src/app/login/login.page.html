@@ -1,27 +1,15 @@
 <app-header></app-header>
 <ion-content>
-  <ion-button fill="clear" (click)="nav('onboarding')">UPDATE</ion-button>
   <div class="profilePic ion-padding">
     <ion-icon name="person-circle-outline"></ion-icon>
     <h3>Welcome {{user?.name}} ({{user?.age}})</h3>
   </div>
   
 <div class="profileOptions">
-  <div class="profileOptionsCont">
-    <ion-icon name="search-circle-outline"></ion-icon>
-    <ion-button (click)="nav('search')" fill="clear">Search Recipes</ion-button>
+  <div class="profileOptionsCont" *ngFor="let o of options; let i = index;" [style.animation-delay]="i * 0.2 + 's'">
+    <ion-icon [name]="o[2]"></ion-icon>
+    <ion-button (click)="nav(o[1])" fill="clear">{{o[0]}}</ion-button>
   </div>
-  <div class="profileOptionsCont">
-    <ion-icon name="heart-circle-outline"></ion-icon>
-    <ion-button fill="clear" (click)="nav('favs')">Favourites</ion-button>
-  </div>
-  <div class="profileOptionsCont">
-    <ion-icon name="cart"></ion-icon>
-    <ion-button fill="clear"  (click)="nav('grocery')">Grocery List</ion-button>
-  </div>
-  <div class="profileOptionsCont">
-    <ion-icon name="ribbon-outline"></ion-icon>
-    <ion-button fill="clear" (click)="nav('profile-input')">My Goals</ion-button>
-  </div>
+
 </div>
 </ion-content>

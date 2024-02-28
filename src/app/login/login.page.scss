@@ -1,24 +1,34 @@
-
-.profileOptions {
-    display:flex; 
-    flex-direction:column; 
-    margin-left:7.5%; 
+@keyframes flyInFromBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .profileOptionsCont {
+  padding:2.5% 7.5%; 
+  border-bottom:1px solid rgb(165, 165, 165); 
   display:flex;
   flex-direction: row;
+  
   align-items:center;
   ion-icon {
     align-self:center; 
-    font-size:32px !important; 
+    font-size:38px !important; 
   }
+  ion-button {
+    font-size:18px; 
+  }
+
+  animation-name: flyInFromBottom;
+  animation-duration: 0.5s; /* Adjust based on desired speed */
+  animation-fill-mode: both; /* Ensures the final state is retained */
 }
-ion-button:hover {
-  color:#ffa118;
-  transform: scale(1.05);
-  transition: 0.3s ease-in-out;
-}
+
 .goalItem {
   display: flex;
   justify-content: space-evenly;

@@ -30,6 +30,15 @@ export class LoginPage implements OnInit {
   currentCI:any; 
 
   sessionCI = sessionStorage.getItem('calorieIntake'); 
+
+  options = [
+    ['Search Recipes', 'search','search-circle-outline'],
+    ['Favourites', 'favs','heart-circle-outline'],
+    ['Grocery List', 'grocery','cart'],
+    ['My Goals', 'profile-input','ribbon-outline'],
+    ['Update Profile', 'onboarding','cog-outline'],
+  ]
+
  /**
   * Constructor for the component.
   * @param database - Service for interacting with the database.
@@ -42,7 +51,6 @@ export class LoginPage implements OnInit {
   * Loads the grocery list from the database and assigns it to the 'groceries' property.
   */
  async ngOnInit() {
-  this.goal = await this.goalsService.loadGoalByType();
   this.user = await this.userService.loadUserByPromise(); 
   sessionStorage.setItem('previous', 'true'); 
   
