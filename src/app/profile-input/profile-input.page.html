@@ -18,8 +18,8 @@
       <div class="barProgress" [style.width]="(g.goalProgress / g.goalAmount * 100).toFixed(2) + '%'"></div>
     </div>
     <div class="reset-tracker">
-      <ion-button fill="clear" (click)="openModal(g.id)">EDIT</ion-button>
-      <ion-button (click)="openModal(g.id)" fill="clear">UPDATE</ion-button>
+      <ion-button fill="clear" (click)="openModal(g.id)">UPDATE</ion-button>
+      <ion-button *ngIf="!goalTypeCheck(g.type)" (click)="deleteGoal(g)" fill="clear">DELETE {{g.id}}</ion-button>
     </div>
     <div class="streak-cont">
       <div class="streak-tracker">

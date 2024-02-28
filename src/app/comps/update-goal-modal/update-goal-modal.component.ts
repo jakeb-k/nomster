@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { GoalsService } from 'src/app/services/goals.service';
 @Component({
   selector: 'app-update-goal-modal',
   templateUrl: './update-goal-modal.component.html',
@@ -16,7 +17,7 @@ export class UpdateGoalModalComponent  implements OnInit {
    * Initializes the component with ModalController.
    * @param modalController - Controller for managing modals.
    */
-  constructor(private modalController: ModalController) { }
+  constructor(private modalController: ModalController, private goalsService: GoalsService) { }
 
   ngOnInit() {}
   /**
@@ -32,5 +33,14 @@ export class UpdateGoalModalComponent  implements OnInit {
    */
   cancel() {
     this.modalController.dismiss(null, 'cancel');
+  }
+
+  async deleteGoal(){
+    try {
+      await this.goalsService.deleteGoalById(this.id.toString())
+    } catch (error) {
+      console.log('error deleting from goal modal: ',error)
+    }
+    this.cancel(); 
   }
 }

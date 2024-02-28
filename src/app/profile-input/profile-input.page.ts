@@ -106,8 +106,14 @@ export class ProfileInputPage implements OnInit {
    * @param goal - The goal to be deleted.
    */
   async deleteGoal(goal: Goal) {
-    this.goalsService.deleteGoalById(goal.id!.toString())
+    try {
+      await this.goalsService.deleteGoalById(goal.id!.toString())
+    } catch (error) {
+      console.log('error deleting from goal modal: ',error)
+    }
+    this.cancel(); 
   }
+  
 
   /**
    * Sends the updated goal progress to the service.
@@ -167,6 +173,19 @@ export class ProfileInputPage implements OnInit {
 
   getStreakArray(streak: number) {
     return new Array(7).fill(0).map((x, i) => i < streak);
+  }
+  goalTypeCheck(name: string) {
+    switch(name) {
+      case 'Calorie Intake':
+        return true;
+      case 'Protein Intake':
+        return true
+      case 'Fat Limit':
+        return true
+      case 'Carbs Limit':
+        return true
+    }
+    return false
   }
 
 }
