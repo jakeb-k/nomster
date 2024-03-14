@@ -12,19 +12,7 @@ import { ResetService } from '../services/reset.service';
 @Component({
   selector: 'app-profile-input',
   templateUrl: './profile-input.page.html',
-  styleUrls: ['./profile-input.page.scss'],
-  // animations: [
-  //   trigger('listAnimation', [
-  //     transition('* => *', [ // This will apply to each change in the item list
-  //       query('.goalItem:enter', [
-  //         style({ opacity: 0, transform: 'translateY(-100px)' }), // Initial state
-  //         stagger(100, [ // 100ms delay between each item's animation
-  //           animate('0.5s', style({ opacity: 1, transform: 'none' })) // Final state
-  //         ])
-  //       ], { optional: true })
-  //     ])
-  //   ])
-  // ]
+  styleUrls: ['./profile-input.page.scss']
 })
 export class ProfileInputPage implements OnInit {
   // Property to store goals; type is any
