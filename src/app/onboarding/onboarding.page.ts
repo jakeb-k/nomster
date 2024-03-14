@@ -51,7 +51,7 @@ export class OnboardingPage implements OnInit {
     activityLevel: 0,
     timeStamp: new Date().getTime()
   }
-  isNew = false;  
+  isNew = true;  
   previous = false; 
   constructor(private userService: UserService, private router: Router, private goalsService: GoalsService) { }
 

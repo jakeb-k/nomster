@@ -1,11 +1,11 @@
 <div *ngIf="!isNew">
   <app-loader></app-loader>
 </div>
-<ion-content *ngIf="isNew">
+<ion-content >
   <div class="onboarding-container ion-padding"> 
     <div class="onboard-title">
       <h3>Welcome to Nomster</h3>
-      <ion-button *ngIf="previous" fill="clear" (click)="navHome()">BACK</ion-button>
+      <ion-button *ngIf="!isNew" fill="clear" (click)="navHome()">BACK</ion-button>
     </div>
     <ion-item>
       <ion-input [(ngModel)]="newUser.name" label="Enter your name" labelPlacement="floating"></ion-input>

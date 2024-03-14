@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../services/database.service';
 import { Router } from '@angular/router';
-import { GoalsService } from '../services/goals.service';
-import { Goal } from '../interfaces/goal';
 import { UserService } from '../services/user.service';
+import { CameraService } from '../services/camera.service';
 
 @Component({
   selector: 'app-login',
@@ -43,8 +42,9 @@ export class LoginPage implements OnInit {
   * Constructor for the component.
   * @param database - Service for interacting with the database.
   * @param router - Router service for navigation.
+  * @param camera - Camera service for profile picture
   */
- constructor(private router: Router, private goalsService: GoalsService, private userService:UserService) { }
+ constructor(private router: Router, private userService:UserService, private cameraService: CameraService) { }
 
  /**
   * Lifecycle hook that is called after data-bound properties of a directive are initialized.
