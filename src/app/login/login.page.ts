@@ -28,6 +28,8 @@ export class LoginPage implements OnInit {
   // Holds the writable signal from db
   currentCI:any; 
 
+  userProfileImage: string = ''; 
+  
   sessionCI = sessionStorage.getItem('calorieIntake'); 
 
   options = [
@@ -56,7 +58,13 @@ export class LoginPage implements OnInit {
   
  }
 
-
+ activateCamera(){
+  this.cameraService.takePhoto().then(photoBase64 => {
+    this.userProfileImage = photoBase64;
+  }).catch(error => {
+    console.error('Error taking photo:', error);
+  });
+ }
  /**
   * Navigates to a specified path.
   * @param path - The path to navigate to as a string.
