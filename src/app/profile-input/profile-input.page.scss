@@ -9,84 +9,20 @@
     }
 }
 
-.goalItem {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: nowrap; 
-    border-radius:5px;
-    background:white; 
-    margin:10px 3%;
-    padding:2.5px 0; 
-
-    animation-name: fadeInUp;
-    animation-duration: 0.7s;
-    /* Animation delay gets set inline based on the item's index */
-    animation-fill-mode: both;
-    box-shadow: 0 0 2.5px lightslategray; 
-}
-
-.goalContent {
-    font-size:12px; 
-    display: flex;
-    width:fit-content; 
-    margin-right:auto; 
-    flex:1; 
-    p {
-        white-space: nowrap;
-    }
-}
-.goalActions {
-    display:flex;
-    flex-direction: row;
-    justify-content: right;
-    align-items: center;
-    flex:1;
-    max-width:30%;
-    * {
-        padding:0;
-        margin:0; 
-    }
-
-}
-ion-item {
-    --border-style:none;
-    --padding-end:0 !important; 
-}
-ion-item::part(native) {
-    padding-right: 0 !important; /* Use !important sparingly */
-  }
 #goal-modal {
     margin-left:3%; 
 }
     
 ion-button:hover {
     color:#ffa118;
+    background:white; 
+    border:2px solid #ffa118; 
     transform: scale(1.05);
     transition: 0.3s ease-in-out; 
 }
 
 ion-content {
     padding:3%; 
-}
-.reset-tracker {
-    display:flex;
-    flex-direction:row;
-    justify-content: space-between;
-    width:100%; 
-}
-ion-icon {
-    font-size:28px !important; 
-}
-img {
-    width:32px;
-    height:auto; 
-}
-.streak-cont {
-    width:90%; 
-    display:flex;
-    flex-direction:row;
-    justify-content: space-between;
-    align-items: center;
 }
 .streak-tracker {
     width:100%; 
@@ -103,12 +39,6 @@ img {
 }
 ion-modal {
     --background: rgba(197, 197, 197, 0.3); /* Makes the modal content itself semi-transparent */
-}
-.add-btn {
-    position: fixed; /* Fixed position */
-    bottom:20px; 
-    left: 0;
-    right: 0;
 }
 .goal-item{
     display:flex;
