@@ -49,7 +49,8 @@ export class OnboardingPage implements OnInit {
     direction: 0,
     age: 0,
     activityLevel: 0,
-    timeStamp: new Date().getTime()
+    timeStamp: new Date().getTime(),
+    imageData: '' 
   }
   isNew = true;  
   previous = false; 

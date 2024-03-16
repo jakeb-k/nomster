@@ -1,7 +1,7 @@
 <app-header></app-header>
 <ion-content>
   <div class="profilePic ion-padding">
-    <ion-icon *ngIf="!userProfileImage" (click)="activateCamera()"></ion-icon>
+    <ion-icon *ngIf="userProfileImage == '' " (click)="activateCamera()" name="camera-outline"></ion-icon>
     <img *ngIf="userProfileImage" [src]="userProfileImage" alt="User Profile" (click)="activateCamera()">
     <h3>Welcome {{user?.name}} ({{user?.age}})</h3>
   </div>

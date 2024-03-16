@@ -95,7 +95,8 @@ export class DatabaseService {
         direction INTEGER NOT NULL,
         age INTEGER NOT NULL,
         activityLevel INTEGER NOT NULL,
-        timeStamp INTEGER NOT NULL
+        timeStamp INTEGER NOT NULL,
+        image_data TEXT
 
       );
     `

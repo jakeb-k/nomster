@@ -8,5 +8,6 @@ export interface User {
     direction:number,
     age:number,
     activityLevel:number,
-    timeStamp:number
+    timeStamp:number, 
+    imageData:string | null 
 }

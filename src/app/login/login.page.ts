@@ -54,6 +54,7 @@ export class LoginPage implements OnInit {
   */
  async ngOnInit() {
   this.user = await this.userService.loadUserByPromise(); 
+  this.userProfileImage = this.user.image_data ?? ''; 
   sessionStorage.setItem('previous', 'true'); 
   
  }
@@ -61,6 +62,7 @@ export class LoginPage implements OnInit {
  activateCamera(){
   this.cameraService.takePhoto().then(photoBase64 => {
     this.userProfileImage = photoBase64;
+    this.cameraService.saveImage(photoBase64, this.user.name); 
   }).catch(error => {
     console.error('Error taking photo:', error);
   });

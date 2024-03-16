@@ -4,58 +4,6 @@
     <ion-button size="large" fill="clear" (click)="back()">BACK</ion-button>
     <ion-button size="large" id="goal-modal" fill="clear">ADD NEW</ion-button>
   </div>
-
-  <!-- <ion-item class="goalItem" *ngFor="let g of goals(); let i = index" [style.animation-delay]="i * 200 + 'ms'">
-    <div class="goalContent"> 
-      <p>{{g.type}} : </p>
-      <p><b>{{g.goalProgress.toFixed(0)}} / {{g.goalAmount}}<span>
-          {{ g.type === 'Calorie Intake' ? 'kcals' : 'gs' }}</span>
-        </b>
-      </p>
-    </div>
-
-    <div class="goalActions" >
-      <p>{{(g.goalProgress / g.goalAmount * 100).toFixed(0)}} %</p>
-    </div>
-
-    <div class="barBase">
-      <div class="barProgress" [style.width]="(g.goalProgress / g.goalAmount * 100).toFixed(2) + '%'"></div>
-    </div>
-    <div class="reset-tracker">
-      <ion-button fill="clear" (click)="openModal(g.id)">UPDATE</ion-button>
-      <ion-button *ngIf="!goalTypeCheck(g.type)" (click)="deleteGoal(g)" fill="clear">DELETE {{g.id}}</ion-button>
-    </div>
-    <div class="streak-cont">
-      <div class="streak-tracker">
-        <div *ngFor="let active of getStreakArray(g.streak); let i = index" class="streak" [ngStyle]="{'background-color': active ? '#FF6400' : 'lightgray'}"></div>
-      </div>
-      <p>{{g.streak ?? 0}}</p>
-      <img src="/assets/flame.png" /> 
-    </div>
-  </ion-item> -->
-
-  <!-- <ion-item class="goalItem">
-    <div class="goalContent"> 
-      <p>Calorie Intake : </p>
-      <p><b> 30 / 150<span>
-         kcals</span>
-        </b>
-      </p>
-    </div>
-
-    <div class="goalActions" >
-      <p>20%</p>
-    </div>
-
-    <div class="barBase">
-      <div class="barProgress" [style.width]="( 20/ 100 * 100).toFixed(2) + '%'"></div>
-    </div>
-    <div class="reset-tracker">
-      <ion-button fill="clear">EDIT</ion-button>
-      <ion-button fill="clear"  (click)="openModal(1)">UPDATE</ion-button>
-    </div>
-    
-  </ion-item> -->
   
   <div class="goal-item" *ngFor="let g of goals(); let i = index" [style.animation-delay]="i * 200 + 'ms'">
     <div class="goal-title">
