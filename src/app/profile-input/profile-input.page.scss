@@ -13,11 +13,10 @@
     margin-left:3%; 
 }
     
-ion-button:hover {
+ion-button:hover, ion-button:active {
     color:#ffa118;
-    background:white; 
-    border:2px solid #ffa118; 
-    transform: scale(1.05);
+    --fill:white; 
+    border-radius:inherit; 
     transition: 0.3s ease-in-out; 
 }
 
