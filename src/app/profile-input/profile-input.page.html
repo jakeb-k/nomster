@@ -1,7 +1,11 @@
 <app-header></app-header>
 <ion-content> 
-  <ion-button fill="clear" (click)="back()">BACK</ion-button>
-  <ion-item class="goalItem" *ngFor="let g of goals(); let i = index" [style.animation-delay]="i * 200 + 'ms'">
+  <div class="btn-options">
+    <ion-button fill="clear" (click)="back()">BACK</ion-button>
+    <ion-button id="goal-modal" fill="clear">ADD NEW</ion-button>
+  </div>
+
+  <!-- <ion-item class="goalItem" *ngFor="let g of goals(); let i = index" [style.animation-delay]="i * 200 + 'ms'">
     <div class="goalContent"> 
       <p>{{g.type}} : </p>
       <p><b>{{g.goalProgress.toFixed(0)}} / {{g.goalAmount}}<span>
@@ -28,9 +32,9 @@
       <p>{{g.streak ?? 0}}</p>
       <img src="/assets/flame.png" /> 
     </div>
-  </ion-item>
-<!-- 
-  <ion-item class="goalItem">
+  </ion-item> -->
+
+  <!-- <ion-item class="goalItem">
     <div class="goalContent"> 
       <p>Calorie Intake : </p>
       <p><b> 30 / 150<span>
@@ -52,10 +56,54 @@
     </div>
     
   </ion-item> -->
-  <div style="margin-top:80px"></div>
-  <div class="add-btn">
-    <button id="goal-modal" class="navBtn">ADD NEW</button>
+  <div class="goal-item">
+    <div class="goal-title">
+      <h5>Fat Limit</h5>
+      <h4>100%</h4>
+    </div>
+    <div class="goal-progress">
+      <div class="bar-base">
+        <div class="bar-progress" [style.width]="( 20/ 100 * 100).toFixed(2) + '%'"></div>
+      </div>
+    </div>
+    <div class="goal-options">
+      <ion-button size="small">UPDATE</ion-button>
+      <h4>1000/1000 </h4>
+    </div>
+    <div class="goal-streak">
+      <div class="streak-tracker">
+        <div *ngFor="let active of getStreakArray(6); let i = index" class="streak" [ngStyle]="{'background-color': active ? '#FF6400' : 'gray'}"></div>
+      </div>
+      <div class="streak-count">
+        6<img src="/assets/flame.png" />
+      </div>
+    </div>
   </div>
+
+  <div class="goal-item">
+    <div class="goal-title">
+      <h5>Fat Limit</h5>
+      <h4>100%</h4>
+    </div>
+    <div class="goal-progress">
+      <div class="bar-base">
+        <div class="bar-progress" [style.width]="( 20/ 100 * 100).toFixed(2) + '%'"></div>
+      </div>
+    </div>
+    <div class="goal-options">
+      <ion-button size="small">UPDATE</ion-button>
+      <h4>1000/1000 </h4>
+    </div>
+    <div class="goal-streak">
+      <div class="streak-tracker">
+        <div *ngFor="let active of getStreakArray(3); let i = index" class="streak" [ngStyle]="{'background-color': active ? '#FF6400' : 'gray'}"></div>
+      </div>
+      <div class="streak-count">
+        6<img src="/assets/flame.png" />
+      </div>
+    </div>
+  </div>
+
 
   <ion-modal trigger="goal-modal">
     <ng-template>

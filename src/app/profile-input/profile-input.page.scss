@@ -65,17 +65,6 @@ ion-button:hover {
     transition: 0.3s ease-in-out; 
 }
 
-.barBase {
-    width:100%; 
-    height:7.5px; 
-    background-color: gray;
-    border-radius:25px; 
-}
-.barProgress {
-    height:7.5px; 
-    background-color: #47e273;
-    border-radius:25px; 
-}
 ion-content {
     padding:3%; 
 }
@@ -109,7 +98,7 @@ img {
     width:20px;
     height:20px;
     border-radius:100%; 
-    border:1px solid black; 
+    border:1px solid rgb(34, 34, 34); 
     margin:0 2.5px; 
 }
 ion-modal {
@@ -120,4 +109,67 @@ ion-modal {
     bottom:20px; 
     left: 0;
     right: 0;
-  }
+}
+.goal-item{
+    display:flex;
+    flex-direction:column; 
+    margin:0 5% 7.5%; 
+    padding:0 20px 20px 20px; 
+    box-shadow:0 0 5px gray; 
+    border-radius:10px; 
+    h4 {
+        font-weight:bold; 
+    }
+}
+.goal-title {
+    display:flex;
+    flex-direction:row; 
+    justify-content: space-between;
+    * {
+        text-wrap:none; 
+    }
+}
+.goal-streak {
+    display:flex;
+    flex-direction:row; 
+    align-items: center;
+    margin:2.5% 0 0;
+}
+.streak-count{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    width:35%; 
+    text-wrap: none;
+    font-size:23px; 
+    img {
+        margin-left:5px; 
+        width:26px; 
+        height:26px;
+    }
+}
+.goal-options {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    margin:2.5% 0; 
+}
+.btn-options {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+}
+.bar-base {
+    width:100%; 
+    height:15px; 
+    background-color: gray;
+    border-radius:25px; 
+}
+.bar-progress {
+    height:15px; 
+    background-color: #1ced15;
+    border-radius:25px; 
+}
+.goal-progress {
+    margin:2.5% 0; 
+}
