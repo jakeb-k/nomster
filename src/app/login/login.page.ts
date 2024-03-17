@@ -88,20 +88,6 @@ export class LoginPage implements OnInit {
    this.router.navigateByUrl('/' + path); 
  }
 
-  // async handleScan()  {
-  // const ress = await BarcodeScanner.isGoogleBarcodeScannerModuleAvailable();
-  // console.log(ress);
-  // if(!ress.available){
-  //   await BarcodeScanner.installGoogleBarcodeScannerModule()
-  // }
-  // const { barcodes } = await BarcodeScanner.scan({
-  //   formats: [BarcodeFormat.Ean13, BarcodeFormat.UpcA, BarcodeFormat.UpcE],
-  // });
-  //  this.barcodes[0] = barcodes[0];
-  
-  // console.log(this.barcodes[0])
-  // //const res = "9780200992930"
-  // }
 
   async scanCode() {
     // Check camera permission
@@ -129,7 +115,7 @@ export class LoginPage implements OnInit {
 
 async startScanner() {
     const { barcodes } = await BarcodeScanner.scan({
-        formats: [BarcodeFormat.QrCode, BarcodeFormat.Ean13]
+        formats: [BarcodeFormat.QrCode, BarcodeFormat.Ean13, BarcodeFormat.Code128, BarcodeFormat.UpcA]
     });
     return barcodes;
 }
