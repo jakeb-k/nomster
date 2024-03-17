@@ -3,6 +3,8 @@ import { DatabaseService } from '../services/database.service';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { CameraService } from '../services/camera.service';
+import { Barcode, BarcodeFormat, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -40,13 +42,20 @@ export class LoginPage implements OnInit {
     ['Update Profile', 'onboarding','cog-outline'],
   ]
 
+  isSupported= false
+
+  barcodes: Barcode[] = []
+
+   public code!: string; 
+
  /**
   * Constructor for the component.
   * @param database - Service for interacting with the database.
   * @param router - Router service for navigation.
   * @param camera - Camera service for profile picture
   */
- constructor(private router: Router, private userService:UserService, private cameraService: CameraService) { }
+ constructor(private router: Router, private userService:UserService, 
+  private cameraService: CameraService, private alertController: AlertController) { }
 
  /**
   * Lifecycle hook that is called after data-bound properties of a directive are initialized.
@@ -56,6 +65,10 @@ export class LoginPage implements OnInit {
   this.user = await this.userService.loadUserByPromise(); 
   this.userProfileImage = this.user.image_data ?? ''; 
   sessionStorage.setItem('previous', 'true'); 
+
+  BarcodeScanner.isSupported().then((result) => {
+    this.isSupported = result.supported;
+  });
   
  }
 
@@ -75,4 +88,49 @@ export class LoginPage implements OnInit {
    this.router.navigateByUrl('/' + path); 
  }
 
+  // async handleScan()  {
+  // const ress = await BarcodeScanner.isGoogleBarcodeScannerModuleAvailable();
+  // console.log(ress);
+  // if(!ress.available){
+  //   await BarcodeScanner.installGoogleBarcodeScannerModule()
+  // }
+  // const { barcodes } = await BarcodeScanner.scan({
+  //   formats: [BarcodeFormat.Ean13, BarcodeFormat.UpcA, BarcodeFormat.UpcE],
+  // });
+  //  this.barcodes[0] = barcodes[0];
+  
+  // console.log(this.barcodes[0])
+  // //const res = "9780200992930"
+  // }
+
+  async scanCode() {
+    // Check camera permission
+    await BarcodeScanner.requestPermissions();
+
+    // Check if the Google ML Kit barcode scanner is available
+    await BarcodeScanner.isGoogleBarcodeScannerModuleAvailable().then(async (data) => {
+        if (data.available) {
+            // Start the barcode scanner
+            await this.startScanner().then(async (barcodes) => {
+                this.code = barcodes[0].rawValue;
+                console.log(this.code)
+            });
+        } else {
+            // Install the Google ML Kit barcode scanner
+            await BarcodeScanner.installGoogleBarcodeScannerModule().then(async () => {
+                await this.startScanner().then(async (barcodes) => {
+                    this.code = barcodes[0].rawValue;
+                    console.log(this.code)
+                });
+            });
+        }
+    });
+}
+
+async startScanner() {
+    const { barcodes } = await BarcodeScanner.scan({
+        formats: [BarcodeFormat.QrCode, BarcodeFormat.Ean13]
+    });
+    return barcodes;
+}
 }
