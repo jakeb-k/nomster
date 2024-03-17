@@ -5,6 +5,7 @@ import { UserService } from '../services/user.service';
 import { CameraService } from '../services/camera.service';
 import { Barcode, BarcodeFormat, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { AlertController } from '@ionic/angular';
+import { BarcodeFetchService } from '../services/barcode-fetch.service';
 
 @Component({
   selector: 'app-login',
@@ -46,7 +47,11 @@ export class LoginPage implements OnInit {
 
   barcodes: Barcode[] = []
 
-   public code!: string; 
+  code!: string; 
+
+  productName!:string;
+
+  
 
  /**
   * Constructor for the component.
@@ -55,7 +60,7 @@ export class LoginPage implements OnInit {
   * @param camera - Camera service for profile picture
   */
  constructor(private router: Router, private userService:UserService, 
-  private cameraService: CameraService, private alertController: AlertController) { }
+  private cameraService: CameraService, private barcodeService: BarcodeFetchService) { }
 
  /**
   * Lifecycle hook that is called after data-bound properties of a directive are initialized.
@@ -99,24 +104,38 @@ export class LoginPage implements OnInit {
             // Start the barcode scanner
             await this.startScanner().then(async (barcodes) => {
                 this.code = barcodes[0].rawValue;
-                console.log(this.code)
+                this.barcodeFetchInfo(this.code)
+                
             });
         } else {
             // Install the Google ML Kit barcode scanner
             await BarcodeScanner.installGoogleBarcodeScannerModule().then(async () => {
                 await this.startScanner().then(async (barcodes) => {
                     this.code = barcodes[0].rawValue;
-                    console.log(this.code)
+                    this.barcodeFetchInfo(this.code)
+
+                    
                 });
             });
         }
     });
 }
 
-async startScanner() {
-    const { barcodes } = await BarcodeScanner.scan({
-        formats: [BarcodeFormat.QrCode, BarcodeFormat.Ean13, BarcodeFormat.Code128, BarcodeFormat.UpcA]
-    });
-    return barcodes;
-}
+  async startScanner() {
+      const { barcodes } = await BarcodeScanner.scan({
+          formats: [BarcodeFormat.QrCode, BarcodeFormat.Ean13, BarcodeFormat.Code128, BarcodeFormat.UpcA]
+      });
+      return barcodes;
+  }
+
+  async barcodeFetchInfo(id:any){
+    const product = this.barcodeService.getProductInfo(id);
+ 
+      product.subscribe(data => {
+        this.productName = data['product']['product_name'];
+        const imageUrl = data['product']['image_url'];
+       
+      });
+    
+  }
 }
