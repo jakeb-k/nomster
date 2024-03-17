@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../services/database.service';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
-import { CameraService } from '../services/camera.service';
+import { CameraService } from '../services/phone/camera.service';
 import { Barcode, BarcodeFormat, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
-import { AlertController } from '@ionic/angular';
-import { BarcodeFetchService } from '../services/barcode-fetch.service';
+import { AlertController, ModalController } from '@ionic/angular';
+import { BarcodeFetchService } from '../services/apis/barcode-fetch.service';
+import { Meal } from '../interfaces/meal';
+import { GoalsService } from '../services/goals.service';
 
 @Component({
   selector: 'app-login',
@@ -51,8 +53,18 @@ export class LoginPage implements OnInit {
 
   productName!:string;
 
-  
-
+  scannedItem: Meal = {
+    id: 0,
+    title: '',
+    cals: '',
+    carbs: '',
+    protein: '',
+    fat: '',
+    diet: '',
+    image: ''
+  }
+  // Flag to show or hide the success message
+  showMealMessage = Boolean(); 
  /**
   * Constructor for the component.
   * @param database - Service for interacting with the database.
@@ -60,7 +72,8 @@ export class LoginPage implements OnInit {
   * @param camera - Camera service for profile picture
   */
  constructor(private router: Router, private userService:UserService, 
-  private cameraService: CameraService, private barcodeService: BarcodeFetchService) { }
+  private cameraService: CameraService, private barcodeService: BarcodeFetchService,
+  private goalsService: GoalsService, private modalController: ModalController) { }
 
  /**
   * Lifecycle hook that is called after data-bound properties of a directive are initialized.
@@ -94,31 +107,31 @@ export class LoginPage implements OnInit {
  }
 
 
-  async scanCode() {
-    // Check camera permission
-    await BarcodeScanner.requestPermissions();
+ async scanCode() {
+  // Check camera permission
+  await BarcodeScanner.requestPermissions();
 
-    // Check if the Google ML Kit barcode scanner is available
-    await BarcodeScanner.isGoogleBarcodeScannerModuleAvailable().then(async (data) => {
-        if (data.available) {
-            // Start the barcode scanner
-            await this.startScanner().then(async (barcodes) => {
-                this.code = barcodes[0].rawValue;
-                this.barcodeFetchInfo(this.code)
-                
-            });
-        } else {
-            // Install the Google ML Kit barcode scanner
-            await BarcodeScanner.installGoogleBarcodeScannerModule().then(async () => {
-                await this.startScanner().then(async (barcodes) => {
-                    this.code = barcodes[0].rawValue;
-                    this.barcodeFetchInfo(this.code)
+  // Check if the Google ML Kit barcode scanner is available
+  await BarcodeScanner.isGoogleBarcodeScannerModuleAvailable().then(async (data) => {
+      if (data.available) {
+          // Start the barcode scanner
+          await this.startScanner().then(async (barcodes) => {
+              this.code = barcodes[0].rawValue;
+              this.barcodeFetchInfo(this.code)
+              
+          });
+      } else {
+          // Install the Google ML Kit barcode scanner
+          await BarcodeScanner.installGoogleBarcodeScannerModule().then(async () => {
+              await this.startScanner().then(async (barcodes) => {
+                  this.code = barcodes[0].rawValue;
+                  this.barcodeFetchInfo(this.code)
 
-                    
-                });
-            });
-        }
-    });
+                  
+              });
+          });
+      }
+  });
 }
 
   async startScanner() {
@@ -129,13 +142,35 @@ export class LoginPage implements OnInit {
   }
 
   async barcodeFetchInfo(id:any){
+    this.productName = ''; 
     const product = this.barcodeService.getProductInfo(id);
  
       product.subscribe(data => {
-        this.productName = data['product']['product_name'];
-        const imageUrl = data['product']['image_url'];
-       
+        this.scannedItem.title = data['product']['product_name'];
+        this.scannedItem.protein = data['product']['nutriments']['proteins_100g'];
+        this.scannedItem.cals = data['product']['nutriments']['energy-kcal_100g'];
+        this.scannedItem.carbs = data['product']['nutriments']['carbohydrates_100g'];
+        this.scannedItem.fat = data['product']['nutriments']['fat_100g'];
+        this.scannedItem.image = data['product']['image_url'];
       });
+
+
     
   }
+  async updateGoalsByMeal() {
+    this.cancel()
+    try {
+      const mealSuccess = await this.goalsService.updateGoalsByMeal(this.scannedItem); 
+      if (mealSuccess) {
+        this.showMealMessage = true;
+        setTimeout(() => this.showMealMessage = false, 1500);
+      } 
+    }catch (error) {
+      console.error('Error tracking by meal:', error)
+    }
+  }
+  cancel() {
+    this.modalController.dismiss() 
+  }
+
 }

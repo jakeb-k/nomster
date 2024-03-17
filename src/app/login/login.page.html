@@ -15,7 +15,8 @@
 
 <ion-list>
   <ion-item>
-    {{productName}}
+    <p>{{scannedItem.title}}</p>
+    <ion-button id="meal-modal" fil="clear">LOG ITEM!</ion-button>
   </ion-item>
 </ion-list>
 <ion-fab slot="fixed" vertical="bottom" horizontal="end">
@@ -24,5 +25,33 @@
   </ion-fab-button>
 </ion-fab>
 
+
+<ion-modal trigger="meal-modal">
+  <ng-template>
+    <div class="modal-cont ion-padding"> 
+      <ion-button class="backBtn" (click)="cancel()">
+        BACK
+      </ion-button>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>You are logging...</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <meal-result  [title]="scannedItem.title"
+                  [cals]="scannedItem.cals"
+                  [image]="scannedItem.image"
+                  [id]="scannedItem.id"
+                  [carbs]="scannedItem.carbs"
+                  [fat]="scannedItem.fat"
+                  [protein]="scannedItem.protein">
+          </meal-result>
+
+        </ion-card-content>
+      </ion-card>
+      <button class="navBtn" (click)="updateGoalsByMeal()">LOG ITEM!</button>
+    </div>
+  </ng-template>
+</ion-modal>
 
 </ion-content>
