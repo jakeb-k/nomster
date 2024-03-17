@@ -7,16 +7,16 @@ export interface Meal {
     title: String;
 
     // Total caloric content of the meal, represented as a string
-    cals: String;
+    cals: any;
 
     // Total carbohydrate content of the meal, represented as a string
-    carbs: String;
+    carbs: any;
 
     // Total protein content of the meal, represented as a string
-    protein: String;
+    protein: any;
 
     // Total fat content of the meal, represented as a string
-    fat: String;
+    fat: any;
 
     // Dietary information for the meal, can be of any type
     diet: any;

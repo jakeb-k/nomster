@@ -1,5 +1,8 @@
 <app-header></app-header>
 <ion-content>
+
+  <app-status *ngIf="showMealMessage" message="Your item was scanned!" status="true"></app-status>
+
   <div class="profilePic ion-padding">
     <ion-icon *ngIf="userProfileImage == '' " (click)="activateCamera()" name="camera-outline"></ion-icon>
     <img *ngIf="userProfileImage" [src]="userProfileImage" alt="User Profile" (click)="activateCamera()">
@@ -16,9 +19,17 @@
 <ion-list>
   <ion-item>
     <p>{{scannedItem.title}}</p>
-    <ion-button id="meal-modal" fil="clear">LOG ITEM!</ion-button>
+    <ion-button id="meal-modal" (click)="itemMacroCalculator()">LOG ITEM!</ion-button>
   </ion-item>
 </ion-list>
+<ion-item>
+  
+  <input class="gram-input" [(ngModel)]="gramAmount" type="number" step="25" min="0" max="1000" onkeydown="return false;">
+  <p style="margin:0 10px; ">gs</p>
+  <ion-button (click)="gramCalculator(-1)">-</ion-button>
+  <ion-button (click)="gramCalculator(1)">+</ion-button>
+
+</ion-item>
 <ion-fab slot="fixed" vertical="bottom" horizontal="end">
   <ion-fab-button (click)="scanCode()">
     <ion-icon name="scan"></ion-icon>
@@ -34,17 +45,17 @@
       </ion-button>
       <ion-card>
         <ion-card-header>
-          <ion-card-title>You are logging...</ion-card-title>
+          <ion-card-title>You are logging... ({{gramAmount}}) gs</ion-card-title>
         </ion-card-header>
       
         <ion-card-content>
-          <meal-result  [title]="scannedItem.title"
-                  [cals]="scannedItem.cals"
+          <meal-result  [title]="scannedInsert.title"
+                  [cals]="scannedInsert.cals"
                   [image]="scannedItem.image"
-                  [id]="scannedItem.id"
-                  [carbs]="scannedItem.carbs"
-                  [fat]="scannedItem.fat"
-                  [protein]="scannedItem.protein">
+                  [id]="scannedInsert.id"
+                  [carbs]="scannedInsert.carbs"
+                  [fat]="scannedInsert.fat"
+                  [protein]="scannedInsert.protein">
           </meal-result>
 
         </ion-card-content>

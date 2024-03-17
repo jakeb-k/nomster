@@ -63,6 +63,17 @@ export class LoginPage implements OnInit {
     diet: '',
     image: ''
   }
+  scannedInsert: Meal = {
+    id: 0,
+    title: '',
+    cals: '',
+    carbs: '',
+    protein: '',
+    fat: '',
+    diet: '',
+    image: ''
+  }
+  gramAmount: number = 100; 
   // Flag to show or hide the success message
   showMealMessage = Boolean(); 
  /**
@@ -147,20 +158,39 @@ export class LoginPage implements OnInit {
  
       product.subscribe(data => {
         this.scannedItem.title = data['product']['product_name'];
-        this.scannedItem.protein = String(data['product']['nutriments']['proteins_100g']).substring(0,4);
-        this.scannedItem.cals = String(data['product']['nutriments']['energy-kcal_100g']).substring(0,5);
-        this.scannedItem.carbs = String(data['product']['nutriments']['carbohydrates_100g']).substring(0,4);
-        this.scannedItem.fat = String(data['product']['nutriments']['fat_100g']).substring(0,4);
+
+        //ASSIGN TO INTERFACE BEFORE CALCULATIONS (READABILITY!)
+        this.scannedItem.protein = Number(this.gramAmount*(data['product']['nutriments']['proteins_100g'])/100).toFixed(2);
+        this.scannedItem.cals = Number(this.gramAmount*(data['product']['nutriments']['energy-kcal_100g'])/100).toFixed(2);
+        this.scannedItem.carbs = Number(this.gramAmount*(data['product']['nutriments']['carbohydrates_100g'])/100).toFixed(2);
+        this.scannedItem.fat = Number(this.gramAmount*(data['product']['nutriments']['fat_100g'])/100).toFixed(2);
         this.scannedItem.image = data['product']['image_url'];
+        this.showMealMessage = true;
+        setTimeout(() => this.showMealMessage = false, 1500);
       });
-
-
-    
+      this.scannedInsert.title = this.scannedItem.title
+      this.scannedInsert.image = this.scannedItem.image
+  }
+  gramCalculator(increment: number) {
+    if(increment == -1) {
+      this.gramAmount -= 25; 
+    } else {
+      this.gramAmount += 25; 
+    }
+  }
+  itemMacroCalculator() {
+       //ASSIGN TO INTERFACE BEFORE CALCULATIONS (READABILITY!)
+       this.scannedInsert.protein = Number(this.gramAmount*(this.scannedItem.protein)/100).toFixed(2);
+       this.scannedInsert.cals = Number(this.gramAmount*(this.scannedItem.cals)/100).toFixed(2);
+       this.scannedInsert.carbs = Number(this.gramAmount*(this.scannedItem.carbs)/100).toFixed(2);
+       this.scannedInsert.fat = Number(this.gramAmount*(this.scannedItem.fat)/100).toFixed(2);
   }
   async updateGoalsByMeal() {
+   
+
     this.cancel()
     try {
-      const mealSuccess = await this.goalsService.updateGoalsByMeal(this.scannedItem); 
+      const mealSuccess = await this.goalsService.updateGoalsByMeal(this.scannedInsert); 
       if (mealSuccess) {
         this.showMealMessage = true;
         setTimeout(() => this.showMealMessage = false, 1500);
