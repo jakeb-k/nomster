@@ -17,7 +17,7 @@
     </div>
     <div class="goal-options">
       <ion-button size="small" (click)="openModal(g.id)">UPDATE</ion-button>
-      <h4>{{g.goalProgress}} / {{g.goalAmount}} </h4>
+      <h4>{{g.goalProgress.toFixed(2)}} / {{g.goalAmount}} </h4>
     </div>
     <div class="goal-streak">
       <div class="streak-tracker">

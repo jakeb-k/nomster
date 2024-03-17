@@ -147,10 +147,10 @@ export class LoginPage implements OnInit {
  
       product.subscribe(data => {
         this.scannedItem.title = data['product']['product_name'];
-        this.scannedItem.protein = data['product']['nutriments']['proteins_100g'];
-        this.scannedItem.cals = data['product']['nutriments']['energy-kcal_100g'];
-        this.scannedItem.carbs = data['product']['nutriments']['carbohydrates_100g'];
-        this.scannedItem.fat = data['product']['nutriments']['fat_100g'];
+        this.scannedItem.protein = String(data['product']['nutriments']['proteins_100g']).substring(0,4);
+        this.scannedItem.cals = String(data['product']['nutriments']['energy-kcal_100g']).substring(0,5);
+        this.scannedItem.carbs = String(data['product']['nutriments']['carbohydrates_100g']).substring(0,4);
+        this.scannedItem.fat = String(data['product']['nutriments']['fat_100g']).substring(0,4);
         this.scannedItem.image = data['product']['image_url'];
       });
 

@@ -49,6 +49,10 @@ ion-modal {
     h4 {
         font-weight:bold; 
     }
+    animation-name: fadeInUp;
+    animation-duration: 0.7s;
+    /* Animation delay gets set inline based on the item's index */
+    animation-fill-mode: both;
 }
 .goal-title {
     display:flex;
