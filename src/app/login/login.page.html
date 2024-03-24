@@ -1,8 +1,6 @@
 <app-header></app-header>
 <ion-content>
 
-  <app-status *ngIf="showMealMessage" message="Your item was scanned!" status="true"></app-status>
-
   <div class="profilePic ion-padding">
     <ion-icon *ngIf="userProfileImage == '' " (click)="activateCamera()" name="camera-outline"></ion-icon>
     <img *ngIf="userProfileImage" [src]="userProfileImage" alt="User Profile" (click)="activateCamera()">
@@ -45,11 +43,11 @@
       </ion-button>
       <ion-card>
         <ion-card-header>
-          <ion-card-title>You are logging... ({{gramAmount}}) gs</ion-card-title>
+          <ion-card-title>{{gramAmount}} gs of {{scannedItem.title}}</ion-card-title>
         </ion-card-header>
       
         <ion-card-content>
-          <meal-result  [title]="scannedInsert.title"
+          <meal-result  [title]="scannedItem.title"
                   [cals]="scannedInsert.cals"
                   [image]="scannedItem.image"
                   [id]="scannedInsert.id"
@@ -57,7 +55,6 @@
                   [fat]="scannedInsert.fat"
                   [protein]="scannedInsert.protein">
           </meal-result>
-
         </ion-card-content>
       </ion-card>
       <button class="navBtn" (click)="updateGoalsByMeal()">LOG ITEM!</button>

@@ -18,7 +18,8 @@ export class ResetService {
     const now = new Date().getTime();
     
     // Check if more than 24 hours have passed
-    if (now - this.timeStamp > 24 * 60 * 60 * 1000) {
+    if ((now - this.timeStamp) > 86400000) {
+      console.log('timestamp is fucking you for some unknown reason', now,'-',this.timeStamp)
       try {
         await this.goalsService.updateGoalStreak(); 
         await this.goalsService.resetAllGoalProgress(); 

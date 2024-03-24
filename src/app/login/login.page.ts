@@ -136,6 +136,7 @@ export class LoginPage implements OnInit {
           await BarcodeScanner.installGoogleBarcodeScannerModule().then(async () => {
               await this.startScanner().then(async (barcodes) => {
                   this.code = barcodes[0].rawValue;
+                  console.log(this.code); 
                   this.barcodeFetchInfo(this.code)
 
                   
@@ -153,6 +154,7 @@ export class LoginPage implements OnInit {
   }
 
   async barcodeFetchInfo(id:any){
+    // need to account for cals being kjs instead
     this.productName = ''; 
     const product = this.barcodeService.getProductInfo(id);
  
