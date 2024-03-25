@@ -59,27 +59,23 @@ ion-content {
 }
 
 .rImg {
-
+  margin-top: 10px;
   display: inline-block;
-
+  align-self: center;
   background: gray;
   border-radius: 15px;
   box-shadow: 0 0 10px black;
-
+  transition: 200ms ease-in-out;
+  min-height:275px;
+  max-height:275px; 
+  width:100%; 
   cursor: pointer;
   &:hover {
     box-shadow: 0 0 10px #FF6700;
     scale: 1.05;
   }
-  
 }
-img.rImg {
-  margin-left:40px; 
-  max-height:350px !important; 
-  width:auto; 
-  vertical-align: center;
-  text-align: center;
-}
+
 .rInfo span {
   font-family: $p;
   font-weight:bold; 

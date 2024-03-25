@@ -17,7 +17,7 @@
 <ion-list>
   <ion-item>
     <p>{{scannedItem.title}}</p>
-    <ion-button id="meal-modal" (click)="itemMacroCalculator()">LOG ITEM!</ion-button>
+    <ion-button id="log-modal" (click)="itemMacroCalculator()">LOG ITEM!</ion-button>
   </ion-item>
 </ion-list>
 <ion-item>
@@ -35,7 +35,7 @@
 </ion-fab>
 
 
-<ion-modal trigger="meal-modal">
+<ion-modal trigger="log-modal">
   <ng-template>
     <div class="modal-cont ion-padding"> 
       <ion-button class="backBtn" (click)="cancel()">
@@ -47,7 +47,8 @@
         </ion-card-header>
       
         <ion-card-content>
-          <meal-result  [title]="scannedItem.title"
+          <meal-result style="margin-left:40px; max-height:350px;"
+                  [title]="scannedItem.title"
                   [cals]="scannedInsert.cals"
                   [image]="scannedItem.image"
                   [id]="scannedInsert.id"

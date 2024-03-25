@@ -129,7 +129,7 @@ export class RecipePage implements OnInit {
    * Navigates to the home route.
    */
   navHome() {  
-    this.router.navigateByUrl('/'+this.loc); 
+    this.router.navigateByUrl('/'+this.loc, {replaceUrl:true}); 
   }
 
   /**

@@ -40,9 +40,9 @@
       <img [src]="image" />
     </div>
    
-      <ion-button id="meal-modal" slot="start" fill="clear">
-        I Enjoyed This, Log It!
-       </ion-button>
+    <ion-button [id]="title" slot="start" fill="clear">
+      I Enjoyed This, Log It!
+    </ion-button>
     
     <div class="text-container" [ngClass]="{'expanded': isExpanded}">
       <p [innerHTML]="summary"></p>
@@ -97,7 +97,7 @@
     </div>
   </div>
 
-  <ion-modal trigger="meal-modal">
+  <ion-modal [trigger]="title">
     <ng-template>
       <div class="modal-cont ion-padding"> 
         <ion-button class="backBtn" (click)="cancel()">
