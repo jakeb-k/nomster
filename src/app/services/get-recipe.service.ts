@@ -92,12 +92,9 @@ apiKey = environment.apiKey;
     
     // Construct the base API URL for recipe search
     let url = "https://api.spoonacular.com/recipes/complexSearch?addRecipeNutrition=true&apiKey="+this.apiKey; 
+    
    
-    // Apply filters to the URL if provided in the filter object
-    if(filter.query != ""){
-      this.query = "&query="+filter.query; 
-      url = url.concat(this.query)
-    }
+ 
     if(filter.ingredients != ""){
       this.ingredients = "&includeIngredients="+filter.ingredients; 
       url = url.concat(this.ingredients)
@@ -138,6 +135,7 @@ apiKey = environment.apiKey;
     // Remove whitespace from the URL
     url = this.removeWhitespace(url); 
     
+    console.log(url); 
     // Store the filter in session storage
     sessionStorage.setItem('filter', JSON.stringify(filter)); 
 

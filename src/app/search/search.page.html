@@ -47,16 +47,29 @@
 
       
     <div id="filterForm">
-    <h3 style="padding-left:20px;">Apply Filters</h3>
+    <h3 style="padding-left:20px;">Find a Meal!</h3>
       
-      <ion-card>
-        <ion-card-content>
-          <ion-item>
-            <ion-input [(ngModel)]="filterOps.query" label="What are we cooking? *" labelPlacement="stacked" placeholder="I want..." data-default-element="filterOps.query"></ion-input>
+    
+          <ion-item style="border-top-left-radius: 15px;border-top-right-radius: 15px;">
+            <input [(ngModel)]="filterOps.ingredients" label="Ingredients" labelPlacement="stacked"  placeholder="Enter up to 3 main ingredients" />
           </ion-item>
           <ion-item>
-            <ion-input [(ngModel)]="filterOps.ingredients" label="Ingredients" labelPlacement="stacked"  placeholder="chicken,brioche bun,chill flakes, etc."></ion-input>
+            <input [(ngModel)]="filterOps.maxCals" label="Max Cals" labelPlacement="stacked"
+              placeholder="Enter calorie limit" />
           </ion-item>
+          <ion-item>
+            <input [(ngModel)]="filterOps.maxCarbs"  placeholder="Enter carb limit" />
+          </ion-item>
+          <ion-item>
+            <input [(ngModel)]="filterOps.maxFat" label="Max Fat" labelPlacement="stacked"
+              placeholder="Enter fat limit" />
+          </ion-item>
+        
+          <ion-item>
+            <input [(ngModel)]="filterOps.minProtein" label="Min Protein" labelPlacement="stacked"
+              placeholder="Enter minimum protein" />
+          </ion-item>
+
           <ion-item>
             <ion-select [(ngModel)]="filterOps.cuisine" aria-label="Cuisines" placeholder="Select Cuisine">
               <ion-select-option *ngFor="let c of cuisines" [value]="c">{{c}}</ion-select-option>
@@ -72,31 +85,17 @@
               <ion-select-option *ngFor="let t of mealType" [value]="t">{{t}}</ion-select-option>
             </ion-select>
           </ion-item>
-          <ion-item>
+          <ion-item style="border-bottom-left-radius:15px; border-bottom-right-radius:15px;">
             <ion-select [(ngModel)]="filterOps.intolerances" aria-label="Intolerances"
               placeholder="Select Allergies / Intolerances" multiple="true">
               <ion-select-option *ngFor="let t of intolerances" [value]="t">{{t}}</ion-select-option>
             </ion-select>
           </ion-item>
-          <ion-item>
-            <ion-input [(ngModel)]="filterOps.maxCarbs" label="Max Carbs" labelPlacement="stacked" placeholder="Enter carb limit"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input [(ngModel)]="filterOps.maxFat" label="Max Fat" labelPlacement="stacked"
-              placeholder="Enter fat limit"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input [(ngModel)]="filterOps.maxCals" label="Max Cals" labelPlacement="stacked"
-              placeholder="Enter calorie limit"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input [(ngModel)]="filterOps.minProtein" label="Min Protein" labelPlacement="stacked"
-              placeholder="Enter minimum protein"></ion-input>
-          </ion-item>
-         
-        </ion-card-content>
-      </ion-card>
+
+    
+      <div style="margin-top:20px">
       <button class="navBtn" (click)="sendFilterData()">APPLY</button>
+      </div>
       
     </div>
     </ng-template>
