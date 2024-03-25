@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { DatabaseService } from '../services/database.service';
+
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { UserService } from '../services/database/user.service';
 import { CameraService } from '../services/phone/camera.service';
 import { Barcode, BarcodeFormat, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
-import { AlertController, ModalController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { BarcodeFetchService } from '../services/apis/barcode-fetch.service';
 import { Meal } from '../interfaces/meal';
-import { GoalsService } from '../services/goals.service';
+import { GoalsService } from '../services/database/goals.service';
 
 @Component({
   selector: 'app-login',

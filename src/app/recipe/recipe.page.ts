@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {GetRecipeDetailsService} from '../services/get-recipe-details.service';
+import {GetRecipeDetailsService} from '../services/apis/get-recipe-details.service';
 import { ActivatedRoute, Data } from '@angular/router';
 import { Router } from '@angular/router';
-import { DatabaseService } from '../services/database.service';
+import { DatabaseService } from '../services/database/database.service';
 import { Grocery } from '../interfaces/grocery';
-import { GoalsService } from '../services/goals.service';
+import { GoalsService } from '../services/database/goals.service';
 import { Meal } from '../interfaces/meal';
 import { Favourite } from '../interfaces/favourite';
 import { ModalController } from '@ionic/angular';

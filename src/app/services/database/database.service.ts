@@ -1,8 +1,8 @@
 import { Injectable, WritableSignal, signal } from '@angular/core';
-import { User } from '../interfaces/user';
-import { Favourite } from '../interfaces/favourite';
-import { Grocery } from '../interfaces/grocery';
-import { Goal } from '../interfaces/goal';
+import { User } from '../../interfaces/user';
+import { Favourite } from '../../interfaces/favourite';
+import { Grocery } from '../../interfaces/grocery';
+import { Goal } from '../../interfaces/goal';
 import { CapacitorSQLite, SQLiteConnection, SQLiteDBConnection } from '@capacitor-community/sqlite';
 
 const DB_FAVS = 'favsdb'; 

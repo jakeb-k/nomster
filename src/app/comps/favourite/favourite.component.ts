@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Favourite } from 'src/app/interfaces/favourite';
-import { DatabaseService } from 'src/app/services/database.service';
+import { DatabaseService } from 'src/app/services/database/database.service';
 
 
 @Component({

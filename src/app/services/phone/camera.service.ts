@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import { DatabaseService } from '../database.service';
+import { DatabaseService } from '../database/database.service';
 import { SQLiteDBConnection } from '@capacitor-community/sqlite';
 
 

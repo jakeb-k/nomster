@@ -1,6 +1,6 @@
 <app-header></app-header>
 <ion-content> 
-  <ion-button fill="clear" (click)="navHome()">BACK</ion-button>
+  <ion-button size="large" fill="clear" (click)="navHome()">BACK</ion-button>
   <div class="favItem ion-padding" *ngFor="let fav of favs(); let i = index;"  [style.animation-delay]="i * 200 + 'ms'">
     <favourite [fav]="fav">
       

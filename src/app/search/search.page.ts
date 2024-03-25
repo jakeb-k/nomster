@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {GetRecipeService} from '../services/get-recipe.service';
-import { DatabaseService } from '../services/database.service';
-import { GetRecipeDetailsService } from '../services/get-recipe-details.service';
+import {GetRecipeService} from '../services/apis/get-recipe.service';
+import { DatabaseService } from '../services/database/database.service';
+import { GetRecipeDetailsService } from '../services/apis/get-recipe-details.service';
 import { Router } from '@angular/router';
 import { Meal } from '../interfaces/meal';
 import { Filter } from '../interfaces/filter';

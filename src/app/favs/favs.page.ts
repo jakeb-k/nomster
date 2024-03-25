@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DatabaseService } from '../services/database.service';
+import { DatabaseService } from '../services/database/database.service';
 import { Favourite } from '../interfaces/favourite';
 import { Router } from '@angular/router';
 import { Nutrient } from '../interfaces/nutrient';

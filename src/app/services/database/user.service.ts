@@ -1,7 +1,7 @@
 import { Injectable, signal, WritableSignal } from '@angular/core';
 import { DatabaseService } from './database.service';
 import { SQLiteDBConnection } from '@capacitor-community/sqlite';
-import { User } from '../interfaces/user';
+import { User } from '../../interfaces/user';
 
 
 @Injectable({

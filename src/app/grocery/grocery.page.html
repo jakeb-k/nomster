@@ -2,8 +2,8 @@
 
 <ion-content>
   <div class="grocery-actions">
-     <ion-button fill="clear" (click)="nav('login')">BACK</ion-button>
-    <ion-button fill="clear" (click)="deleteAllGroceries()">RESET</ion-button>
+     <ion-button size="large" fill="clear" (click)="nav('login')">BACK</ion-button>
+    <ion-button size="large" fill="clear" (click)="deleteAllGroceries()">RESET</ion-button>
   </div>
 
   <div class="goalItem" *ngFor="let g of groceries; let i = index">

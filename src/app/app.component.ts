@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { DatabaseService } from './services/database.service';
-import { GoalsService } from './services/goals.service';
+import { DatabaseService } from './services/database/database.service';
+import { GoalsService } from './services/database/goals.service';
 import { SplashScreen } from '@capacitor/splash-screen';
 
 

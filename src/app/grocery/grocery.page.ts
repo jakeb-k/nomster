@@ -1,5 +1,5 @@
 import { Component, OnInit, WritableSignal, ChangeDetectorRef } from '@angular/core';
-import { DatabaseService } from '../services/database.service';
+import { DatabaseService } from '../services/database/database.service';
 import { Grocery } from '../interfaces/grocery';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Nutrient } from '../interfaces/nutrient';
-import { GetRecipeDetailsService } from '../services/get-recipe-details.service';
-import { GoalsService } from '../services/goals.service';
+import { GetRecipeDetailsService } from '../services/apis/get-recipe-details.service';
+import { GoalsService } from '../services/database/goals.service';
 import { Goal } from '../interfaces/goal';
 import { Location } from '@angular/common';
 

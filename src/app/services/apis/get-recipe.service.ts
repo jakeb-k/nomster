@@ -1,7 +1,7 @@
 import { Injectable} from '@angular/core';
 import { Observable, count } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Filter } from '../interfaces/filter';
+import { Filter } from '../../interfaces/filter';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

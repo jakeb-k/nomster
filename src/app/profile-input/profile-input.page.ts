@@ -1,12 +1,11 @@
-import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { trigger, transition, style, query, stagger, animate } from '@angular/animations';
+import { Component, OnInit  } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 
-import { GoalsService } from '../services/goals.service';
+import { GoalsService } from '../services/database/goals.service';
 import { Goal } from '../interfaces/goal';
 import { UpdateGoalModalComponent } from '../comps/update-goal-modal/update-goal-modal.component';
-import { ResetService } from '../services/reset.service';
+import { ResetService } from '../services/database/reset.service';
 
 
 @Component({

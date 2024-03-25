@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { GoalsService } from 'src/app/services/goals.service';
+import { GoalsService } from 'src/app/services/database/goals.service';
 @Component({
   selector: 'app-update-goal-modal',
   templateUrl: './update-goal-modal.component.html',
