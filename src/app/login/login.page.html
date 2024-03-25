@@ -14,28 +14,21 @@
     </div>
   </div>
 
-<ion-list>
-  <ion-item>
+
+  <ion-item *ngIf="scannedItem.title">
     <p>{{scannedItem.title}}</p>
     <ion-button id="log-modal" (click)="itemMacroCalculator(scannedItem)">LOG ITEM!</ion-button>
   </ion-item>
-</ion-list>
-<ion-item>
-  
-  <input class="gram-input" [(ngModel)]="gramAmount" type="number" step="25" min="0" max="1000" onkeydown="return false;">
-  <p style="margin:0 10px; ">gs</p>
-  <ion-button (click)="gramCalculator(-1)">-</ion-button>
-  <ion-button (click)="gramCalculator(1)">+</ion-button>
 
-</ion-item>
+
 <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-  <ion-fab-button (click)="scanCode()">
+  <ion-fab-button (click)="handleButtonClick()">
     <ion-icon name="scan"></ion-icon>
   </ion-fab-button>
 </ion-fab>
 
 
-<ion-modal trigger="log-modal">
+<ion-modal trigger="log-modal" *ngIf="scannedItem.title">
   <ng-template>
     <div class="modal-cont ion-padding"> 
       <ion-button class="backBtn" (click)="cancel()">

@@ -173,6 +173,13 @@ export class LoginPage implements OnInit {
       });
       this.scannedInsert.title = this.scannedItem.title
       this.scannedInsert.image = this.scannedItem.image
+
+      
+     
+  }
+  async handleButtonClick() {
+    await this.scanCode();
+    this.itemMacroCalculator(this.scannedItem);
   }
   gramCalculator(increment: number) {
     if(increment == -1) {
