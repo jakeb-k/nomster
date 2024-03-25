@@ -6,8 +6,8 @@
     <ion-button fill="clear" (click)="deleteAllGroceries()">RESET</ion-button>
   </div>
 
-  <div class="goalItem" *ngFor="let g of groceries; let i = index" [style.animation-delay]="i * 200 + 'ms'">
-    <div *ngIf="i === 0 || groceries[i].aisle !== groceries[i - 1].aisle" class="aisle-header" [class.expanded]="expandedAisles[g.aisle]">
+  <div class="goalItem" *ngFor="let g of groceries; let i = index">
+    <div *ngIf="i === 0 || groceries[i].aisle !== groceries[i - 1].aisle" class="aisle-header" [class.expanded]="expandedAisles[g.aisle]"  [style.animation-delay]="i * 200 + 'ms'">
       <div class="aisle-content">
         <p>{{ g.aisle }}</p>
         <ion-button fill="clear" (click)="toggleAisle(g.aisle)">
