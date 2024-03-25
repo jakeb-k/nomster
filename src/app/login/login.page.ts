@@ -157,15 +157,16 @@ export class LoginPage implements OnInit {
     // need to account for cals being kjs instead
     this.productName = ''; 
     const product = this.barcodeService.getProductInfo(id);
+    this.scannedItem.id = id; 
  
       product.subscribe(data => {
         this.scannedItem.title = data['product']['product_name'];
-
         //ASSIGN TO INTERFACE BEFORE CALCULATIONS (READABILITY!)
-        this.scannedItem.protein = Number(this.gramAmount*(data['product']['nutriments']['proteins_100g'])/100).toFixed(2);
-        this.scannedItem.cals = Number(this.gramAmount*(data['product']['nutriments']['energy-kcal_100g'])/100).toFixed(2);
-        this.scannedItem.carbs = Number(this.gramAmount*(data['product']['nutriments']['carbohydrates_100g'])/100).toFixed(2);
-        this.scannedItem.fat = Number(this.gramAmount*(data['product']['nutriments']['fat_100g'])/100).toFixed(2);
+        this.scannedItem.protein = Number(data['product']['nutriments']['proteins_100g']);
+        this.scannedItem.cals = Number(data['product']['nutriments']['energy-kcal_100g']);
+        this.scannedItem.carbs = Number(data['product']['nutriments']['carbohydrates_100g']);
+        this.scannedItem.fat = Number(data['product']['nutriments']['fat_100g']);
+      
         this.scannedItem.image = data['product']['image_url'];
         this.showMealMessage = true;
         setTimeout(() => this.showMealMessage = false, 1500);
@@ -179,14 +180,15 @@ export class LoginPage implements OnInit {
     } else {
       this.gramAmount += 25; 
     }
+    this.itemMacroCalculator(this.scannedItem)
   }
-  itemMacroCalculator() {
-       //ASSIGN TO INTERFACE BEFORE CALCULATIONS (READABILITY!)
-       this.scannedInsert.protein = Number(this.gramAmount*(this.scannedItem.protein)/100).toFixed(2);
-       this.scannedInsert.cals = Number(this.gramAmount*(this.scannedItem.cals)/100).toFixed(2);
-       this.scannedInsert.carbs = Number(this.gramAmount*(this.scannedItem.carbs)/100).toFixed(2);
-       this.scannedInsert.fat = Number(this.gramAmount*(this.scannedItem.fat)/100).toFixed(2);
-  }
+  itemMacroCalculator(meal: Meal) {
+    //ASSIGN TO INTERFACE BEFORE CALCULATIONS (READABILITY!)
+    this.scannedInsert.protein = Number(this.gramAmount*(meal.protein)/100).toFixed(2);
+    this.scannedInsert.cals = Number(this.gramAmount*(meal.cals)/100).toFixed(2);
+    this.scannedInsert.carbs = Number(this.gramAmount*(meal.carbs)/100).toFixed(2);
+    this.scannedInsert.fat = Number(this.gramAmount*(meal.fat)/100).toFixed(2);
+}
   async updateGoalsByMeal() {
    
 

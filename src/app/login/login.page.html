@@ -17,7 +17,7 @@
 <ion-list>
   <ion-item>
     <p>{{scannedItem.title}}</p>
-    <ion-button id="log-modal" (click)="itemMacroCalculator()">LOG ITEM!</ion-button>
+    <ion-button id="log-modal" (click)="itemMacroCalculator(scannedItem)">LOG ITEM!</ion-button>
   </ion-item>
 </ion-list>
 <ion-item>
@@ -44,6 +44,10 @@
       <ion-card>
         <ion-card-header>
           <ion-card-title>{{gramAmount}} gs of {{scannedItem.title}}</ion-card-title>
+          <div class="">
+            <ion-button (click)="gramCalculator(-1)">-</ion-button>
+            <ion-button (click)="gramCalculator(1)">+</ion-button>
+          </div>
         </ion-card-header>
       
         <ion-card-content>
