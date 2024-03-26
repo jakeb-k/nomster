@@ -132,3 +132,7 @@ ion-button:hover {
     transform: scale(1.05);
     transition: 0.3s ease-in-out;
 }
+//remove for build, this just allows scroll in jasmine testing browser
+* {
+    overflow-y:scroll !important; 
+}

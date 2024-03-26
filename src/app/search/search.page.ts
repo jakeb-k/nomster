@@ -105,7 +105,7 @@ export class SearchPage implements OnInit{
    * @param database - Service for database operations.
    * @param recipeDetailGetter - Service for fetching detailed recipe information.
    */
-  constructor(private recipeGetter: GetRecipeService, private router:Router, private modalController: ModalController, private database: DatabaseService, private recipeDetailGetter: GetRecipeDetailsService) {}
+  constructor(private recipeGetter: GetRecipeService, private router:Router, private database: DatabaseService, private recipeDetailGetter: GetRecipeDetailsService) {}
   
 
   /**
@@ -124,35 +124,6 @@ export class SearchPage implements OnInit{
       this.servingSize = JSON.parse(temp3!); 
     }
   }
-
-
-  /**
-   * Fetches recipes based on user query.
-   */
-  getRecipe(){
-    //pretty sure this deprecated, honestly dont know tho 
-    sessionStorage.clear(); //clears current session recipe data for new
-    this.recipes = []; //clears all unsorted recipes variable info
-    this.sortedRecipes = []; //clears all sorted recipes variable info
-    this.rawNutrients = []; //clears all unsorted nutrients variable info
-    this.servingSize = [];  //clears all serving size info
-
-    //use recipe service to subscribe observable http response as well as input parameters for API
-    this.recipeGetter.getRecipe(this.query).subscribe(
-      async (response) => { //checks for response
-        if (!response.error) { //if there is no problems
-         this.recipes = response.results; //assigns results to variable
-         this.recipeSorter(); //sorts the recipes from large json bs to something usable
-        } else {
-          console.error('Error:', response.error); //log assign error if error
-        }
-      },
-      (err) => {
-        console.error('Observer got an error:', err); // Log the general error
-      }
-    );
-  }
-
 
   /**
    * Navigates to detailed recipe view.
@@ -276,11 +247,11 @@ export class SearchPage implements OnInit{
     //and adds the results to variables
         this.recipeGetter.applyFilter(this.filterOps).subscribe( //need to update to next then error
           async (response) => { //if reponse
-            if (!response.error) { //and no reponse error
+            if (!response.error) { //and no reponse errornpm
             this.recipes = []; //empty current variable arr
             this.sortedRecipes = []; //empty current sorted variable arr
             this.recipes = response.results; //assign to unsorted recipe holder for sorting
-              
+            console.log(this.recipes); 
             this.recipeSorter(); //the sorter function
             } 
             else if(this.recipes = []){ //if its empty
