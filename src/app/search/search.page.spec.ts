@@ -57,8 +57,9 @@ describe('SearchPage', () => {
     component.sendFilterData();
     flush();
     expect(getRecipeService.applyFilter).toHaveBeenCalled();
-    expect(component.recipes.length).toBeGreaterThan(-1);
-    expect(component.sortedRecipes.length).toBeGreaterThan(-1);
+
+    expect(component.recipes.length).toBeGreaterThanOrEqual(0);
+    expect(component.sortedRecipes.length).toBeGreaterThanOrEqual(0);
   }));
 
   it('newFav should add a new favourite meal', async () => {

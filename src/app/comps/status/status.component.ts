@@ -9,7 +9,7 @@ import { DatabaseService } from 'src/app/services/database/database.service';
 })
 export class StatusComponent  implements OnInit {
 
-  @Input() status = "";
+  @Input() status:any = "";
 
   @Input() message = ""
   
