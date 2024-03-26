@@ -41,7 +41,7 @@ export class NutrientsPage implements OnInit {
    * @param userService - Service to get user details
    */
   constructor(private recipeDetailsGetter: GetRecipeDetailsService, private route: ActivatedRoute, 
-    private router: Router, private goalsService: GoalsService, private location: Location) { }
+    private goalsService: GoalsService, private location: Location) { }
 
   /**
    * Lifecycle hook that is called after data-bound properties of a directive are initialized.
