@@ -45,7 +45,7 @@ export class ProfileInputPage implements OnInit {
    * @param goalsService - Service for handling goals.
    * @param modalController - Controller for managing modals.
    */
-  constructor(private router: Router, private goalsService: GoalsService, private modalController: ModalController, private resetService: ResetService) { }
+  constructor(public router: Router, private goalsService: GoalsService, private modalController: ModalController, private resetService: ResetService) { }
 
   /**
    * Lifecycle hook that is called after data-bound properties of a directive are initialized.
