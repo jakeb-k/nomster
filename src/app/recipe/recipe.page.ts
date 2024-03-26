@@ -78,7 +78,7 @@ export class RecipePage implements OnInit {
    * @param database - Service to interact with the database.
    * @param goalsService - Service to interact with goals table in the database
    */
-  constructor(private getter: GetRecipeDetailsService, private route: ActivatedRoute, private router: Router, 
+  constructor(private getter: GetRecipeDetailsService, public route: ActivatedRoute, private router: Router, 
     private database: DatabaseService, private goalsService: GoalsService, private modalController:ModalController) { }
 
   /**
