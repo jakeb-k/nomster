@@ -5,7 +5,7 @@ describe('ProfileInputPage', () => {
   let component: ProfileInputPage;
   let fixture: ComponentFixture<ProfileInputPage>;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     fixture = TestBed.createComponent(ProfileInputPage);
     component = fixture.componentInstance;
     fixture.detectChanges();

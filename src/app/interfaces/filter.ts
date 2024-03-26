@@ -9,9 +9,6 @@ export interface Filter {
     // Minimum protein content for the meal, represented as a string
     minProtein: String;
 
-    // Minimum carbohydrate content for the meal, represented as a string
-    minCarbs: String;
-
     // Maximum carbohydrate content for the meal, represented as a string
     maxCarbs: String;
 

@@ -73,7 +73,6 @@ export class SearchPage implements OnInit{
     maxCarbs:"",
     maxFat:"",
     minProtein:"",
-    minCarbs:"",
     cuisine:"",
     diet:[],
     type:"",
